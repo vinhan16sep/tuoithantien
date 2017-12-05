@@ -1,5 +1,4 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content row">
         <div class="container col-md-12">

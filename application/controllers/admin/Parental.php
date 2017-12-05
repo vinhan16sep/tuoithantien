@@ -3,13 +3,10 @@ class Parental extends Admin_Controller{
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url');
         $this->load->model('parental_model');
-        $this->load->library('session');
 	}
 
 	public function activity(){
-		$this->output->enable_profiler(TRUE);
 
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -41,7 +38,6 @@ class Parental extends Admin_Controller{
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
-                // print_r($data);
                 if($image != null){
                     $data['image'] = $image;
                 }
@@ -62,7 +58,6 @@ class Parental extends Admin_Controller{
 	}
 
 	public function list(){
-		$this->output->enable_profiler(TRUE);
 
     	$this->load->helper('form');
         $this->load->library('form_validation');
@@ -111,12 +106,11 @@ class Parental extends Admin_Controller{
         }
 
         $config = array();
-        $config['base_url']    = base_url() . 'admin/parental/list/'.$slug;
-        $config['per_page']    = 20;
-        $config['uri_segment'] = 5;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
-        $config['total_rows']  = $total_rows;
+        $base_url = base_url() . 'admin/parental/list/'.$slug;
+        $per_page = 20;
+        $uri_segment = 5;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
@@ -163,7 +157,6 @@ class Parental extends Admin_Controller{
             }
 
             $this->data['parental'] = $parental;
-            // print_r($parental_id);die;
             $this->render('admin/parental/edit_parental_view');
         } else {
             if ($this->input->post()) {
@@ -186,14 +179,12 @@ class Parental extends Admin_Controller{
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viêt thất bại: ' . $e->getMessage());
                 }
-                // print_r($parental_row);die;
                 redirect('admin/parental/list/'.$slug, 'refresh');
             }
         }
 	}
 
 	public function create(){
-		$this->output->enable_profiler(TRUE);
         $slug = $this->uri->segment(4);
         $this->data['slug'] = $slug;
 

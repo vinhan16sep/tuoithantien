@@ -3,9 +3,7 @@ class Admission extends Admin_Controller{
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url');
         $this->load->model('admission_model');
-        $this->load->library('session');
 	}
 
 	public function admission_procedure(){
@@ -18,14 +16,11 @@ class Admission extends Admin_Controller{
         }
         $this->data['slug'] = $slug;
         $admission = $this->admission_model->fetch_row($where);
-        // print_r($admission);die;
         $this->data['admission'] = $admission;
         $this->load->helper('form');
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
-
-        // $admission_id = isset($id) ? (int) $id : (int) $this->input->post('id');
         
         if ($this->form_validation->run() == TRUE) {
             if ($this->input->post()) {
@@ -37,7 +32,6 @@ class Admission extends Admin_Controller{
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
-                // print_r($data);
                 if($image != null){
                     $data['image'] = $image;
                 }
@@ -98,12 +92,11 @@ class Admission extends Admin_Controller{
         }
 
         $config = array();
-        $config['base_url']    = base_url() . 'admin/admission/list/'.$slug;
-        $config['per_page']    = 20;
-        $config['uri_segment'] = 5;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
-        $config['total_rows']  = $total_rows;
+        $base_url = base_url() . 'admin/admission/list/'.$slug;
+        $per_page = 20;
+        $uri_segment = 5;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
@@ -115,16 +108,10 @@ class Admission extends Admin_Controller{
         }
 
         $this->data['admission'] = $result;
-        // $this->session->unset_userdata('search_blog');
-        
-        // print_r($admission);
-
-
     	$this->render('admin/admission/list_admission_view');
     }
 
     public function create(){
-        $this->output->enable_profiler(TRUE);
         $slug = $this->uri->segment(4);
         $this->data['slug'] = $slug;
 
@@ -171,7 +158,6 @@ class Admission extends Admin_Controller{
         }elseif($slug == 'chuong-trinh-khuyen-mai'){
             $where = array('category' => 2);
         }
-
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -187,7 +173,6 @@ class Admission extends Admin_Controller{
             }
 
             $this->data['admission'] = $admission;
-            // print_r($admission_id);die;
             $this->render('admin/admission/edit_admission_view');
         } else {
             if ($this->input->post()) {
@@ -210,7 +195,6 @@ class Admission extends Admin_Controller{
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
                 }
-                // print_r($admission_row);die;
                 redirect('admin/admission/list/'.$slug, 'refresh');
             }
         }
@@ -219,7 +203,6 @@ class Admission extends Admin_Controller{
 
 
     public function remove(){
-    	$this->output->enable_profiler(TRUE);
     	$id = $_GET['id'];
     	$this->admission_model->delete($id);
     }

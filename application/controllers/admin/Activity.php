@@ -4,26 +4,29 @@ class Activity extends Admin_Controller{
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url');
         $this->load->model('activity_model');
-        $this->load->library('session');
 	}
 
-	public function index(){
+    private function check_slug($slug){
+        if($slug == 'thong-bao'){
+            $where = array('category' => 1);
+        }elseif($slug == 'tuyen-sinh'){
+            $where = array('category' => 2);
+        }
+        elseif($slug == 'trai-nghiem'){
+            $where = array('category' => 3);
+        }
+        return $where;
+    }
 
+	public function index(){
     	$this->load->helper('form');
         $this->load->library('form_validation');
 
         $slug = $this->uri->segment(4);
         $this->data['slug'] = $slug;
-        if($slug == 'thong-bao'){
-        	$where = array('category' => 1);
-        }elseif($slug == 'tuyen-sinh'){
-        	$where = array('category' => 2);
-        }
-        elseif($slug == 'trai-nghiem'){
-        	$where = array('category' => 3);
-        }
+        
+        $where = $this->check_slug($slug);
 
         if (count($_POST) > 0){
             $this->session->set_userdata('search_activity', $_POST );
@@ -55,20 +58,19 @@ class Activity extends Admin_Controller{
         }
 
         $config = array();
-        $config['base_url']    = base_url() . 'admin/activity/index/'.$slug;
-        $config['per_page']    = 20;
-        $config['uri_segment'] = 5;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
-        $config['total_rows']  = $total_rows;
+        $base_url = base_url() . 'admin/activity/index/'.$slug;
+        $per_page = 20;
+        $uri_segment = 5;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
         $result  =  array();
         if($keywords != ''){
-            $result = $this->activity_model->fetch_all($where, $config['per_page'], $page, $keywords);
+            $result = $this->activity_model->fetch_all($where, $per_page, $page, $keywords);
         }else{
-            $result = $this->activity_model->fetch_all($where, $config['per_page'], $page);
+            $result = $this->activity_model->fetch_all($where, $per_page, $page);
         }
 
         $this->data['activity'] = $result;
@@ -78,7 +80,6 @@ class Activity extends Admin_Controller{
 	}
 
 	public function create(){
-		$this->output->enable_profiler(TRUE);
         $slug = $this->uri->segment(4);
         $this->data['slug'] = $slug;
 
@@ -119,14 +120,7 @@ class Activity extends Admin_Controller{
 		$slug = $this->uri->segment(4);
         $id = $this->uri->segment(5);
         $this->data['slug'] = $slug;
-        if($slug == 'thong-bao'){
-        	$where = array('category' => 1);
-        }elseif($slug == 'tuyen-sinh'){
-        	$where = array('category' => 2);
-        }
-        elseif($slug == 'trai-nghiem'){
-        	$where = array('category' => 3);
-        }
+        $where = $this->check_slug($slug);
 
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -143,7 +137,6 @@ class Activity extends Admin_Controller{
             }
 
             $this->data['activity'] = $activity;
-            // print_r($activity_id);die;
             $this->render('admin/activity/edit_activity_view');
         } else {
             if ($this->input->post()) {
@@ -166,7 +159,6 @@ class Activity extends Admin_Controller{
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
                 }
-                // print_r($activity_row);die;
                 redirect('admin/activity/index/'.$slug, 'refresh');
             }
         }
