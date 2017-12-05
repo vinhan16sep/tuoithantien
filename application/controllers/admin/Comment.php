@@ -3,17 +3,14 @@
 class Comment extends Admin_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url');
         $this->load->model('comment_model');
         $this->load->model('introduce_model');
         $this->load->model('admission_model');
         $this->load->model('parental_model');
         $this->load->model('activity_model');
-        $this->load->library('session');
 	}
 
 	public function index(){
-		$this->output->enable_profiler(TRUE);
 		$list_comment = $this->comment_model->fetch_all();
 		$comment = array('giới thiệu, thông tin nhập học, phối hợp cùng phụ huynh, hoạt động');
 		if($list_comment){
@@ -45,7 +42,6 @@ class Comment extends Admin_Controller{
 				}
 			}
 		}
-		// print_r($list_comment);
 		$this->data['list_comment'] = $list_comment;
 
 		$this->render('admin/comment/list_comment_view');

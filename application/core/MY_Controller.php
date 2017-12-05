@@ -61,6 +61,16 @@ class MY_Controller extends CI_Controller {
         return $config;
     }
 
+    protected function pagination_con($base_url, $total_rows, $per_page, $uri_segment){
+        $config['base_url']    = $base_url;
+        $config['per_page']    = $per_page;
+        $config['uri_segment'] = $uri_segment;
+        $config['prev_link'] = 'Prev';
+        $config['next_link'] = 'Next';
+        $config['total_rows']  = $total_rows;
+        return $config;
+    }
+
 }
 
 class Admin_Controller extends MY_Controller {

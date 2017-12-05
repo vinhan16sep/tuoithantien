@@ -6,9 +6,7 @@ class Introduce extends Admin_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->helper('url');
         $this->load->model('introduce_model');
-        $this->load->library('session');
     }
 
     public function index() {
@@ -24,7 +22,6 @@ class Introduce extends Admin_Controller {
             $where = array('category' => 1, 'sub_category' => $slug);
         }
 
-        // $introduces = $this->introduce_model->fetch_all($where);
         $this->data['slug'] = $slug;
 
         $sub_cat = array(
@@ -63,14 +60,12 @@ class Introduce extends Admin_Controller {
             $total_rows  = $this->introduce_model->count_all($where);
 
         }
-
+        
         $config = array();
-        $config['base_url']    = base_url() . 'admin/introduce/index/'.$slug;
-        $config['per_page']    = 20;
-        $config['uri_segment'] = 5;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
-        $config['total_rows']  = $total_rows;
+        $base_url = base_url() . 'admin/introduce/index/'.$slug;
+        $per_page = 20;
+        $uri_segment = 5;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
@@ -88,7 +83,6 @@ class Introduce extends Admin_Controller {
     }
 
     public function edit($id = NULL) {
-        // echo 1;die;
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -106,11 +100,10 @@ class Introduce extends Admin_Controller {
         if ($this->form_validation->run() == FALSE) {
             $introduce = $this->introduce_model->fetch_by_id($introduce_id);
             if(!$introduce){
-                // redirect('admin/introduce', 'refresh');
+                
             }
 
             $this->data['introduce'] = $introduce;
-            // print_r($introduce);die;
             $this->render('admin/introduce/edit_introduce_view');
         } else {
             if ($this->input->post()) {
@@ -222,7 +215,6 @@ class Introduce extends Admin_Controller {
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
-                // print_r($data);
                 if($image != null){
                     $data['image'] = $image;
                 }
@@ -245,7 +237,6 @@ class Introduce extends Admin_Controller {
 
 
     public function remove(){
-        $this->output->enable_profiler(TRUE);
         $id = $_GET['id'];
         $this->introduce_model->delete($id);
     }

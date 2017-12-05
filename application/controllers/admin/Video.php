@@ -6,13 +6,10 @@ class Video extends Admin_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->helper('url');
         $this->load->model('video_model');
-        $this->load->library('session');
     }
 
     public function index() {
-        $this->output->enable_profiler(TRUE);
         $this->load->library('pagination');
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $config = array();

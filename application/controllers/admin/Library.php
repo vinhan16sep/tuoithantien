@@ -4,17 +4,13 @@ class Library extends Admin_Controller{
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url');
         $this->load->model('image_model');
         $this->load->model('library_model');
-        $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('form_validation');
 	}
 
 	public function index(){
-        // $slug = $this->uri->segment(4);
-        // $this->data['slug'] = $slug;
 
         if (count($_POST) > 0){
             $this->session->set_userdata('search_library', $_POST );
@@ -43,13 +39,13 @@ class Library extends Admin_Controller{
 
         }
 
+
         $config = array();
-        $config['base_url']    = base_url() . 'admin/library/index';
-        $config['per_page']    = 1;
-        $config['uri_segment'] = 4;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
-        $config['total_rows']  = $total_rows;
+        $base_url = base_url() . 'admin/library/index';
+        $per_page = 20;
+        $uri_segment = 5;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
@@ -113,9 +109,6 @@ class Library extends Admin_Controller{
 
 	public function edit($id = null){
         $id = $this->uri->segment(4);
-        // $where = array('image_id' => $id);
-        // $library = $this->library_model->fetch_all($where);
-        // $this->data['library'] = $library;
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
 
         $image_id = isset($id) ? (int) $id : (int) $this->input->post('id');
@@ -147,7 +140,6 @@ class Library extends Admin_Controller{
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
                 }
-                // print_r($image_row);die;
                 redirect('admin/library/index', 'refresh');
             }
         }
@@ -168,7 +160,6 @@ class Library extends Admin_Controller{
 						$isExist = true;
 					}
 				}
-			    // unlink('assets/upload/image/'.$delete_image['slug'].'/'. $delete_image['image_link']);
 			}
 		}
 		$this->output->set_status_header(200)->set_output(json_encode(array('check' => $isExist)));
@@ -187,10 +178,6 @@ class Library extends Admin_Controller{
 		$image_id = $this->uri->segment(4);
 		$where = array('image_id' => $image_id);
 		$library = $this->image_model->fetch_all($where);
-		// if(!$library){
-		// 	$this->session->set_flashdata('message', 'Item does not exist');
-		// 	redirect('admin/image/index','refresh');
-		// }
 		$this->data['library'] = $library;
 
 		$this->render('admin/image/image_view');
@@ -201,7 +188,6 @@ class Library extends Admin_Controller{
         $image_link = $this->library_model->fetch_by_id($id);
         if($this->input->post()){
     		$image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/image/'.$image_link['slug'], 'assets/upload/article/thumbs');
-    		// print_r($image);die;
     		$data = array(
     			'title' => $this->input->post('title'),
     			'image' => $image,
@@ -263,7 +249,6 @@ class Library extends Admin_Controller{
 		$image_link = $this->library_model->fetch_by_id($id);
 		$delete_image = $this->image_model->fetch_all($where);
 		$count = count($this->image_model->total($where));
-		// print_r($delete_image);die;
 		if($count > 0){
 			if($this->image_model->delete_all($id) == true){
 				foreach ($delete_image as $key => $value) {
