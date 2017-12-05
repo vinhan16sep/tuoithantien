@@ -24,6 +24,18 @@ class Activity extends Admin_Controller{
         $this->load->library('form_validation');
 
         $slug = $this->uri->segment(4);
+        $slug_array = array(
+                        'thong-bao' => 'thông báo',
+                        'tuyen-sinh' => 'tuyển sinh',
+                        'trai-nghiem' => 'trải nghiệm'
+                    );
+        if(array_key_exists($slug, $slug_array) == false){
+            redirect('admin/dashboard','refresh');
+        }
+        if(!empty($this->uri->segment(5)) && !is_numeric($this->uri->segment(5))){
+            redirect('admin/dashboard','refresh');
+        }
+        
         $this->data['slug'] = $slug;
         
         $where = $this->check_slug($slug);

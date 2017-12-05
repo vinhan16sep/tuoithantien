@@ -31,6 +31,12 @@ class Introduce extends Admin_Controller {
                     'tap-huan'                  => 'Tập huấn',
                     'ngoai-khoa'                => 'Ngoại khóa',
                     );
+        if(array_key_exists($slug, $sub_cat) == false){
+            redirect('admin/dashboard','refresh');
+        }
+        if(!empty($this->uri->segment(5)) && !is_numeric($this->uri->segment(5))){
+            redirect('admin/dashboard','refresh');
+        }
         $this->data['sub_cat'] = $sub_cat;
 
         if (count($_POST) > 0){
@@ -100,7 +106,7 @@ class Introduce extends Admin_Controller {
         if ($this->form_validation->run() == FALSE) {
             $introduce = $this->introduce_model->fetch_by_id($introduce_id);
             if(!$introduce){
-                
+                redirect('admin/dashboard','refresh');
             }
 
             $this->data['introduce'] = $introduce;
@@ -197,7 +203,6 @@ class Introduce extends Admin_Controller {
     public function overview(){
         $where = array('category' => 0,'sub_category' => '');
         $introduce = $this->introduce_model->fetch_row($where);
-        // print_r($introduce);die;
 
         $this->data['introduces'] = $introduce;
         $this->load->helper('form');

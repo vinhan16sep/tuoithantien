@@ -72,7 +72,8 @@ class Video extends Admin_Controller {
             $this->data['video'] = $this->video_model->fetch_by_id('video', $id);
 
             if (!$this->data['video']) {
-                redirect('admin/video', 'refresh');
+              $this->session->set_flashdata('message', 'Bài viết không tồn tại');
+              redirect('admin/video', 'refresh');
             }
 
             $this->render('admin/video/edit_video_view');
