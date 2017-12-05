@@ -1,0 +1,21 @@
+@media (min-width: 768px) and (max-width: 991px) {
+	
+}
+
+@media (max-width: 767px){
+	#slide-top{
+		min-height: 100px;
+	}
+	
+	.navbar-toggle{
+		margin-top: 33px;
+	}
+	
+	.title-line{
+		display: none;
+	}
+	
+	.bordered{
+		margin-bottom: 15px;
+	}
+}

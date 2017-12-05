@@ -1,0 +1,4 @@
+[11-Oct-2017 03:43:26 UTC] PHP Fatal error:  Call to undefined function site_url() in /home/matocreative/public_html/nak/application/views/homepage_view.php on line 14
+[11-Oct-2017 03:45:40 UTC] PHP Fatal error:  Call to undefined function site_url() in /home/matocreative/public_html/nak/application/views/homepage_view.php on line 14
+[11-Oct-2017 03:45:42 UTC] PHP Fatal error:  Call to undefined function site_url() in /home/matocreative/public_html/nak/application/views/homepage_view.php on line 14
+[11-Oct-2017 03:46:16 UTC] PHP Fatal error:  Call to undefined function site_url() in /home/matocreative/public_html/nak/application/views/homepage_view.php on line 14

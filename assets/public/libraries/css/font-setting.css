@@ -1,0 +1,40 @@
+@font-face{
+	font-family: webFont-B;
+	src:url(../../fonts/OpenSans-Bold.ttf) ;
+}
+
+@font-face{
+	font-family: webFont-N;
+	src:url(../../fonts/OpenSans-Regular.ttf) ;
+}
+
+body, html{
+	font-family: webFont-N;
+}
+
+h1{font-size:2.25em;}
+h2{font-size:1.875em;}
+h3{font-size:1.5em;}
+h4{font-size:1.125em;}
+p{font-size:1em;}
+
+.nav-bottom ul li a{
+	font-family: webFont-B;
+	font-size: 1.25em;
+}
+
+.title-main{
+	font-family: webFont-B;
+}
+
+.navside ul li{
+	font-family: webFont-B;
+}
+
+.navside ul li ul li{
+	font-family: webFont-N;
+}
+
+.navbar-right{
+	font-size: 1.25em;
+}

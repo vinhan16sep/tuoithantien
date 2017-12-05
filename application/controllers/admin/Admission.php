@@ -1,0 +1,228 @@
+<?php 
+class Admission extends Admin_Controller{
+	
+	function __construct(){
+		parent::__construct();
+		$this->load->helper('url');
+        $this->load->model('admission_model');
+        $this->load->library('session');
+	}
+
+	public function admission_procedure(){
+
+        $slug = $this->uri->segment(4);
+        if($slug == 'thu-tuc-nhap-hoc'){
+        	$where = array('slug' => 'thu-tuc-nhap-hoc');
+        }elseif($slug == 'lich-hoc'){
+        	$where = array('slug' => 'lich-hoc');
+        }
+        $this->data['slug'] = $slug;
+        $admission = $this->admission_model->fetch_row($where);
+        // print_r($admission);die;
+        $this->data['admission'] = $admission;
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
+
+        // $admission_id = isset($id) ? (int) $id : (int) $this->input->post('id');
+        
+        if ($this->form_validation->run() == TRUE) {
+            if ($this->input->post()) {
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/admission', 'assets/upload/article/thumbs');
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug' => $this->input->post('slug'),
+                    'content' => $this->input->post('content'),
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+                // print_r($data);
+                if($image != null){
+                    $data['image'] = $image;
+                }
+
+                try {
+                    $this->admission_model->update($admission['id'], $data);
+                    $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
+                } catch (Exception $e) {
+                    $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
+                }
+
+                redirect('admin/admission/admission_procedure/'.$slug, 'refresh');
+            }
+        }
+        $this->render('admin/admission/admission_procedure_view');
+    }
+
+    public function list(){
+
+    	$this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $slug = $this->uri->segment(4);
+        $this->data['slug'] = $slug;
+        if($slug == 'hoc-phi'){
+        	$where = array('category' => 1);
+        }elseif($slug == 'chuong-trinh-khuyen-mai'){
+        	$where = array('category' => 2);
+        }
+
+        if (count($_POST) > 0){
+            $this->session->set_userdata('search_blog', $_POST );
+            redirect('admin/admission/list/'.$slug,'refresh');
+        }else{
+            if($this->session->userdata('search_blog')){
+                $_POST = $this->session->userdata('search_blog');
+            }
+        }
+
+        $keywords = '';
+        if($this->input->post()){
+            $keywords = $this->input->post('search');
+        }
+        $this->load->library('pagination');
+        $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+        
+
+        if($keywords != ''){
+        	$search = $this->input->post('search');
+
+        	if($keywords == null){
+        		redirect('admin/admission/list/'.$slug,'refresh');
+        	}
+	        $total_rows  = $this->admission_model->count_all($where,$search);
+        }else{
+        	$total_rows  = $this->admission_model->count_all($where);
+
+        }
+
+        $config = array();
+        $config['base_url']    = base_url() . 'admin/admission/list/'.$slug;
+        $config['per_page']    = 20;
+        $config['uri_segment'] = 5;
+        $config['prev_link'] = 'Prev';
+        $config['next_link'] = 'Next';
+        $config['total_rows']  = $total_rows;
+        $this->pagination->initialize($config);
+        $this->data['page_links'] = $this->pagination->create_links();
+
+        $result  =  array();
+        if($keywords != ''){
+            $result = $this->admission_model->fetch_all($where, $config['per_page'], $page, $keywords);
+        }else{
+            $result = $this->admission_model->fetch_all($where, $config['per_page'], $page);
+        }
+
+        $this->data['admission'] = $result;
+        // $this->session->unset_userdata('search_blog');
+        
+        // print_r($admission);
+
+
+    	$this->render('admin/admission/list_admission_view');
+    }
+
+    public function create(){
+        $this->output->enable_profiler(TRUE);
+        $slug = $this->uri->segment(4);
+        $this->data['slug'] = $slug;
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
+        $this->form_validation->set_rules('content', 'Nội dung', 'required');
+        if($this->input->post()){
+            if($this->form_validation->run() == TRUE){
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/admission', 'assets/upload/article/thumbs');
+                $data = array(
+                    'title'         => $this->input->post('title'),
+                    'slug'          => $this->input->post('slug'),
+                    'category'      => $this->input->post('cat'),
+                    'image'         => $image,
+                    'content'       => $this->input->post('content'),
+                    'created_at'    => $this->author_info['created_at'],
+                    'created_by'    => $this->author_info['created_by'],
+                    'modified_at'   => $this->author_info['modified_at'],
+                    'modified_by'   => $this->author_info['modified_by']
+                );
+
+                try {
+                    $this->admission_model->save($data);
+                    $this->session->set_flashdata('message', 'Thêm bài viết thành công');
+                }catch (Exception $e) {
+                    $this->session->set_flashdata('message', 'Thêm bài viết thất bại: ' . $e->getMessage());
+                }
+                redirect('admin/admission/list/'.$this->input->post('url'), 'refresh');
+            }
+        }
+
+        $this->render('admin/admission/create_admission_view');
+    }
+
+    public function edit(){
+
+        $slug = $this->uri->segment(4);
+        $id = $this->uri->segment(5);
+        $this->data['slug'] = $slug;
+        if($slug == 'hoc-phi'){
+            $where = array('category' => 1);
+        }elseif($slug == 'chuong-trinh-khuyen-mai'){
+            $where = array('category' => 2);
+        }
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
+
+        $admission_id = isset($id) ? (int) $id : (int) $this->input->post('id');
+
+        if ($this->form_validation->run() == FALSE) {
+            $admission = $this->admission_model->fetch_by_id($admission_id);
+            if(!$admission){
+                $this->session->set_flashdata('message', 'Item does not exist');
+                redirect('admin/admission/list/'.$slug, 'refresh');
+            }
+
+            $this->data['admission'] = $admission;
+            // print_r($admission_id);die;
+            $this->render('admin/admission/edit_admission_view');
+        } else {
+            if ($this->input->post()) {
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/admission', 'assets/upload/article/thumbs');
+                $data = array(
+                    'title'        => $this->input->post('title'),
+                    'slug'         => $this->input->post('slug'),
+                    'category'     => $this->input->post('cat'),
+                    'content'      => $this->input->post('content'),
+                    'modified_at'  => $this->author_info['modified_at'],
+                    'modified_by'  => $this->author_info['modified_by']
+                );
+
+                if($image != null){
+                    $data['image'] = $image;
+                }
+                try {
+                    $this->admission_model->update($admission_id, $data);
+                    $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
+                } catch (Exception $e) {
+                    $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
+                }
+                // print_r($admission_row);die;
+                redirect('admin/admission/list/'.$slug, 'refresh');
+            }
+        }
+
+    }
+
+
+    public function remove(){
+    	$this->output->enable_profiler(TRUE);
+    	$id = $_GET['id'];
+    	$this->admission_model->delete($id);
+    }
+
+}
+ ?>
