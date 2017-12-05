@@ -14,6 +14,12 @@ class Admission extends Admin_Controller{
         }elseif($slug == 'lich-hoc'){
         	$where = array('slug' => 'lich-hoc');
         }
+
+        $slug_array = array('thu-tuc-nhap-hoc' => 'thủ tục nhập học', 'lich-hoc' => 'lịch học');
+        if(array_key_exists($slug, $slug_array) == false || $this->uri->segment(5) != null){
+            redirect('admin/dashboard','refresh');
+        }
+
         $this->data['slug'] = $slug;
         $admission = $this->admission_model->fetch_row($where);
         $this->data['admission'] = $admission;
@@ -55,6 +61,15 @@ class Admission extends Admin_Controller{
         $this->load->library('form_validation');
 
         $slug = $this->uri->segment(4);
+
+        $slug_array = array('hoc-phi' => 'học phí', 'chuong-trinh-khuyen-mai' => 'chương trình khuyến mại');
+        if(array_key_exists($slug, $slug_array) == false){
+            redirect('admin/dashboard','refresh');
+        }
+        if(!empty($this->uri->segment(5)) && !is_numeric($this->uri->segment(5))){
+            redirect('admin/dashboard','refresh');
+        }
+        
         $this->data['slug'] = $slug;
         if($slug == 'hoc-phi'){
         	$where = array('category' => 1);

@@ -21,6 +21,14 @@ class Parental extends Admin_Controller{
         	$where = array('slug' => 'gio-dua-don');
         }
 
+        $slug_array = array(
+                        'che-do-sinh-hoat-1-ngay' => 'chế độ sinh hoạt 1 ngày',
+                        'gio-dua-don' => 'giờ đưa đón'
+                    );
+        if(array_key_exists($slug, $slug_array) == false || $this->uri->segment(5) != null){
+            redirect('admin/dashboard','refresh');
+        }
+
         $activity = $this->parental_model->fetch_row($where);
         $this->data['activity'] =  $activity;
 
@@ -74,6 +82,19 @@ class Parental extends Admin_Controller{
         }
         elseif($slug == 'ky-luat'){
         	$where = array('category' => 4);
+        }
+
+        $slug_array = array(
+                            'lien-lac' => 'học phí',
+                            'thuc-don' => 'thực đơn',
+                            'y-te'     => 'y tế',
+                            'ky-luat'  => 'kỷ luật'
+                        );
+        if(array_key_exists($slug, $slug_array) == false){
+            redirect('admin/dashboard','refresh');
+        }
+        if(!empty($this->uri->segment(5)) && !is_numeric($this->uri->segment(5))){
+            redirect('admin/dashboard','refresh');
         }
 
         if (count($_POST) > 0){
@@ -152,7 +173,7 @@ class Parental extends Admin_Controller{
         if ($this->form_validation->run() == FALSE) {
             $parental = $this->parental_model->fetch_by_id($parental_id);
             if(!$parental){
-                $this->session->set_flashdata('message', 'Item does not exist');
+                $this->session->set_flashdata('message', 'Bài viết không tồn tại');
                 redirect('admin/parental/list/'.$slug, 'refresh');
             }
 

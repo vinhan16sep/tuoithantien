@@ -5705,3 +5705,10 @@ table.text-center th {
 .page a:hover{
   background: #ddd;
 }
+.table-condensed tr td b{
+  float: right;
+}
+.table-bordered > tbody > tr > td:first-of-type{
+  width: 100px;
+  padding-right: 15px;
+}
