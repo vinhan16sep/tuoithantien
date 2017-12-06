@@ -1,0 +1,145 @@
+/*
+
+CSS for main HTML
+
+Author: hung.luong@matocreative.vn
+
+*/
+
+body{
+	width: 100%;
+	overflow-x: hidden;
+}
+
+/* CSS Header */
+
+header{
+	position:relative;
+}
+
+header .cover{
+	width:100%;
+	min-height:200px;
+}
+
+.navbar-default{
+	background-color:transparent;
+	border-color:transparent;
+}
+
+.navbar-brand{
+	height: auto;
+}
+
+.navbar-brand img{
+	width: 100px;
+}
+
+.navbar-nav{
+	margin-top: 35px !important;
+}
+
+.navbar-nav li ul li{
+	
+}
+
+.navbar-nav li > a:hover{
+	border-radius: 10px;
+}
+
+.navbar-nav li.cyan > a{
+	color: #6bbfc2;
+}
+
+.navbar-nav li.orange > a{
+	color: #f26f5a;
+}
+
+.navbar-nav li.yellow > a{
+	color: #f4aa1c;
+}
+
+.navbar-nav li.pink > a{
+	color: #f38991;
+}
+
+.navbar-nav li.cyan > a:hover{
+	background: #6bbfc2;
+	color: #fff;
+}
+
+.navbar-nav li.orange > a:hover{
+	background: #f26f5a;
+	color: #fff;
+}
+
+.navbar-nav li.yellow > a:hover{
+	background: #f4aa1c;
+	color: #fff;
+}
+
+.navbar-nav li.pink > a:hover{
+	background: #f38991;
+	color: #fff;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+	border-radius: 10px;
+}
+
+.dropdown-menu{
+	border-radius: 10px;
+}
+
+ul.yellow li a:hover{
+	background: #f4aa1c;
+	color: #fff;
+}
+
+ul.pink li a:hover{
+	background: #f38991;
+	color: #fff;
+}
+
+/* CSS Main Content */
+
+.screen_title{
+	width: 50%;
+	margin-top: 10%;
+	margin-left: 25%;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+.screen_title h1, .screen_title h2{
+	color: #f4aa1c;
+}
+
+
+/* CSS Footer */
+
+.footer{
+	margin-top: 130px;
+	position: relative;
+	padding-bottom: 50px;
+	background-color: #f38991;
+	background-image: url(../img/footer_bg.png);
+	background-position: center bottom;
+}
+
+.footer h2{
+	margin-top: 0;
+}
+
+.subscribe {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	color: #fff;
+	border-top: 3px dashed#fff;
+	border-bottom: 3px dashed #fff;
+	margin-bottom: 30px;
+}
+
+.bottom_nav ul li a{
+	color: #fff;
+}
