@@ -19,6 +19,7 @@ class Introduce extends Public_Controller {
 
     public function list(){
         $slug = $this->uri->segment(2);
+        $this->data['slug'] = $slug;
         $check_slug =  array('muc-tieu', 'ngoai-ngu', 'giao-duc-theo-lua-tuoi', 'tap-huan', 'ngoai-khoa');
         if(in_array($slug, $check_slug) == false){
             redirect('gioi-thieu','refresh');
@@ -38,7 +39,6 @@ class Introduce extends Public_Controller {
     }
 
     public function detail(){
-        $this->load->model('comment_model');
         $sub_category = $this->uri->segment(2);
 
         $slug = $this->uri->segment(3);
@@ -68,8 +68,7 @@ class Introduce extends Public_Controller {
         $this->data['detail'] = $detail;
 
         //comment
-        $where = array('slug' => $slug);
-        $comment = $this->comment_model->fetch_all($where);
+        $comment = $this->comment($slug);
         if($comment){
             $this->data['comment'] = $comment;
         }
