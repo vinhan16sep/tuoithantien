@@ -193,8 +193,6 @@ class Public_Controller extends MY_Controller {
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->load->model('advise_model');
-        $this->load->model('article_model');
 
 
         $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'vi';
@@ -215,9 +213,6 @@ class Public_Controller extends MY_Controller {
             $this->session->set_userdata("langAbbreviation",'vi');
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
-
-        $this->data['latest_advises'] = $this->advise_model->fetch_latest_advises(3);
-        $this->data['latest_articles'] = $this->article_model->fetch_latest_articles(3);
     }
 
     protected function render($the_view = NULL, $template = 'master') {

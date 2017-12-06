@@ -7,37 +7,17 @@ class Introduce extends Public_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->helper('url');
         $this->load->model('introduce_model');
     }
 
     public function index(){
-        $this->data['item'] = $this->introduce_model->fetch_by_id(1);
-        $this->render('about_us_view');
+        $this->output->enable_profiler(TRUE);
+
+        $this->render('introduce_view');
     }
 
-    public function vision(){
-        $this->data['item'] = $this->introduce_model->fetch_by_id(2);
-        $this->render('vision_view');
-    }
+    public function overview(){
 
-    public function destiny(){
-        $this->data['item'] = $this->introduce_model->fetch_by_id(3);
-        $this->render('destiny_view');
-    }
-
-    public function indentify(){
-        $this->data['item'] = $this->introduce_model->fetch_by_id(4);
-        $this->render('indentify_view');
-    }
-
-    public function clause(){
-        $this->data['item'] = $this->introduce_model->fetch_by_id(5);
-        $this->render('clause_view');
-    }
-
-    public function image_library(){
-        $this->data['item'] = $this->introduce_model->fetch_by_id(6);
-        $this->render('image_library_view');
+        $this->render('overview_view');
     }
 }
