@@ -225,6 +225,16 @@ class Public_Controller extends MY_Controller {
         parent::render($the_view, $template);
     }
 
+    protected function comment($slug) {
+        $this->load->model('comment_model');
+        $where = array('slug' => $slug);
+        $comment = $this->comment_model->fetch_all($where);
+        if($comment){
+            $this->data['comment'] = $comment;
+        }
+    }
+
+
     public function procedure(){
         $this->load->model('admission_model');
         $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');

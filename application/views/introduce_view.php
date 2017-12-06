@@ -24,15 +24,6 @@
                 <h1>Các chương trình dạy</h1>
                 <p>Text giới thiệu chung về các chương trình</p>
             </div>
-
-            <div class="row">
-            	<div class="col-md-3 col-sm-6 col-xs-12">
-            		<h1><a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>" title="">Mục tiêu</a></h1>
-            		<h1><a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>" title="">Ngoại ngữ</a></h1>
-            		<h1><a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>" title="">Giáo dục theo lứa tuổi</a></h1>
-            		<h1><a href="<?php echo base_url('gioi-thieu/tap-huan') ?>" title="">Tập huấn</a></h1>
-            	</div>
-            </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="carousel carousel-showmanymoveone slide" id="itemslider">
@@ -237,11 +228,11 @@
                     <p>Text giới thiệu chung về các chương trình</p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <img src="img/register.png" class="wow fadeInUp">
+                    <img src="<?php echo base_url('assets/upload/admission/'.$procedure['image']) ?>" class="wow fadeInUp" width=100%>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <h1>Giới thiệu đăng ký nhập học</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie enim non odio mattis, sed fermentum elit sodales. Duis bibendum mi sed pulvinar interdum. Donec euismod ipsum vitae ligula posuere, id elementum lacus rhoncus. Nullam ullamcorper urna et elementum viverra. Sed in sem ultrices, mattis nunc sit amet, sollicitudin sem. Mauris tincidunt mauris mi, quis viverra justo consequat nec. Cras nibh quam, cursus at lorem sit amet, scelerisque euismod enim. Nam a interdum velit. Donec pharetra fermentum erat, sed commodo lectus venenatis quis. Integer elit augue, varius quis laoreet vitae, cursus sit amet libero. Integer iaculis libero vel venenatis vehicula. Integer accumsan nulla felis, non congue erat tincidunt sed.</p>
+                    <h1><?php echo $procedure['title'] ?></h1>
+                    <?php echo $procedure['content'] ?>
                     <a class="btn btn-primary hvr-icon-forward" role="button" href="javascript:void();">Đăng ký ngay</a>
                 </div>
             </div>

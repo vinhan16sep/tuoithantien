@@ -29,8 +29,9 @@
 <body>
 
 <header class="header">
+    
     <nav class="navbar navbar-default">
-        <div class="container">
+        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -48,39 +49,57 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="cyan"><a href="javascript:void();">Trang chủ</a></li>
-                    <li class="orange"><a href="<?php echo base_url('gioi-thieu') ?>">Giới thiệu</a></li>
+                    <li class="cyan"><a href="<?php echo base_url('trang-chu') ?>">Trang chủ</a></li>
+                    <li class="dropdown orange">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Giới thiệu <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu orange">
+                            <li><a href="<?php echo base_url('gioi-thieu') ?>">Tổng quan</a></li>
+                            <!-- <li><a href="#">Giáo dục</a></li> -->
+                            <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>">Ngoại khóa</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown yellow">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Phối hợp cùng phụ huynh <span class="caret"></span>
+                            Thông tin nhập học <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu yellow">
-                            <li><a href="#">Chương trình học</a></li>
-                            <li><a href="#">Thông tin nhập học</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>">Thủ tục nhập học</a></li>
+                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>">Học phí</a></li>
+                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>">Lịch học</a></li>
+                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>">Chương trình khuyến mãi</a></li>
                         </ul>
                     </li>
                     <li class="dropdown pink">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Hoạt động <span class="caret"></span>
+                            Phối hợp cùng phụ huynh <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu pink">
-                            <li><a href="#">Thông báo của trường</a></li>
-                            <li><a href="#">Thư viện ảnh</a></li>
-                            <li><a href="#">Video</a></li>
-                            <li><a href="#">Tuyển sinh</a></li>
-                            <li><a href="#">Trải nghiệm</a></li>
+                            <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>">Chế độ sinh hoạt 1 ngày</a></li>
+                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>">Liên lạc</a></li>
+                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>">Thực đơn</a></li>
+                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>">Y tế</a></li>
+                            <li><a href="<?php echo base_url('gio-dua-don') ?>">Giờ đưa đón</a></li>
+                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>">Kỷ luật</a></li>
                         </ul>
                     </li>
-                    <li class="cyan"><a href="javascript:void();">Liên hệ</a></li>
+                    <li class="dropdown cyan">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Hoạt động <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu cyan">
+                            <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>">Thông báo của trường</a></li>
+                            <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>">Thư viện ảnh</a></li>
+                            <li><a href="<?php echo base_url('thu-vien/video') ?>">Video</a></li>
+                            <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>">Tuyển sinh</a></li>
+                            <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>">Trải nghiệm</a></li>
+                        </ul>
+                    </li>
+                    <li class="orange"><a href="<?php echo base_url('lien-he') ?>">Liên hệ</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <div class="cover container-fluid">
-        <img src="<?php echo base_url('assets/public/') ?>img/cover.png" alt="cover">
-    </div>
 </header>
 

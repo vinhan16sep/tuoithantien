@@ -14,7 +14,7 @@ class Image extends Public_Controller {
     	$list = $this->library_model->fetch_all();
     	$this->data['list'] = $list;
 
-        $this->render('image_view');
+        $this->render('list_image_view');
     }
 
 }
