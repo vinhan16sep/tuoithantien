@@ -1,0 +1,63 @@
+/*
+
+CSS for Blogs View
+
+Author: hung.luong@matocreative.vn
+
+*/
+
+.cover{
+	padding-left: 0;
+	padding-right: 0;
+	
+}
+
+.cover img{
+	width: 100%;
+}
+
+.category h1{
+	color: #f4aa1c;
+}
+
+.category ul li a{
+	color: #333;
+}
+
+.blogs .item{
+	padding: 15px 15px 30px;
+	border-radius: 37px;
+}
+
+.blogs .item img{
+	width: 100%;
+	border-radius: 37px;
+	border: 3px solid #f4aa1c;
+}
+
+.blogs .blog_title{
+	color: #f4aa1c;
+	height: 3em;
+	overflow-y: hidden;
+}
+
+.blogs .blog_description{
+	height: 3.375em;
+	overflow-y: hidden;
+	margin-bottom: 15px;
+}
+
+.blogs .blog_img{
+	width: 600px;
+	max-height: 400px;
+}
+
+.blogs .comments{
+	margin-top: 50px;
+	padding-top: 30px;
+	border-top: 3px solid #f4aa1c;
+}
+
+.blogs .comments textarea {
+    resize: none;
+}
