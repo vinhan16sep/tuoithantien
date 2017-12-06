@@ -15,11 +15,6 @@ class Homepage extends Public_Controller {
     }
 
     public function index(){
-        $this->data['banners'] = $this->banner_model->get_all();
-        $this->data['videos'] = $this->video_model->fetch_all();
-        $this->data['latest_products'] = $this->product_model->fetch_latest_products();
-        $this->data['feature_products'] = $this->product_model->fetch_feature_products();
-        $this->data['latest_articles'] = $this->article_model->fetch_latest_articles(4);
 
         $this->render('homepage_view');
     }
