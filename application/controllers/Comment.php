@@ -8,7 +8,7 @@ class Comment extends CI_Controller{
 		$this->load->helper('date');
 		$name = $_GET['name'];
 		$email = $_GET['email'];
-		$content = $_GET['content'];
+		$content = nl2br($_GET['content']);
 		$category_id = $_GET['category_id'];
 		$slug = $_GET['slug'];
 		// echo date(DATE_RFC822, time());die;
