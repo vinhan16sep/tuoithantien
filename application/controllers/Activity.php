@@ -11,7 +11,13 @@ class Activity extends Public_Controller {
     }
 
     public function index(){
-
+    	$id = 1;
+    	$where = array('category' => $id);
+    	$limit = 3;
+    	$start = 0; 
+    	$list = $this->activity_model->fetch_all($where, $limit, $start);
+    	$this->data['list'] = $list;
+    	
         $this->render('activity_view');
     }
 

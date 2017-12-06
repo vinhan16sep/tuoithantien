@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/bootstrap.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/font-awesome.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/reset-bootstrap.css') ?>">
-    <link href="https://fonts.googleapis.com/css?family=Itim|Pacifico" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Itim|Pacifico" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/font-settings.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/animate.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/hover.css') ?>">
@@ -49,7 +49,7 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="cyan"><a href="javascript:void();">Trang chủ</a></li>
-                    <li class="orange"><a href="javascript:void();">Giới thiệu</a></li>
+                    <li class="orange"><a href="<?php echo base_url('gioi-thieu') ?>">Giới thiệu</a></li>
                     <li class="dropdown yellow">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Phối hợp cùng phụ huynh <span class="caret"></span>

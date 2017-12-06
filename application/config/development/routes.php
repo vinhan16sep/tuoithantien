@@ -54,3 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
 $route['admin'] = 'admin/dashboard';
+$route['gioi-thieu'] = 'introduce/index';
+$route['gioi-thieu/(:any)'] = 'introduce/list/(:any)';
+$route['bai-viet/(:any)/(:any)'] = 'introduce/detail/(:any)';
+$route['(:any)'] = 'introduce/index/(:any)';
