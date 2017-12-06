@@ -14,15 +14,24 @@
             </div>
             <div class="blogs col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
-                    <?php foreach ($list as $key => $value): ?>
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                <img class="img-rounded" src="<?php echo site_url('assets/upload/introduce/'.$value['image']) ?>" width=100%>
-                                <a href="<?php echo base_url($value['sub_category'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-                                <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>">Khám phá</a>
+                    <?php if ($list != ''): ?>
+                        <?php foreach ($list as $key => $value): ?>
+                            <div class="item col-md-4 col-sm-6 col-xs-12">
+                                <div class="inner">
+                                    <img class="img-rounded" src="<?php echo site_url('assets/upload/introduce/'.$value['image']) ?>" width=100%>
+                                    <a href="<?php echo base_url($value['sub_category'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>">Khám phá</a>
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach ?>
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                                <div class="inner">
+                                    Chưa có bài viết nào!
+                                </div>
+                            </div>
+                    <?php endif ?>
+                    
                 </div>
             </div>
         </div>

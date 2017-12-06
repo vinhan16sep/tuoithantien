@@ -19,29 +19,49 @@ class Introduce extends Public_Controller {
 
     public function list(){
         $slug = $this->uri->segment(2);
+        $check_slug =  array('muc-tieu', 'ngoai-ngu', 'giao-duc-theo-lua-tuoi', 'tap-huan', 'ngoai-khoa');
+        if(in_array($slug, $check_slug) == false){
+            redirect('gioi-thieu','refresh');
+        }
         $where = array('sub_category' => $slug);
         if($slug == 'ngoai-khoa'){
             $where = array('category' => 2);
         }
         $list = $this->introduce_model->fetch_all($where, 9, 0);
-        $this->data['list'] = $list;
+        if($list){
+            $this->data['list'] = $list;
+        }else{
+            $this->data['list'] = '';
+        }
+        
         $this->render('list_introduce_view');
     }
 
     public function detail(){
         $this->load->model('comment_model');
         $sub_category = $this->uri->segment(2);
+
         $slug = $this->uri->segment(3);
+        $where = array('slug' => $slug);
+        $total = $this->introduce_model->count_all($where);
+        if($total == 0){
+            redirect('gioi-thieu','refresh');
+        }
 
         $this->data['sub_category'] = $sub_category;
         $this->data['slug'] = $slug;
 
-        $where = array('sub_category' => $sub_category);
+        $where = array('sub_category' => $sub_category, 'slug !=' => $slug);
         if($sub_category == 'ngoai-khoa'){
             $where = array('category' => 2);
         }
         $list = $this->introduce_model->fetch_all($where, 5, 0);
-        $this->data['list'] = $list;
+        if($list){
+            $this->data['list'] = $list;
+        }else{
+            $this->data['list'] = '';
+        }
+        
 
         $where = array('slug' => $slug);
         $detail = $this->introduce_model->fetch_row($where);

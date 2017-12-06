@@ -6,7 +6,7 @@
     <meta name="author" content="hung.luong@matocreative.vn">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Nam Anh Khuong</title>
+    <title>Tuổi thần tiên</title>
     <!-- InstanceEndEditable -->
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/bootstrap.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/font-awesome.css') ?>">
@@ -80,7 +80,7 @@
         </div><!-- /.container-fluid -->
     </nav>
     <div class="cover container-fluid">
-        <img src="img/cover.png" alt="cover">
+        <img src="<?php echo base_url('assets/public/') ?>img/cover.png" alt="cover">
     </div>
 </header>
 
