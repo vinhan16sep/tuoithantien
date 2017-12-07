@@ -53,6 +53,7 @@ class Library_model extends CI_Model{
         $this->db->select('*');
         $this->db->from('library');
         $this->db->where('is_deleted', 0);
+        $this->db->order_by('id', 'desc');
         if($where != null){
             $this->db->where($where);
         }
