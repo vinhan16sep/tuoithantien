@@ -181,7 +181,7 @@ class Admission extends Admin_Controller{
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
 
         $admission_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-
+        $admission = $this->admission_model->fetch_by_id($admission_id);
         if ($this->form_validation->run() == FALSE) {
             $admission = $this->admission_model->fetch_by_id($admission_id);
             if(!$admission){
@@ -193,8 +193,12 @@ class Admission extends Admin_Controller{
             $this->render('admin/admission/edit_admission_view');
         } else {
             if ($this->input->post()) {
-                $slug = $this->input->post('slug');
-                $unique_slug = $this->admission_model->build_unique_slug($slug);
+                $input_slug = $this->input->post('slug');
+                if($admission['slug'] == $input_slug){
+                    $unique_slug = $this->admission_model->build_unique_slug($input_slug, $admission['id']);
+                }else{
+                    $unique_slug = $this->admission_model->build_unique_slug($input_slug);
+                }
                 
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/admission', 'assets/upload/article/thumbs');
                 $data = array(

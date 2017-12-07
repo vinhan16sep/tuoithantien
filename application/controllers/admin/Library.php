@@ -125,8 +125,12 @@ class Library extends Admin_Controller{
             $this->render('admin/image/edit_library_view');
         } else {
             if ($this->input->post()) {
-                $slug = $this->input->post('slug');
-                $unique_slug = $this->library_model->build_unique_slug($slug);
+                $input_slug = $this->input->post('slug');
+                if($image_link['slug'] == $input_slug){
+                    $unique_slug = $this->library_model->build_unique_slug($input_slug, $image_link['id']);
+                }else{
+                    $unique_slug = $this->library_model->build_unique_slug($input_slug);
+                }
                 
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/image/'.$image_link['slug'], 'assets/upload/article/thumbs');
                 $data = array(

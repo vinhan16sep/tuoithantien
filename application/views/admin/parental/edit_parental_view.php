@@ -61,7 +61,7 @@
             <br>
             <div class="form-group col-sm-12 text-right">
                 <input type="hidden" name="id" value="<?php echo $parental['id'] ?>">
-                <input type="hidden" name="slug" value="<?php echo $slug ?>">
+                <!-- <input type="hidden" name="slug" value="<?php echo $slug ?>"> -->
                 <?php
                 echo form_submit('submit', 'OK', 'class="btn btn-primary"');
                 ?>

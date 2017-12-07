@@ -103,6 +103,7 @@ class Introduce extends Admin_Controller {
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
 
         $introduce_id = isset($id) ? (int) $id : (int) $this->input->post('id');
+        $introduce = $this->introduce_model->fetch_by_id($introduce_id);
         if ($this->form_validation->run() == FALSE) {
             $introduce = $this->introduce_model->fetch_by_id($introduce_id);
             if(!$introduce){
@@ -113,9 +114,14 @@ class Introduce extends Admin_Controller {
             $this->render('admin/introduce/edit_introduce_view');
         } else {
             if ($this->input->post()) {
-                $slug = $this->input->post('slug');
-                $unique_slug = $this->introduce_model->build_unique_slug($slug);
+                $input_slug = $this->input->post('slug');
+                if($introduce['slug'] == $input_slug){
+                    $unique_slug = $this->introduce_model->build_unique_slug($input_slug, $introduce['id']);
+                }else{
+                    $unique_slug = $this->introduce_model->build_unique_slug($input_slug);
+                }
                 
+
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/introduce', 'assets/upload/article/thumbs');
                 $data = array(
                     'title'        => $this->input->post('title'),
