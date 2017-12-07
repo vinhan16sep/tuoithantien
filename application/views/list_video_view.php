@@ -6,11 +6,19 @@
                 <div class="row">
                 	<?php if ($list != ''): ?>
 	                	<?php foreach ($list as $key => $value): ?>
-		                    <div class="item col-md-4 col-sm-6 col-xs-12">
+		                    <div class="item col-md-12 col-sm-12 col-xs-12">
 		                        <div class="inner">
-		                            <img class="img-rounded" src="<?php echo site_url('assets/upload/image/'.$value['slug'].'/'.$value['sub_image']) ?>" width=100%>
-		                            <a href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-		                            <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>">Khám phá</a>
+		                        	<?php
+		                        		$url = str_replace('watch?v=', 'embed/', $value['url']);
+		                        		if(strstr($url,'&') != ''){
+		                        			$url_r = str_replace(strstr($url,'&'), '', $url);
+		                        		}else{
+		                        			$url_r = $url;
+		                        		}
+		                        	 ?>
+		                        	<a href=""><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+		                        	<iframe width="100%" height="560%" src="<?php echo $url_r ?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+		                            <br><br>
 		                        </div>
 		                    </div>
 	                    <?php endforeach ?>
@@ -31,7 +39,7 @@
                         <a href="<?php echo base_url('hoat-dong/thong-bao') ?>" >Thông báo nhà trường</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('thu-vien/video') ?>" >Video</a>
+                        <a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" >Thư viện ảnh</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a>

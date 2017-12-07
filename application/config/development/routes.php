@@ -73,3 +73,6 @@ $route['hoat-dong/(:any)/(:any)'] = 'activity/detail/(:any)';
 $route['thong-tin-nhap-hoc/(:any)'] = 'admission/admission_procedure/(:any)';
 $route['thong-tin-nhap-hoc/danh-sach/(:any)'] = 'admission/list/(:any)';
 $route['thong-tin-nhap-hoc/(:any)/(:any)'] = 'admission/detail/(:any)';
+$route['thu-vien/thu-vien-anh'] = 'image/index';
+$route['thu-vien/thu-vien-anh/(:any)'] = 'image/detail/(:any)';
+$route['thu-vien/video'] = 'video/index';

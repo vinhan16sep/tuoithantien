@@ -12,7 +12,9 @@ class Video extends Public_Controller {
 
     public function index(){
 
-        $this->render('video_view');
+    	$video = $this->video_model->fetch_all_pagination(9, 0);
+    	$this->data['list'] = $video;
+        $this->render('list_video_view');
     }
 
 }
