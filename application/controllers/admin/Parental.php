@@ -169,7 +169,7 @@ class Parental extends Admin_Controller{
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
 
         $parental_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-
+        $parental = $this->parental_model->fetch_by_id($parental_id);
         if ($this->form_validation->run() == FALSE) {
             $parental = $this->parental_model->fetch_by_id($parental_id);
             if(!$parental){
@@ -181,8 +181,12 @@ class Parental extends Admin_Controller{
             $this->render('admin/parental/edit_parental_view');
         } else {
             if ($this->input->post()) {
-                $slug = $this->input->post('slug');
-                $unique_slug = $this->parental_model->build_unique_slug($slug);
+                $input_slug = $this->input->post('slug');
+                if($parental['slug'] == $input_slug){
+                    $unique_slug = $this->parental_model->build_unique_slug($input_slug, $parental['id']);
+                }else{
+                    $unique_slug = $this->parental_model->build_unique_slug($input_slug);
+                }
                 
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/parental', 'assets/upload/article/thumbs');
                 $data = array(

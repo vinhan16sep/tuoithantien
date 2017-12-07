@@ -143,7 +143,9 @@ class Activity extends Admin_Controller{
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
 
         $activity_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-
+        $activity = $this->activity_model->fetch_by_id($activity_id);
+        $this->data['activity'] = $activity;
+        // print_r($activity);die;
         if ($this->form_validation->run() == FALSE) {
             $activity = $this->activity_model->fetch_by_id($activity_id);
             if(!$activity){
@@ -151,12 +153,16 @@ class Activity extends Admin_Controller{
                 redirect('admin/activity/index/'.$slug, 'refresh');
             }
 
-            $this->data['activity'] = $activity;
+            
             $this->render('admin/activity/edit_activity_view');
         } else {
             if ($this->input->post()) {
-                $slug = $this->input->post('slug');
-                $unique_slug = $this->activity_model->build_unique_slug($slug);
+                $input_slug = $this->input->post('slug');
+                if($activity['slug'] == $input_slug){
+                    $unique_slug = $this->activity_model->build_unique_slug($input_slug, $activity['id']);
+                }else{
+                    $unique_slug = $this->activity_model->build_unique_slug($input_slug);
+                }
                 
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/activity', 'assets/upload/article/thumbs');
                 $data = array(

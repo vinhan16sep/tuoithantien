@@ -15,7 +15,7 @@
             <div class="form-group">
                 <?php
                 echo form_label('slug', 'slug');
-                echo form_error('image');
+                echo form_error('slug');
                 echo form_input('slug', set_value('slug', $activity['slug']), 'class="form-control" id="slug" readonly');
                 ?>
             </div>
@@ -59,7 +59,7 @@
             <br>
             <div class="form-group col-sm-12 text-right">
                 <input type="hidden" name="id" value="<?php echo $activity['id'] ?>">
-                <input type="hidden" name="slug" value="<?php echo $slug ?>">
+                <input type="hidden" name="link_slug" value="<?php echo $slug ?>">
                 <?php
                 echo form_submit('submit', 'OK', 'class="btn btn-primary"');
                 ?>

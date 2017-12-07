@@ -15,7 +15,7 @@
             <div class="form-group">
                 <?php
                 echo form_label('slug', 'slug');
-                echo form_error('image');
+                echo form_error('slug');
                 echo form_input('slug', set_value('slug', $introduce['slug']), 'class="form-control" id="slug" readonly');
                 ?>
             </div>
