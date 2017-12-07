@@ -18,10 +18,11 @@ $(document).ready(function(){
 	}
 	});
 	
-	imagePreview();
+	// imagePreview();
 
 	/* comment */
-	$('.btn-primary').click(function(e){
+	$('.submit-comment').click(function(e){
+		debugger;
 		e.preventDefault();
 		var name = $('#name').val();
 		var email = $('#email').val();
@@ -54,7 +55,7 @@ $(document).ready(function(){
 				url: "http://localhost/tuoithantien/comment/create_comment",
 				data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
 				success: function(result){
-					$('#comment p:first-child').before(result);
+					$('#comment p:first-child').before(JSON.parse(result).comment);
 				}
 			})
 		}

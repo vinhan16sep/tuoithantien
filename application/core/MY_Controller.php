@@ -234,7 +234,6 @@ class Public_Controller extends MY_Controller {
         }
     }
 
-
     public function procedure(){
         $this->load->model('admission_model');
         $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
