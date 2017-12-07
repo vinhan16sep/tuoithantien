@@ -18,7 +18,6 @@ $(document).ready(function(){
 	}
 	});
 	
-	// imagePreview();
 
 	/* comment */
 	$('.submit-comment').click(function(e){
