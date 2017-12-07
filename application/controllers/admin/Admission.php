@@ -137,10 +137,12 @@ class Admission extends Admin_Controller{
         $this->form_validation->set_rules('content', 'Nội dung', 'required');
         if($this->input->post()){
             if($this->form_validation->run() == TRUE){
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->admission_model->build_unique_slug($slug);
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/admission', 'assets/upload/article/thumbs');
                 $data = array(
                     'title'         => $this->input->post('title'),
-                    'slug'          => $this->input->post('slug'),
+                    'slug'          => $unique_slug,
                     'category'      => $this->input->post('cat'),
                     'image'         => $image,
                     'content'       => $this->input->post('content'),
@@ -191,10 +193,13 @@ class Admission extends Admin_Controller{
             $this->render('admin/admission/edit_admission_view');
         } else {
             if ($this->input->post()) {
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->admission_model->build_unique_slug($slug);
+                
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/admission', 'assets/upload/article/thumbs');
                 $data = array(
                     'title'        => $this->input->post('title'),
-                    'slug'         => $this->input->post('slug'),
+                    'slug'         => $unique_slug,
                     'category'     => $this->input->post('cat'),
                     'content'      => $this->input->post('content'),
                     'modified_at'  => $this->author_info['modified_at'],
