@@ -73,11 +73,14 @@ class Library extends Admin_Controller{
             	if(!file_exists("assets/upload/image/".$link)){
             		mkdir("assets/upload/image/".$link, 0700);
             	}
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->library_model->build_unique_slug($slug);
+
                 // $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/image/'.$link, 'assets/upload/article/thumbs');
                 $image_list = $this->upload_file('./assets/upload/image/'.$link, 'image_list');
                 $data = array(
                     'title'         => $this->input->post('title'),
-                    'slug'          => $this->input->post('slug'),
+                    'slug'          => $unique_slug,
                     'content'       => $this->input->post('content'),
                     'created_at'	=> $this->author_info['created_at'],
                     'created_by'	=> $this->author_info['created_by'],
@@ -122,10 +125,13 @@ class Library extends Admin_Controller{
             $this->render('admin/image/edit_library_view');
         } else {
             if ($this->input->post()) {
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->library_model->build_unique_slug($slug);
+                
                 $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/image/'.$image_link['slug'], 'assets/upload/article/thumbs');
                 $data = array(
                     'title'        => $this->input->post('title'),
-                    'slug'         => $this->input->post('slug'),
+                    'slug'         => $unique_slug,
                     'content'      => $this->input->post('content'),
                     'modified_at'  => $this->author_info['modified_at'],
                     'modified_by'  => $this->author_info['modified_by']

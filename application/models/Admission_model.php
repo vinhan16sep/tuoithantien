@@ -5,6 +5,19 @@ class Admission_model extends CI_Model{
 		parent::__construct();
 	}
 
+    public function build_unique_slug($slug){
+        $count = 0;
+        $temp_slug = $slug;
+        while(true) {
+            $this->db->select('id');
+            $this->db->where('slug', $temp_slug);
+            $query = $this->db->get('admission');
+            if ($query->num_rows() == 0) break;
+            $temp_slug = $slug . '-' . (++$count);
+        }
+        return $temp_slug;
+    }
+
 	public function fetch_row($where = array()){
         $query = $this->db->select('*')
             ->from('admission')
