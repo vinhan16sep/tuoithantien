@@ -62,7 +62,7 @@
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <input type="hidden" name="category_id" value="3" id="category_id">
                                 <input type="hidden" name="slug" value="<?php echo $admission['slug'] ?>" id="slug">
-                                <?php echo form_submit('submit', 'Gửi nhận xét', 'class="btn btn-primary hvr-icon-forward"'); ?>
+                                <?php echo form_submit('submit', 'Gửi nhận xét', 'class="btn btn-primary hvr-icon-forward submit-comment"'); ?>
                             </div>
                         </div>
                     <?php echo form_close(); ?>
@@ -96,45 +96,3 @@
 
 </section>
 
-<script type="text/javascript">
-    $('.btn-primary').click(function(e){
-        e.preventDefault();
-        var name = $('#name').val();
-        var email = $('#email').val();
-        var content = $('#content').val();
-        var category_id = $('#category_id').val();
-        var slug = $('#slug').val();
-        if(name.length == 0){
-            $('.name_error').text('Họ và Tên không được trống!');
-        }else{
-            $('.name_error').text('');
-        }
-
-        if(email.length == 0){
-            $('.email_error').text('Email không được trống!');
-        }
-        else{
-            $('.email_error').text('');
-        }
-
-        if(content.length == 0){
-            $('.content_error').text('Nội dung không được trống!');
-        }
-        else{
-            $('.content_error').text('');
-        }
-        if(name.length != 0 && email.length != 0 && content.length != 0){
-            $('.cmt_error').hide();
-            jQuery.ajax({
-                type: "get",
-                url: "http://localhost/tuoithantien/comment/create_comment",
-                data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
-                success: function(result){
-                    $('#comment p:first-child').before(result);
-                }
-            })
-        }
-        
-        return false;
-    })
-</script>
