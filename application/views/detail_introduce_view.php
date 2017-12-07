@@ -1,21 +1,35 @@
+
 <section class="main_content">
     <div class="container">
         <div class="row">
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+                <ul>
+                	<?php if ($list != ''): ?>
+                		<?php foreach ($list as $key => $value): ?>
+	                		<li><a href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
+	                	<?php endforeach ?>
+	                <?php else: ?>
+
+                	<?php endif ?>
+                	
+                    
+                </ul>
+            </div>
             <div class="blogs col-md-8 col-sm-8 col-xs-12">
                 <div class="blogs_cover">
-                    <img src="<?php echo base_url('assets/upload/parental/'.$activity['image']); ?>" alt="ảnh cover bài viết">
+                    <img src="<?php echo base_url('assets/upload/introduce/'.$detail['image']) ?>" alt="ảnh cover bài viết" width=100%>
                 </div>
 
-                <h2 class="blog_title"><?php echo $activity['title'] ?></h2>
+                <h2 class="blog_title"><?php echo $detail['title'] ?></h2>
 
                 <blockquote>
-                    <?php echo $activity['description'] ?>
+                    <?php echo $detail['description'] ?>
                 </blockquote>
 
-                <?php echo $activity['content'] ?>
+                <?php echo $detail['content'] ?>
 
-
-                <br><br>
+				<br><br>
 				<div id="comment">
 					<?php if (isset($comment)): ?>
 						<?php foreach ($comment as $key => $value): ?>
@@ -60,8 +74,8 @@
 				                <span class="content_error" style="color: red"></span>
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                            	<input type="hidden" name="category_id" value="3" id="category_id">
-                            	<input type="hidden" name="slug" value="<?php echo $activity['slug'] ?>" id="slug">
+                            	<input type="hidden" name="category_id" value="1" id="category_id">
+                            	<input type="hidden" name="slug" value="<?php echo $detail['slug'] ?>" id="slug">
                             	<?php echo form_submit('submit', 'Gửi nhận xét', 'class="btn btn-primary hvr-icon-forward"'); ?>
                             </div>
                         </div>
@@ -83,11 +97,11 @@
                     <p>Text giới thiệu chung về các chương trình</p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <img src="img/register.png" class="wow fadeInUp">
+                    <img src="<?php echo base_url('assets/upload/admission/'.$procedure['image']) ?>" class="wow fadeInUp" width=100%>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <h1>Giới thiệu đăng ký nhập học</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie enim non odio mattis, sed fermentum elit sodales. Duis bibendum mi sed pulvinar interdum. Donec euismod ipsum vitae ligula posuere, id elementum lacus rhoncus. Nullam ullamcorper urna et elementum viverra. Sed in sem ultrices, mattis nunc sit amet, sollicitudin sem. Mauris tincidunt mauris mi, quis viverra justo consequat nec. Cras nibh quam, cursus at lorem sit amet, scelerisque euismod enim. Nam a interdum velit. Donec pharetra fermentum erat, sed commodo lectus venenatis quis. Integer elit augue, varius quis laoreet vitae, cursus sit amet libero. Integer iaculis libero vel venenatis vehicula. Integer accumsan nulla felis, non congue erat tincidunt sed.</p>
+                    <h1><?php echo $procedure['title'] ?></h1>
+                    <?php echo $procedure['content'] ?>
                     <a class="btn btn-primary hvr-icon-forward" role="button" href="javascript:void();">Đăng ký ngay</a>
                 </div>
             </div>
@@ -95,46 +109,3 @@
     </div>
 
 </section>
-
-<script type="text/javascript">
-	$('.btn-primary').click(function(e){
-		e.preventDefault();
-		var name = $('#name').val();
-		var email = $('#email').val();
-		var content = $('#content').val();
-		var category_id = $('#category_id').val();
-		var slug = $('#slug').val();
-		if(name.length == 0){
-			$('.name_error').text('Họ và Tên không được trống!');
-		}else{
-			$('.name_error').text('');
-		}
-
-		if(email.length == 0){
-			$('.email_error').text('Email không được trống!');
-		}
-		else{
-			$('.email_error').text('');
-		}
-
-		if(content.length == 0){
-			$('.content_error').text('Nội dung không được trống!');
-		}
-		else{
-			$('.content_error').text('');
-		}
-		if(name.length != 0 && email.length != 0 && content.length != 0){
-			$('.cmt_error').hide();
-			jQuery.ajax({
-				type: "get",
-				url: "http://localhost/tuoithantien/comment/create_comment",
-				data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
-				success: function(result){
-					$('#comment p:first-child').before(result);
-				}
-			})
-		}
-		
-		return false;
-	})
-</script>

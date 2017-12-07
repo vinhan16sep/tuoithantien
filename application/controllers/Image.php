@@ -7,12 +7,14 @@ class Image extends Public_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('image_model');
+        $this->load->model('library_model');
     }
 
     public function index(){
+    	$list = $this->library_model->fetch_all();
+    	$this->data['list'] = $list;
 
-        $this->render('image_view');
+        $this->render('list_image_view');
     }
 
 }

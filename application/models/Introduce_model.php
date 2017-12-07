@@ -21,6 +21,7 @@ class Introduce_model extends CI_Model {
 
         return false;
     }
+    
     public function fetch_row($where = array()){
         $query = $this->db->select('*')
             ->from('introduce')

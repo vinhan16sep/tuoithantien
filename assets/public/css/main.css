@@ -91,6 +91,16 @@ header .cover{
 	border-radius: 10px;
 }
 
+ul.cyan li a:hover{
+	background: #6bbfc2;
+	color: #fff;
+}
+
+ul.orange li a:hover{
+	background: #f26f5a;
+	color: #fff;
+}
+
 ul.yellow li a:hover{
 	background: #f4aa1c;
 	color: #fff;
@@ -115,11 +125,15 @@ ul.pink li a:hover{
 	color: #f4aa1c;
 }
 
+a h1, a h2{
+	color: #f4aa1c;
+}
+
 
 /* CSS Footer */
 
 .footer{
-	margin-top: 130px;
+	margin-top: 0em;
 	position: relative;
 	padding-bottom: 50px;
 	background-color: #f38991;

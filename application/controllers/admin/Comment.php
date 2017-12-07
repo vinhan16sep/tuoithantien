@@ -17,22 +17,22 @@ class Comment extends Admin_Controller{
 			foreach ($list_comment as $key => $value) {
 				switch ($value['category_id']) {
 					case '1':
-						$where =  array('id' => $value['post_id']);
+						$where =  array('slug' => $value['slug']);
 						$sub = $this->introduce_model->fetch_row($where);
 						$list_comment[$key]['sub'] = $sub;
 						break;
 					case '2':
-						$where =  array('id' => $value['post_id']);
+						$where =  array('slug' => $value['slug']);
 						$sub = $this->admission_model->fetch_row($where);
 						$list_comment[$key]['sub'] = $sub;
 						break;
 					case '3':
-						$where =  array('id' => $value['post_id']);
+						$where =  array('slug' => $value['slug']);
 						$sub = $this->parental_model->fetch_row($where);
 						$list_comment[$key]['sub'] = $sub;
 						break;
 					case '4':
-						$where =  array('id' => $value['post_id']);
+						$where =  array('slug' => $value['slug']);
 						$sub = $this->activity_model->fetch_row($where);
 						$list_comment[$key]['sub'] = $sub;
 						break;

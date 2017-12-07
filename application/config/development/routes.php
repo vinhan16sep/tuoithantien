@@ -54,3 +54,22 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
 
 $route['admin'] = 'admin/dashboard';
+$route['lien-he'] = 'contact/index';
+
+$route['trang-chu'] = 'homepage';
+$route['gioi-thieu'] = 'introduce/index';
+$route['gioi-thieu/(:any)'] = 'introduce/list/(:any)';
+$route['bai-viet/(:any)/(:any)'] = 'introduce/detail/(:any)';
+// $route['(:any)'] = 'introduce/index/(:any)';
+
+
+$route['(:any)'] = 'parental/activity/(:any)';
+$route['phoi-hop-cung-phu-huynh/(:any)'] = 'parental/list/(:any)';
+$route['phoi-hop-cung-phu-huynh/(:any)/(:any)'] = 'parental/detail/(:any)';
+
+$route['hoat-dong/(:any)'] = 'activity/index/(:any)';
+$route['hoat-dong/(:any)/(:any)'] = 'activity/detail/(:any)';
+
+$route['thong-tin-nhap-hoc/(:any)'] = 'admission/admission_procedure/(:any)';
+$route['thong-tin-nhap-hoc/danh-sach/(:any)'] = 'admission/list/(:any)';
+$route['thong-tin-nhap-hoc/(:any)/(:any)'] = 'admission/detail/(:any)';

@@ -5,47 +5,44 @@
             <div class="blogs col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
                     <?php if ($list != ''): ?>
-
                         <?php foreach ($list as $key => $value): ?>
-                        <?php 
-                            switch ($value['category']) {
-                                case '1':
-                                    $slug = 'hoc-phi';
-                                    break;
-                                case '2':
-                                    $slug = 'chuong-trinh-khuyen-mai';
-                                    break;
-                                default:
-                                    # code...
-                                    break;
-                            }
-                        ?>
                             <div class="item col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner">
-                                    <img class="img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>">
-                                    <a href="<?php echo base_url('thong-tin-nhap-hoc/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('thong-tin-nhap-hoc/').$slug.'/'.$value['slug']; ?>">Khám phá</a>
+                                    <img class="img-rounded" src="<?php echo site_url('assets/upload/introduce/'.$value['image']) ?>" width=100%>
+                                    <a href="<?php echo base_url($value['sub_category'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>">Khám phá</a>
                                 </div>
                             </div>
                         <?php endforeach ?>
                     <?php else: ?>
                         <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                Chưa có bài viết nào!
+                                <div class="inner">
+                                    Chưa có bài viết nào!
+                                </div>
                             </div>
-                        </div>
                     <?php endif ?>
+                    
                 </div>
             </div>
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
-
+                <?php $style = 'style="display: none"' ?>
                 <ul>
-                    <li><a href="javascript:void();">Thông báo nhà trường</a></li>
-                    <li><a href="javascript:void();">Thư viện hình ảnh</a></li>
-                    <li><a href="javascript:void();">Video</a></li>
-                    <li><a href="javascript:void();">Tuyển sinh</a></li>
-                    <li><a href="javascript:void();">Trải nghiệm</a></li>
+                    <li <?php echo ($slug == 'muc-tieu')? $style : '' ?> >
+                        <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>" >Mục tiêu</a>
+                    </li>
+
+                    <li <?php echo ($slug == 'ngoai-ngu')? $style : '' ?> >
+                        <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>" >Ngoại ngữ</a>
+                    </li>
+
+                    <li <?php echo ($slug == 'giao-duc-theo-lua-tuoi')? $style : '' ?> >
+                        <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>" >Giáo dục theo lứa tuổi</a>
+                    </li>
+
+                    <li <?php echo ($slug == 'tap-huan')? $style : '' ?> >
+                        <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>" >Tập huấn</a>
+                    </li>
                 </ul>
             </div>
         </div>

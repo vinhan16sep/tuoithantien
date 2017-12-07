@@ -187,7 +187,6 @@ class Admin_Controller extends MY_Controller {
 }
 
 class Public_Controller extends MY_Controller {
-
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
@@ -213,10 +212,35 @@ class Public_Controller extends MY_Controller {
             $this->session->set_userdata("langAbbreviation",'vi');
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
+
+        /* thu tuc nhap hoc */
+        
+        $this->load->model('admission_model');
+        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
+        $procedure = $this->admission_model->fetch_row($where);
+        $this->data['procedure'] = $procedure;
     }
 
     protected function render($the_view = NULL, $template = 'master') {
         parent::render($the_view, $template);
+    }
+
+    protected function comment($slug) {
+        $this->load->model('comment_model');
+        $where = array('slug' => $slug);
+        $comment = $this->comment_model->fetch_all($where);
+        if($comment){
+            $this->data['comment'] = $comment;
+        }
+    }
+
+
+    public function procedure(){
+        $this->load->model('admission_model');
+        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
+        $procedure = $this->admission_model->fetch_row($where);
+        $this->data['procedure'] = $procedure;
+
     }
 
 }

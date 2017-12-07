@@ -5,17 +5,16 @@
         <div class="row">
             <div class="col-md-8 col-sm-8 col-xs-12">
                 <div class="jumbotron">
-                    <h1>Giới thiệu</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque accumsan volutpat lectus id blandit. Sed at sagittis ligula. Cras elementum lacus nec finibus ultricies. Morbi placerat risus mi, non rutrum felis maximus ac. Maecenas non massa pellentesque, tincidunt mauris cursus, finibus augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam placerat at sapien nec ornare.</p>
-                    <p>Nam at ex molestie, lobortis urna sagittis, fermentum dui. Praesent sodales hendrerit odio, quis volutpat nisl congue ac. Quisque ut urna vel tellus tincidunt pharetra eget vel lectus. Fusce maximus accumsan lacus non mollis. Sed dignissim orci dui, vitae scelerisque nisi tempus eget. Maecenas non rhoncus neque, at iaculis augue. In hac habitasse platea dictumst. Sed congue tempus elit id aliquet. Sed nec consectetur orci, id tristique est. Donec consectetur ligula ac ultricies fringilla. Pellentesque eleifend arcu id purus sodales ultricies. Nunc ligula elit, sagittis sit amet feugiat eget, posuere non elit.</p>
+                    <h1><?php echo $overview['title'] ?></h1>
+                    <?php echo $overview['content'] ?>
                     <!--<a class="btn btn-primary btn-lg hvr-icon-forward" href="#screen_2" role="button">Khám phá</a>-->
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 hidden-xs">
                 <div class="img_frame">
-                    <img id="frame_01" src="img/img_frame-07.png" alt="frame-1" class="wow slideInUp">
-                    <img id="frame_02" src="img/img_frame-08.png" alt="frame-2" class="wow slideInUp">
-                    <img id="frame_03" src="img/img_frame-09.png" alt="frame-3" class="wow slideInUp">
+                    <img id="frame_01" src="<?php echo base_url('assets/public/') ?>img/img_frame-07.png" alt="frame-1" class="wow slideInUp">
+                    <img id="frame_02" src="<?php echo base_url('assets/public/') ?>img/img_frame-08.png" alt="frame-2" class="wow slideInUp">
+                    <img id="frame_03" src="<?php echo base_url('assets/public/') ?>img/img_frame-09.png" alt="frame-3" class="wow slideInUp">
                 </div>
             </div>
         </div>
@@ -229,11 +228,11 @@
                     <p>Text giới thiệu chung về các chương trình</p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <img src="img/register.png" class="wow fadeInUp">
+                    <img src="<?php echo base_url('assets/upload/admission/'.$procedure['image']) ?>" class="wow fadeInUp" width=100%>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <h1>Giới thiệu đăng ký nhập học</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie enim non odio mattis, sed fermentum elit sodales. Duis bibendum mi sed pulvinar interdum. Donec euismod ipsum vitae ligula posuere, id elementum lacus rhoncus. Nullam ullamcorper urna et elementum viverra. Sed in sem ultrices, mattis nunc sit amet, sollicitudin sem. Mauris tincidunt mauris mi, quis viverra justo consequat nec. Cras nibh quam, cursus at lorem sit amet, scelerisque euismod enim. Nam a interdum velit. Donec pharetra fermentum erat, sed commodo lectus venenatis quis. Integer elit augue, varius quis laoreet vitae, cursus sit amet libero. Integer iaculis libero vel venenatis vehicula. Integer accumsan nulla felis, non congue erat tincidunt sed.</p>
+                    <h1><?php echo $procedure['title'] ?></h1>
+                    <?php echo $procedure['content'] ?>
                     <a class="btn btn-primary hvr-icon-forward" role="button" href="javascript:void();">Đăng ký ngay</a>
                 </div>
             </div>
