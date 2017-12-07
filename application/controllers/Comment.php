@@ -23,7 +23,9 @@ class Comment extends CI_Controller{
 				'created_at' => date("Y/m/d")
 				);
 		$this->comment_model->save($data);
-		echo '<p><span style="color: red">'.$name.' :</span style="color: red"> <span>'.$content.'</span> <span style="float: right; font-size: 10px">'.date("d/m/Y").'</span></p>';
+		$comment = '<p><span style="color: red">'.$name.' :</span style="color: red"> <span>'.$content.'</span> <span style="float: right; font-size: 10px">'.date("d/m/Y").'</span></p>';
+
+		$this->output->set_status_header(200)->set_output(json_encode(array('comment' => $comment)));
 
 	}
 }
