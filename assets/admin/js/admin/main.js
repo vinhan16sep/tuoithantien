@@ -9,7 +9,7 @@
       // $('textarea').removeAttr('readonly');
       $('select').removeAttr('disabled');
       $('.mce-toolbar').show();
-      tinymce.activeEditor.getBody().setAttribute('contenteditable', true);
+      // tinymce.activeEditor.getBody().setAttribute('contenteditable', true);
       return false;
   });
 

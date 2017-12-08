@@ -51,6 +51,15 @@
                 echo form_upload('image','','multiple');
                 ?>
             </div>
+
+            <div class="form-group">
+                <?php
+                echo form_label('Giới thiệu', 'intro');
+                echo form_error('intro');
+                echo form_textarea('intro', set_value('intro', $parental['description'], false), 'class="form-control" rows="5" ')
+                ?>
+            </div>
+
             <div class="form-group">
                 <?php
                 echo form_label('Nội dung', 'content');
