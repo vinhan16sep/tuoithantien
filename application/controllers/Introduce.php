@@ -17,7 +17,7 @@ class Introduce extends Public_Controller {
         $this->render('introduce_view');
     }
 
-    public function list(){
+    public function show_list(){
         $slug = $this->uri->segment(2);
         $this->data['slug'] = $slug;
         $check_slug =  array('muc-tieu', 'ngoai-ngu', 'giao-duc-theo-lua-tuoi', 'tap-huan', 'ngoai-khoa');

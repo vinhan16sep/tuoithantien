@@ -24,7 +24,7 @@
             <div class="row">
                 
                 <form action="<?php echo base_url('admin/admission/list/'.$slug) ?>" class="form-horizontal" method="get">
-                    <a type="button" href="<?php echo site_url('admin/admission/create/'.$slug); ?>" class="btn btn-primary">Thêm Mới</a>
+                    <a type="button" href="<?php echo site_url('admin/admission/create/'.$slug); ?>" class="btn btn-primary">THÊM MỚI</a>
                     <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: right">
                     <input type="text" name="search" value="<?php echo $search ?>" placeholder="Tìm Kiếm ..." class="form-control" style="float: right; width: 50%;">
                 </form>

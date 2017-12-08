@@ -55,7 +55,7 @@ class Admission extends Admin_Controller{
         $this->render('admin/admission/admission_procedure_view');
     }
 
-    public function list(){
+    public function show_list(){
 
     	$this->load->helper('form');
         $this->load->library('form_validation');
@@ -94,7 +94,7 @@ class Admission extends Admin_Controller{
         }
 
         $config = array();
-        $base_url = base_url() . 'admin/admission/list/'.$slug;
+        $base_url = base_url() . 'admin/admission/show_list/'.$slug;
         $per_page = 10;
         $uri_segment = 5;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
@@ -149,7 +149,7 @@ class Admission extends Admin_Controller{
                 }catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Thêm bài viết thất bại: ' . $e->getMessage());
                 }
-                redirect('admin/admission/list/'.$this->input->post('url'), 'refresh');
+                redirect('admin/admission/show_list/'.$this->input->post('url'), 'refresh');
             }
         }
 
@@ -211,7 +211,7 @@ class Admission extends Admin_Controller{
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
                 }
-                redirect('admin/admission/list/'.$slug, 'refresh');
+                redirect('admin/admission/show_list/'.$slug, 'refresh');
             }
         }
 

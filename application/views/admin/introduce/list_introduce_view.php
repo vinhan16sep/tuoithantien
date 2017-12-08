@@ -32,7 +32,7 @@
             </div>
             <div class="row">
                 <form action="<?php echo base_url('admin/introduce/index/'.$slug) ?>" class="form-horizontal" method="get">
-                    <a type="button" href="<?php echo site_url('admin/introduce/create/'.$slug); ?>" class="btn btn-primary">Thêm mơi</a>
+                    <a type="button" href="<?php echo site_url('admin/introduce/create/'.$slug); ?>" class="btn btn-primary">THÊM MỚI</a>
                     <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: right">
                     <input type="text" name="search" placeholder="Tìm Kiếm ..." class="form-control" style="float: right; width: 50%;" value="<?php echo $search ?>">
                 </form>
@@ -42,12 +42,13 @@
                     <div class="col-lg-12" style="margin-top: 10px;">
                         <table class="table table-hover table-bordered table-condensed">
                             <tr>
-                                <td style="width: 100px"><b><a href="#">Ảnh đại diện</a></b></td>
-                                <td style="width: 100px"><b><a href="#">Tiêu đề</a></b></td>
-                                <td style="width: 100px"><b><a href="#">Slug</a></b></td>
-                                <td style="width: 100px"><b><a href="#">Danh mục</a></b></td>
-                                <td style="width: 100px"><b><a href="#">Danh mục con</a></b></td>
-                                <td><b><a href="#">Nội dung</a></b></td>
+                                <td style="width: 150px"><b><a href="#">Ảnh đại diện</a></b></td>
+                                <td><b><a href="#">Tiêu đề</a></b></td>
+                                <td><b><a href="#">Slug</a></b></td>
+                                <?php if ($slug != 'ngoai-khoa'): ?>
+                                    <td><b><a href="#">Danh mục</a></b></td>
+                                <?php endif ?>
+                                <td><b><a href="#">Danh mục con</a></b></td>
                                 <td><b>Operations</b></td>
                             </tr>
                             
@@ -77,12 +78,9 @@
                                                     break;
                                             }
                                             echo '</td>';
-                                        }else{
-                                            echo '<td></td>';
                                         }
                                         
                                     ?>
-                                    <td><?php echo $value['content'] ?></td>
                                     <td>
                                         <form class="form_ajax">
                                             <a href="<?php echo base_url('admin/introduce/edit/'.$value['id']); ?>" title="Chỉnh sửa">
