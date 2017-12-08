@@ -7,7 +7,7 @@
                 <ul>
                 	<?php if ($list != ''): ?>
                 		<?php foreach ($list as $key => $value): ?>
-	                		<li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$sub_category.'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
+	                		<li><a href="<?php echo base_url('thong-tin-nhap-hoc/'.$sub_category.'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
 	                	<?php endforeach ?>
 	                <?php else: ?>
 

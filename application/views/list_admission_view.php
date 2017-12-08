@@ -1,7 +1,21 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            
+            <h3>
+                <?php 
+                    switch ($this->uri->segment(3)) {
+                        case 'hoc-phi':
+                            echo 'Học phí';
+                            break;
+                        case 'chuong-trinh-khuyen-mai':
+                            echo 'Chương trình khuyến mãi';
+                            break;
+                        default:
+                            # code...
+                            break;
+                    }
+                ?>
+            </h3>
             <div class="blogs col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
                     <?php if ($list != ''): ?>
@@ -41,11 +55,13 @@
                 <h1>Danh mục bài viết</h1>
 
                 <ul>
-                    <li><a href="javascript:void();">Thông báo nhà trường</a></li>
-                    <li><a href="javascript:void();">Thư viện hình ảnh</a></li>
-                    <li><a href="javascript:void();">Video</a></li>
-                    <li><a href="javascript:void();">Tuyển sinh</a></li>
-                    <li><a href="javascript:void();">Trải nghiệm</a></li>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>" >Thủ tục nhập hoc</a></li>
+
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>" >Học phí</a></li>
+
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>" >Lịch học</a></li>
+
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>" >Chương trình khuyến mãi</a></li>
                 </ul>
             </div>
         </div>

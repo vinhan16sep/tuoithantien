@@ -1,7 +1,7 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <h3>Thư viện: <?php echo $library['title'] ?></h3>
+            <h3>Thư viện ảnh: <?php echo $library['title'] ?></h3>
 			
 			<h4><?php echo $library['content'] ?></h4>
             
@@ -19,7 +19,7 @@
 	                <?php else: ?>
                         <div class="item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner">
-                                Chưa có bài viết nào!
+                                Chưa có ảnh được đăng trong bài thư viện này!
                             </div>
                         </div>
                     <?php endif ?>

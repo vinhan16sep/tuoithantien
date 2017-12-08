@@ -1,7 +1,24 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            
+            <h3>
+                <?php 
+                    switch ($this->uri->segment(2)) {
+                        case 'thong-bao':
+                            echo 'Thông báo';
+                            break;
+                        case 'tuyen-sinh':
+                            echo 'Tuyển sinh';
+                            break;
+                        case 'trai-nghiem':
+                            echo 'Trải nghiệm';
+                            break;
+                        default:
+                            # code...
+                            break;
+                    }
+                ?>
+            </h3>
             <div class="blogs col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
                 	<?php if ($list != ''): ?>
@@ -43,21 +60,15 @@
                 <h1>Danh mục bài viết</h1>
                 <?php $style = 'style="display: none"' ?>
                 <ul>
-                    <li <?php echo ($slug == 'thong-bao')? $style : '' ?> >
-                        <a href="<?php echo base_url('hoat-dong/thong-bao') ?>" >Thông báo nhà trường</a>
-                    </li>
-                    <li <?php echo ($slug == 'ngoai-ngu')? $style : '' ?> >
-                        <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>" >Thư viện hình ảnh</a>
-                    </li>
-                    <li <?php echo ($slug == 'giao-duc-theo-lua-tuoi')? $style : '' ?> >
-                        <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>" >Video</a>
-                    </li>
-                    <li <?php echo ($slug == 'tuyen-sinh')? $style : '' ?> >
-                        <a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a>
-                    </li>
-                    <li <?php echo ($slug == 'trai-nghiem')? $style : '' ?> >
-                        <a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" >Trải nghiệm</a>
-                    </li>
+                    <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>" >Thông báo nhà trường</a></li>
+
+                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" >Thư viện ảnh</a></li>
+
+                    <li><a href="<?php echo base_url('thu-vien/video') ?>" >Video</a></li>
+
+                    <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a></li>
+
+                    <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" >Trải nghiệm</a></li>
                 </ul>
             </div>
         </div>
