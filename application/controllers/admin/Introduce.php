@@ -39,51 +39,38 @@ class Introduce extends Admin_Controller {
         }
         $this->data['sub_cat'] = $sub_cat;
 
-        if (count($_POST) > 0){
-            $this->session->set_userdata('search', $_POST );
-            redirect('admin/introduce/index/'.$slug,'refresh');
-        }else{
-            if($this->session->userdata('search')){
-                $_POST = $this->session->userdata('search');
-            }
+        $keywords = '';
+        if($this->input->get()){
+            $keywords = $this->input->get('search');
         }
 
-        $keywords = '';
-        if($this->input->post()){
-            $keywords = $this->input->post('search');
-        }
         $this->load->library('pagination');
         $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
 
-        if($keywords != ''){
-            $search = $this->input->post('search');
-
-            if($keywords == null){
-                redirect('admin/introduce/index/'.$slug,'refresh');
-            }
-            $total_rows  = $this->introduce_model->count_all($where,$search);
+        if(!empty($keywords)){
+            $total_rows  = $this->introduce_model->count_all($where,$keywords);
         }else{
             $total_rows  = $this->introduce_model->count_all($where);
-
         }
         
         $config = array();
         $base_url = base_url() . 'admin/introduce/index/'.$slug;
-        $per_page = 20;
+        $per_page = 10;
         $uri_segment = 5;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-        $result  =  array();
+        // $result  =  array();
         if($keywords != ''){
-            $result = $this->introduce_model->fetch_all($where, $config['per_page'], $page, $keywords);
+            $this->data['introduces'] = $this->introduce_model->fetch_all($where, $config['per_page'], $page, $keywords);
         }else{
-            $result = $this->introduce_model->fetch_all($where, $config['per_page'], $page);
+            $this->data['introduces'] = $this->introduce_model->fetch_all($where, $config['per_page'], $page);
         }
 
-        $this->data['introduces'] = $result;
+        // $this->data['introduces'] = $result;
+        $this->data['search'] = $keywords;
 
         $this->render('admin/introduce/list_introduce_view');
     }

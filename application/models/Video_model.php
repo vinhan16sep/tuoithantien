@@ -19,10 +19,13 @@ class Video_model extends CI_Model {
         return false;
     }
 
-    public function fetch_all_pagination($limit = NULL, $start = NULL) {
+    public function fetch_all_pagination($limit = NULL, $start = NULL, $search = null) {
         $this->db->select('*');
         $this->db->from('video');
         $this->db->where('is_deleted', 0);
+        if(!empty($search)){
+            $this->db->like('title', $search);
+        }
         $this->db->limit($limit, $start);
         $this->db->order_by("id", "desc");
 
@@ -58,13 +61,15 @@ class Video_model extends CI_Model {
         return false;
     }
 
-    public function count_all() {
+    public function count_all($search = null) {
         $query = $this->db->select('*')
             ->from('video')
-            ->where('is_deleted', 0)
-            ->get();
+            ->where('is_deleted', 0);
+        if(!empty($search)){
+            $query->like('title', $search);
+        }
 
-        return $query->num_rows();
+        return $query->get()->num_rows();
     }
 
     public function fetch_by_id($type, $id){
