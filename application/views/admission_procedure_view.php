@@ -69,6 +69,19 @@
                 </div>
 
             </div>
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+
+                <ul>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>" >Thủ tục nhập hoc</a></li>
+
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>" >Học phí</a></li>
+
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>" >Lịch học</a></li>
+
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>" >Chương trình khuyến mãi</a></li>
+                </ul>
+            </div>
         </div>
 
     </div>

@@ -1,7 +1,27 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            
+            <h3>
+                <?php 
+                    switch ($this->uri->segment(2)) {
+                        case 'lien-lac':
+                            echo 'Liên lạc';
+                            break;
+                        case 'thuc-don':
+                            echo 'Thực đơn';
+                            break;
+                        case 'y-te':
+                            echo 'Y tế';
+                            break;
+                        case 'ky-luat':
+                            echo 'Kỷ luật';
+                            break;
+                        default:
+                            # code...
+                            break;
+                    }
+                ?>
+            </h3>
             <div class="blogs col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
                     <?php if ($list != ''): ?>
@@ -47,11 +67,17 @@
                 <h1>Danh mục bài viết</h1>
 
                 <ul>
-                    <li><a href="javascript:void();">Thông báo nhà trường</a></li>
-                    <li><a href="javascript:void();">Thư viện hình ảnh</a></li>
-                    <li><a href="javascript:void();">Video</a></li>
-                    <li><a href="javascript:void();">Tuyển sinh</a></li>
-                    <li><a href="javascript:void();">Trải nghiệm</a></li>
+                    <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>" >Liên lạc</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>" >Thực đơn</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>" >Y tế</a></li>
+
+                    <li><a href="<?php echo base_url('gio-dua-don') ?>" >Giờ đưa đón</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>" >Kỷ luật</a></li>
                 </ul>
             </div>
         </div>
