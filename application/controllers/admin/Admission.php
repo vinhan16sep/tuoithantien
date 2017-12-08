@@ -77,30 +77,17 @@ class Admission extends Admin_Controller{
         	$where = array('category' => 2);
         }
 
-        if (count($_POST) > 0){
-            $this->session->set_userdata('search_blog', $_POST );
-            redirect('admin/admission/list/'.$slug,'refresh');
-        }else{
-            if($this->session->userdata('search_blog')){
-                $_POST = $this->session->userdata('search_blog');
-            }
+        $keywords = '';
+        if($this->input->get()){
+            $keywords = $this->input->get('search');
         }
 
-        $keywords = '';
-        if($this->input->post()){
-            $keywords = $this->input->post('search');
-        }
         $this->load->library('pagination');
         $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
         
 
         if($keywords != ''){
-        	$search = $this->input->post('search');
-
-        	if($keywords == null){
-        		redirect('admin/admission/list/'.$slug,'refresh');
-        	}
-	        $total_rows  = $this->admission_model->count_all($where,$search);
+	        $total_rows  = $this->admission_model->count_all($where,$keywords);
         }else{
         	$total_rows  = $this->admission_model->count_all($where);
 
@@ -108,7 +95,7 @@ class Admission extends Admin_Controller{
 
         $config = array();
         $base_url = base_url() . 'admin/admission/list/'.$slug;
-        $per_page = 20;
+        $per_page = 10;
         $uri_segment = 5;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
@@ -123,6 +110,9 @@ class Admission extends Admin_Controller{
         }
 
         $this->data['admission'] = $result;
+        $this->data['search'] = $keywords;
+
+
     	$this->render('admin/admission/list_admission_view');
     }
 

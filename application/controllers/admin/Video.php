@@ -10,21 +10,34 @@ class Video extends Admin_Controller {
     }
 
     public function index() {
+        $search = '';
+        if($this->input->get()){
+            $search = $this->input->get('search');
+        }
+
         $this->load->library('pagination');
         $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        if(!empty($search)){
+            $total_rows = $this->video_model->count_all($search);
+        }else{
+            $total_rows = $this->video_model->count_all();
+        }
+
         $config = array();
-        $total_rows = $this->video_model->count_all();
-        $config = array();
-        $config['base_url']    = base_url() . 'admin/video/index';
-        $config['per_page']    = 2;
-        $config['uri_segment'] = 4;
-        $config['prev_link'] = 'Prev';
-        $config['next_link'] = 'Next';
-        $config['total_rows']  = $total_rows;
+        $base_url = base_url() . 'admin/video/index';
+        $per_page = 10;
+        $uri_segment = 4;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['page_links'] = $this->pagination->create_links();
-        $this->data['videos'] = $this->video_model->fetch_all_pagination($config['per_page'], $page);
+        if(!empty($search)){
+            $this->data['videos'] = $this->video_model->fetch_all_pagination($config['per_page'], $page, $search);
+        }else{
+            $this->data['videos'] = $this->video_model->fetch_all_pagination($config['per_page'], $page);
+        }
+        $this->data['search'] = $search;
+
 
         $this->render('admin/video/list_video_view');
     }

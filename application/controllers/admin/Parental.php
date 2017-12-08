@@ -97,30 +97,17 @@ class Parental extends Admin_Controller{
             redirect('admin/dashboard','refresh');
         }
 
-        if (count($_POST) > 0){
-            $this->session->set_userdata('search_parental', $_POST );
-            redirect('admin/parental/list/'.$slug,'refresh');
-        }else{
-            if($this->session->userdata('search_parental')){
-                $_POST = $this->session->userdata('search_parental');
-            }
+        $keywords = '';
+        if($this->input->get()){
+            $keywords = $this->input->get('search');
         }
 
-        $keywords = '';
-        if($this->input->post()){
-            $keywords = $this->input->post('search');
-        }
         $this->load->library('pagination');
         $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
         
 
         if($keywords != ''){
-        	$search = $this->input->post('search');
-
-        	if($keywords == null){
-        		redirect('admin/parental/list/'.$slug,'refresh');
-        	}
-	        $total_rows  = $this->parental_model->count_all($where,$search);
+	        $total_rows  = $this->parental_model->count_all($where,$keywords);
         }else{
         	$total_rows  = $this->parental_model->count_all($where);
 
@@ -128,7 +115,7 @@ class Parental extends Admin_Controller{
 
         $config = array();
         $base_url = base_url() . 'admin/parental/list/'.$slug;
-        $per_page = 20;
+        $per_page = 10;
         $uri_segment = 5;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
@@ -143,6 +130,7 @@ class Parental extends Admin_Controller{
         }
 
         $this->data['parental'] = $result;
+        $this->data['search'] = $keywords;
 
 		$this->render('admin/parental/list_parental_view');
 	}

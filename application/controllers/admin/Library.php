@@ -12,28 +12,17 @@ class Library extends Admin_Controller{
 
 	public function index(){
 
-        if (count($_POST) > 0){
-            $this->session->set_userdata('search_library', $_POST );
-            redirect('admin/library/index','refresh');
-        }else{
-            if($this->session->userdata('search_library')){
-                $_POST = $this->session->userdata('search_library');
-            }
-        }
 
         $keywords = '';
-        if($this->input->post()){
-            $keywords = $this->input->post('search');
+        if($this->input->get()){
+            $keywords = $this->input->get('search');
         }
+
         $this->load->library('pagination');
         $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-        if($keywords != ''){
-        	$search = $this->input->post('search');
 
-        	if($keywords == null){
-        		redirect('admin/library/index','refresh');
-        	}
-	        $total_rows  = $this->library_model->count_all(null,$search);
+        if($keywords != ''){
+	        $total_rows  = $this->library_model->count_all(null,$keywords);
         }else{
         	$total_rows  = $this->library_model->count_all(null);
 
@@ -42,8 +31,8 @@ class Library extends Admin_Controller{
 
         $config = array();
         $base_url = base_url() . 'admin/library/index';
-        $per_page = 20;
-        $uri_segment = 5;
+        $per_page = 10;
+        $uri_segment = 4;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
         $this->pagination->initialize($config);
@@ -57,6 +46,7 @@ class Library extends Admin_Controller{
         }
 
         $this->data['library'] = $result;
+        $this->data['search'] = $keywords;
 
 		$this->render('admin/image/list_library_view');
 	}
