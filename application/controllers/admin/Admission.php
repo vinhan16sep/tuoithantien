@@ -145,6 +145,7 @@ class Admission extends Admin_Controller{
                     'slug'          => $unique_slug,
                     'category'      => $this->input->post('cat'),
                     'image'         => $image,
+                    'description'  => $this->input->post('description'),
                     'content'       => $this->input->post('content'),
                     'created_at'    => $this->author_info['created_at'],
                     'created_by'    => $this->author_info['created_by'],
@@ -185,7 +186,7 @@ class Admission extends Admin_Controller{
         if ($this->form_validation->run() == FALSE) {
             $admission = $this->admission_model->fetch_by_id($admission_id);
             if(!$admission){
-                $this->session->set_flashdata('message', 'Item does not exist');
+                $this->session->set_flashdata('message', 'Bài viết không tồn tại!');
                 redirect('admin/admission/list/'.$slug, 'refresh');
             }
 
@@ -205,6 +206,7 @@ class Admission extends Admin_Controller{
                     'title'        => $this->input->post('title'),
                     'slug'         => $unique_slug,
                     'category'     => $this->input->post('cat'),
+                    'description'  => $this->input->post('description'),
                     'content'      => $this->input->post('content'),
                     'modified_at'  => $this->author_info['modified_at'],
                     'modified_by'  => $this->author_info['modified_by']

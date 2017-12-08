@@ -67,6 +67,14 @@
             </div>
             <div class="form-group">
                 <?php
+                echo form_label('Giới thiệu', 'description');
+                echo form_error('description');
+                echo form_textarea('description', set_value('description', $introduce['description'], false), 'class="form-control" rows="5" ')
+                ?>
+            </div>
+                    
+            <div class="form-group">
+                <?php
                 echo form_label('Nội dung', 'content');
                 echo form_error('content');
                 echo form_textarea('content', set_value('content', $introduce['content'], false), 'class="form-control content"')
@@ -113,16 +121,4 @@
         filemanager_title: "Responsive Filemanager",
         external_plugins: {"filemanager": "<?php echo site_url('filemanager/plugin.min.js'); ?>"}
     });
-
-    $(document).ready(function(){
-        $('.cat').change(function(){
-            var cat = $(this).val();
-            if(cat == 1){
-                $('.sub-cat').slideDown();
-            }else{
-                $('.sub-cat').slideUp();
-            }
-            return false;
-        })
-    })
 </script>
