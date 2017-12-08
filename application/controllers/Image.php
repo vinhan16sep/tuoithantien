@@ -14,12 +14,13 @@ class Image extends Public_Controller {
         $this->load->model('image_model');
 
         $list = $this->library_model->fetch_all(null, 9, 0);
-        foreach ($list as $key => $value) {
-            $where = array('image_id' => $value['id']);
-            $image = $this->image_model->fetch_row($where);
-            $list[$key]['sub_image'] = $image['image'];
+        if(!empty($list)){
+            foreach ($list as $key => $value) {
+                $where = array('image_id' => $value['id']);
+                $image = $this->image_model->fetch_row($where);
+                $list[$key]['sub_image'] = $image['image'];
+            }
         }
-
         $this->data['list'] = $list;
 
         $this->render('list_image_view');
