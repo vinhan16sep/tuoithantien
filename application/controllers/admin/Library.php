@@ -89,9 +89,9 @@ class Library extends Admin_Controller{
 		        		$this->image_model->save($data2);
 		        	}
 
-                    $this->session->set_flashdata('message', 'Item created successfully');
+                    $this->session->set_flashdata('message', 'Thêm mới thư viện ảnh thành công');
                 }catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'There was an error creating item: ' . $e->getMessage());
+                    $this->session->set_flashdata('message', 'Thêm mới thư viện ảnh thất bại: ' . $e->getMessage());
                 }
                 redirect('admin/library/index', 'refresh');
             }
@@ -214,13 +214,13 @@ class Library extends Admin_Controller{
 		$image_link = $this->library_model->fetch_by_id($image_id);
 
 		if($this->input->post()){
-			$image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/image/'.$image_link['slug'], 'assets/upload/article/thumbs');
+			// $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/image/'.$image_link['slug'], 'assets/upload/article/thumbs');
 			$data = array(
     			'title' => $this->input->post('title')
     		);
-    		if($image){
-    			$data['image'] = $image;
-    		}
+    		// if($image){
+    		// 	$data['image'] = $image;
+    		// }
     		try {
     			$this->image_model->update($id, $data);
     			$this->session->set_flashdata('message', 'Cập nhật ảnh thành công');

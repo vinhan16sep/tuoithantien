@@ -5,7 +5,7 @@
         <div class="container col-md-12">
             <div class="modified-mode">
                 <div class="col-lg-10 col-lg-offset-0">
-                    <h1>THÊM MỚI ẢNH THƯ VIỆN ẢNH
+                    <h1>Cập nhật ảnh
                     </h1>
                     <?php
                     echo form_open_multipart('', array('class' => 'form-horizontal'));
@@ -15,14 +15,6 @@
                         echo form_label('Tiêu đề', 'title');
                         echo form_error('title');
                         echo form_input('title', set_value('title', $image_row['title']), 'class="form-control" id="title"');
-                        ?>
-                    </div>
-                    
-                    <div class="form-group picture">
-                        <?php
-                        echo form_label('Image', 'image');
-                        echo form_error('image');
-                        echo form_upload('image','','multiple');
                         ?>
                     </div>
                     

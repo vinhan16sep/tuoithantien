@@ -45,7 +45,7 @@ class Admission extends Public_Controller {
         $this->render('admission_procedure_view');
     }
 
-    public function list(){
+    public function show_list(){
         $slug = $this->uri->segment(3);
         $check_slug = array('hoc-phi', 'chuong-trinh-khuyen-mai');
         if(in_array($slug, $check_slug) == false){

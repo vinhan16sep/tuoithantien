@@ -97,7 +97,7 @@
               </li>
 
               <li class="<?php echo ($sub_active == 'list' && $icon_active == 'hoc-phi')? 'active' : '' ?>">
-                <a href="<?php echo base_url('admin/admission/list/hoc-phi'); ?>">
+                <a href="<?php echo base_url('admin/admission/show_list/hoc-phi'); ?>">
                   <i class="fa fa-money" aria-hidden="true"></i> Học phí
                 </a>
               </li>
@@ -109,7 +109,7 @@
               </li>
 
               <li class="<?php echo ($sub_active == 'list' && $icon_active == 'chuong-trinh-khuyen-mai')? 'active' : '' ?>">
-                <a href="<?php echo base_url('admin/admission/list/chuong-trinh-khuyen-mai'); ?>">
+                <a href="<?php echo base_url('admin/admission/show_list/chuong-trinh-khuyen-mai'); ?>">
                   <i class="fa fa-gift" aria-hidden="true"></i> Chương trình khuyến mại
                 </a>
               </li>
@@ -134,19 +134,19 @@
               </li>
 
               <li class="<?php echo ($sub_active == 'list' && $icon_active == 'lien-lac')? 'active' : '' ?>">
-                <a href="<?php echo base_url('admin/parental/list/lien-lac'); ?>">
+                <a href="<?php echo base_url('admin/parental/show_list/lien-lac'); ?>">
                   <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Liên lạc
                 </a>
               </li>
 
               <li class="<?php echo ($sub_active == 'list' && $icon_active == 'thuc-don')? 'active' : '' ?>">
-                <a href="<?php echo base_url('admin/parental/list/thuc-don'); ?>">
+                <a href="<?php echo base_url('admin/parental/show_list/thuc-don'); ?>">
                   <i class="fa fa-cutlery" aria-hidden="true"></i> Thực đơn
                 </a>
               </li>
 
               <li class="<?php echo ($sub_active == 'list' && $icon_active == 'y-te')? 'active' : '' ?>">
-                <a href="<?php echo base_url('admin/parental/list/y-te'); ?>">
+                <a href="<?php echo base_url('admin/parental/show_list/y-te'); ?>">
                   <i class="fa fa-medkit" aria-hidden="true"></i> Y tế
                 </a>
               </li>
@@ -158,7 +158,7 @@
               </li>
 
               <li class="<?php echo ($sub_active == 'list' && $icon_active == 'ky-luat')? 'active' : '' ?>">
-                <a href="<?php echo base_url('admin/parental/list/ky-luat'); ?>">
+                <a href="<?php echo base_url('admin/parental/show_list/ky-luat'); ?>">
                   <i class="fa fa-address-book" aria-hidden="true"></i> Kỷ luật
                 </a>
               </li>
@@ -208,7 +208,7 @@
             </ul>
           </li>
 
-          <li>
+          <li style="display: none;">
             <a href="<?php echo base_url('admin/comment') ?>">
               <i class="fa fa-commenting-o" aria-hidden="true"></i>
               <span>Bình luận</span>

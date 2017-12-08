@@ -51,7 +51,7 @@ class Parental extends Public_Controller {
         $this->render('parental_activity_view');
     }
 
-    public function list(){
+    public function show_list(){
         $slug = $this->uri->segment(2);
         $check_slug = array('lien-lac', 'thuc-don', 'y-te', 'ky-luat');
         if(in_array($slug, $check_slug) == false){

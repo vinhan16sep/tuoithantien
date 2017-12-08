@@ -65,7 +65,7 @@ class Parental extends Admin_Controller{
 		$this->render('admin/parental/activity_view');
 	}
 
-	public function list(){
+	public function show_list(){
 
     	$this->load->helper('form');
         $this->load->library('form_validation');
@@ -114,7 +114,7 @@ class Parental extends Admin_Controller{
         }
 
         $config = array();
-        $base_url = base_url() . 'admin/parental/list/'.$slug;
+        $base_url = base_url() . 'admin/parental/show_list/'.$slug;
         $per_page = 10;
         $uri_segment = 5;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
@@ -196,7 +196,7 @@ class Parental extends Admin_Controller{
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viêt thất bại: ' . $e->getMessage());
                 }
-                redirect('admin/parental/list/'.$slug, 'refresh');
+                redirect('admin/parental/show_list/'.$slug, 'refresh');
             }
         }
 	}
@@ -235,7 +235,7 @@ class Parental extends Admin_Controller{
                 }catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Thêm mới bài viết thất bại: ' . $e->getMessage());
                 }
-                redirect('admin/parental/list/'.$this->input->post('url'), 'refresh');
+                redirect('admin/parental/show_list/'.$this->input->post('url'), 'refresh');
             }
         }
 

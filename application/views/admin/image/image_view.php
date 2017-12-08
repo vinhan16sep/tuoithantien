@@ -13,7 +13,7 @@
                 <?php
                     echo form_open_multipart('admin/image/index', array('class' => 'form-horizontal'));
                 ?>
-                    <a type="button" href="<?php echo site_url('admin/library/create_image/'.$id); ?>" class="btn btn-primary">Thêm mơi</a>
+                    <a type="button" href="<?php echo site_url('admin/library/create_image/'.$id); ?>" class="btn btn-primary">THÊM MỚI</a>
                     <a type="button" href="<?php echo site_url('admin/library/remove_all_image/'.$id); ?>" class="btn btn-primary">XÓA HẾT</a>
                 <?php echo form_close(); ?>
             </div>

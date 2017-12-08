@@ -9,7 +9,7 @@
             <h3>Quản lý video trên trang chủ</h3>
             <div class="row">
                 <form action="<?php echo base_url('admin/video') ?>" class="form-horizontal" method="get">
-                    <a type="button" href="<?php echo site_url('admin/video/create'); ?>" class="btn btn-primary">Thêm mơi</a>
+                    <a type="button" href="<?php echo site_url('admin/video/create'); ?>" class="btn btn-primary">THÊM MỚI</a>
                     <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: right">
                     <input type="text" name="search" placeholder="Tìm Kiếm ..." class="form-control" style="float: right; width: 50%;" value="<?php echo $search ?>">
                 </form>
