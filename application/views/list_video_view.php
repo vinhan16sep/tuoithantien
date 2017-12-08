@@ -4,7 +4,7 @@
             <h3>Thư viện Video</h3>
             <div class="blogs col-md-8 col-sm-8 col-xs-12">
                 <div class="row">
-                	<?php if ($list != ''): ?>
+                	<?php if (!empty($list)): ?>
 	                	<?php foreach ($list as $key => $value): ?>
 		                    <div class="item col-md-12 col-sm-12 col-xs-12">
 		                        <div class="inner">
