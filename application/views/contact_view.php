@@ -6,25 +6,38 @@
             <div class="left col-md-6 col-sm-6 col-xs-12">
                 <h1>Gửi ý kiến đóng góp</h1>
 
-                <form>
+                <?php
+                echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'contact-form'));
+                ?>
                     <div class="row">
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                            <label for="inputName">Họ và Tên</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="Họ và tên phụ huynh">
+                            <?php
+                            echo form_label('Họ và Tên', 'name');
+                            echo form_error('name');
+                            echo form_input('name', set_value('name'), 'class="form-control contact_name" placeholder="Họ và tên phụ huynh"');
+                            ?>
                         </div>
                         <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                            <label for="inputEmail">Email address</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            <?php
+                            echo form_label('Email address', 'email');
+                            echo form_error('email');
+                            echo form_input('email', set_value('email'), 'class="form-control" placeholder="Email"');
+                            ?>
                         </div>
                         <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                            <label for="inputEmail">Ý kiến nhận xét</label>
-                            <textarea class="form-control" rows="5"></textarea>
+                            <?php
+                            echo form_label('Ý kiến nhận xét', 'content');
+                            echo form_error('content');
+                            echo form_textarea('content', set_value('content'), 'class="form-control" rows="4" placeholder=""');
+                            ?>
                         </div>
                         <div class="form-group col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary hvr-icon-forward" type="submit">Gửi nhận xét</button>
                         </div>
                     </div>
-                </form>
+                <?php
+                echo form_close();
+                ?>
             </div>
             <div class="right col-md-6 col-sm-6 col-xs-12">
                 <h1>Liên hệ với chúng tôi</h1>
@@ -75,3 +88,21 @@
     </div>
 
 </section>
+<script>
+
+    $('form#contact-form').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('contact/create'); ?>",
+            data: {
+                input: $("#contact-form").serialize()
+            },
+            success: function(res){
+                alert('Cảm ơn ' + $('.contact_name').val() + ', ý kiến của bạn đã được gửi!');
+            },
+            error: function() { alert("Error mail."); }
+        });
+
+    });
+</script>
