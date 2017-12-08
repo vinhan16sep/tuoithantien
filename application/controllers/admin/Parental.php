@@ -193,7 +193,7 @@ class Parental extends Admin_Controller{
                     'title'        => $this->input->post('title'),
                     'slug'         => $unique_slug,
                     'category'     => $this->input->post('cat'),
-                    'description'  => $this->input->post('intro'),
+                    'description'  => $this->input->post('description'),
                     'content'      => $this->input->post('content'),
                     'modified_at'  => $this->author_info['modified_at'],
                     'modified_by'  => $this->author_info['modified_by']
@@ -233,7 +233,7 @@ class Parental extends Admin_Controller{
                     'slug'          => $unique_slug,
                     'category'      => $this->input->post('cat'),
                     'image'         => $image,
-                    'description'  => $this->input->post('intro'),
+                    'description'  => $this->input->post('description'),
                     'content'       => $this->input->post('content'),
                     'created_at'    => $this->author_info['created_at'],
                     'created_by'    => $this->author_info['created_by'],

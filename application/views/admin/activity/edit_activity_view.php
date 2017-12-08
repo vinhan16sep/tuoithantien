@@ -52,9 +52,9 @@
 
             <div class="form-group">
                 <?php
-                echo form_label('Giới thiệu', 'intro');
-                echo form_error('intro');
-                echo form_textarea('intro', set_value('intro', $activity['description'], false), 'class="form-control" rows="5" ')
+                echo form_label('Giới thiệu', 'description');
+                echo form_error('description');
+                echo form_textarea('description', set_value('description', $activity['description'], false), 'class="form-control" rows="5" ')
                 ?>
             </div>
 
