@@ -36,12 +36,11 @@
                         <table class="table table-hover table-bordered table-condensed">
                             <tbody>
                                 <tr>
-                                    <td style="width: 100px"><b><a href="#">Ảnh đại diện</a></b></td>
-                                    <td style="width: 100px"><b><a href="#">Tiêu đề</a></b></td>
-                                    <td style="width: 100px"><b><a href="#">Slug</a></b></td>
-                                    <td style="width: 100px"><b><a href="#">Danh mục</a></b></td>
-                                    <td><b><a href="#">Nội dung</a></b></td>
-                                    <td><b>Operations</b></td>
+                                    <td style="width: 150px"><b><a href="#">Ảnh đại diện</a></b></td>
+                                    <td><b><a href="#">Tiêu đề</a></b></td>
+                                    <td><b><a href="#">Slug</a></b></td>
+                                    <td><b><a href="#">Danh mục</a></b></td>
+                                    <td style="width: 50px"><b>Operations</b></td>
                                 </tr>
                                 <?php foreach ($activity as $value): ?>   
                                     <tr class="row_<?php echo $value['id'] ?>">
@@ -66,7 +65,6 @@
                                                 }
                                             ?>
                                         </td>
-                                        <td><?php echo $value['content'] ?></td>
                                         <td>
                                             <form class="form_ajax">
                                                 <a href="<?php echo base_url('admin/activity/edit/'.$slug.'/'.$value['id']) ?>" title="Chỉnh sửa">

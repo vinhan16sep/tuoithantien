@@ -20,13 +20,12 @@
             <?php if ($library): ?>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 10px;">
-                        <table class="table table-hover table-bordered table-condensed">
+                        <table class="table table-hover table-bordered table-condensed admin">
                             <tbody>
                                 <tr>
-                                    <td style="width: 100px"><b><a href="#">Ảnh đại diện</a></b></td>
-                                    <td style="width: 150px"><b><a href="#">Tiêu đề</a></b></td>
-                                    <td style="width: 150px"><b><a href="#">Slug</a></b></td>
-                                    <td><b><a href="#">Nội dung</a></b></td>
+                                    <td style="width: 150px"><b><a href="#">Ảnh đại diện</a></b></td>
+                                    <td><b><a href="#">Tiêu đề</a></b></td>
+                                    <td><b><a href="#">Slug</a></b></td>
                                     <td style="width: 100px"><b>Operations</b></td>
                                 </tr>
                                 <?php foreach ($library as $value): ?>
@@ -38,7 +37,6 @@
                                         <td><img src="<?php echo base_url('assets/upload/image/'.$value['slug'].'/'.$image['image']) ?>" alt=""></td>
                                         <td><?php echo $value['title'] ?></td>
                                         <td><?php echo $value['slug'] ?></td>
-                                        <td><?php echo $value['content'] ?></td>
                                         <td>
                                             <form class="form_ajax">
                                                 <a href="<?php echo base_url('admin/library/image/'.$value['id']) ?>" title="Xem danh sách ảnh" class='gallery'>

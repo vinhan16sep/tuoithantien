@@ -26,9 +26,9 @@
                 ?>
                 <select name="cat" class="form-control cat">
                     <?php if ($introduce['category'] == 1): ?>
-                        <option value="1">Giáo Dục</option>
+                        <option value="1" >Giáo Dục</option>
                     <?php else: ?>
-                        <option value="2">Ngoại khóa</option>
+                        <option value="2" >Ngoại khóa</option>
                     <?php endif ?>
                     
                 </select>
