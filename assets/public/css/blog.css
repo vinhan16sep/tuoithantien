@@ -61,3 +61,7 @@ Author: hung.luong@matocreative.vn
 .blogs .comments textarea {
     resize: none;
 }
+
+.container-fluid#registerScreen{
+	padding-bottom: 8em;
+}

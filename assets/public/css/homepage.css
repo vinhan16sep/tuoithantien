@@ -7,7 +7,7 @@ Author: hung.luong@matocreative.vn
 */
 
 .slide#slideHomepage{
-	min-height: 600px;
+	height: fit-content;
 }
 
 .container-fluid#introduce{
@@ -15,6 +15,20 @@ Author: hung.luong@matocreative.vn
 	padding-bottom: 2em;
 	background: #f38991;
 	color: #fff;
+	
+	background-image: url("../img/bg_index_about.png");
+	background-position: center center;
+	background-size: cover;
+
+	position: relative;
+}
+
+.footer_img{
+	position: absolute;
+	top:100%;
+	left: 50%;
+	margin-top: -2px;
+	margin-left: -960px;
 }
 
 .img_frame{
@@ -25,26 +39,33 @@ Author: hung.luong@matocreative.vn
 
 .img_frame img{
 	position:absolute;
-}
-
-img#frame_01, img#frame_02, img#frame_03{
-	left: 50%;
-	top: 50%;
+	z-index: 99;
 }
 
 img#frame_01{
+	left: 55%;
+	top: 25%;
 	margin-top: -134px;
 	margin-left: -123px;
 }
 
 img#frame_02{
+	left: 30%;
+	top: 40%;
 	margin-top: -150px;
 	margin-left: -148px;
 }
 
 img#frame_03{
+	left: 40%;
+	top: 60%;
 	margin-top: -121px;
 	margin-left: -109px;
+}
+
+.container#featured_01{
+	padding-top: 0em;
+	padding-bottom: 2em;
 }
 
 .featured .inner img{
@@ -72,6 +93,8 @@ img#frame_03{
 	padding-bottom: 2em;
 	background: #6bbfc2;
 	color: #fff;
+
+	position: relative;
 }
 
 .container-fluid#blogs h1{
@@ -96,13 +119,18 @@ img#frame_03{
 .container-fluid#blogs .container #frame_04{
 	position: absolute;
 	top: 40%;
-	left: -20%;
+	left: -30%;
 }
 
 .container-fluid#blogs .container #frame_05{
 	position: absolute;
 	top: 60%;
 	right: -30%;
+}
+
+.container#featured_02{
+	padding-top: 0em;
+	padding-bottom: 2em;
 }
 
 .container#featured_02 .media-left img{
@@ -125,6 +153,22 @@ img#frame_03{
 
 .container-fluid#comments .screen_title h1{
 	color: #fff;
+}
+
+.container-fluid#comments{
+	position: relative;
+}
+
+.container-fluid#comments #cloud_02{
+	position: absolute;
+	top: 40%;
+	left: 0;
+}
+
+.container-fluid#comments #cloud_01{
+	position: absolute;
+	top: 60%;
+	right: 0;
 }
 
 /* Carousel */

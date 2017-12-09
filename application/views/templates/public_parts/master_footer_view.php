@@ -24,33 +24,40 @@
 
         <div class="row bottom_nav">
             <div class="col-md-3 col-sm-3 col-xs-12">
+                <h3>Về chúng tôi</h3>
                 <ul class="list-unstyled">
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="about.html">Giới thiệu</a></li>
-                    <li><a href="shop.html">Sản phẩm</a></li>
-                    <li><a href="advice.html">Tư vấn</a></li>
-                    <li><a href="news.html">Tin tức</a></li>
-                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu') ?>">Tổng quan</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>">Ngoại khóa</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
+                <h3>Thông tin nhập học</h3>
                 <ul class="list-unstyled">
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="about.html">Giới thiệu</a></li>
-                    <li><a href="shop.html">Sản phẩm</a></li>
-                    <li><a href="advice.html">Tư vấn</a></li>
-                    <li><a href="news.html">Tin tức</a></li>
-                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>">Thủ tục nhập học</a></li>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>">Học phí</a></li>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>">Lịch học</a></li>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>">Chương trình khuyến mãi</a></li>
                 </ul>
             </div>
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <h3>Phối hợp cùng phụ huynh</h3>
                 <ul class="list-unstyled">
-                    <li><a href="index.html">Trang chủ</a></li>
-                    <li><a href="about.html">Giới thiệu</a></li>
-                    <li><a href="shop.html">Sản phẩm</a></li>
-                    <li><a href="advice.html">Tư vấn</a></li>
-                    <li><a href="news.html">Tin tức</a></li>
-                    <li><a href="contact.html">Liên hệ</a></li>
+                    <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>">Chế độ sinh hoạt 1 ngày</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>">Liên lạc</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>">Thực đơn</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>">Y tế</a></li>
+                    <li><a href="<?php echo base_url('gio-dua-don') ?>">Giờ đưa đón</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>">Kỷ luật</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12">
+                <h3>Hoạt động</h3>
+                <ul class="list-unstyled">
+                    <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>">Thông báo của trường</a></li>
+                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>">Thư viện ảnh</a></li>
+                    <li><a href="<?php echo base_url('thu-vien/video') ?>">Video</a></li>
+                    <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>">Tuyển sinh</a></li>
+                    <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>">Trải nghiệm</a></li>
                 </ul>
             </div>
         </div>
