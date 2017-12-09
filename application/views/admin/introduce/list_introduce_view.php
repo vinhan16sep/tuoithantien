@@ -40,15 +40,15 @@
             <?php if ($introduces): ?>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 10px;">
-                        <table class="table table-hover table-bordered table-condensed">
+                        <table class="table table-hover table-bordered table-condensed admin">
                             <tr>
                                 <td style="width: 150px"><b><a href="#">Ảnh đại diện</a></b></td>
                                 <td><b><a href="#">Tiêu đề</a></b></td>
                                 <td><b><a href="#">Slug</a></b></td>
+                                <td><b><a href="#">Danh mục</a></b></td>
                                 <?php if ($slug != 'ngoai-khoa'): ?>
-                                    <td><b><a href="#">Danh mục</a></b></td>
+                                    <td><b><a href="#">Danh mục con</a></b></td>
                                 <?php endif ?>
-                                <td><b><a href="#">Danh mục con</a></b></td>
                                 <td><b>Operations</b></td>
                             </tr>
                             

@@ -5712,3 +5712,8 @@ table.text-center th {
   width: 100px;
   padding-right: 15px;
 }
+
+.admin tbody tr td b{
+  color: red;
+  float: none;
+}
