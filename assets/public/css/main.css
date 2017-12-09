@@ -129,6 +129,11 @@ a h1, a h2{
 	color: #f4aa1c;
 }
 
+textarea {
+	overflow: hidden;
+	resize: none;
+}
+
 
 /* CSS Footer */
 

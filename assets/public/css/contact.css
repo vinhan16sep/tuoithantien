@@ -21,3 +21,8 @@
 .social_network li a:hover{
 	color: #f4aa1c;
 }
+
+.form-horizontal .form-group{
+	margin-left: 0;
+	margin-right: 0;
+}
