@@ -30,30 +30,6 @@
 
                 <?php echo $detail['content'] ?>
 
-				<br><br>
-				<div id="comment">
-					<?php if (isset($comment)): ?>
-						<?php foreach ($comment as $key => $value): ?>
-                            <div class="media cmt">
-                                <div class="media-left">
-                                    <img class="media-object" src="<?php echo site_url('assets/public/img/comment_ava.png') ?>" alt="Comment Avatar" width="64">
-                                </div>
-                                <div class="media-body">
-                                    <h3 class="media-heading" style="color: #f4aa1c"><?php echo $value['name'] ?>:</h3>
-                                    <span><?php echo $value['content'] ?></span>
-                                    <span style="float: right; font-size: 1em"><?php echo $value['created_at'] ?></span>
-                                </div>
-                            </div>
-						<?php endforeach ?>
-					<?php else: ?>
-                        <div class="media cmt">
-						    <p class="cmt_error">Chưa có bình luận cho bài viết này</p>
-                        </div>
-					<?php endif ?>
-					
-					
-				</div>
-				<br><br>
 
                 <div class="comments">
                 	
@@ -88,6 +64,32 @@
                             </div>
                         </div>
                     <?php echo form_close(); ?>
+                </div>
+
+                <div id="comment">
+                    <?php if (isset($comment)): ?>
+                        <?php foreach ($comment as $key => $value): ?>
+                            <div class="media cmt">
+                                <div class="media-left">
+                                    <img class="media-object" src="<?php echo site_url('assets/public/img/comment_ava.png') ?>" alt="Comment Avatar" width="64">
+                                </div>
+                                <div class="media-body">
+                                    <h3 class="media-heading" style="color: #f4aa1c"><?php echo $value['name'] ?>:</h3>
+                                    <span><?php echo $value['content'] ?></span>
+                                    <span style="float: right; font-size: 1em"><?php echo $value['created_at'] ?></span>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    <?php else: ?>
+                        <div class="media cmt">
+                            <p class="cmt_error">Chưa có bình luận cho bài viết này</p>
+                        </div>
+                    <?php endif ?>
+
+
+                </div>
+                <div id="comment_readmore">
+                    <button class="btn btn-primary btn-sm center-block" type="submit">Xem thêm bình luận</button>
                 </div>
 
             </div>

@@ -65,3 +65,12 @@ Author: hung.luong@matocreative.vn
 .container-fluid#registerScreen{
 	padding-bottom: 8em;
 }
+
+#comment_readmore{
+	padding-top: 2em;
+	padding-bottom: 1em;
+}
+
+.item iframe{
+	min-height: 500px;
+}

@@ -56,7 +56,10 @@
                         </a>
                         <ul class="dropdown-menu orange">
                             <li><a href="<?php echo base_url('gioi-thieu') ?>">Tổng quan</a></li>
-                            <!-- <li><a href="#">Giáo dục</a></li> -->
+                            <li><a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>">Mục tiêu</a></li>
+                            <li><a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>">Ngoại ngữ</a></li>
+                            <li><a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>">Giáo dục theo lứa tuổi</a></li>
+                            <li><a href="<?php echo base_url('gioi-thieu/tap-huan') ?>">Tập huấn</a></li>
                             <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>">Ngoại khóa</a></li>
                         </ul>
                     </li>
