@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/bootstrap.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/font-awesome.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/reset-bootstrap.css') ?>">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Itim|Pacifico" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Itim|Pacifico" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/font-settings.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/animate.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/hover.css') ?>">
@@ -40,8 +40,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
-                    <img src="<?php echo site_url('assets/public/img/logo_1.png') ?>">
+                <a class="navbar-brand" href="<?php echo base_url('trang-chu') ?>">
+                    <img src="<?php echo site_url('assets/public/img/logo_2.png') ?>">
                 </a>
             </div>
 

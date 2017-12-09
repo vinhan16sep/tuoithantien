@@ -24,211 +24,36 @@ Author: hung.luong@matocreative.vn
 	color: #f4aa1c;
 }
 
-.img_frame{
-	width:500px;
-	height:500px;
-	position:relative;
+.main_content .container{
+    position: relative;
 }
 
 .img_frame img{
-	position:absolute;
-}
-
-img#frame_01, img#frame_02, img#frame_03{
-	left: 50%;
-	top: 50%;
+    position:absolute;
+    z-index: 99;
 }
 
 img#frame_01{
-	margin-top: -134px;
-	margin-left: -123px;
+    left: -20%;
+    top: 15%;
+    margin-top: -134px;
+    margin-left: -123px;
 }
 
 img#frame_02{
-	margin-top: -150px;
-	margin-left: -148px;
+    right: -30%;
+    top: 30%;
+    margin-top: -150px;
+    margin-left: -148px;
 }
 
 img#frame_03{
-	margin-top: -121px;
-	margin-left: -109px;
+    left: -15%;
+    top: 45%;
+    margin-top: -121px;
+    margin-left: -109px;
 }
 
-#slider-text{
-  padding-top: 40px;
-  display: block;
-}
-
-#slider-text .col-md-6{
-  overflow: hidden;
-}
-
-#slider-text h2 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: 30px;
-  letter-spacing: 3px;
-  margin: 30px auto;
-  padding-left: 40px;
-}
-#slider-text h2::after{
-  border-top: 2px solid #c7c7c7;
-  content: "";
-  position: absolute;
-  bottom: 35px;
-  width: 100%;
-  }
-
-#itemslider h4{
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  margin: 10px auto 3px;
-}
-#itemslider h5{
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: bold;
-  font-size: 12px;
-  margin: 3px auto 2px;
-}
-#itemslider h6{
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;;
-  font-size: 10px;
-  margin: 2px auto 5px;
-}
-
-#slider-control img{
-  padding-top: 60%;
-  margin: 0 auto;
-}
-@media screen and (max-width: 992px){
-#slider-control img {
-  padding-top: 70px;
-  margin: 0 auto;
-}
-}
-
-.carousel-showmanymoveone .carousel-control {
-  width: 4%;
-  background-image: none;
-}
-.carousel-showmanymoveone .carousel-control.left {
-  margin-left: 5px;
-}
-.carousel-showmanymoveone .carousel-control.right {
-  margin-right: 5px;
-}
-.carousel-showmanymoveone .cloneditem-1,
-.carousel-showmanymoveone .cloneditem-2,
-.carousel-showmanymoveone .cloneditem-3,
-.carousel-showmanymoveone .cloneditem-4,
-.carousel-showmanymoveone .cloneditem-5 {
-  display: none;
-}
-@media all and (min-width: 768px) {
-  .carousel-showmanymoveone .carousel-inner > .active.left,
-  .carousel-showmanymoveone .carousel-inner > .prev {
-    left: -50%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .active.right,
-  .carousel-showmanymoveone .carousel-inner > .next {
-    left: 50%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .left,
-  .carousel-showmanymoveone .carousel-inner > .prev.right,
-  .carousel-showmanymoveone .carousel-inner > .active {
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
-    display: block;
-  }
-}
-@media all and (min-width: 768px) and (transform-3d), all and (min-width: 768px) and (-webkit-transform-3d) {
-  .carousel-showmanymoveone .carousel-inner > .item.active.right,
-  .carousel-showmanymoveone .carousel-inner > .item.next {
-    -webkit-transform: translate3d(50%, 0, 0);
-    transform: translate3d(50%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.active.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
-  .carousel-showmanymoveone .carousel-inner > .item.active {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    left: 0;
-  }
-}
-@media all and (min-width: 992px) {
-  .carousel-showmanymoveone .carousel-inner > .active.left,
-  .carousel-showmanymoveone .carousel-inner > .prev {
-    left: -16.666%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .active.right,
-  .carousel-showmanymoveone .carousel-inner > .next {
-    left: 16.666%;
-  }
-  .carousel-showmanymoveone .carousel-inner > .left,
-  .carousel-showmanymoveone .carousel-inner > .prev.right,
-  .carousel-showmanymoveone .carousel-inner > .active {
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner .cloneditem-2,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-3,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-4,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-5,
-  .carousel-showmanymoveone .carousel-inner .cloneditem-6  {
-    display: block;
-  }
-}
-@media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
-  .carousel-showmanymoveone .carousel-inner > .item.active.right,
-  .carousel-showmanymoveone .carousel-inner > .item.next {
-    -webkit-transform: translate3d(25%, 0, 0);
-    transform: translate3d(25%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.active.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev {
-    -webkit-transform: translate3d(-25%, 0, 0);
-    transform: translate3d(-25%, 0, 0);
-    left: 0;
-  }
-  .carousel-showmanymoveone .carousel-inner > .item.left,
-  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
-  .carousel-showmanymoveone .carousel-inner > .item.active {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    left: 0;
-  }
-}
-
-#slider-control .carousel-control{
-	position: static;
-	color: #333;
-}
-
-#slider-control .carousel-control .icon-prev, #slider-control .carousel-control .icon-next,
-#slider-control .carousel-control .glyphicon-menu-left, #slider-control .carousel-control .glyphicon-menu-right{
-	position: absolute;
-	top: 50%;
-}
-
-#slider-control .carousel-control .icon-prev, #slider-control .carousel-control .glyphicon-menu-left{
-	right: auto;
-	left: 0;
-}
-
-#slider-control .carousel-control .icon-prev, #slider-control .carousel-control .glyphicon-menu-right{
-	right: 0;
-	left: auto;
-}
 
 #infoNumber{
 	margin-top: 50px;
@@ -249,6 +74,6 @@ img#frame_03{
 }
 
 .container-fluid#registerScreen{
-	
+	padding-bottom: 10em;
 }
 

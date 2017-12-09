@@ -32,7 +32,7 @@ header .cover{
 }
 
 .navbar-brand img{
-	width: 100px;
+	width: 250px;
 }
 
 .navbar-nav{
@@ -155,5 +155,9 @@ a h1, a h2{
 }
 
 .bottom_nav ul li a{
+	color: #fff;
+}
+
+.bottom_nav h3{
 	color: #fff;
 }

@@ -12,26 +12,31 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="..." alt="...">
+                <img src="<?php echo site_url('assets/public/img/slide/slide_01.jpg') ?>" alt="slide_01">
                 <div class="carousel-caption">
                     ...
                 </div>
             </div>
             <div class="item">
-                <img src="..." alt="...">
+                <img src="<?php echo site_url('assets/public/img/slide/slide_02.jpg') ?>" alt="slide_01">
                 <div class="carousel-caption">
                     ...
                 </div>
             </div>
-            ...
+            <div class="item">
+                <img src="<?php echo site_url('assets/public/img/slide/slide_03.jpg') ?>" alt="slide_03">
+                <div class="carousel-caption">
+                    ...
+                </div>
+            </div>
         </div>
 
         <!-- Controls -->
-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <a class="left carousel-control" href="slideHomepage" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <a class="right carousel-control" href="#slideHomepage" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -72,6 +77,9 @@
                 </div>
             </div>
         </div>
+        <div class="footer_img" id="footer_about">
+            <img src="<?php echo site_url('assets/public/img/footer_pink.png') ?>" alt="about_footer">
+        </div>
     </div>
 
     <div class="container" id="featured_01">
@@ -83,7 +91,7 @@
         <div class="row featured">
             <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.0s">
                 <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="featured_1_1"></a>
+                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/muc-tieu.jpg') ?>" alt="featured_1_1"></a>
                     <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><h2>Mục tiêu</h2></a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
                 </div>
@@ -91,7 +99,7 @@
 
             <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="featured_1_1"></a>
+                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-ngu.jpg') ?>" alt="featured_1_2"></a>
                     <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><h2>Ngoại ngữ</h2></a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
                 </div>
@@ -99,7 +107,7 @@
 
             <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="1.0s">
                 <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="featured_1_1"></a>
+                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/gdmlt.jpg') ?>" alt="featured_1_3"></a>
                     <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><h2>Giáo dục theo lứa tuổi</h2></a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
                 </div>
@@ -107,12 +115,25 @@
 
             <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="1.5s">
                 <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="featured_1_1"></a>
+                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/tap-huan.jpg') ?>" alt="featured_1_4"></a>
                     <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><h2>Tập huấn</h2></a>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
                 </div>
             </div>
 
+            <div class="item col-md-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-delay="2.0s">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12 col-xs-12">
+                            <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-khoa.jpg') ?>" alt="featured_1_5"></a>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-xs-12">
+                            <a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>"><h2>Ngoại khóa</h2></a>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -213,6 +234,11 @@
             <img id="frame_04" src="<?php echo site_url('assets/public/img/img_frame-07.png') ?>" alt="frame-1" class="wow slideInUp">
             <img id="frame_05" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp">
         </div>
+
+        <div class="footer_img" id="footer_about">
+            <img src="<?php echo site_url('assets/public/img/footer_cyan.png') ?>" alt="about_footer">
+        </div>
+
     </div>
 
     <div class="container" id="featured_02">
@@ -221,7 +247,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="col-md-4 col-sm-6 col-xs-12 wow fadeInLeft">
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
@@ -235,7 +261,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="col-md-4 col-sm-6 col-xs-12 wow fadeIn">
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
@@ -249,7 +275,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="col-md-4 col-sm-6 col-xs-12 wow fadeInRight">
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
@@ -330,7 +356,8 @@
                 </div>
             </div>
         </div>
-        </div>
+        <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-05.png') ?>" alt="cloud-1" class="wow slideInUp">
+        <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-06.png') ?>" alt="cloud-2" class="wow slideInUp">
     </div>
 
 </section>

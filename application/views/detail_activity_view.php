@@ -1,9 +1,10 @@
+<link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/blog.css') ?>">
 
 <section class="main_content">
     <div class="container">
         <div class="row">
             
-            <div class="blogs col-md-8 col-sm-8 col-xs-12">
+            <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <div class="blogs_cover">
                     <img src="<?php echo base_url('assets/upload/introduce/'.$detail['image']) ?>" alt="ảnh cover bài viết" width=100%>
                 </div>
@@ -20,14 +21,21 @@
 				<div id="comment">
 					<?php if (isset($comment)): ?>
 						<?php foreach ($comment as $key => $value): ?>
-							<p>
-								<span style="color: red"><?php echo $value['name'] ?>:</span style="color: red">
-								<span><?php echo $value['content'] ?></span>
-								<span style="float: right; font-size: 10px"><?php echo $value['created_at'] ?></span>
-							</p>
+                            <div class="media cmt">
+                                <div class="media-left">
+                                    <img class="media-object" src="<?php echo site_url('assets/public/img/comment_ava.png') ?>" alt="Comment Avatar" width="64">
+                                </div>
+                                <div class="media-body">
+                                    <h3 class="media-heading" style="color: #f4aa1c"><?php echo $value['name'] ?>:</h3>
+                                    <span><?php echo $value['content'] ?></span>
+                                    <span style="float: right; font-size: 1em"><?php echo $value['created_at'] ?></span>
+                                </div>
+                            </div>
 						<?php endforeach ?>
 					<?php else: ?>
-						<p class="cmt_error">Chưa có bình luận cho bài viết này</p>
+                        <div class="media cmt">
+                            <p class="cmt_error">Chưa có bình luận cho bài viết này</p>
+                        </div>
 					<?php endif ?>
 					
 					

@@ -1,8 +1,10 @@
+<link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/blog.css') ?>">
+
 <section class="main_content">
     <div class="container">
         <div class="row">
             <h3>Thư viện Video</h3>
-            <div class="blogs col-md-8 col-sm-8 col-xs-12">
+            <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <div class="row">
                 	<?php if (!empty($list)): ?>
 	                	<?php foreach ($list as $key => $value): ?>
@@ -23,7 +25,7 @@
 		                    </div>
 	                    <?php endforeach ?>
 	                <?php else: ?>
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                        <div class="item col-md-3 col-sm-3 col-xs-12">
                             <div class="inner">
                                 Chưa có video nào được đăng!
                             </div>
