@@ -30,47 +30,70 @@
         <div id="infoNumber_footer" style="position: absolute; bottom: -45px; left: 50%;  margin-left: -960px;"><img src="<?php echo site_url('assets/public/img/screen_4_footer.png') ?>" alt="infoNumber_footer"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp" data-wow-delay="0.0s">
+                <div class="col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.0s">
                     <div class="media">
                         <div class="media-left">
-                            <span class="info_number">100%</span>
+                            <i class="fa fa-3x fa-home" aria-hidden="true"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Số học sinh theo học</h3>
-                            <h4>Đạt học lực xuất sắc</h4>
+                            <h1 class="media-heading">05</h1>
+                            <h4>Cơ sở đạt chuẩn quốc gia</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="media">
                         <div class="media-left">
-                            <span class="info_number">100%</span>
+                            <i class="fa fa-3x fa-graduation-cap" aria-hidden="true"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Số học sinh theo học</h3>
-                            <h4>Đạt học lực xuất sắc</h4>
+                            <h1 class="media-heading">4000+</h1>
+                            <h4>Học sinh theo học</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp" data-wow-delay="1.0s">
+                <div class="col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="1.0s">
                     <div class="media">
                         <div class="media-left">
-                            <span class="info_number">100%</span>
+                            <i class="fa fa-3x fa-users" aria-hidden="true"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Số học sinh theo học</h3>
-                            <h4>Đạt học lực xuất sắc</h4>
+                            <h1 class="media-heading">400+</h1>
+                            <h4>Giáo viên tâm huyết</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 wow fadeInUp" data-wow-delay="1.5s">
+
+                <div class="col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="1.5s">
                     <div class="media">
                         <div class="media-left">
-                            <span class="info_number">100%</span>
+                            <i class="fa fa-3x fa-thumbs-o-up" aria-hidden="true"></i>
                         </div>
                         <div class="media-body">
-                            <h3 class="media-heading">Số học sinh theo học</h3>
-                            <h4>Đạt học lực xuất sắc</h4>
+                            <h1 class="media-heading">99% +</h1>
+                            <h4>Phụ huynh hài lòng về chất lượng</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="2.0s">
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa fa-3x fa-book" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                            <h1 class="media-heading">500+</h1>
+                            <h4>Bài giảng đạt chuẩn</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 wow fadeInUp" data-wow-delay="2.5s">
+                    <div class="media">
+                        <div class="media-left">
+                            <i class="fa fa-3x fa-tree" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                            <h1 class="media-heading">50+</h1>
+                            <h4>Hoạt động ngoại khóa thường xuyên</h4>
                         </div>
                     </div>
                 </div>
