@@ -3,7 +3,7 @@
 <section class="main_content">
     <div id="slideHomepage" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators hidden-xs">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
@@ -13,21 +13,15 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="<?php echo site_url('assets/public/img/slide/slide_01.jpg') ?>" alt="slide_01">
-                <div class="carousel-caption">
-                    ...
-                </div>
+
             </div>
             <div class="item">
                 <img src="<?php echo site_url('assets/public/img/slide/slide_02.jpg') ?>" alt="slide_01">
-                <div class="carousel-caption">
-                    ...
-                </div>
+
             </div>
             <div class="item">
                 <img src="<?php echo site_url('assets/public/img/slide/slide_03.jpg') ?>" alt="slide_03">
-                <div class="carousel-caption">
-                    ...
-                </div>
+
             </div>
         </div>
 
@@ -44,7 +38,7 @@
     <div class="container-fluid" id="introduce">
         <div class="container">
             <div class="row">
-                <div class="left col-md-6 col-sm-6 col-xs-6">
+                <div class="left col-md-6 col-sm-6 col-xs-12">
                     <h1>Giới thiệu</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt mi vel nisl vehicula, non iaculis erat tincidunt. Nam dignissim mattis orci vitae porttitor. Nulla vel tincidunt nunc, at convallis magna. Integer malesuada elit et bibendum auctor. Sed et auctor metus. Pellentesque dapibus augue nec varius varius. Fusce eget magna viverra, tempor libero non, porta nunc. Proin sed laoreet eros. Aliquam pulvinar fermentum justo in ultrices. Duis suscipit pharetra arcu, eget tincidunt ante sodales hendrerit. Nulla nec sapien a orci tristique convallis eu eu velit. Vivamus diam arcu, tempus ut consectetur sit amet, aliquet vitae arcu. Quisque ullamcorper urna eu dolor sollicitudin eleifend. Nulla accumsan turpis condimentum neque rhoncus, sed mollis arcu porta. Quisque a felis sit amet leo posuere convallis. Sed mi mi, finibus sed nisi ut, porttitor vestibulum nisl.</p>
                     <div class="row">
@@ -68,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="right col-md-6 col-sm-6 col-xs-6">
+                <div class="right col-md-6 col-sm-6 col-xs-12">
                     <div class="img_frame">
                         <img id="frame_01" src="<?php echo site_url('assets/public/img/img_frame-07.png') ?>" alt="frame-1" class="wow slideInUp">
                         <img id="frame_02" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp">
@@ -121,7 +115,7 @@
                 </div>
             </div>
 
-            <div class="item col-md-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-delay="2.0s">
+            <div class="item col-md-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="inner">
                     <div class="row">
                         <div class="col-md-6 col-xs-12 col-xs-12">
@@ -139,100 +133,101 @@
 
     <div class="container-fluid" id="blogs">
         <div class="container">
-            <div class="left col-md-6 col-sm-6 col-xs-6">
-                <h1>Thông báo nhà trường</h1>
+            <div class="row">
+                <div class="left col-md-6 col-sm-6 col-xs-12">
+                    <h1>Thông báo nhà trường</h1>
 
-                <ul class="media-list">
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                            <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                            <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                        </div>
-                    </li>
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                            <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                            <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                        </div>
-                    </li>
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                            <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                            <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void();" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
+                    <ul class="media-list">
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
+                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
+                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
+                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void();" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="right col-md-6 col-sm-6 col-xs-12">
+                    <h1>Chia sẻ kinh nghiệm hay</h1>
+
+                    <ul class="media-list">
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
+                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
+                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
+                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:void();" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="right col-md-6 col-sm-6 col-xs-6">
-                <h1>Chia sẻ kinh nghiệm hay</h1>
-
-                <ul class="media-list">
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                            <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                            <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                        </div>
-                    </li>
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                            <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                            <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                        </div>
-                    </li>
-                    <li class="media">
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                            <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                            <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void();" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
-                    </li>
-                </ul>
-            </div>
-
-            <img id="frame_04" src="<?php echo site_url('assets/public/img/img_frame-07.png') ?>" alt="frame-1" class="wow slideInUp">
-            <img id="frame_05" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp">
+            <img id="frame_04" src="<?php echo site_url('assets/public/img/img_frame-07.png') ?>" alt="frame-1" class="wow slideInUp hidden-xs">
+            <img id="frame_05" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp hidden-xs">
         </div>
 
         <div class="footer_img" id="footer_about">
@@ -302,7 +297,7 @@
                 <div class="col-md-12 wow fadeIn" data-wow-delay="0.2s">
                     <div class="carousel slide" data-ride="carousel" id="quote-carousel">
                         <!-- Bottom Carousel Indicators -->
-                        <ol class="carousel-indicators">
+                        <ol class="carousel-indicators hidden-xs">
                             <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
                             </li>
                             <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg" alt="">
@@ -350,14 +345,14 @@
                         </div>
 
                         <!-- Carousel Buttons Next/Prev -->
-                        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-                        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                        <a data-slide="prev" href="#quote-carousel" class="left carousel-control hidden-xs"><i class="fa fa-chevron-left"></i></a>
+                        <a data-slide="next" href="#quote-carousel" class="right carousel-control hidden-xs"><i class="fa fa-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-05.png') ?>" alt="cloud-1" class="wow slideInUp">
-        <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-06.png') ?>" alt="cloud-2" class="wow slideInUp">
+        <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-05.png') ?>" alt="cloud-1" class="wow slideInUp hidden-xs">
+        <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-06.png') ?>" alt="cloud-2" class="wow slideInUp hidden-xs">
     </div>
 
 </section>

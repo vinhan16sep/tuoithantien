@@ -144,6 +144,7 @@ textarea {
 	background-color: #f38991;
 	background-image: url(../img/footer_bg.png);
 	background-position: center bottom;
+	background-repeat: no-repeat;
 }
 
 .footer h2{
