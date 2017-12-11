@@ -229,10 +229,17 @@ class Public_Controller extends MY_Controller {
     protected function comment($slug) {
         $this->load->model('comment_model');
         $where = array('slug' => $slug);
-        $comment = $this->comment_model->fetch_all($where);
+        $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;
         }
+    }
+
+    protected function count_comment($slug){
+        $this->load->model('comment_model');
+        $where = array('slug' => $slug);
+        $count_comment = $this->comment_model->fetch_all($where);
+        return $count_comment;
     }
 
     public function procedure(){

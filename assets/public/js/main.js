@@ -17,7 +17,10 @@ $(document).ready(function(){
 	.appendTo($(this));
 	}
 	});
-	
+
+	if($('#count-comment').val() > 5){
+		$('#comment_readmore').css('display', 'block');
+	}
 
 	/* comment */
 	$('.submit-comment').click(function(e){
@@ -50,15 +53,38 @@ $(document).ready(function(){
 			$('.cmt_error').hide();
 			jQuery.ajax({
 				type: "get",
-				url: "http://localhost/tuoithantien/comment/create_comment",
+				url: "http://localhost:8080/tuoithantien/comment/create_comment",
+				// url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
 				data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
 				success: function(result){
                     $('#comment > .cmt:first-child').before(JSON.parse(result).comment);
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#content').val('');
 				}
 			})
 		}
 		
 		return false;
 	})
+
+	// see more comment
+    var page = 1;
+	$('#comment_readmore').click(function () {
+		var slug = $('#slug').val();
+        page ++;
+        jQuery.ajax({
+            type: "get",
+            url: "http://localhost:8080/tuoithantien/comment/see_more_comment",
+            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+            data: {page : page, slug : slug},
+            success: function(result){
+				$('#comment > .cmt:last-child').after(result);
+				if(result == ''){
+                    $('#comment_readmore').fadeOut();
+				}
+            }
+        })
+    })
 	
 });
