@@ -21,14 +21,14 @@ a:hover{
 
 .btn-primary:hover{
 	color: #fff;
-    background-color: #b78015;
-    border-color: #b78015;
+    background-color: #f6bb49;
+    border-color: #f6bb49;
 }
 
 .btn-primary:focus, .btn-primary.focus {
     color: #fff;
-    background-color: #b78015;
-    border-color: #b78015;
+    background-color: #f6bb49;
+    border-color: #f6bb49;
 }
 
 .media {

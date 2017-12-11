@@ -68,7 +68,11 @@
     </div>
 </footer>
 
-<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey">
+<div class="scrollup">
+    <i class="fa fa-chevron-up fa-3x"></i>
+</div>
+
+<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey" data-hover="tooltip" data-placement="left" title="Thăm dò dư luận">
     <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
 </button>
 
@@ -77,11 +81,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h1 class="modal-title" id="myModalLabel">Thăm dò dư luận</h1>
+
             </div>
             <div class="modal-body">
+                <h1 class="modal-title" id="myModalLabel">Thăm dò dư luận</h1>
                 <label>
-                    <h2>Bạn quan tâm nhất điều gì khi con tới trường?</h2>
+                    Bạn quan tâm nhất điều gì khi con tới trường?
                 </label>
                 <div class="radio">
                     <label>
@@ -120,6 +125,10 @@
 
 <script>
     new WOW().init();
+
+    $(function () {
+        $('[data-hover="tooltip"]').tooltip();
+    });
 </script>
 <script type="text/javascript" src="<?php echo site_url('assets/public/js/main.js') ?>"></script>
 

@@ -3,20 +3,7 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <ul>
-                	<?php if ($list != ''): ?>
-                		<?php foreach ($list as $key => $value): ?>
-	                		<li><a href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
-	                	<?php endforeach ?>
-	                <?php else: ?>
 
-                	<?php endif ?>
-                	
-                    
-                </ul>
-            </div>
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <div class="blogs_cover">
                     <img src="<?php echo base_url('assets/upload/introduce/'.$detail['image']) ?>" alt="ảnh cover bài viết" width=100%>
@@ -92,6 +79,20 @@
                     <button class="btn btn-primary btn-sm center-block" type="submit">Xem thêm bình luận</button>
                 </div>
 
+            </div>
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+                <ul>
+                    <?php if ($list != ''): ?>
+                        <?php foreach ($list as $key => $value): ?>
+                            <li><a href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
+                        <?php endforeach ?>
+                    <?php else: ?>
+
+                    <?php endif ?>
+
+
+                </ul>
             </div>
         </div>
 
