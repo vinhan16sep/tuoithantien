@@ -51,11 +51,16 @@
                             <div class="item col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner">
                                     <img class="img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>">
-                                    <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+                                    <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
                                     <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('phoi-hop-cung-phu-huynh/').$slug.'/'.$value['slug']; ?>">Khám phá</a>
                                 </div>
                             </div>
                         <?php endforeach ?>
+
+                        <div class="col-md-12 text-center page">
+                            <?php echo $page_links; ?>
+                        </div>
+
                     <?php else: ?>
                         <div class="item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner">
@@ -69,17 +74,17 @@
                 <h1>Danh mục bài viết</h1>
 
                 <ul>
-                    <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>" >Liên lạc</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>" >Liên lạc</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>" >Thực đơn</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>" >Thực đơn</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>" >Y tế</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>" >Y tế</a></li>
 
-                    <li><a href="<?php echo base_url('gio-dua-don') ?>" >Giờ đưa đón</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>" >Giờ đưa đón</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>" >Kỷ luật</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>" >Kỷ luật</a></li>
                 </ul>
             </div>
         </div>
