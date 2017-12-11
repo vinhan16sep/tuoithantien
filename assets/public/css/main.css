@@ -167,3 +167,12 @@ textarea {
 .bottom_nav h3{
 	color: #fff;
 }
+
+button#surveyOn{
+	position: fixed;
+	top:50%;
+	right: 0;
+	z-index: 999;
+
+	border-radius: 50%;
+}
