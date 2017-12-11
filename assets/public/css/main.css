@@ -144,6 +144,7 @@ textarea {
 	background-color: #f38991;
 	background-image: url(../img/footer_bg.png);
 	background-position: center bottom;
+	background-repeat: no-repeat;
 }
 
 .footer h2{
@@ -165,4 +166,13 @@ textarea {
 
 .bottom_nav h3{
 	color: #fff;
+}
+
+button#surveyOn{
+	position: fixed;
+	top:50%;
+	right: 0;
+	z-index: 999;
+
+	border-radius: 50%;
 }

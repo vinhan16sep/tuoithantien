@@ -27,6 +27,10 @@
                 <h3>Về chúng tôi</h3>
                 <ul class="list-unstyled">
                     <li><a href="<?php echo base_url('gioi-thieu') ?>">Tổng quan</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>">Mục tiêu</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>">Ngoại ngữ</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>">Giáo dục theo lứa tuổi</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu/tap-huan') ?>">Tập huấn</a></li>
                     <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>">Ngoại khóa</a></li>
                 </ul>
             </div>
@@ -63,6 +67,54 @@
         </div>
     </div>
 </footer>
+
+<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey">
+    <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
+</button>
+
+<div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h1 class="modal-title" id="myModalLabel">Thăm dò dư luận</h1>
+            </div>
+            <div class="modal-body">
+                <label>
+                    <h2>Bạn quan tâm nhất điều gì khi con tới trường?</h2>
+                </label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Con được học và chơi gì?
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        "Khi đến tường cô giáo như mẹ hiền"
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                        Con được ăn gì? Uống gì? Ngủ ngon không?
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                        Tất cả các ý kiến trên
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Bình chọn</button>
+                <button type="button" class="btn btn-default">Xem kết quả</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 
