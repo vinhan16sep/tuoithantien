@@ -3,26 +3,22 @@
 <section class="main_content">
     <div id="slideHomepage" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
-        <ol class="carousel-indicators hidden-xs">
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <ol class="carousel-indicators">
+            <?php for($i = 0; $i < count($banner); $i++){ ?>
+                <li data-target="#slideHomepage" data-slide-to="<?php echo $i + 1; ?>" <?php echo ($i == 0) ? 'class="active"' : ''; ?>></li>
+            <?php } ?>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="<?php echo site_url('assets/public/img/slide/slide_01.jpg') ?>" alt="slide_01">
-
-            </div>
-            <div class="item">
-                <img src="<?php echo site_url('assets/public/img/slide/slide_02.jpg') ?>" alt="slide_01">
-
-            </div>
-            <div class="item">
-                <img src="<?php echo site_url('assets/public/img/slide/slide_03.jpg') ?>" alt="slide_03">
-
-            </div>
+            <?php foreach ($banner as $key => $value): ?>
+                <div class="item <?php echo ($key == 0) ? 'active' : ''; ?>">
+                    <img src="<?php echo site_url('assets/upload/banner/'.$value['image']) ?>" alt="slide_01">
+                    <div class="carousel-caption">
+                        ...
+                    </div>
+                </div>
+            <?php endforeach;?>
         </div>
 
         <!-- Controls -->

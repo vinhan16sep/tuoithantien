@@ -31,6 +31,15 @@
             </a>
           </li>
 
+            <li class="<?php echo ($active == 'banner')? 'active' : '' ?>">
+                <a href="<?php echo base_url('admin/banner/index'); ?>">
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                    <span>Banner</span>
+                    <span class="pull-right-container">
+              </span>
+                </a>
+            </li>
+
 
           <li class="<?php echo ($active == 'introduce')? 'active treeview' : 'treeview' ?>">
             <a href="">
