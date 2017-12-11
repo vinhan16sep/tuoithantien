@@ -23,7 +23,8 @@
                             echo '<td>' . $item['text'] . '</td>';
                             echo '<td><img src="' . site_url('assets/upload/banner/' . $item['image']) . '" /></td>';
                             echo '<td>';
-                            echo '<a href="javascript:void(0);" onclick="confirmDelete(' . $item['id'] . ');"><span class="glyphicon glyphicon-remove"></span></a>';
+                            echo '<a href="'.base_url('admin/banner/remove').'" title="Xóa" class="btn-remove" data-id="'.$item['id'].'" >';
+                            echo '<i class="fa fa-trash-o" aria-hidden="true"></i>';
                             echo '</tr>';
                         endforeach;
                     }else {
