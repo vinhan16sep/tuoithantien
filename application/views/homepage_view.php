@@ -3,7 +3,7 @@
 <section class="main_content">
     <div id="slideHomepage" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators hidden-xs">
             <?php for($i = 0; $i < count($banner); $i++){ ?>
                 <li data-target="#slideHomepage" data-slide-to="<?php echo $i + 1; ?>" <?php echo ($i == 0) ? 'class="active"' : ''; ?>></li>
             <?php } ?>

@@ -30,6 +30,7 @@ $(document).ready(function(){
 		var content = $('#content').val();
 		var category_id = $('#category_id').val();
 		var slug = $('#slug').val();
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		if(name.length == 0){
 			$('.name_error').text('Họ và Tên không được trống!');
 		}else{
@@ -50,19 +51,24 @@ $(document).ready(function(){
 			$('.content_error').text('');
 		}
 		if(name.length != 0 && email.length != 0 && content.length != 0){
-			$('.cmt_error').hide();
-			jQuery.ajax({
-				type: "get",
-				url: "http://localhost:8080/tuoithantien/comment/create_comment",
-				// url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
-				data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
-				success: function(result){
-                    $('#comment > .cmt:first-child').before(JSON.parse(result).comment);
-                    $('#name').val('');
-                    $('#email').val('');
-                    $('#content').val('');
-				}
-			})
+			if(filter.test(email)){
+                $('.cmt_error').hide();
+                jQuery.ajax({
+                    type: "get",
+                    url: "http://localhost:8080/tuoithantien/comment/create_comment",
+                    // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+                    data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
+                    success: function(result){
+                        $('#comment > .cmt:first-child').before(JSON.parse(result).comment);
+                        $('#name').val('');
+                        $('#email').val('');
+                        $('#content').val('');
+                    }
+                })
+			}else{
+                $('.email_error').text('Định dạng email không đúng, Vui lòng kiểm tra lại!');
+			}
+
 		}
 		
 		return false;
@@ -85,6 +91,30 @@ $(document).ready(function(){
 				}
             }
         })
+    })
+
+    // subcribe email
+	$('.subcribe_bnt').click(function () {
+		var email = $('.subcribe_email').val();
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if(filter.test(email)){
+            jQuery.ajax({
+                type: "get",
+                url: "http://localhost:8080/tuoithantien/subcribe/create",
+                // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+                data: {email : email},
+                success: function(result){
+                	if(JSON.parse(result).isExitsts == true){
+                        alert('Đăng ký nhận tin tức thành công!');
+					}else{
+                        alert('Email này đã trong danh sách nhận tin tức!');
+					}
+                }
+            })
+		}else{
+            alert('Định dạng email không đúng vui lòng nhập lại!');
+		}
+
     })
 	
 });
