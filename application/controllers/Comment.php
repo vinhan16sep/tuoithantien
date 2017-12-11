@@ -24,7 +24,7 @@ class Comment extends CI_Controller{
 				);
 		$this->comment_model->save($data);
 
-        $comment = '<div class="media">';
+        $comment = '<div class="media cmt">';
         $comment .= '<div class="media-left">';
         $comment .= '<img class="media-object" src="'.site_url('assets/public/img/comment_ava.png').'" alt="Comment Avatar" width="64">';
         $comment .= '</div>';
