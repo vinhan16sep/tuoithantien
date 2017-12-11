@@ -40,6 +40,33 @@ class Comment extends CI_Controller{
 		$this->output->set_status_header(200)->set_output(json_encode(array('comment' => $comment)));
 
 	}
+
+	public function see_more_comment(){
+        $this->load->model('comment_model');
+        $slug = $_GET['slug'];
+        $page = $_GET['page'];
+        $limit  = 5;
+        $start = ($page - 1)*5;
+        $where = array('slug' => $slug);
+        $count = count($this->comment_model->fetch_all($where));
+        $comment = $this->comment_model->fetch_all($where, $limit, $start);
+        $stop = ceil($count / $limit);
+        if($page <= $stop){
+            foreach ($comment as $value){
+                echo '<div class="media cmt">';
+                echo '<div class="media-left">';
+                echo '<img class="media-object" src="'.site_url('assets/public/img/comment_ava.png').'" alt="Comment Avatar" width="64">';
+                echo '</div>';
+                echo '<div class="media-body">';
+                echo '<h3 class="media-heading" style="color: #f4aa1c">'.$value['name'].':</h3>';
+                echo '<span>'.$value['content'].'</span>';
+                echo '<span style="float: right; font-size: 1em">'.$value['created_at'].'</span>';
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+
+    }
 }
 
 ?>

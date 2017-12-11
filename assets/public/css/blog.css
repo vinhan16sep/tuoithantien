@@ -69,6 +69,7 @@ Author: hung.luong@matocreative.vn
 #comment_readmore{
 	padding-top: 2em;
 	padding-bottom: 1em;
+	display: none;
 }
 
 .item iframe{

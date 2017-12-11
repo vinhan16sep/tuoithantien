@@ -41,7 +41,14 @@ class Admission extends Public_Controller {
         if($comment){
             $this->data['comment'] = $comment;
         }
-        
+        //count comment
+        $count_comment = $this->count_comment($slug);
+        if($count_comment){
+            $this->data['count_comment'] = count($count_comment);
+        }else{
+            $this->data['count_comment'] = 0;
+        }
+
         $this->render('admission_procedure_view');
     }
 
@@ -96,6 +103,14 @@ class Admission extends Public_Controller {
         $comment = $this->comment($slug);
         if($comment){
             $this->data['comment'] = $comment;
+        }
+
+        //count comment
+        $count_comment = $this->count_comment($slug);
+        if($count_comment){
+            $this->data['count_comment'] = count($count_comment);
+        }else{
+            $this->data['count_comment'] = 0;
         }
 
         $this->render('detail_admission_view');
