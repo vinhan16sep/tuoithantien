@@ -14,9 +14,9 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Email của quý khách">
+                    <input type="text" class="form-control subcribe_email" placeholder="Email của quý khách">
                     <span class="input-group-btn">
-					<button class="btn btn-default btn-bg" type="button">Đăng ký</button>
+					<button class="btn btn-default btn-bg subcribe_bnt" type="button">Đăng ký</button>
 				  </span>
                 </div><!-- /input-group -->
             </div>
