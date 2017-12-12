@@ -88,3 +88,25 @@ $(document).ready(function(){
     })
 	
 });
+
+function sendSurvey(){
+	$('#send-survey').prop('disabled', true);
+	var token = $('input[name="csrf_sitecom_token"]').val();
+	$.ajax({
+		method: 'POST',
+        url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/contact/survey",
+		dataType: 'JSON',
+		data: {
+            csrf_sitecom_token: token,
+			data: $('#survey_form').serialize()
+		},
+		success: function(res){
+			if(res.message == 'Success'){
+				alert('Cảm ơn bạn đã đóng góp ý kiến!');
+				$('#survey_modal').modal('hide');
+				$('#surveyOn').hide();
+			}
+		},
+		error: function(){}
+	});
+}

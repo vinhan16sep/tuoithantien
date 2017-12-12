@@ -33,4 +33,27 @@ class Contact_model extends CI_Model {
 
         return false;
     }
+
+    public function add_survey($data){
+        $this->db->set($data)
+            ->insert('survey');
+
+        if($this->db->affected_rows() == 1){
+            return $this->db->insert_id();
+        }
+
+        return false;
+    }
+
+    public function count_survey(){
+        $query = $this->db->select('*');
+        $result = array(
+            'option_1' => $query->from('survey')->where('option', 1)->get()->num_rows(),
+            'option_2' => $query->from('survey')->where('option', 2)->get()->num_rows(),
+            'option_3' => $query->from('survey')->where('option', 3)->get()->num_rows(),
+            'option_4' => $query->from('survey')->where('option', 4)->get()->num_rows()
+        );
+
+        return $result;
+    }
 }

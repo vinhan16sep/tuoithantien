@@ -68,12 +68,15 @@
     </div>
 </footer>
 
-<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey">
+<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey_modal">
     <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
 </button>
 
-<div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyLabel">
+<div class="modal fade" id="survey_modal" tabindex="-1" role="dialog" aria-labelledby="surveyLabel">
     <div class="modal-dialog modal-sm" role="document">
+        <?php
+        echo form_open_multipart('', array('id' => 'survey_form', 'class' => 'form-horizontal'));
+        ?>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -85,34 +88,38 @@
                 </label>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        <?php echo form_radio("option", "1", NULL, 'id="optionsRadios1"'); ?>
                         Con được học và chơi gì?
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        <?php echo form_radio("option", "2", NULL, 'id="optionsRadios2"'); ?>
                         "Khi đến tường cô giáo như mẹ hiền"
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                        <?php echo form_radio("option", "3", NULL, 'id="optionsRadios3"'); ?>
                         Con được ăn gì? Uống gì? Ngủ ngon không?
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                        <?php echo form_radio("option", "4", NULL, 'id="optionsRadios4"'); ?>
                         Tất cả các ý kiến trên
                     </label>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Bình chọn</button>
-                <button type="button" class="btn btn-default">Xem kết quả</button>
+<!--                <button class="btn btn-primary" type="submit">Bình chọn</button>-->
+                <button id="send-survey" type="button" class="btn btn-primary" onclick="sendSurvey()">Bình chọn</button>
+<!--                <button type="button" class="btn btn-default">Xem kết quả</button>-->
             </div>
         </div>
+        <?php
+        echo form_close();
+        ?>
     </div>
 </div>
 
