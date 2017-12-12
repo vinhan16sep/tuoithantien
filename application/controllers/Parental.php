@@ -48,6 +48,14 @@ class Parental extends Public_Controller {
             $this->data['comment'] = $comment;
         }
 
+        //count comment
+        $count_comment = $this->count_comment($slug);
+        if($count_comment){
+            $this->data['count_comment'] = count($count_comment);
+        }else{
+            $this->data['count_comment'] = 0;
+        }
+
         $this->render('parental_activity_view');
     }
 
@@ -102,6 +110,14 @@ class Parental extends Public_Controller {
         $comment = $this->comment($slug);
         if($comment){
             $this->data['comment'] = $comment;
+        }
+
+        //count comment
+        $count_comment = $this->count_comment($slug);
+        if($count_comment){
+            $this->data['count_comment'] = count($count_comment);
+        }else{
+            $this->data['count_comment'] = 0;
         }
 
         $this->render('detail_parental_view');

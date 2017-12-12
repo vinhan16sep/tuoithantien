@@ -76,6 +76,7 @@
 
                 </div>
                 <div id="comment_readmore">
+                    <input type="hidden" name="count-comment" id="count-comment" value="<?php echo $count_comment ?>">
                     <button class="btn btn-primary btn-sm center-block" type="submit">Xem thêm bình luận</button>
                 </div>
 

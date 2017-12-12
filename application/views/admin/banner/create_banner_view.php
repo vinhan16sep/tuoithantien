@@ -16,9 +16,9 @@
                         </div>
                         <div class="form-group picture">
                             <?php
-                            echo form_label('Banner', 'banner');
-                            echo form_error('banner');
-                            echo form_upload('banner', set_value('banner'), 'classs="form-control"');
+                            echo form_label('Banner', 'image');
+                            echo form_error('image');
+                            echo form_upload('image', set_value('image'), 'classs="form-control"');
                             ?>
                         </div>
                         <div class="form-group">

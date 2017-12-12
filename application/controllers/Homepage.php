@@ -15,7 +15,8 @@ class Homepage extends Public_Controller {
     }
 
     public function index(){
-
+        $banner = $this->banner_model->get_all();
+        $this->data['banner'] = $banner;
         $this->render('homepage_view');
     }
 }
