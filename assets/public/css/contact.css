@@ -1,3 +1,7 @@
+.main_content{
+	background-image: url(../img/bg_about.png);
+}
+
 .main_content .container{
 	margin-bottom: 15em;
 }

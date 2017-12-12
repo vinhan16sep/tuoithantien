@@ -12,7 +12,21 @@ class Video extends Public_Controller {
 
     public function index(){
 
-    	$video = $this->video_model->fetch_all_pagination(9, 0);
+        $this->load->library('pagination');
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $total_rows = count($this->video_model->fetch_all_pagination());
+
+        $config = array();
+        $base_url = base_url() . 'thu-vien/video';
+        $per_page = 3;
+        $uri_segment = 3;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
+        $this->pagination->initialize($config);
+        $this->data['page_links'] = $this->pagination->create_links();
+
+    	$video = $this->video_model->fetch_all_pagination($per_page, $page);
     	$this->data['list'] = $video;
         $this->render('list_video_view');
     }

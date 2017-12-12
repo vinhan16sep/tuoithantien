@@ -14,9 +14,9 @@
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Email của quý khách">
+                    <input type="text" class="form-control subcribe_email" placeholder="Email của quý khách">
                     <span class="input-group-btn">
-					<button class="btn btn-default btn-bg" type="button">Đăng ký</button>
+					<button class="btn btn-default btn-bg subcribe_bnt" type="button">Đăng ký</button>
 				  </span>
                 </div><!-- /input-group -->
             </div>
@@ -46,12 +46,12 @@
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <h3>Phối hợp cùng phụ huynh</h3>
                 <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>">Chế độ sinh hoạt 1 ngày</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>">Liên lạc</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>">Thực đơn</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>">Y tế</a></li>
-                    <li><a href="<?php echo base_url('gio-dua-don') ?>">Giờ đưa đón</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>">Kỷ luật</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>">Chế độ sinh hoạt 1 ngày</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>">Liên lạc</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>">Thực đơn</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>">Y tế</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>">Giờ đưa đón</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>">Kỷ luật</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
@@ -67,8 +67,10 @@
         </div>
     </div>
 </footer>
-
-<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey_modal">
+<div class="scrollup">
+    <i class="fa fa-chevron-up fa-3x"></i>
+</div>
+<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey" data-hover="tooltip" data-placement="left" title="Thăm dò dư luận">
     <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
 </button>
 
@@ -80,11 +82,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h1 class="modal-title" id="myModalLabel">Thăm dò dư luận</h1>
+
             </div>
             <div class="modal-body">
+                <h1 class="modal-title" id="myModalLabel">Thăm dò dư luận</h1>
                 <label>
-                    <h2>Bạn quan tâm nhất điều gì khi con tới trường?</h2>
+                    Bạn quan tâm nhất điều gì khi con tới trường?
                 </label>
                 <div class="radio">
                     <label>
@@ -127,6 +130,10 @@
 
 <script>
     new WOW().init();
+
+    $(function () {
+        $('[data-hover="tooltip"]').tooltip();
+    });
 </script>
 <script type="text/javascript" src="<?php echo site_url('assets/public/js/main.js') ?>"></script>
 

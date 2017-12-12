@@ -36,11 +36,9 @@
                     <i class="fa fa-picture-o" aria-hidden="true"></i>
                     <span>Banner</span>
                     <span class="pull-right-container">
-              </span>
+                    </span>
                 </a>
             </li>
-
-
           <li class="<?php echo ($active == 'introduce')? 'active treeview' : 'treeview' ?>">
             <a href="">
               <i class="fa fa-list" aria-hidden="true"></i>
@@ -223,6 +221,16 @@
               <span>Bình luận</span>
             </a>
           </li>
+
+            <li class="<?php echo ($active == 'subcribe')? 'active' : '' ?>">
+                <a href="<?php echo base_url('admin/subcribe/index'); ?>">
+                    <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+                    <span>Subcribe</span>
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
+
         </ul>
       </section>
       <!-- /.sidebar -->

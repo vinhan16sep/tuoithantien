@@ -98,6 +98,18 @@ class Admin_Controller extends MY_Controller {
             'modified_at' => date('Y-m-d H:i:s', now()),
             'modified_by' => $this->ion_auth->user()->row()->username
         );
+
+        //new comment
+//        $this->load->model('count_comment_model');
+//        $news_comment = $this->count_comment_model->fetch_all();
+//        if($news_comment){
+//            $total = count($news_comment);
+//        }else{
+//            $total = 0;
+//        }
+//
+//        $this->data['news_comment'] = $news_comment;
+//        $this->data['total'] = $total;
     }
 
     
@@ -184,6 +196,8 @@ class Admin_Controller extends MY_Controller {
         
         return $config;
     }
+
+
 
 }
 

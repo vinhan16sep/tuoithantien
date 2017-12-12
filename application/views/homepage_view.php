@@ -3,7 +3,7 @@
 <section class="main_content">
     <div id="slideHomepage" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators hidden-xs">
             <?php for($i = 0; $i < count($banner); $i++){ ?>
                 <li data-target="#slideHomepage" data-slide-to="<?php echo $i + 1; ?>" <?php echo ($i == 0) ? 'class="active"' : ''; ?>></li>
             <?php } ?>
@@ -22,7 +22,7 @@
         </div>
 
         <!-- Controls -->
-        <a class="left carousel-control" href="slideHomepage" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#slideHomepage" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
@@ -32,13 +32,16 @@
         </a>
     </div>
     <div class="container-fluid" id="introduce">
+        <div id="about_header">
+            <img src="<?php echo site_url('assets/public/img/footer_slider.png') ?>" alt="about_header">
+        </div>
         <div class="container">
             <div class="row">
                 <div class="left col-md-6 col-sm-6 col-xs-12">
                     <h1>Giới thiệu</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt mi vel nisl vehicula, non iaculis erat tincidunt. Nam dignissim mattis orci vitae porttitor. Nulla vel tincidunt nunc, at convallis magna. Integer malesuada elit et bibendum auctor. Sed et auctor metus. Pellentesque dapibus augue nec varius varius. Fusce eget magna viverra, tempor libero non, porta nunc. Proin sed laoreet eros. Aliquam pulvinar fermentum justo in ultrices. Duis suscipit pharetra arcu, eget tincidunt ante sodales hendrerit. Nulla nec sapien a orci tristique convallis eu eu velit. Vivamus diam arcu, tempus ut consectetur sit amet, aliquet vitae arcu. Quisque ullamcorper urna eu dolor sollicitudin eleifend. Nulla accumsan turpis condimentum neque rhoncus, sed mollis arcu porta. Quisque a felis sit amet leo posuere convallis. Sed mi mi, finibus sed nisi ut, porttitor vestibulum nisl.</p>
                     <div class="row">
-                        <div class="media col-md-6 col-sm-6 col-xs-6">
+                        <div class="media col-md-6 col-sm-6 col-xs-12">
                             <div class="media-left">
                                 <img class="media-object" src="<?php echo site_url('assets/public/img/clock.png') ?>" alt="Giờ làm việc">
                             </div>
@@ -47,7 +50,7 @@
                                 <h4 class="media-heading"><strong>7h00 - 18h00</strong></h4>
                             </div>
                         </div>
-                        <div class="media col-md-6 col-sm-6 col-xs-6">
+                        <div class="media col-md-6 col-sm-6 col-xs-12">
                             <div class="media-left">
                                 <img class="media-object" src="<?php echo site_url('assets/public/img/phone.png') ?>" alt="Hotline">
                             </div>
@@ -134,45 +137,29 @@
                     <h1>Thông báo nhà trường</h1>
 
                     <ul class="media-list">
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:void();" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                        </li>
+                        <?php if ($notify): ?>
+                            <?php foreach ($notify as $value): ?>
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="<?php echo base_url('hoat-dong/thong-bao/'.$value['slug']) ?>">
+                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/introduce/'.$value['image']) ?>" alt="ảnh tin tức">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
+                                        <p><?php echo $value['description'] ?></p>
+                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('hoat-dong/thong-bao/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                            <li>
+                                <a href="<?php echo base_url('hoat-dong/thong-bao') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </li>
+                        <?php else: ?>
+                            <li class="media">
+                                Chưa có bài viết nào
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
 
@@ -180,45 +167,29 @@
                     <h1>Chia sẻ kinh nghiệm hay</h1>
 
                     <ul class="media-list">
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                                <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
-                                <a class="btn btn-primary hvr-icon-forward" href="#" role="button">Xem tiếp</a>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:void();" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
-                        </li>
+                        <?php if ($experience): ?>
+                            <?php foreach ($experience as $value): ?>
+                                <li class="media">
+                                    <div class="media-left">
+                                        <a href="<?php echo base_url('hoat-dong/thong-bao/'.$value['slug']) ?>">
+                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/introduce/'.$value['image']) ?>" alt="ảnh tin tức">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
+                                        <p><?php echo $value['description'] ?></p>
+                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('hoat-dong/trai-nghiem/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                    </div>
+                                </li>
+                            <?php endforeach; ?>
+                            <li>
+                                <a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </li>
+                        <?php else: ?>
+                            <li class="media">
+                                Chưa có bài viết nào
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -347,8 +318,8 @@
                 </div>
             </div>
         </div>
-        <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-05.png') ?>" alt="cloud-1" class="wow slideInUp hidden-xs">
-        <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-06.png') ?>" alt="cloud-2" class="wow slideInUp hidden-xs">
+        <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-02.png') ?>" alt="cloud-1" class="wow slideInUp hidden-xs">
+        <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-03.png') ?>" alt="cloud-2" class="wow slideInUp hidden-xs">
     </div>
 
 </section>

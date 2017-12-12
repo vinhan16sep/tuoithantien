@@ -87,8 +87,6 @@
             if($this->banner_model->remove($id) == true){
                 unlink('assets/upload/banner/'.$banner['image']);
             }
-
-
         }
 
     }

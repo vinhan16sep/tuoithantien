@@ -3,20 +3,7 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <ul>
-                	<?php if ($list != ''): ?>
-                		<?php foreach ($list as $key => $value): ?>
-	                		<li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$sub_category.'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
-	                	<?php endforeach ?>
-	                <?php else: ?>
 
-                	<?php endif ?>
-                	
-                    
-                </ul>
-            </div>
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <div class="blogs_cover">
                     <img src="<?php echo base_url('assets/upload/introduce/'.$detail['image']) ?>" alt="ảnh cover bài viết" width=100%>
@@ -57,7 +44,7 @@
 				                <span class="content_error" style="color: red"></span>
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                            	<input type="hidden" name="category_id" value="1" id="category_id">
+                            	<input type="hidden" name="category_id" value="3" id="category_id">
                             	<input type="hidden" name="slug" value="<?php echo $detail['slug'] ?>" id="slug">
                             	<?php echo form_submit('submit', 'Gửi nhận xét', 'class="btn btn-primary hvr-icon-forward submit-comment"'); ?>
                             </div>
@@ -90,6 +77,21 @@
                     <input type="hidden" name="count-comment" id="count-comment" value="<?php echo $count_comment ?>">
                     <button class="btn btn-primary btn-sm center-block" type="submit">Xem thêm bình luận</button>
                 </div>
+            </div>
+
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+                <ul>
+                    <?php if ($list != ''): ?>
+                        <?php foreach ($list as $key => $value): ?>
+                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$sub_category.'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
+                        <?php endforeach ?>
+                    <?php else: ?>
+
+                    <?php endif ?>
+
+
+                </ul>
             </div>
         </div>
 

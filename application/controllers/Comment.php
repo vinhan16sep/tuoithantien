@@ -13,16 +13,25 @@ class Comment extends CI_Controller{
 		$slug = $_GET['slug'];
 		// echo date(DATE_RFC822, time());die;
 		// print_r(now());die;
-
+        $ip = $_SERVER['REMOTE_ADDR'];
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
 		$data = array(
 				'name' => $name,
 				'email' => $email,
 				'content' => $content,
 				'slug' => $slug,
 				'category_id' => $category_id,
-				'created_at' => date("Y/m/d")
+				'created_at' => date("Y/m/d"),
+                'ip_address' => $ip
 				);
 		$this->comment_model->save($data);
+
+//        $this->load->model('count_comment_model');
+//        $this->count_comment_model->save($data);
 
         $comment = '<div class="media cmt">';
         $comment .= '<div class="media-left">';

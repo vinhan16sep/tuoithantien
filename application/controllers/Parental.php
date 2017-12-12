@@ -33,11 +33,11 @@ class Parental extends Public_Controller {
 
     public function activity(){
         $this->load->model('comment_model');
-        $slug = $this->uri->segment(1);
+        $slug = $this->uri->segment(2);
         $check_slug = array('che-do-sinh-hoat-1-ngay', 'gio-dua-don');
-        if(in_array($slug, $check_slug) == false){
-            redirect('trang-chu','refresh');
-        }
+//        if(in_array($slug, $check_slug) == false){
+//            redirect('trang-chu','refresh');
+//        }
         $where = array('category' => 0, 'slug' => $slug);
         $activity = $this->parental_model->fetch_row($where);
         $this->data['activity'] = $activity;
@@ -60,7 +60,7 @@ class Parental extends Public_Controller {
     }
 
     public function show_list(){
-        $slug = $this->uri->segment(2);
+        $slug = $this->uri->segment(3);
         $check_slug = array('lien-lac', 'thuc-don', 'y-te', 'ky-luat');
         if(in_array($slug, $check_slug) == false){
             redirect('trang-chu','refresh');
@@ -69,7 +69,22 @@ class Parental extends Public_Controller {
         $category = $this->list_slug($slug);
 
         $where = array('category' => $category);
-        $list = $this->parental_model->fetch_all($where, 9, 0);
+
+        $this->load->library('pagination');
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+
+        $total_rows = count($this->parental_model->fetch_all($where));
+
+        $config = array();
+        $base_url = base_url() . 'phoi-hop-cung-phu-huynh/danh-sach/'.$slug;
+        $per_page = 12;
+        $uri_segment = 4;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
+        $this->pagination->initialize($config);
+        $this->data['page_links'] = $this->pagination->create_links();
+
+        $list = $this->parental_model->fetch_all($where, $per_page, $page);
         if($list){
             $this->data['list'] = $list;
         }else{

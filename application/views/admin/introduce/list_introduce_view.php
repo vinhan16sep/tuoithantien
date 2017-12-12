@@ -83,6 +83,10 @@
                                     ?>
                                     <td>
                                         <form class="form_ajax">
+                                            <a href="<?php echo base_url('admin/comment/index/'.$value['slug']); ?>" title="Danh sách comment">
+                                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                            </a>
+                                            &nbsp&nbsp
                                             <a href="<?php echo base_url('admin/introduce/edit/'.$value['id']); ?>" title="Chỉnh sửa">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </a>

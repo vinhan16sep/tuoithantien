@@ -3,28 +3,7 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <h3>Thư viện ảnh</h3>
-            <div class="blogs col-md-9 col-sm-9 col-xs-12">
-                <div class="row">
-                	<?php if ($list != ''): ?>
-	                	<?php foreach ($list as $key => $value): ?>
-		                    <div class="item col-md-4 col-sm-6 col-xs-12">
-		                        <div class="inner">
-		                            <img class="img-rounded" src="<?php echo site_url('assets/upload/image/'.$value['slug'].'/'.$value['sub_image']) ?>" width=100%>
-		                            <a href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-		                            <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>">Khám phá</a>
-		                        </div>
-		                    </div>
-	                    <?php endforeach ?>
-	                <?php else: ?>
-                        <div class="item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner">
-                                Chưa có bài viết nào!
-                            </div>
-                        </div>
-                    <?php endif ?>
-                </div>
-            </div>
+
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
                 <?php $style = 'style="display: none"' ?>
@@ -36,10 +15,38 @@
                     <li><a href="<?php echo base_url('thu-vien/video') ?>" >Video</a></li>
 
                     <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a></li>
-                    
+
                     <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" >Trải nghiệm</a></li>
                 </ul>
             </div>
+            <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                <h3>Thư viện ảnh</h3>
+                <div class="row">
+                	<?php if ($list != ''): ?>
+	                	<?php foreach ($list as $key => $value): ?>
+		                    <div class="item col-md-4 col-sm-6 col-xs-12">
+		                        <div class="inner">
+		                            <img class="img-rounded" src="<?php echo site_url('assets/upload/image/'.$value['slug'].'/'.$value['sub_image']) ?>" width=100%>
+		                            <a href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+		                            <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>">Khám phá</a>
+		                        </div>
+		                    </div>
+	                    <?php endforeach ?>
+
+                        <div class="col-md-12 text-center page">
+                            <?php echo $page_links; ?>
+                        </div>
+
+	                <?php else: ?>
+                        <div class="item col-md-4 col-sm-6 col-xs-12">
+                            <div class="inner">
+                                Chưa có bài viết nào!
+                            </div>
+                        </div>
+                    <?php endif ?>
+                </div>
+            </div>
+
         </div>
 
     </div>
