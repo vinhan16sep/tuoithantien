@@ -24,14 +24,6 @@
                         echo form_input('slug', set_value('slug'), 'class="form-control" readonly id="slug" readonly');
                         ?>
                     </div>
-                    
-                    <!-- <div class="form-group picture">
-                        <?php
-                        echo form_label('Image', 'image');
-                        echo form_error('image');
-                        echo form_upload('image','','multiple');
-                        ?>
-                    </div> -->
 
                     <div class="form-group picture">
                         <?php

@@ -92,7 +92,7 @@ class Library extends Admin_Controller{
                 }catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Thêm mới thư viện ảnh thất bại: ' . $e->getMessage());
                 }
-//                redirect('admin/library/index', 'refresh');
+                redirect('admin/library/index', 'refresh');
             }
         }
 
