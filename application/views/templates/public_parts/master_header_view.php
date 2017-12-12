@@ -73,6 +73,8 @@
                             <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>">Học phí</a></li>
                             <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>">Lịch học</a></li>
                             <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>">Chương trình khuyến mãi</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="<?php echo base_url('nhap-hoc/dang-ky-nhap-hoc') ?>">Đăng ký nhập học</a></li>
                         </ul>
                     </li>
                     <li class="dropdown pink">

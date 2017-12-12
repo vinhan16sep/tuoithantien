@@ -3,6 +3,24 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+
+                <ul class="list-unstyled">
+                    <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>" >Liên lạc</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>" >Thực đơn</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>" >Y tế</a></li>
+
+                    <li><a href="<?php echo base_url('gio-dua-don') ?>" >Giờ đưa đón</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>" >Kỷ luật</a></li>
+                </ul>
+            </div>
+
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <div class="blogs_cover">
                     <img src="<?php echo base_url('assets/upload/parental/'.$activity['image']); ?>" alt="ảnh cover bài viết">
@@ -17,7 +35,35 @@
                 <?php echo $activity['content'] ?>
 
 
-
+                <br><br>
+				<div id="comment">
+					<?php if (isset($comment)): ?>
+						<?php foreach ($comment as $key => $value): ?>
+<!--							<p>-->
+<!--								<span style="color: red">--><?php //echo $value['name'] ?><!--:</span style="color: red">-->
+<!--								<span>--><?php //echo $value['content'] ?><!--</span>-->
+<!--								<span style="float: right; font-size: 10px">--><?php //echo $value['created_at'] ?><!--</span>-->
+<!--							</p>-->
+                            <div class="media cmt">
+                                <div class="media-left">
+                                    <img class="media-object" src="<?php echo site_url('assets/public/img/comment_ava.png') ?>" alt="Comment Avatar" width="64">
+                                </div>
+                                <div class="media-body">
+                                    <h3 class="media-heading" style="color: #f4aa1c"><?php echo $value['name'] ?>:</h3>
+                                    <span><?php echo $value['content'] ?></span>
+                                    <span style="float: right; font-size: 1em"><?php echo $value['created_at'] ?></span>
+                                </div>
+                            </div>
+						<?php endforeach ?>
+					<?php else: ?>
+                        <div class="media cmt">
+                            <p class="cmt_error">Chưa có bình luận cho bài viết này</p>
+                        </div>
+					<?php endif ?>
+					
+					
+				</div>
+				<br><br>
 
                 <div class="comments">
                 	
@@ -53,50 +99,9 @@
                         </div>
                     <?php echo form_close(); ?>
                 </div>
-                <div id="comment">
-                    <?php if (isset($comment)): ?>
-                        <?php foreach ($comment as $key => $value): ?>
-                            <div class="media cmt">
-                                <div class="media-left">
-                                    <img class="media-object" src="<?php echo site_url('assets/public/img/comment_ava.png') ?>" alt="Comment Avatar" width="64">
-                                </div>
-                                <div class="media-body">
-                                    <h3 class="media-heading" style="color: #f4aa1c"><?php echo $value['name'] ?>:</h3>
-                                    <span><?php echo $value['content'] ?></span>
-                                    <span style="float: right; font-size: 1em"><?php echo $value['created_at'] ?></span>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
-                    <?php else: ?>
-                        <div class="media cmt">
-                            <p class="cmt_error">Chưa có bình luận cho bài viết này</p>
-                        </div>
-                    <?php endif ?>
 
-                </div>
-                <div id="comment_readmore">
-                    <input type="hidden" name="count-comment" id="count-comment" value="<?php echo $count_comment ?>">
-                    <button class="btn btn-primary btn-sm center-block" type="submit">Xem thêm bình luận</button>
-                </div>
             </div>
-            
-            <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
 
-                <ul>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>" >Liên lạc</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>" >Thực đơn</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>" >Y tế</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>" >Giờ đưa đón</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>" >Kỷ luật</a></li>
-                </ul>
-            </div>
         </div>
 
     </div>
@@ -114,9 +119,9 @@
                     <img src="<?php echo site_url('assets/public/img/register.png') ?>" class="wow fadeInUp">
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <h1>Giới thiệu đăng ký nhập học</h1>
+                    <h1>Đăng ký nhập học</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie enim non odio mattis, sed fermentum elit sodales. Duis bibendum mi sed pulvinar interdum. Donec euismod ipsum vitae ligula posuere, id elementum lacus rhoncus. Nullam ullamcorper urna et elementum viverra. Sed in sem ultrices, mattis nunc sit amet, sollicitudin sem. Mauris tincidunt mauris mi, quis viverra justo consequat nec. Cras nibh quam, cursus at lorem sit amet, scelerisque euismod enim. Nam a interdum velit. Donec pharetra fermentum erat, sed commodo lectus venenatis quis. Integer elit augue, varius quis laoreet vitae, cursus sit amet libero. Integer iaculis libero vel venenatis vehicula. Integer accumsan nulla felis, non congue erat tincidunt sed.</p>
-                    <a class="btn btn-primary hvr-icon-forward" role="button" href="javascript:void();">Đăng ký ngay</a>
+                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('nhap-hoc/dang-ky-nhap-hoc') ?>">Đăng ký ngay</a>
                 </div>
             </div>
         </div>

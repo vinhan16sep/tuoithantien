@@ -85,3 +85,4 @@ $route['thu-vien/thu-vien-anh/(:any)'] = 'image/detail/(:any)';
 
 $route['thu-vien/video'] = 'video/index';
 $route['thu-vien/video/(:num)'] = 'video/index/(:num)';
+$route['nhap-hoc/dang-ky-nhap-hoc'] = 'register/index';
