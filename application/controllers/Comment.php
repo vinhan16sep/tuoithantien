@@ -30,8 +30,8 @@ class Comment extends CI_Controller{
 				);
 		$this->comment_model->save($data);
 
-        $this->load->model('count_comment_model');
-        $this->count_comment_model->save($data);
+//        $this->load->model('count_comment_model');
+//        $this->count_comment_model->save($data);
 
         $comment = '<div class="media cmt">';
         $comment .= '<div class="media-left">';

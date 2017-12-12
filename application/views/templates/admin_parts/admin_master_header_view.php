@@ -109,37 +109,37 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
 
-            <li class="dropdown messages-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="label label-success"><?php echo $total ?></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class="header">Bạn có <?php echo $total ?> bình luận chưa xem</li>
-                    <li>
-                        <!-- inner menu: contains the actual data -->
-                        <ul class="menu">
-                            <?php if($news_comment): ?>
-                                <?php foreach ($news_comment as $value):?>
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <h4>
-                                                Support Team
-                                                <small>
-                                                </small>
-                                            </h4>
-                                            <p style="padding-right: 15px;"><?php echo substr($value['content'], 0, 50) ?>...</p>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <li></li>
-                            <?php endif; ?>
-                        </ul>
-                    </li>
-                    <li class="footer"><a href="<?php echo base_url('admin/comment/delete_all') ?>" id="seen_comment">Đã xem</a>  <a href="<?php echo base_url('admin/comment/index/new-comment') ?>">Xem tất bình luận</a></li>
-                </ul>
-            </li>
+<!--            <li class="dropdown messages-menu">-->
+<!--                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">-->
+<!--                    <i class="fa fa-envelope-o"></i>-->
+<!--                    <span class="label label-success">--><?php //echo $total ?><!--</span>-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu">-->
+<!--                    <li class="header">Bạn có --><?php //echo $total ?><!-- bình luận chưa xem</li>-->
+<!--                    <li>-->
+<!--                        <!-- inner menu: contains the actual data -->-->
+<!--                        <ul class="menu">-->
+<!--                            --><?php //if($news_comment): ?>
+<!--                                --><?php //foreach ($news_comment as $value):?>
+<!--                                    <li><!-- start message -->-->
+<!--                                        <a href="#">-->
+<!--                                            <h4>-->
+<!--                                                Support Team-->
+<!--                                                <small>-->
+<!--                                                </small>-->
+<!--                                            </h4>-->
+<!--                                            <p style="padding-right: 15px;">--><?php //echo substr($value['content'], 0, 50) ?><!--...</p>-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                --><?php //endforeach; ?>
+<!--                            --><?php //else: ?>
+<!--                                <li></li>-->
+<!--                            --><?php //endif; ?>
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li class="footer"><a href="--><?php //echo base_url('admin/comment/delete_all') ?><!--" id="seen_comment">Đã xem</a>  <a href="--><?php //echo base_url('admin/comment/index/new-comment') ?><!--">Xem tất bình luận</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
 
           <!-- user account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
