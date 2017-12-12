@@ -73,7 +73,7 @@
 </div>
 
 <button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey" data-hover="tooltip" data-placement="left" title="Thăm dò dư luận">
-    <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
+    <i class="fa fa-3x fa-question-circle-o" aria-hidden="true"></i>
 </button>
 
 <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyLabel">
@@ -115,7 +115,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Bình chọn</button>
-                <button type="button" class="btn btn-default">Xem kết quả</button>
+                <!--<button type="button" class="btn btn-default">Xem kết quả</button>-->
             </div>
         </div>
     </div>

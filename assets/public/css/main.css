@@ -134,6 +134,17 @@ textarea {
 	resize: none;
 }
 
+ul.list-unstyled li{
+	background-image: url(../img/bg_list.png);
+	background-repeat: no-repeat;
+	background-position-y: 8px;
+	padding-left: 15px;
+}
+
+.footer ul.list-unstyled li{
+	background-image: none;
+}
+
 
 /* CSS Footer */
 
@@ -171,24 +182,12 @@ textarea {
 button#surveyOn{
 	position: fixed;
 	top:50%;
-	right: -50px;
+	right: 0;
 	z-index: 999;
 	border-radius: 50%;
 
-	transition: all ease 0.5s;
-	-webkit-transition: all ease 0.5s;
-	-moz-transition: all ease 0.5s;
-	-o-transition: all ease 0.5s
 }
 
-button#surveyOn:hover{
-	right: 0;
-
-	transition: all ease 0.5s;
-	-webkit-transition: all ease 0.5s;
-	-moz-transition: all ease 0.5s;
-	-o-transition: all ease 0.5s
-}
 
 .modal#survey .modal-header{
 	min-height: 75px;

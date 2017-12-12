@@ -5,7 +5,7 @@
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
-                <ul>
+                <ul class="list-unstyled">
                     <?php if ($list != ''): ?>
                         <?php foreach ($list as $key => $value): ?>
                             <li><a href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>

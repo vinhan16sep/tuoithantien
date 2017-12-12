@@ -122,7 +122,7 @@
                 <div class="inner">
                     <div class="row">
                         <div class="col-md-6 col-xs-12 col-xs-12">
-                            <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-khoa.jpg') ?>" alt="featured_1_5"></a>
+                            <a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-khoa.jpg') ?>" alt="featured_1_5"></a>
                         </div>
                         <div class="col-md-6 col-xs-12 col-xs-12">
                             <a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>"><h2>Ngoại khóa</h2></a>
