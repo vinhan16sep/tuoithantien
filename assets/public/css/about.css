@@ -16,6 +16,10 @@ Author: hung.luong@matocreative.vn
 	width: 100%;
 }
 
+.main_content .container-fluid:first-of-type{
+	background-image: url(../img/bg_about.png);
+}
+
 .main_content .jumbotron{
 	background:none;
 }

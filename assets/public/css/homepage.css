@@ -23,6 +23,15 @@ Author: hung.luong@matocreative.vn
 	position: relative;
 }
 
+#about_header{
+	position:absolute;
+	z-index: 99;
+	top:0;
+	left: 50%;
+	margin-top: -62px;
+	margin-left: -960px;
+}
+
 .footer_img{
 	position: absolute;
 	top:100%;
@@ -39,13 +48,13 @@ Author: hung.luong@matocreative.vn
 
 .img_frame img{
 	position:absolute;
-	z-index: 99;
+	z-index: 999;
 }
 
 img#frame_01{
 	left: 55%;
 	top: 25%;
-	margin-top: -134px;
+	margin-top: -171px;
 	margin-left: -123px;
 }
 
@@ -145,7 +154,7 @@ img#frame_03{
 
 .container-fluid#comments{
 	padding-top: 2em;
-	padding-bottom: 13em;
+	padding-bottom: 20em;
 	background: #f4aa1c;
 	color: #fff;
 }
@@ -202,7 +211,7 @@ img#frame_03{
 #quote-carousel .carousel-indicators {
 	right: 50%;
 	top: auto;
-	bottom: 0px;
+	bottom: -100px;
 	margin-right: -19px;
 }
 #quote-carousel .carousel-indicators li {

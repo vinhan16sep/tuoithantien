@@ -3,8 +3,24 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <h3>
-                <?php 
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+                <?php $style = 'style="display: none"' ?>
+                <ul>
+                    <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>" >Thông báo nhà trường</a></li>
+
+                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" >Thư viện ảnh</a></li>
+
+                    <li><a href="<?php echo base_url('thu-vien/video') ?>" >Video</a></li>
+
+                    <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a></li>
+
+                    <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" >Trải nghiệm</a></li>
+                </ul>
+            </div>
+            <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                <h3>
+                    <?php
                     switch ($this->uri->segment(2)) {
                         case 'thong-bao':
                             echo 'Thông báo';
@@ -19,9 +35,8 @@
                             # code...
                             break;
                     }
-                ?>
-            </h3>
-            <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                    ?>
+                </h3>
                 <div class="row">
                 	<?php if ($list != ''): ?>
 	                	<?php foreach ($list as $key => $value): ?>
@@ -58,21 +73,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <?php $style = 'style="display: none"' ?>
-                <ul>
-                    <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>" >Thông báo nhà trường</a></li>
 
-                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" >Thư viện ảnh</a></li>
-
-                    <li><a href="<?php echo base_url('thu-vien/video') ?>" >Video</a></li>
-
-                    <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a></li>
-
-                    <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" >Trải nghiệm</a></li>
-                </ul>
-            </div>
         </div>
 
     </div>
