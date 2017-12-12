@@ -51,6 +51,7 @@ $(document).ready(function(){
             $('.content_error').text('');
         }
         if(name.length != 0 && email.length != 0 && content.length != 0){
+            $('.submit-comment').hide();
             if(filter.test(email)){
                 $('.cmt_error').hide();
                 jQuery.ajax({
@@ -63,6 +64,7 @@ $(document).ready(function(){
                         $('#name').val('');
                         $('#email').val('');
                         $('#content').val('');
+                        $('.submit-comment').show();
                     }
                 })
             }else{
