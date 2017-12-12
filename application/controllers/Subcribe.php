@@ -15,7 +15,7 @@
             $email = $this->input->get('email');
             $where = array('email' => $email);
             $count = $this->subcribe_model->count_all($where);
-            if($count > 1){
+            if($count > 0){
                 $isExitsts = false;
 
             }else{
