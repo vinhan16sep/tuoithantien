@@ -208,6 +208,7 @@ class Public_Controller extends MY_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
 
         $this->langAbbreviation = $this->uri->segment(1) ? $this->uri->segment(1) : 'vi';
         if($this->langAbbreviation == 'en' || $this->langAbbreviation == 'vi' || $this->langAbbreviation == ''){

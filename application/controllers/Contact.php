@@ -87,4 +87,28 @@ class Contact extends Public_Controller {
 
         return $message;
     }
+
+    public function survey(){
+        $this->load->model('contact_model');
+        $result = false;
+        $params = array();
+        parse_str($this->input->post('data'), $params);
+
+        if(isset($params['option'])){
+            $data = array(
+                'option' => $params['option'],
+                'ip_address' => $_SERVER['SERVER_ADDR'],
+                'created_at' => date('Y-m-d H:i:s')
+            );
+            $result = $this->contact_model->add_survey($data);
+        }
+
+        if(!$result){
+            $this->output->set_status_header(200)
+                ->set_output(json_encode(array('message' => 'Fail')));
+        }else{
+            $this->output->set_status_header(200)
+                ->set_output(json_encode(array('message' => 'Success')));
+        }
+    }
 }

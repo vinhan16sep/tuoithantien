@@ -28,16 +28,6 @@
   $(document).ready(function () {
     var pathname = window.location.pathname;
 
-    if (pathname.indexOf("groups") >= 0) {
-        GROUPS.initial();
-    } else if (pathname.indexOf("users") >= 0) {
-        USERS.initial();
-    } else if (pathname.indexOf("languages") >= 0) {
-        LANGUAGES.initial();
-    } else if (pathname.indexOf("dashboard") >= 0) {
-        DASHBOARD.initial();
-    }
-
     $('#check-all').change(function() {
         var checkboxes = $(this).closest('form').find(':checkbox');
         if($(this).is(':checked')) {
