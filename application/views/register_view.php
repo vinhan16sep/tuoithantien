@@ -131,9 +131,6 @@
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <button class="btn btn-primary hvr-icon-forward" type="submit">Gửi đăng ký</button>
-
-                                <br><br>
-                                <?php echo $procedure['content'] ?>
                             </div>
                         </div>
                         <?php
