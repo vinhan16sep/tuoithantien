@@ -19,14 +19,10 @@
 
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <div class="blogs_cover">
-                    <img src="<?php echo base_url('assets/upload/parental/'.$admission['image']); ?>" alt="ảnh cover bài viết">
+                    <img src="<?php echo base_url('assets/upload/admission/'.$admission['image']); ?>" alt="ảnh cover bài viết">
                 </div>
 
                 <h2 class="blog_title"><?php echo $admission['title'] ?></h2>
-
-                <blockquote>
-                    <?php echo $admission['description'] ?>
-                </blockquote>
 
                 <?php echo $admission['content'] ?>
 

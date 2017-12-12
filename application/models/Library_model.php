@@ -46,12 +46,9 @@ class Library_model extends CI_Model{
         return false;
     }
 
-    public function count_all($where = array(), $search = null, $type = null, $id = null) {
+    public function count_all($where = array(), $search = null) {
         $this->db->select('*')
             ->from('library');
-        if($type != null && $id != null){
-            $this->db->where($type, $id);
-        }
         $this->db->where('is_deleted', 0);
         if($where != null){
             $this->db->where($where);

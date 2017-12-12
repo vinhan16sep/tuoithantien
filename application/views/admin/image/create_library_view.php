@@ -35,7 +35,7 @@
 
                     <div class="form-group picture">
                         <?php
-                        echo form_label('Image list', 'image_list');
+                        echo form_label('Thêm ảnh vào thư viện (ảnh không quá 1200 KB)', 'image_list');
                         echo form_error('image_list');
                         echo form_upload('image_list[]','','multiple');
                         ?>
@@ -50,7 +50,6 @@
                     </div>
                     <br>
                     <div class="form-group col-sm-12 text-right">
-                        <input type="hidden" name="url" value="<?php echo $slug; ?>">
                         <?php
                         echo form_submit('submit', 'OK', 'class="btn btn-primary"');
                         echo form_close();
