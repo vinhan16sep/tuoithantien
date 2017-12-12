@@ -189,10 +189,10 @@ class Admin_Controller extends MY_Controller {
         $config['allowed_types'] = 'jpg|png|gif';
         //Dung lượng tối đa
         $config['max_size']      = '1200';
-        //Chiều rộng tối đa
-        $config['max_width']     = '1028';
-        //Chiều cao tối đa
-        $config['max_height']    = '1028';
+//        //Chiều rộng tối đa
+//        $config['max_width']     = '1028';
+//        //Chiều cao tối đa
+//        $config['max_height']    = '1028';
         
         return $config;
     }

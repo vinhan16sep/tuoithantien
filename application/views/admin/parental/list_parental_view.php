@@ -4,7 +4,25 @@
     <section class="content row">
         <div class="container col-md-12">
             <h3 style="text-transform: uppercase; text-align: center;">
-                HỌC PHÍ
+                <?php
+                $segment = $this->uri->segment(4);
+                switch ($segment) {
+                    case 'lien-lac':
+                        echo 'Liên lạc';
+                        break;
+                    case 'thuc-don':
+                        echo 'Thực đơn';
+                        break;
+                    case 'y-te':
+                        echo 'Y tế';
+                        break;
+                    case 'ky-luat':
+                        echo 'Kỷ luật';
+                        break;
+                    default:
+                        break;
+                }
+                ?>
             </h3>
             <div>
                 <span><?php echo $this->session->flashdata('message'); ?></span>

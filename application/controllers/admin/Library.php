@@ -19,7 +19,7 @@ class Library extends Admin_Controller{
         }
 
         $this->load->library('pagination');
-        $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
         if($keywords != ''){
 	        $total_rows  = $this->library_model->count_all(null,$keywords);
@@ -54,20 +54,19 @@ class Library extends Admin_Controller{
 	public function create(){
         $slug = $this->uri->segment(4);
         $this->data['slug'] = $slug;
-        
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
         $this->form_validation->set_rules('content', 'Nội dung', 'required');
         if($this->input->post()){
-        	$link = $this->input->post('slug');
             if($this->form_validation->run() == TRUE){
-            	if(!file_exists("assets/upload/image/".$link)){
-            		mkdir("assets/upload/image/".$link, 0700);
-            	}
+
                 $slug = $this->input->post('slug');
                 $unique_slug = $this->library_model->build_unique_slug($slug);
+                if(!file_exists("assets/upload/image/".$unique_slug)){
+                    mkdir("assets/upload/image/".$unique_slug, 0755);
+                }
 
                 // $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/image/'.$link, 'assets/upload/article/thumbs');
-                $image_list = $this->upload_file('./assets/upload/image/'.$link, 'image_list');
+                $image_list = $this->upload_file('./assets/upload/image/'.$unique_slug, 'image_list');
                 $data = array(
                     'title'         => $this->input->post('title'),
                     'slug'          => $unique_slug,
@@ -93,7 +92,7 @@ class Library extends Admin_Controller{
                 }catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Thêm mới thư viện ảnh thất bại: ' . $e->getMessage());
                 }
-                redirect('admin/library/index', 'refresh');
+//                redirect('admin/library/index', 'refresh');
             }
         }
 

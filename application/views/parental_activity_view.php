@@ -10,10 +10,6 @@
 
                 <h2 class="blog_title"><?php echo $activity['title'] ?></h2>
 
-                <blockquote>
-                    <?php echo $activity['description'] ?>
-                </blockquote>
-
                 <?php echo $activity['content'] ?>
 
 
