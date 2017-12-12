@@ -134,6 +134,29 @@ textarea {
 	resize: none;
 }
 
+.page strong{
+	border: 1px solid #337ab7;
+	border-radius: 3px;
+	margin-right: 3px;
+	padding: 5px 10px;
+	color: #fff;
+	cursor: pointer;
+	background-color: #337ab7;
+	border-color: #337ab7;
+}
+.page a{
+	color: #23527c;
+	background-color: #fff;
+	border-color: #fff;
+	border-radius: 3px;
+	margin-right: 3px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+.page a:hover{
+	background: #ddd;
+}
+
 
 /* CSS Footer */
 

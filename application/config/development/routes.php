@@ -59,20 +59,29 @@ $route['lien-he'] = 'contact/index';
 $route['trang-chu'] = 'homepage';
 $route['gioi-thieu'] = 'introduce/index';
 $route['gioi-thieu/(:any)'] = 'introduce/show_list/(:any)';
+$route['gioi-thieu/(:any)/(:num)'] = 'introduce/show_list/(:any)/(:num)';
 $route['bai-viet/(:any)/(:any)'] = 'introduce/detail/(:any)';
 // $route['(:any)'] = 'introduce/index/(:any)';
 
 
-$route['(:any)'] = 'parental/activity/(:any)';
-$route['phoi-hop-cung-phu-huynh/(:any)'] = 'parental/show_list/(:any)';
+$route['phoi-hop-cung-phu-huynh/(:any)'] = 'parental/activity/(:any)';
+$route['phoi-hop-cung-phu-huynh/danh-sach/(:any)'] = 'parental/show_list/(:any)';
 $route['phoi-hop-cung-phu-huynh/(:any)/(:any)'] = 'parental/detail/(:any)';
+$route['phoi-hop-cung-phu-huynh/danh-sach/(:any)/(:num)'] = 'parental/show_list/(:any)/(:num)';
 
 $route['hoat-dong/(:any)'] = 'activity/index/(:any)';
+$route['hoat-dong/(:any)/(:num)'] = 'activity/index/(:any)/(:num)';
 $route['hoat-dong/(:any)/(:any)'] = 'activity/detail/(:any)';
 
 $route['thong-tin-nhap-hoc/(:any)'] = 'admission/admission_procedure/(:any)';
 $route['thong-tin-nhap-hoc/danh-sach/(:any)'] = 'admission/show_list/(:any)';
+$route['thong-tin-nhap-hoc/danh-sach/(:any)/(:num)'] = 'admission/show_list/(:any)/(:num)';
+
 $route['thong-tin-nhap-hoc/(:any)/(:any)'] = 'admission/detail/(:any)';
+
 $route['thu-vien/thu-vien-anh'] = 'image/index';
+$route['thu-vien/thu-vien-anh/(:num)'] = 'image/index/(:num)';
 $route['thu-vien/thu-vien-anh/(:any)'] = 'image/detail/(:any)';
+
 $route['thu-vien/video'] = 'video/index';
+$route['thu-vien/video/(:num)'] = 'video/index/(:num)';

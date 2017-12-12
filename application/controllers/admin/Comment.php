@@ -11,7 +11,15 @@ class Comment extends Admin_Controller{
 	}
 
 	public function index(){
-		$list_comment = $this->comment_model->fetch_all();
+        $segment = $this->uri->segment(4);
+        if($segment == 'new-comment'){
+            $this->load->model('count_comment_model');
+            $list_comment = $this->count_comment_model->fetch_all();
+        }else{
+            $where =  array('slug' => $segment);
+            $list_comment = $this->comment_model->fetch_all($where);
+        }
+
 		$comment = array('giới thiệu, thông tin nhập học, phối hợp cùng phụ huynh, hoạt động');
 		if($list_comment){
 			foreach ($list_comment as $key => $value) {
@@ -43,9 +51,14 @@ class Comment extends Admin_Controller{
 			}
 		}
 		$this->data['list_comment'] = $list_comment;
-
 		$this->render('admin/comment/list_comment_view');
 	}
+
+	public function delete_all(){
+        $this->db->empty_table('count_comment');
+        redirect('admin/dashboard');
+
+    }
 
 	public function remove(){
 		$id = $_GET['id'];

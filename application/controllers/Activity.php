@@ -38,7 +38,22 @@ class Activity extends Public_Controller {
         $category = $this->list_slug($slug);
 
         $where = array('category' => $category);
-        $list = $this->activity_model->fetch_all($where, 9, 0);
+
+        $this->load->library('pagination');
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $total_rows = count($this->activity_model->fetch_all($where));
+
+        $config = array();
+        $base_url = base_url() . 'hoat-dong/'.$slug;
+        $per_page = 12;
+        $uri_segment = 3;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
+        $this->pagination->initialize($config);
+        $this->data['page_links'] = $this->pagination->create_links();
+
+        $list = $this->activity_model->fetch_all($where, $per_page, $page);
         if($list){
             $this->data['list'] = $list;
         }else{

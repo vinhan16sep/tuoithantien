@@ -18,6 +18,7 @@ class Introduce extends Public_Controller {
     }
 
     public function show_list(){
+        $this->output->enable_profiler(TRUE);
         $slug = $this->uri->segment(2);
         $this->data['slug'] = $slug;
         $check_slug =  array('muc-tieu', 'ngoai-ngu', 'giao-duc-theo-lua-tuoi', 'tap-huan', 'ngoai-khoa');
@@ -28,7 +29,22 @@ class Introduce extends Public_Controller {
         if($slug == 'ngoai-khoa'){
             $where = array('category' => 2);
         }
-        $list = $this->introduce_model->fetch_all($where, 9, 0);
+
+        $this->load->library('pagination');
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        $total_rows = count($this->introduce_model->fetch_all($where));
+
+        $config = array();
+        $base_url = base_url() . 'gioi-thieu/'.$slug;
+        $per_page = 12;
+        $uri_segment = 3;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
+        $this->pagination->initialize($config);
+        $this->data['page_links'] = $this->pagination->create_links();
+
+        $list = $this->introduce_model->fetch_all($where, $per_page, $page);
         if($list){
             $this->data['list'] = $list;
         }else{

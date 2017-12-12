@@ -44,7 +44,7 @@
 				                <span class="content_error" style="color: red"></span>
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                            	<input type="hidden" name="category_id" value="1" id="category_id">
+                            	<input type="hidden" name="category_id" value="4" id="category_id">
                             	<input type="hidden" name="slug" value="<?php echo $detail['slug'] ?>" id="slug">
                             	<?php echo form_submit('submit', 'Gửi nhận xét', 'class="btn btn-primary hvr-icon-forward submit-comment"'); ?>
                             </div>

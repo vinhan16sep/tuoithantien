@@ -68,11 +68,16 @@
                             <div class="item col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner">
                                     <img class="img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>">
-                                    <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+                                    <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
                                     <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('phoi-hop-cung-phu-huynh/').$slug.'/'.$value['slug']; ?>">Khám phá</a>
                                 </div>
                             </div>
                         <?php endforeach ?>
+
+                        <div class="col-md-12 text-center page">
+                            <?php echo $page_links; ?>
+                        </div>
+
                     <?php else: ?>
                         <div class="item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner">
@@ -82,11 +87,24 @@
                     <?php endif ?>
                 </div>
             </div>
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+                <ul>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
 
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>" >Liên lạc</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>" >Thực đơn</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>" >Y tế</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>" >Giờ đưa đón</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>" >Kỷ luật</a></li>
+                </ul>
+            </div>
         </div>
-
     </div>
-
     <div class="container-fluid" id="registerScreen" style="position: relative;">
         <!--<div id="register_header" style="position: absolute; top: -120px; left: 50%; margin-left: -960px;"><img src="img/register_header.png" alt="register_header"></div>
            <div id="register_footer" style="position: absolute; bottom: -56px; left: 50%;  margin-left: -960px;"><img src="img/register_footer.png" alt="register_footer"></div>-->

@@ -61,8 +61,24 @@ class Admission extends Public_Controller {
         
         $category = $this->list_slug($slug);
 
+        $this->load->library('pagination');
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+
         $where = array('category' => $category);
-        $list = $this->admission_model->fetch_all($where, 9, 0);
+
+        $total_rows = count($this->admission_model->fetch_all($where));
+
+        $config = array();
+        $base_url = base_url() . 'thong-tin-nhap-hoc/danh-sach/'.$slug;
+        $per_page = 12;
+        $uri_segment = 4;
+        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+
+        $this->pagination->initialize($config);
+        $this->data['page_links'] = $this->pagination->create_links();
+
+
+        $list = $this->admission_model->fetch_all($where, $per_page, $page);
         if($list){
             $this->data['list'] = $list;
         }else{

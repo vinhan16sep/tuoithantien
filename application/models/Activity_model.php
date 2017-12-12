@@ -69,6 +69,7 @@ class Activity_model extends CI_Model{
             ->like('title', $like)
             ->where($where)
             ->limit($limit, $start)
+            ->order_by('id', 'desc')
             ->get();
 
         if($query->num_rows() > 0){

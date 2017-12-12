@@ -39,6 +39,11 @@
 		                        </div>
 		                    </div>
 	                    <?php endforeach ?>
+
+                        <div class="col-md-12 text-center page">
+                            <?php echo $page_links; ?>
+                        </div>
+
 	                <?php else: ?>
                         <div class="item col-md-3 col-sm-3 col-xs-12">
                             <div class="inner">
