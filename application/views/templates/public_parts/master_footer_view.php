@@ -70,7 +70,7 @@
 <div class="scrollup">
     <i class="fa fa-chevron-up fa-3x"></i>
 </div>
-<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey" data-hover="tooltip" data-placement="left" title="Thăm dò dư luận">
+<button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey_modal" data-hover="tooltip" data-placement="left" title="Thăm dò dư luận">
     <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
 </button>
 

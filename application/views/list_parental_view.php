@@ -5,19 +5,18 @@
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
-
                 <ul>
-                    <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>" >Chế độ sinh hoạt 1 ngày</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>" >Liên lạc</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>" >Liên lạc</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>" >Thực đơn</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>" >Thực đơn</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>" >Y tế</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>" >Y tế</a></li>
 
-                    <li><a href="<?php echo base_url('gio-dua-don') ?>" >Giờ đưa đón</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>" >Giờ đưa đón</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>" >Kỷ luật</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>" >Kỷ luật</a></li>
                 </ul>
             </div>
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
@@ -87,22 +86,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <ul>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
 
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>" >Liên lạc</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>" >Thực đơn</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>" >Y tế</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>" >Giờ đưa đón</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>" >Kỷ luật</a></li>
-                </ul>
-            </div>
         </div>
     </div>
     <div class="container-fluid" id="registerScreen" style="position: relative;">

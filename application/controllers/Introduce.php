@@ -18,7 +18,6 @@ class Introduce extends Public_Controller {
     }
 
     public function show_list(){
-        $this->output->enable_profiler(TRUE);
         $slug = $this->uri->segment(2);
         $this->data['slug'] = $slug;
         $check_slug =  array('muc-tieu', 'ngoai-ngu', 'giao-duc-theo-lua-tuoi', 'tap-huan', 'ngoai-khoa');
