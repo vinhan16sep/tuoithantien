@@ -154,7 +154,7 @@ class Admin_Controller extends MY_Controller {
         $config = $this->config($upload_path);
 
         //lưu biến môi trường khi thực hiện upload
-        $file  = $_FILES['image_list'];
+        $file  = $_FILES[$file_name];
         $count = count($file['name']);//lấy tổng số file được upload
         
         $image_list = array(); //luu ten cac file anh upload thanh cong
