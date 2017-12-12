@@ -3,8 +3,26 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <h3>
-                <?php 
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+
+                <ul>
+                    <li><a href="<?php echo base_url('che-do-sinh-hoat-1-ngay') ?>" >Chế độ sinh hoạt 1 ngày</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/lien-lac') ?>" >Liên lạc</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/thuc-don') ?>" >Thực đơn</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/y-te') ?>" >Y tế</a></li>
+
+                    <li><a href="<?php echo base_url('gio-dua-don') ?>" >Giờ đưa đón</a></li>
+
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/ky-luat') ?>" >Kỷ luật</a></li>
+                </ul>
+            </div>
+            <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                <h3>
+                    <?php
                     switch ($this->uri->segment(2)) {
                         case 'lien-lac':
                             echo 'Liên lạc';
@@ -22,9 +40,8 @@
                             # code...
                             break;
                     }
-                ?>
-            </h3>
-            <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                    ?>
+                </h3>
                 <div class="row">
                     <?php if ($list != ''): ?>
 
@@ -72,7 +89,6 @@
             </div>
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
-
                 <ul>
                     <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
 
@@ -88,9 +104,7 @@
                 </ul>
             </div>
         </div>
-
     </div>
-
     <div class="container-fluid" id="registerScreen" style="position: relative;">
         <!--<div id="register_header" style="position: absolute; top: -120px; left: 50%; margin-left: -960px;"><img src="img/register_header.png" alt="register_header"></div>
            <div id="register_footer" style="position: absolute; bottom: -56px; left: 50%;  margin-left: -960px;"><img src="img/register_footer.png" alt="register_footer"></div>-->

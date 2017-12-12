@@ -194,8 +194,53 @@ textarea {
 button#surveyOn{
 	position: fixed;
 	top:50%;
-	right: 0;
+	right: -50px;
 	z-index: 999;
-
 	border-radius: 50%;
+
+	transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	-o-transition: all ease 0.5s
+}
+
+button#surveyOn:hover{
+	right: 0;
+
+	transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	-o-transition: all ease 0.5s
+}
+
+.modal#survey .modal-header{
+	min-height: 75px;
+	background-image: url(../img/bg_modal_header.png);
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+.scrollup {
+	padding: 10px;
+	position: fixed;
+	z-index: 999;
+	bottom: 50px;
+	right: 50px;
+	display: none;
+	text-align: center;
+	background: #50b748;
+	background: -moz-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, #50b748), color-stop(100%, #008b44));
+	background: -webkit-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: -o-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: -ms-linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	background: linear-gradient(45deg, #50b748 0%, #008b44 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#50b748', endColorstr='#008b44', GradientType=1 );
+	color: #fff;
+	border-radius: 50%;
+}
+
+.scrollup:hover{
+	cursor: pointer;
 }

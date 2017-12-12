@@ -3,8 +3,27 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <h3>
-                <?php 
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+                <?php $style = 'style="display: none"' ?>
+                <ul>
+                    <li><a href="<?php echo base_url('gioi-thieu') ?>" >Tổng quan</a></li>
+
+                    <li><a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>" >Mục tiêu</a></li>
+
+                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>" >Ngoại ngữ</a></li>
+
+                    <li><a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>" >Giáo dục theo lứa tuổi</a></li>
+
+                    <li><a href="<?php echo base_url('gioi-thieu/tap-huan') ?>" >Tập huấn</a></li>
+
+                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>" >Ngoại khóa</a></li>
+                </ul>
+            </div>
+
+            <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                <h3>
+                    <?php
                     switch ($this->uri->segment(2)) {
                         case 'muc-tieu':
                             echo 'Mục Tiêu';
@@ -25,9 +44,8 @@
                             # code...
                             break;
                     }
-                ?>
-            </h3>
-            <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                    ?>
+                </h3>
                 <div class="row">
                     <?php if ($list != ''): ?>
                         <?php foreach ($list as $key => $value): ?>
@@ -54,23 +72,7 @@
                     
                 </div>
             </div>
-            <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <?php $style = 'style="display: none"' ?>
-                <ul>
-                    <li><a href="<?php echo base_url('gioi-thieu') ?>" >Tổng quan</a></li>
 
-                    <li><a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>" >Mục tiêu</a></li>
-
-                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>" >Ngoại ngữ</a></li>
-
-                    <li><a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>" >Giáo dục theo lứa tuổi</a></li>
-
-                    <li><a href="<?php echo base_url('gioi-thieu/tap-huan') ?>" >Tập huấn</a></li>
-
-                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>" >Ngoại khóa</a></li>
-                </ul>
-            </div>
         </div>
 
     </div>

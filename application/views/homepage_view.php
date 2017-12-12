@@ -22,7 +22,7 @@
         </div>
 
         <!-- Controls -->
-        <a class="left carousel-control" href="slideHomepage" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#slideHomepage" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
@@ -32,13 +32,16 @@
         </a>
     </div>
     <div class="container-fluid" id="introduce">
+        <div id="about_header">
+            <img src="<?php echo site_url('assets/public/img/footer_slider.png') ?>" alt="about_header">
+        </div>
         <div class="container">
             <div class="row">
                 <div class="left col-md-6 col-sm-6 col-xs-12">
                     <h1>Giới thiệu</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt mi vel nisl vehicula, non iaculis erat tincidunt. Nam dignissim mattis orci vitae porttitor. Nulla vel tincidunt nunc, at convallis magna. Integer malesuada elit et bibendum auctor. Sed et auctor metus. Pellentesque dapibus augue nec varius varius. Fusce eget magna viverra, tempor libero non, porta nunc. Proin sed laoreet eros. Aliquam pulvinar fermentum justo in ultrices. Duis suscipit pharetra arcu, eget tincidunt ante sodales hendrerit. Nulla nec sapien a orci tristique convallis eu eu velit. Vivamus diam arcu, tempus ut consectetur sit amet, aliquet vitae arcu. Quisque ullamcorper urna eu dolor sollicitudin eleifend. Nulla accumsan turpis condimentum neque rhoncus, sed mollis arcu porta. Quisque a felis sit amet leo posuere convallis. Sed mi mi, finibus sed nisi ut, porttitor vestibulum nisl.</p>
                     <div class="row">
-                        <div class="media col-md-6 col-sm-6 col-xs-6">
+                        <div class="media col-md-6 col-sm-6 col-xs-12">
                             <div class="media-left">
                                 <img class="media-object" src="<?php echo site_url('assets/public/img/clock.png') ?>" alt="Giờ làm việc">
                             </div>
@@ -47,7 +50,7 @@
                                 <h4 class="media-heading"><strong>7h00 - 18h00</strong></h4>
                             </div>
                         </div>
-                        <div class="media col-md-6 col-sm-6 col-xs-6">
+                        <div class="media col-md-6 col-sm-6 col-xs-12">
                             <div class="media-left">
                                 <img class="media-object" src="<?php echo site_url('assets/public/img/phone.png') ?>" alt="Hotline">
                             </div>
@@ -315,8 +318,8 @@
                 </div>
             </div>
         </div>
-        <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-05.png') ?>" alt="cloud-1" class="wow slideInUp hidden-xs">
-        <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-06.png') ?>" alt="cloud-2" class="wow slideInUp hidden-xs">
+        <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-02.png') ?>" alt="cloud-1" class="wow slideInUp hidden-xs">
+        <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-03.png') ?>" alt="cloud-2" class="wow slideInUp hidden-xs">
     </div>
 
 </section>

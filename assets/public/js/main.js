@@ -3,19 +3,19 @@ $(document).ready(function(){
 	$('#itemslider').carousel({ interval: 3000 });
 
 	$('.carousel-showmanymoveone .item').each(function(){
-	var itemToClone = $(this);
+    var itemToClone = $(this);
 
-	for (var i=1;i<4;i++) {
-	itemToClone = itemToClone.next();
+    for (var i=1;i<4;i++) {
+    itemToClone = itemToClone.next();
 
-	if (!itemToClone.length) {
-	itemToClone = $(this).siblings(':first');
-	}
+    if (!itemToClone.length) {
+    itemToClone = $(this).siblings(':first');
+    }
 
-	itemToClone.children(':first-child').clone()
-	.addClass("cloneditem-"+(i))
-	.appendTo($(this));
-	}
+    itemToClone.children(':first-child').clone()
+    .addClass("cloneditem-"+(i))
+    .appendTo($(this));
+    }
 	});
 
 	if($('#count-comment').val() > 5){
@@ -72,7 +72,22 @@ $(document).ready(function(){
 		}
 		
 		return false;
-	})
+	});
+
+  $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {
+          $('.scrollup').fadeIn();
+      } else {
+          $('.scrollup').fadeOut();
+      }
+  });
+
+  $('.scrollup').click(function () {
+      $("html, body").animate({
+          scrollTop: 0
+      }, 600);
+      return false;
+  });
 
 	// see more comment
     var page = 1;
@@ -91,7 +106,7 @@ $(document).ready(function(){
 				}
             }
         })
-    })
+    });
 
     // subcribe email
 	$('.subcribe_bnt').click(function () {
@@ -111,10 +126,9 @@ $(document).ready(function(){
 					}
                 }
             })
-		}else{
-            alert('Định dạng email không đúng vui lòng nhập lại!');
-		}
+      }else{
+              alert('Định dạng email không đúng vui lòng nhập lại!');
+      }
 
-    })
-	
+    });
 });
