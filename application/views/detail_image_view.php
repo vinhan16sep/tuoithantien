@@ -3,11 +3,23 @@
 <section class="main_content">
     <div class="container">
         <div class="row">
-            <h3>Thư viện ảnh: <?php echo $library['title'] ?></h3>
-			
+            <div class="category col-md-3 col-sm-3 col-xs-12">
+                <h1>Danh mục bài viết</h1>
+                <?php $style = 'style="display: none"' ?>
+                <ul>
+                    <?php foreach ($list as $key => $value): ?>
+                        <li>
+                            <a href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>" ><?php echo $value['title'] ?></a>
+                        </li>
+                    <?php endforeach ?>
+
+                </ul>
+            </div>
+
 			<h4><?php echo $library['content'] ?></h4>
             
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
+                <h3>Thư viện ảnh: <?php echo $library['title'] ?></h3>
                 <div class="row">
                 	<?php if ($images != ''): ?>
 	                	<?php foreach ($images as $key => $value): ?>
@@ -27,18 +39,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <?php $style = 'style="display: none"' ?>
-                <ul>
-                	<?php foreach ($list as $key => $value): ?>
-                		<li>
-	                        <a href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>" ><?php echo $value['title'] ?></a>
-	                    </li>
-                	<?php endforeach ?>
-                    
-                </ul>
-            </div>
+
         </div>
 
     </div>
