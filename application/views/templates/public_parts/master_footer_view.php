@@ -1,8 +1,7 @@
 
 <footer class="footer container-fluid">
-    <div id="footer_footer" style="position: absolute; top: -182px; left: 50%;  margin-left: -960px;">
-        <img src="<?php echo site_url('assets/public/img/footer_header.png') ?>" alt="register_footer">
-
+    <div id="footer_head">
+        <!--<img src="<?php echo site_url('assets/public/img/footer_header.png') ?>" alt="register_footer">-->
     </div>
     <div class="container">
         <div class="row subscribe">
@@ -71,7 +70,7 @@
     <i class="fa fa-chevron-up fa-3x"></i>
 </div>
 <button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey_modal" data-hover="tooltip" data-placement="left" title="Thăm dò dư luận">
-    <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
+    <i class="fa fa-3x fa-question-circle-o" aria-hidden="true"></i>
 </button>
 
 <div class="modal fade" id="survey_modal" tabindex="-1" role="dialog" aria-labelledby="surveyLabel">

@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/contact.css') ?>">
 
-<section class="main_content">
+<section class="main_content" id="contact">
     <div class="container">
         <div class="row">
             <div class="left col-md-6 col-sm-6 col-xs-12">

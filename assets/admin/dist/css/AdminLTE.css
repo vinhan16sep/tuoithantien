@@ -5706,7 +5706,7 @@ table.text-center th {
   background: #ddd;
 }
 .table-condensed tr td b{
-  float: right;
+  float: left;
 }
 .table-bordered > tbody > tr > td:first-of-type{
   width: 100px;

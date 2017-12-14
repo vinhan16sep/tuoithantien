@@ -68,7 +68,7 @@
                     <p>Text giới thiệu chung về các chương trình</p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <img src="<?php echo site_url('assets/public/img/register.png') ?>" class="wow fadeInUp">
+                    <div id="register_image"></div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <h1>Đăng ký nhập học</h1>
