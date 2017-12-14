@@ -31,10 +31,6 @@ header .cover{
 	height: auto;
 }
 
-.navbar-brand img{
-	width: 250px;
-}
-
 .navbar-nav{
 	margin-top: 35px !important;
 }
@@ -121,14 +117,6 @@ ul.pink li a:hover{
 	text-align: center;
 }
 
-.screen_title h1, .screen_title h2{
-	color: #f4aa1c;
-}
-
-a h1, a h2{
-	color: #f4aa1c;
-}
-
 textarea {
 	overflow: hidden;
 	resize: none;
@@ -158,7 +146,6 @@ textarea {
 }
 
 ul.list-unstyled li{
-	background-image: url(../img/bg_list.png);
 	background-repeat: no-repeat;
 	background-position-y: 8px;
 	padding-left: 15px;
@@ -170,16 +157,6 @@ ul.list-unstyled li{
 
 
 /* CSS Footer */
-
-.footer{
-	margin-top: 0em;
-	position: relative;
-	padding-bottom: 50px;
-	background-color: #f38991;
-	background-image: url(../img/footer_bg.png);
-	background-position: center bottom;
-	background-repeat: no-repeat;
-}
 
 .footer h2{
 	margin-top: 0;
@@ -212,7 +189,7 @@ button#surveyOn{
 }
 
 
-.modal#survey .modal-header{
+.modal#survey_modal .modal-header{
 	min-height: 75px;
 	background-image: url(../img/bg_modal_header.png);
 	background-size: cover;

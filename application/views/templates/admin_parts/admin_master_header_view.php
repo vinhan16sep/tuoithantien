@@ -117,11 +117,11 @@
 <!--                <ul class="dropdown-menu">-->
 <!--                    <li class="header">Bạn có --><?php //echo $total ?><!-- bình luận chưa xem</li>-->
 <!--                    <li>-->
-<!--                        <!-- inner menu: contains the actual data -->-->
+<!--                        <!-- inner menu: contains the actual data -->
 <!--                        <ul class="menu">-->
 <!--                            --><?php //if($news_comment): ?>
 <!--                                --><?php //foreach ($news_comment as $value):?>
-<!--                                    <li><!-- start message -->-->
+<!--                                    <li><!-- start message -->
 <!--                                        <a href="#">-->
 <!--                                            <h4>-->
 <!--                                                Support Team-->

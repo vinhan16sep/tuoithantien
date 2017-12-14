@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/flaticon.css') ?>">
 
 <section class="main_content">
-    <div class="container-fluid">
+    <div class="container-fluid" id="about">
         <div class="container">
             <div class="jumbotron">
                 <h1><?php echo $overview['title'] ?></h1>
@@ -10,11 +10,11 @@
                 <!--<a class="btn btn-primary btn-lg hvr-icon-forward" href="#screen_2" role="button">Khám phá</a>-->
             </div>
 
-            <div class="img_frame hidden-xs">
-                <img id="frame_01" src="<?php echo base_url('assets/public/') ?>img/img_frame-07.png" alt="frame-1" class="wow slideInUp">
-                <img id="frame_02" src="<?php echo base_url('assets/public/') ?>img/img_frame-08.png" alt="frame-2" class="wow slideInUp">
-                <img id="frame_03" src="<?php echo base_url('assets/public/') ?>img/img_frame-09.png" alt="frame-3" class="wow slideInUp">
-            </div>
+
+                <div id="frame_01" class="frame wow slideInUp"></div>
+                <div id="frame_02" class="frame wow slideInUp"></div>
+                <div id="frame_03" class="frame wow slideInUp"></div>
+
 
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-xs-12">
@@ -113,7 +113,7 @@
                     <p>Text giới thiệu chung về các chương trình</p>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <img src="<?php echo site_url('assets/public/img/register.png') ?>" class="wow fadeInUp">
+                    <div id="register_image"></div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <h1>Đăng ký nhập học</h1>

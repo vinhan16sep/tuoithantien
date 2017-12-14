@@ -32,8 +32,8 @@
         </a>
     </div>
     <div class="container-fluid" id="introduce">
-        <div id="about_header">
-            <img src="<?php echo site_url('assets/public/img/footer_slider.png') ?>" alt="about_header">
+        <div id="header_index_about">
+            <!--<img src="<?php echo site_url('assets/public/img/footer_slider.png') ?>" alt="about_header">-->
         </div>
         <div class="container">
             <div class="row">
@@ -63,16 +63,14 @@
                 </div>
                 <div class="right col-md-6 col-sm-6 col-xs-12">
                     <div class="img_frame">
-                        <img id="frame_01" src="<?php echo site_url('assets/public/img/img_frame-07.png') ?>" alt="frame-1" class="wow slideInUp">
-                        <img id="frame_02" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp">
-                        <img id="frame_03" src="<?php echo site_url('assets/public/img/img_frame-09.png') ?>" alt="frame-3" class="wow slideInUp">
+                        <div id="frame_01" class="frame wow slideInUp"></div>
+                        <div id="frame_02" class="frame wow slideInUp"></div>
+                        <div id="frame_03" class="frame wow slideInUp"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer_img" id="footer_about">
-            <img src="<?php echo site_url('assets/public/img/footer_pink.png') ?>" alt="about_footer">
-        </div>
+        <div class="footer_img" id="footer_index_about"></div>
     </div>
 
     <div class="container" id="featured_01">
@@ -197,9 +195,7 @@
             <img id="frame_05" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp hidden-xs">
         </div>
 
-        <div class="footer_img" id="footer_about">
-            <img src="<?php echo site_url('assets/public/img/footer_cyan.png') ?>" alt="about_footer">
-        </div>
+        <div class="footer_img" id="footer_index_blogs"></div>
 
     </div>
 

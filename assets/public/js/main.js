@@ -57,7 +57,7 @@ $(document).ready(function(){
                 $('.cmt_error').hide();
                 jQuery.ajax({
                     type: "get",
-                    url: "http://localhost:8080/tuoithantien/comment/create_comment",
+                    url: "http://localhost/tuoithantien/comment/create_comment",
                     // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
                     data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
                     success: function(result){
@@ -99,7 +99,7 @@ $(document).ready(function(){
         page ++;
         jQuery.ajax({
             type: "get",
-            url: "http://localhost:8080/tuoithantien/comment/see_more_comment",
+            url: "http://localhost/tuoithantien/comment/see_more_comment",
             // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
             data: {page : page, slug : slug},
             success: function(result){
@@ -142,7 +142,7 @@ $('.subcribe_bnt').click(function () {
     if(filter.test(email)){
         jQuery.ajax({
             type: "get",
-            url: "http://localhost:8080/tuoithantien/subcribe/create",
+            url: "http://localhost/tuoithantien/subcribe/create",
             // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
             data: {email : email},
             success: function(result){

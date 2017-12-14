@@ -7,6 +7,12 @@ Author: hung.luong@matocreative.vn
 */
 
 @media (max-width: 768px){
+
+    .navbar-brand img {
+        width: 155px;
+        margin-left: 0;
+    }
+
     .navbar-toggle{
         margin-top: 40px;
     }
@@ -33,10 +39,17 @@ Author: hung.luong@matocreative.vn
     #registerScreen img{
         width: 100%;
     }
+
+    #register_image {
+        height: 470px;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 992px){
-	
+    .navbar-brand img {
+        width: 155px;
+        margin-left: 0;
+    }
 }
 
 @media (min-width: 992px){

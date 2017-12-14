@@ -13,63 +13,7 @@ Author: hung.luong@matocreative.vn
 .container-fluid#introduce{
 	padding-top: 2em;
 	padding-bottom: 2em;
-	background: #f38991;
-	color: #fff;
-	
-	background-image: url("../img/bg_index_about.png");
-	background-position: center center;
-	background-size: cover;
-
 	position: relative;
-}
-
-#about_header{
-	position:absolute;
-	z-index: 99;
-	top:0;
-	left: 50%;
-	margin-top: -62px;
-	margin-left: -960px;
-}
-
-.footer_img{
-	position: absolute;
-	top:100%;
-	left: 50%;
-	margin-top: -2px;
-	margin-left: -960px;
-}
-
-.img_frame{
-	width:500px;
-	height:500px;
-	position:relative;
-}
-
-.img_frame img{
-	position:absolute;
-	z-index: 999;
-}
-
-img#frame_01{
-	left: 55%;
-	top: 25%;
-	margin-top: -171px;
-	margin-left: -123px;
-}
-
-img#frame_02{
-	left: 30%;
-	top: 40%;
-	margin-top: -150px;
-	margin-left: -148px;
-}
-
-img#frame_03{
-	left: 40%;
-	top: 60%;
-	margin-top: -121px;
-	margin-left: -109px;
 }
 
 .container#featured_01{
@@ -80,13 +24,10 @@ img#frame_03{
 .featured .inner img{
 	width: 100%;
 	border-radius: 37px;
-	border: 5px solid #f4aa1c;
 }
 
 .featured .item:hover{
-	background: #f4aa1c;
 	border-radius: 37px;
-	color: #fff;
 }
 
 .featured .item:hover a h2{
@@ -155,8 +96,6 @@ img#frame_03{
 .container-fluid#comments{
 	padding-top: 2em;
 	padding-bottom: 20em;
-	background: #f4aa1c;
-	color: #fff;
 }
 
 .container-fluid#comments .screen_title{
