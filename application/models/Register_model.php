@@ -51,4 +51,16 @@
          }
          return $this->db->get()->num_rows();
      }
+
+     public function update($id, $register){
+         $this->db->set($register)
+             ->where('id', $id)
+             ->update('register');
+
+         if($this->db->affected_rows() == 1){
+             return true;
+         }
+
+         return false;
+     }
  }

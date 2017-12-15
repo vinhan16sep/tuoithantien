@@ -40,13 +40,22 @@
              </a>
           </li>
 
-            <li class="<?php echo ($active == 'register')? 'active' : '' ?>">
-                <a href="<?php echo base_url('admin/register/index'); ?>">
-                    <i class="fa fa-registered" aria-hidden="true"></i>
-                    <span>Đăng ký nhập học</span>
+            <li class="<?php echo ($active == 'register')? 'active treeview' : 'treeview' ?>">
+                <a href=""><i class="fa fa-graduation-cap" aria-hidden="true"></i> Đăng ký nhập học
                     <span class="pull-right-container">
-                </span>
+                    <span class="label label-primary pull-right">2</span>
+                  </span>
                 </a>
+
+                <ul class="treeview-menu">
+                    <li class="<?php echo ($active == 'register' && $sub_active == 'index')? 'active' : '' ?>">
+                        <a href="<?php echo base_url('admin/register/index'); ?>"><i class="fa fa-minus" aria-hidden="true"></i> Chờ xử lý</a>
+                    </li>
+
+                    <li class="<?php echo ($sub_active == 'register_finish')? 'active' : '' ?>">
+                        <a href="<?php echo base_url('admin/register/register_finish'); ?>"><i class="fa fa-minus" aria-hidden="true"></i> Đã hoàn thành</a>
+                    </li>
+                </ul>
             </li>
 
             <li class="<?php echo ($active == 'placement')? 'active' : '' ?>">
