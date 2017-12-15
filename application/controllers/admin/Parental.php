@@ -1,251 +1,305 @@
-<?php 
-class Parental extends Admin_Controller{
-	
-	function __construct(){
-		parent::__construct();
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Parental extends Admin_Controller {
+
+    function __construct() {
+        parent::__construct();
+        $this->load->helper('url');
         $this->load->model('parental_model');
-	}
+        $this->load->library('session');
+        $this->data['categories'] = $this->dropdown_category();
+    }
 
-	public function activity(){
+    public function index() {
+        $this->load->library('pagination');
+        $config = array();
+        $base_url = base_url() . 'admin/parental/index';
+        $total_rows = $this->parental_model->count_all();
+        $per_page = 10;
+        $uri_segment = 4;
+        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+            $config[$key] = $value;
+        }
+        $this->pagination->initialize($config);
 
+        $this->data['page_links'] = $this->pagination->create_links();
+        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $this->data['parental'] = $this->parental_model->fetch_all_pagination($per_page, $this->data['page']);
+
+        $this->render('admin/parental/list_parental_view');
+    }
+
+    public function create() {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $slug = $this->uri->segment(4);
-        $this->data['slug'] = $slug;
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+        $this->form_validation->set_rules('image', 'Image', 'callback_check_file_selected');
 
-        if($slug == 'che-do-sinh-hoat-1-ngay'){
-        	$where = array('slug' => 'che-do-sinh-hoat-1-ngay');
-        }
-        if($slug == 'gio-dua-don'){
-        	$where = array('slug' => 'gio-dua-don');
-        }
-
-        $slug_array = array(
-                        'che-do-sinh-hoat-1-ngay' => 'chế độ sinh hoạt 1 ngày',
-                        'gio-dua-don' => 'giờ đưa đón'
-                    );
-        if(array_key_exists($slug, $slug_array) == false || $this->uri->segment(5) != null){
-            redirect('admin/dashboard','refresh');
-        }
-
-        $activity = $this->parental_model->fetch_row($where);
-        $this->data['activity'] =  $activity;
-
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
-        
-        if ($this->form_validation->run() == TRUE) {
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['categories'] = $this->dropdown_category();
+            $this->render('admin/parental/create_parental_view');
+        } else {
             if ($this->input->post()) {
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/parental', 'assets/upload/article/thumbs');
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->parental_model->build_unique_slug($slug);
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/parental', 'assets/upload/parental/thumbs');
+
                 $data = array(
                     'title' => $this->input->post('title'),
-                    'slug' => $this->input->post('slug'),
+                    'slug'          => $unique_slug,
+                    'category_id'      => $this->input->post('category'),
+                    'image' => $image,
+                    'description' => $this->input->post('description'),
                     'content' => $this->input->post('content'),
-                    'created_at'    => $this->author_info['created_at'],
-                    'created_by'    => $this->author_info['created_by'],
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
-                if($image != null){
-                    $data['image'] = $image;
-                }
 
-                try {
-                    $this->parental_model->update($activity['id'], $data);
-                    $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
-                } catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
+                $insert = $this->parental_model->insert('parental', $data);
+                if (!$insert) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item');
                 }
+                $this->session->set_flashdata('message', 'Item added successfully');
 
-                redirect('admin/parental/activity/'.$slug, 'refresh');
+                redirect('admin/parental/list_in_category/'.$this->input->post('url'), 'refresh');
             }
         }
+    }
 
-
-		$this->render('admin/parental/activity_view');
-	}
-
-	public function show_list(){
-
-    	$this->load->helper('form');
-        $this->load->library('form_validation');
-
-        $slug = $this->uri->segment(4);
-        $this->data['slug'] = $slug;
-        if($slug == 'lien-lac'){
-        	$where = array('category' => 1);
-        }elseif($slug == 'thuc-don'){
-        	$where = array('category' => 2);
-        }
-        elseif($slug == 'y-te'){
-        	$where = array('category' => 3);
-        }
-        elseif($slug == 'ky-luat'){
-        	$where = array('category' => 4);
-        }
-
-        $slug_array = array(
-                            'lien-lac' => 'học phí',
-                            'thuc-don' => 'thực đơn',
-                            'y-te'     => 'y tế',
-                            'ky-luat'  => 'kỷ luật'
-                        );
-        if(array_key_exists($slug, $slug_array) == false){
-            redirect('admin/dashboard','refresh');
-        }
-        if(!empty($this->uri->segment(5)) && !is_numeric($this->uri->segment(5))){
-            redirect('admin/dashboard','refresh');
-        }
-
-        $keywords = '';
-        if($this->input->get()){
-            $keywords = $this->input->get('search');
-        }
-
-        $this->load->library('pagination');
-        $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-        
-
-        if($keywords != ''){
-	        $total_rows  = $this->parental_model->count_all($where,$keywords);
-        }else{
-        	$total_rows  = $this->parental_model->count_all($where);
-
-        }
-
-        $config = array();
-        $base_url = base_url() . 'admin/parental/show_list/'.$slug;
-        $per_page = 10;
-        $uri_segment = 5;
-        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
-
-        $this->pagination->initialize($config);
-        $this->data['page_links'] = $this->pagination->create_links();
-
-        $result  =  array();
-        if($keywords != ''){
-            $result = $this->parental_model->fetch_all($where, $config['per_page'], $page, $keywords);
-        }else{
-            $result = $this->parental_model->fetch_all($where, $config['per_page'], $page);
-        }
-
-        $this->data['parental'] = $result;
-        $this->data['search'] = $keywords;
-
-		$this->render('admin/parental/list_parental_view');
-	}
-
-	public function edit(){
-		$slug = $this->uri->segment(4);
-        $id = $this->uri->segment(5);
-        $this->data['slug'] = $slug;
-        if($slug == 'lien-lac'){
-        	$where = array('category' => 1);
-        }elseif($slug == 'thuc-don'){
-        	$where = array('category' => 2);
-        }
-        elseif($slug == 'y-te'){
-        	$where = array('category' => 3);
-        }
-        elseif($slug == 'ky-luat'){
-        	$where = array('category' => 4);
-        }
-
+    public function edit($request_id = NULL) {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
 
-        $parental_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $parental = $this->parental_model->fetch_by_id($parental_id);
+        $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
+        $result = $this->parental_model->fetch_by_id('parental', $id);
         if ($this->form_validation->run() == FALSE) {
-            $parental = $this->parental_model->fetch_by_id($parental_id);
-            if(!$parental){
-                $this->session->set_flashdata('message', 'Bài viết không tồn tại');
-                redirect('admin/parental/list/'.$slug, 'refresh');
+            $this->data['categories'] = $this->dropdown_category();
+            $this->data['parental'] = $result;
+
+            if (!$this->data['parental']) {
+                redirect('admin/parental', 'refresh');
             }
 
-            $this->data['parental'] = $parental;
             $this->render('admin/parental/edit_parental_view');
         } else {
             if ($this->input->post()) {
                 $input_slug = $this->input->post('slug');
-                if($parental['slug'] == $input_slug){
-                    $unique_slug = $this->parental_model->build_unique_slug($input_slug, $parental['id']);
+
+                if($result['slug'] == $input_slug){
+                    $unique_slug = $this->parental_model->build_unique_slug($input_slug, $result['id']);
                 }else{
                     $unique_slug = $this->parental_model->build_unique_slug($input_slug);
                 }
-                
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/parental', 'assets/upload/article/thumbs');
-                $data = array(
-                    'title'        => $this->input->post('title'),
-                    'slug'         => $unique_slug,
-                    'category'     => $this->input->post('cat'),
-                    'description'  => $this->input->post('description'),
-                    'content'      => $this->input->post('content'),
-                    'modified_at'  => $this->author_info['modified_at'],
-                    'modified_by'  => $this->author_info['modified_by']
-                );
 
-                if($image != null){
-                    $data['image'] = $image;
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/parental', 'assets/upload/parental/thumbs');
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug'          => $unique_slug,
+                    'category_id'      => $this->input->post('category'),
+                    'image' => $image,
+                    'description' => $this->input->post('description'),
+                    'content' => $this->input->post('content'),
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+                if ($image == '') {
+                    unset($data['image']);
                 }
+
                 try {
-                    $this->parental_model->update($parental_id, $data);
-                    $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
+                    $this->parental_model->update('parental', $id, $data);
+                    $this->session->set_flashdata('message', 'Item updated successfully');
                 } catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Cập nhật bài viêt thất bại: ' . $e->getMessage());
+                    $this->session->set_flashdata('message', 'There was an error updating the item: ' . $e->getMessage());
                 }
-                redirect('admin/parental/show_list/'.$slug, 'refresh');
+
+                redirect('admin/parental/list_in_category/'.$this->input->post('url'), 'refresh');
             }
         }
-	}
+    }
 
-	public function create(){
-        $slug = $this->uri->segment(4);
-        $this->data['slug'] = $slug;
+    public function remove($id = NULL){
+        $id = $this->input->get('id');
+        if(!isset($id)){
+            redirect('admin/parental', 'refresh');
+        }
 
+        $parental = $this->parental_model->fetch_by_id('parental', $id);
+        if(!$parental){
+            redirect('admin/parental', 'refresh');
+        }
+
+        $result = $this->parental_model->delete('parental', $id);
+        if($result){
+            unlink('assets/upload/parental/'. $parental['image']);
+        }else{
+            $this->session->set_flashdata('message', 'There was an error when delete item');
+        }
+        $this->session->set_flashdata('message', 'Item deleted successfully');
+
+        redirect('admin/parental', 'refresh');
+    }
+
+    public function category(){
+        $this->data['target'] = 'parental';
+        $this->data['categories'] = $this->parental_model->fetch_all('parental_category');
+
+        $this->render('admin/category/list_category_view');
+    }
+
+    public function list_in_category($type){
+        $category_id = $this->uri->segment(4);
+        $this->data['category_id'] = $category_id;
+
+        $this->load->library('pagination');
+        $config = array();
+        $base_url = base_url() . 'admin/parental/list_in_category/' . $type;
+        $total_rows = $this->parental_model->count_all($type);
+        $per_page = 10;
+        $uri_segment = 5;
+        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+            $config[$key] = $value;
+        }
+        $this->pagination->initialize($config);
+
+        $this->data['page_links'] = $this->pagination->create_links();
+        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(5) : 0;
+        $this->data['parental'] = $this->parental_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+
+        $this->render('admin/parental/list_parental_view');
+    }
+
+    public function create_category(){
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
-        $this->form_validation->set_rules('content', 'Nội dung', 'required');
-        if($this->input->post()){
-            if($this->form_validation->run() == TRUE){
-                $slug = $this->input->post('slug');
-                $unique_slug = $this->parental_model->build_unique_slug($slug);
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
 
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/parental', 'assets/upload/article/thumbs');
+        if($this->form_validation->run() == FALSE) {
+            $this->render('admin/category/create_category_view');
+        }else{
+            if($this->input->post()){
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->parental_model->build_unique_slug_category($slug);
+
                 $data = array(
-                    'title'         => $this->input->post('title'),
-                    'slug'          => $unique_slug,
-                    'category'      => $this->input->post('cat'),
-                    'image'         => $image,
-                    'description'  => $this->input->post('description'),
-                    'content'       => $this->input->post('content'),
-                    'created_at'    => $this->author_info['created_at'],
-                    'created_by'    => $this->author_info['created_by'],
-                    'modified_at'   => $this->author_info['modified_at'],
-                    'modified_by'   => $this->author_info['modified_by']
+                    'title' => $this->input->post('title'),
+                    'slug' => $unique_slug,
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
                 );
 
-                try {
-                    $this->parental_model->save($data);
-                    $this->session->set_flashdata('message', 'Thêm mơi bài viết thành công');
-                }catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Thêm mới bài viết thất bại: ' . $e->getMessage());
+                $result = $this->parental_model->insert('parental_category', $data);
+                if (!$result) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item');
                 }
-                redirect('admin/parental/show_list/'.$this->input->post('url'), 'refresh');
+                $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('admin/parental/category', 'refresh');
             }
         }
+    }
 
-        $this->render('admin/parental/create_parental_view');
-	}
+    public function edit_category($id){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
 
-	public function remove(){
-		$id = $_GET['id'];
-		$this->parental_model->delete($id);
-	}
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+
+        if(!isset($id)){
+            redirect('admin/parental/category', 'refresh');
+        }
+
+        $result = $this->parental_model->fetch_by_id('parental_category', $id);
+
+        if($this->form_validation->run() == FALSE) {
+            if(!$result){
+                redirect('admin/parental/category', 'refresh');
+            }
+
+            $this->data['category'] = $result;
+            $this->render('admin/category/edit_category_view');
+        }else{
+            if($this->input->post()){
+                $input_slug = $this->input->post('slug');
+
+                if($result['slug'] == $input_slug){
+                    $unique_slug = $this->parental_model->build_unique_slug_category($input_slug, $result['id']);
+                }else{
+                    $unique_slug = $this->parental_model->build_unique_slug_category($input_slug);
+                }
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug' => $unique_slug,
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                $result = $this->parental_model->update('parental_category', $id, $data);
+                if (!$result) {
+                    $this->session->set_flashdata('message', 'There was an error when update item');
+                }
+                $this->session->set_flashdata('message', 'Item updated successfully');
+
+                redirect('admin/parental/category', 'refresh');
+            }
+        }
+    }
+
+    public function remove_category(){
+        $id = $this->input->get('id');
+        if(!isset($id)){
+            redirect('admin/parental/category', 'refresh');
+        }
+
+        $category = $this->parental_model->fetch_by_id('parental_category', $id);
+        if(!$category){
+            redirect('admin/parental/category', 'refresh');
+        }
+
+        $result = $this->parental_model->delete('parental_category', $id);
+        if (!$result) {
+            $this->session->set_flashdata('message', 'There was an error when delete item');
+        }
+        $this->session->set_flashdata('message', 'Item deleted successfully');
+
+        redirect('admin/parental/category', 'refresh');
+    }
+
+
+
+    public function dropdown_category(){
+        $categories = $this->parental_model->fetch_all('parental_category');
+        $titles = array(
+            '' => '---Chọn một danh mục---'
+        );
+        if($categories){
+            foreach($categories as $key => $value){
+                $titles[$value['id']] = $value['title'];
+            }
+        }
+        return $titles;
+    }
+
+    function check_file_selected(){
+
+        $this->form_validation->set_message('check_file_selected', 'Please select file.');
+        if (empty($_FILES['image']['name'])) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }
-
- ?>

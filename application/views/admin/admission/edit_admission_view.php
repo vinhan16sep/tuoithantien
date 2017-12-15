@@ -3,7 +3,7 @@
     <div class="row" style="margin-left: 0px; margin-right: 55px;">
         <div class="col-md-12">
             <?php
-            echo form_open_multipart('admin/admission/edit/'.$slug.'/'.$admission['id'], array('class' => 'form-horizontal'));
+            echo form_open_multipart('admin/admission/edit', array('class' => 'form-horizontal'));
             ?>
             <div class="form-group">
                 <?php
@@ -15,26 +15,17 @@
             <div class="form-group">
                 <?php
                 echo form_label('slug', 'slug');
-                echo form_error('image');
+                echo form_error('slug');
                 echo form_input('slug', set_value('slug', $admission['slug']), 'class="form-control" id="slug" readonly');
                 ?>
             </div>
-            <div class="form-group">
+            <div class="form-group picture sub-cat">
                 <?php
-                echo form_label('Danh mục', 'cat');
-                echo form_error('cat');
+                echo form_label('Category', 'category');
+                echo form_error('category');
+                echo form_dropdown('category', $categories, set_value('category', $admission['category_id']), 'class="form-control" id="category"');
                 ?>
-                <select name="cat" class="form-control cat">
-                    <?php if ($admission['category'] == 1): ?>
-                        <option value="1">Học phí</option>
-                    <?php else: ?>
-                        <option value="2">Chương trình khuyến mại</option>
-                    <?php endif ?>
-                    
-                </select>
             </div>
-            
-
             <div class="form-group">
                 <?php
                 echo form_label('Ảnh đại diện cũ');
@@ -48,7 +39,6 @@
                 echo form_upload('image','','multiple');
                 ?>
             </div>
-            
             <div class="form-group">
                 <?php
                 echo form_label('Giới thiệu', 'description');
@@ -67,7 +57,7 @@
             <br>
             <div class="form-group col-sm-12 text-right">
                 <input type="hidden" name="id" value="<?php echo $admission['id'] ?>">
-                <!-- <input type="hidden" name="slug" value="<?php echo $slug ?>"> -->
+                <input type="hidden" name="url" value="<?php echo $admission['category_id'] ?>">
                 <?php
                 echo form_submit('submit', 'OK', 'class="btn btn-primary"');
                 ?>
@@ -105,16 +95,4 @@
         filemanager_title: "Responsive Filemanager",
         external_plugins: {"filemanager": "<?php echo site_url('filemanager/plugin.min.js'); ?>"}
     });
-
-    $(document).ready(function(){
-        $('.cat').change(function(){
-            var cat = $(this).val();
-            if(cat == 1){
-                $('.sub-cat').slideDown();
-            }else{
-                $('.sub-cat').slideUp();
-            }
-            return false;
-        })
-    })
 </script>

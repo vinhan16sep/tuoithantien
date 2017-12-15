@@ -1,187 +1,307 @@
-<?php 
- 
-class Activity extends Admin_Controller{
-	
-	function __construct(){
-		parent::__construct();
-        $this->load->model('activity_model');
-	}
+<?php
 
-    private function check_slug($slug){
-        if($slug == 'thong-bao'){
-            $where = array('category' => 1);
-        }elseif($slug == 'tuyen-sinh'){
-            $where = array('category' => 2);
-        }
-        elseif($slug == 'trai-nghiem'){
-            $where = array('category' => 3);
-        }
-        return $where;
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Activity extends Admin_Controller {
+
+    function __construct() {
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->model('activity_model');
+        $this->load->library('session');
+        $this->data['categories'] = $this->dropdown_category();
     }
 
-	public function index(){
-    	$this->load->helper('form');
-        $this->load->library('form_validation');
-
-        $slug = $this->uri->segment(4);
-        $slug_array = array(
-                        'thong-bao' => 'thông báo',
-                        'tuyen-sinh' => 'tuyển sinh',
-                        'trai-nghiem' => 'trải nghiệm'
-                    );
-        if(array_key_exists($slug, $slug_array) == false){
-            redirect('admin/dashboard','refresh');
-        }
-        if(!empty($this->uri->segment(5)) && !is_numeric($this->uri->segment(5))){
-            redirect('admin/dashboard','refresh');
-        }
-        
-        $this->data['slug'] = $slug;
-        
-        $where = $this->check_slug($slug);
-
-        $keywords = '';
-        if($this->input->get()){
-            $keywords = $this->input->get('search');
-        }
-
+    public function index() {
         $this->load->library('pagination');
-        $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-        
-
-        if($keywords != ''){
-	        $total_rows  = $this->activity_model->count_all($where,$keywords);
-        }else{
-        	$total_rows  = $this->activity_model->count_all($where);
-
-        }
-
         $config = array();
-        $base_url = base_url() . 'admin/activity/index/'.$slug;
+        $base_url = base_url() . 'admin/activity/index';
+        $total_rows = $this->activity_model->count_all();
         $per_page = 10;
-        $uri_segment = 5;
-        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
-
-        $this->pagination->initialize($config);
-        $this->data['page_links'] = $this->pagination->create_links();
-
-        $result  =  array();
-        if($keywords != ''){
-            $result = $this->activity_model->fetch_all($where, $per_page, $page, $keywords);
-        }else{
-            $result = $this->activity_model->fetch_all($where, $per_page, $page);
+        $uri_segment = 4;
+        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+            $config[$key] = $value;
         }
+        $this->pagination->initialize($config);
 
-        $this->data['activity'] = $result;
-        $this->data['search'] = $keywords;
+        $this->data['page_links'] = $this->pagination->create_links();
+        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $this->data['activities'] = $this->activity_model->fetch_all_pagination($per_page, $this->data['page']);
 
+        $this->render('admin/activity/list_activity_view');
+    }
 
-		$this->render('admin/activity/list_activity_view');
-	}
-
-	public function create(){
-        $slug = $this->uri->segment(4);
-        $this->data['slug'] = $slug;
-
+    public function create() {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
-        $this->form_validation->set_rules('content', 'Nội dung', 'required');
-        if($this->input->post()){
-            if($this->form_validation->run() == TRUE){
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+        $this->form_validation->set_rules('image', 'Image', 'callback_check_file_selected');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['categories'] = $this->dropdown_category();
+            $this->render('admin/activity/create_activity_view');
+        } else {
+            if ($this->input->post()) {
                 $slug = $this->input->post('slug');
                 $unique_slug = $this->activity_model->build_unique_slug($slug);
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/activity', 'assets/upload/activity/thumbs');
 
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/activity', 'assets/upload/article/thumbs');
                 $data = array(
-                    'title'         => $this->input->post('title'),
+                    'title' => $this->input->post('title'),
                     'slug'          => $unique_slug,
-                    'category'      => $this->input->post('cat'),
-                    'image'         => $image,
-                    'description'  => $this->input->post('description'),
-                    'content'       => $this->input->post('content'),
-                    'created_at'    => $this->author_info['created_at'],
-                    'created_by'    => $this->author_info['created_by'],
-                    'modified_at'   => $this->author_info['modified_at'],
-                    'modified_by'   => $this->author_info['modified_by']
+                    'category_id'      => $this->input->post('category'),
+                    'image' => $image,
+                    'description' => $this->input->post('description'),
+                    'content' => $this->input->post('content'),
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
                 );
 
-                try {
-                    $this->activity_model->save($data);
-                    $this->session->set_flashdata('message', 'Thêm bài viết thành công');
-                }catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Thêm bài viết thất bại: ' . $e->getMessage());
+                $insert = $this->activity_model->insert('activity', $data);
+                if (!$insert) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item');
                 }
-                redirect('admin/activity/index/'.$this->input->post('url'), 'refresh');
+                $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('admin/activity/list_in_category/'.$this->input->post('url'), 'refresh');
             }
         }
+    }
 
-        $this->render('admin/activity/create_activity_view');
-	}
-
-	public function edit(){
-		$slug = $this->uri->segment(4);
-        $id = $this->uri->segment(5);
-        $this->data['slug'] = $slug;
-        $where = $this->check_slug($slug);
-
+    public function edit($request_id = NULL) {
+        $this->output->enable_profiler(TRUE);
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
 
-        $activity_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $activity = $this->activity_model->fetch_by_id($activity_id);
-        $this->data['activity'] = $activity;
-        // print_r($activity);die;
+        $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
+        $result = $this->activity_model->fetch_by_id('activity', $id);
+        $this->data['categories'] = $this->dropdown_category();
+        $this->data['activity'] = $result;
         if ($this->form_validation->run() == FALSE) {
-            $activity = $this->activity_model->fetch_by_id($activity_id);
-            if(!$activity){
-                $this->session->set_flashdata('message', 'Không tồn tại bài viết');
-                redirect('admin/activity/index/'.$slug, 'refresh');
+
+
+            if (!$this->data['activity']) {
+                redirect('admin/activity', 'refresh');
             }
 
-            
             $this->render('admin/activity/edit_activity_view');
         } else {
             if ($this->input->post()) {
                 $input_slug = $this->input->post('slug');
-                if($activity['slug'] == $input_slug){
-                    $unique_slug = $this->activity_model->build_unique_slug($input_slug, $activity['id']);
+
+                if($result['slug'] == $input_slug){
+                    $unique_slug = $this->activity_model->build_unique_slug($input_slug, $result['id']);
                 }else{
                     $unique_slug = $this->activity_model->build_unique_slug($input_slug);
                 }
-                
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/activity', 'assets/upload/article/thumbs');
-                $data = array(
-                    'title'        => $this->input->post('title'),
-                    'slug'         => $unique_slug,
-                    'category'     => $this->input->post('cat'),
-                    'description'  => $this->input->post('description'),
-                    'content'      => $this->input->post('content'),
-                    'modified_at'  => $this->author_info['modified_at'],
-                    'modified_by'  => $this->author_info['modified_by']
-                );
 
-                if($image != null){
-                    $data['image'] = $image;
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/activity', 'assets/upload/activity/thumbs');
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug'          => $unique_slug,
+                    'category_id'      => $this->input->post('category'),
+                    'image' => $image,
+                    'description' => $this->input->post('description'),
+                    'content' => $this->input->post('content'),
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+                if ($image == '') {
+                    unset($data['image']);
                 }
+
                 try {
-                    $this->activity_model->update($activity_id, $data);
-                    $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
+                    $this->activity_model->update('activity', $id, $data);
+                    $this->session->set_flashdata('message', 'Item updated successfully');
                 } catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
+                    $this->session->set_flashdata('message', 'There was an error updating the item: ' . $e->getMessage());
                 }
-                redirect('admin/activity/index/'.$slug, 'refresh');
+
+                redirect('admin/activity/list_in_category/'.$this->input->post('url'), 'refresh');
             }
         }
-	}
+    }
 
-	public function remove(){
-		$id = $_GET['id'];
-		$this->activity_model->delete($id);
-	}
+    public function remove($id = NULL){
+        $id = $this->input->get('id');
+        if(!isset($id)){
+            redirect('admin/activity', 'refresh');
+        }
+
+        $activity = $this->activity_model->fetch_by_id('activity', $id);
+        if(!$activity){
+            redirect('admin/activity', 'refresh');
+        }
+
+        $result = $this->activity_model->delete('activity', $id);
+        if($result){
+            unlink('assets/upload/activity/'. $activity['image']);
+        }else{
+            $this->session->set_flashdata('message', 'There was an error when delete item');
+        }
+        $this->session->set_flashdata('message', 'Item deleted successfully');
+
+        redirect('admin/activity', 'refresh');
+    }
+
+    public function category(){
+        $this->data['target'] = 'activity';
+        $this->data['categories'] = $this->activity_model->fetch_all('activity_category');
+
+        $this->render('admin/category/list_category_view');
+    }
+
+    public function list_in_category($type){
+        $category_id = $this->uri->segment(4);
+        $this->data['category_id'] = $category_id;
+
+        $this->load->library('pagination');
+        $config = array();
+        $base_url = base_url() . 'admin/activity/list_in_category/' . $type;
+        $total_rows = $this->activity_model->count_all($type);
+        $per_page = 10;
+        $uri_segment = 5;
+        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+            $config[$key] = $value;
+        }
+        $this->pagination->initialize($config);
+
+        $this->data['page_links'] = $this->pagination->create_links();
+        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(5) : 0;
+        $this->data['activities'] = $this->activity_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+
+        $this->render('admin/activity/list_activity_view');
+    }
+
+    public function create_category(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->render('admin/category/create_category_view');
+        }else{
+            if($this->input->post()){
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->activity_model->build_unique_slug_category($slug);
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug' => $unique_slug,
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                $result = $this->activity_model->insert('activity_category', $data);
+                if (!$result) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item');
+                }
+                $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('admin/activity/category', 'refresh');
+            }
+        }
+    }
+
+    public function edit_category($id){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+
+        if(!isset($id)){
+            redirect('admin/activity/category', 'refresh');
+        }
+
+        $result = $this->activity_model->fetch_by_id('activity_category', $id);
+
+        if($this->form_validation->run() == FALSE) {
+            if(!$result){
+                redirect('admin/activity/category', 'refresh');
+            }
+
+            $this->data['category'] = $result;
+            $this->render('admin/category/edit_category_view');
+        }else{
+            if($this->input->post()){
+                $input_slug = $this->input->post('slug');
+
+                if($result['slug'] == $input_slug){
+                    $unique_slug = $this->activity_model->build_unique_slug_category($input_slug, $result['id']);
+                }else{
+                    $unique_slug = $this->activity_model->build_unique_slug_category($input_slug);
+                }
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug' => $unique_slug,
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                $result = $this->activity_model->update('activity_category', $id, $data);
+                if (!$result) {
+                    $this->session->set_flashdata('message', 'There was an error when update item');
+                }
+                $this->session->set_flashdata('message', 'Item updated successfully');
+
+                redirect('admin/activity/category', 'refresh');
+            }
+        }
+    }
+
+    public function remove_category(){
+        $id = $this->input->get('id');
+        if(!isset($id)){
+            redirect('admin/activity/category', 'refresh');
+        }
+
+        $category = $this->activity_model->fetch_by_id('activity_category', $id);
+        if(!$category){
+            redirect('admin/activity/category', 'refresh');
+        }
+
+        $result = $this->activity_model->delete('activity_category', $id);
+        if (!$result) {
+            $this->session->set_flashdata('message', 'There was an error when delete item');
+        }
+        $this->session->set_flashdata('message', 'Item deleted successfully');
+
+        redirect('admin/activity/category', 'refresh');
+    }
+
+
+
+    public function dropdown_category(){
+        $categories = $this->activity_model->fetch_all('activity_category');
+        $titles = array(
+            '' => '---Chọn một danh mục---'
+        );
+        if($categories){
+            foreach($categories as $key => $value){
+                $titles[$value['id']] = $value['title'];
+            }
+        }
+        return $titles;
+    }
+
+    function check_file_selected(){
+
+        $this->form_validation->set_message('check_file_selected', 'Please select file.');
+        if (empty($_FILES['image']['name'])) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }
-
- ?>

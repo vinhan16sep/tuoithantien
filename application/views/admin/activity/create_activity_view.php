@@ -5,24 +5,7 @@
         <div class="container col-md-12">
             <div class="modified-mode">
                 <div class="col-lg-10 col-lg-offset-0" style="margin-left: 15px;">
-                    <h1>THÊM MỚI 
-                        <?php 
-                            switch ($slug) {
-                                case 'thong-bao':
-                                    echo 'THÔNG BÁO';
-                                    break;
-                                case 'tuyen-sinh':
-                                    echo 'TUYỂN SINH';
-                                    break;
-                                case 'trai-nghiem':
-                                    echo 'TRAI NGHIỆM';
-                                    break;
-                                default:
-                                    # code...
-                                    break;
-                            }
-                         ?>
-                    </h1>
+                    <h1>THÊM MỚI BÀI VIẾT</h1>
                     <?php
                     echo form_open_multipart('', array('class' => 'form-horizontal'));
                     ?>
@@ -40,18 +23,16 @@
                         echo form_input('slug', set_value('slug'), 'class="form-control" readonly id="slug" readonly');
                         ?>
                     </div>
-                    
-                    <?php if ($slug == 'thong-bao'): ?>
-                        <input type="hidden" name="cat" value="1">
-                    <?php elseif($slug == 'tuyen-sinh'): ?>
-                        <input type="hidden" name="cat" value="2">
-                    <?php elseif($slug == 'trai-nghiem'): ?>
-                        <input type="hidden" name="cat" value="3">
-                    <?php endif ?>
-                    
+                    <div class="form-group picture sub-cat">
+                        <?php
+                        echo form_label('Category', 'category');
+                        echo form_error('category');
+                        echo form_dropdown('category', $categories, set_value('category', $this->uri->segment(4)), 'class="form-control" id="category"');
+                        ?>
+                    </div>
                     <div class="form-group picture">
                         <?php
-                        echo form_label('Hình ảnh', 'image');
+                        echo form_label('Image', 'image');
                         echo form_error('image');
                         echo form_upload('image','','multiple');
                         ?>
@@ -69,12 +50,12 @@
                         <?php
                         echo form_label('Nội dung', 'content');
                         echo form_error('content');
-                        echo form_textarea('content', set_value('content', '', false), 'class="form-control content "')
+                        echo form_textarea('content', set_value('content', '', false), 'class="form-control content"')
                         ?>
                     </div>
                     <br>
                     <div class="form-group col-sm-12 text-right">
-                        <input type="hidden" name="url" value="<?php echo $slug; ?>">
+                        <input type="hidden" name="url" value="<?php echo $this->uri->segment(4); ?>">
                         <?php
                         echo form_submit('submit', 'OK', 'class="btn btn-primary"');
                         echo form_close();

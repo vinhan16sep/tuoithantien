@@ -2,14 +2,14 @@
 
 class MY_Controller extends CI_Controller {
 
-    
+
     protected $data = array();
     protected $author_info = array();
     protected $langAbbreviation = 'vi';
 
     function __construct() {
         parent::__construct();
-        
+
         $this->data['page_title'] = 'Template';
         $this->data['before_head'] = '';
         $this->data['before_body'] = '';
@@ -86,6 +86,11 @@ class Admin_Controller extends MY_Controller {
         $this->data['user_email'] = $this->ion_auth->user()->row()->username;
         $this->data['page_title'] = 'Administrator area';
 
+        $this->load->model('introduce_model');
+        $this->load->model('admission_model');
+        $this->load->model('parental_model');
+        $this->load->model('activity_model');
+
         // Get current class
         //$class = $this->router->fetch_class();
         // Set timezone
@@ -98,6 +103,14 @@ class Admin_Controller extends MY_Controller {
             'modified_at' => date('Y-m-d H:i:s', now()),
             'modified_by' => $this->ion_auth->user()->row()->username
         );
+
+        $this->data['introduce_menu'] = $this->introduce_model->fetch_all('introduce_category');
+        $this->data['admission_menu'] = $this->admission_model->fetch_all('admission_category');
+        $this->data['parental_menu'] = $this->parental_model->fetch_all('parental_category');
+        $this->data['activity_menu'] = $this->activity_model->fetch_all('activity_category');
+
+//        echo '<pre>';
+//        print_r($this->data);die;
 
         //new comment
 //        $this->load->model('count_comment_model');
@@ -112,7 +125,7 @@ class Admin_Controller extends MY_Controller {
 //        $this->data['total'] = $total;
     }
 
-    
+
 
     protected function render($the_view = NULL, $template = 'admin_master') {
         parent::render($the_view, $template);
@@ -156,10 +169,10 @@ class Admin_Controller extends MY_Controller {
         //lưu biến môi trường khi thực hiện upload
         $file  = $_FILES[$file_name];
         $count = count($file['name']);//lấy tổng số file được upload
-        
+
         $image_list = array(); //luu ten cac file anh upload thanh cong
         for($i=0; $i<=$count-1; $i++) {
-        
+
             $_FILES['userfile']['name']     = $file['name'][$i];  //khai báo tên của file thứ i
             $_FILES['userfile']['type']     = $file['type'][$i]; //khai báo kiểu của file thứ i
             $_FILES['userfile']['tmp_name'] = $file['tmp_name'][$i]; //khai báo đường dẫn tạm của file thứ i
@@ -193,7 +206,7 @@ class Admin_Controller extends MY_Controller {
 //        $config['max_width']     = '1028';
 //        //Chiều cao tối đa
 //        $config['max_height']    = '1028';
-        
+
         return $config;
     }
 
@@ -214,27 +227,27 @@ class Public_Controller extends MY_Controller {
         if($this->langAbbreviation == 'en' || $this->langAbbreviation == 'vi' || $this->langAbbreviation == ''){
             $this->session->set_userdata('langAbbreviation', $this->langAbbreviation);
         }
-        
+
         if($this->session->userdata('langAbbreviation') == 'en'){
             $langName = 'english';
-            $this->config->set_item('language', $langName); 
+            $this->config->set_item('language', $langName);
             $this->session->set_userdata("langAbbreviation",'en');
             $this->lang->load('english_lang', 'english');
         }
-        
+
         if($this->session->userdata('langAbbreviation') == 'vi' || $this->session->userdata('langAbbreviation') == ''){
             $langName = 'vietnamese';
-            $this->config->set_item('language', $langName); 
+            $this->config->set_item('language', $langName);
             $this->session->set_userdata("langAbbreviation",'vi');
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
 
         /* thu tuc nhap hoc */
-        
-        $this->load->model('admission_model');
-        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
-        $procedure = $this->admission_model->fetch_row($where);
-        $this->data['procedure'] = $procedure;
+
+//        $this->load->model('admission_model');
+//        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
+//        $procedure = $this->admission_model->fetch_row($where);
+//        $this->data['procedure'] = $procedure;
     }
 
     protected function render($the_view = NULL, $template = 'master') {

@@ -19,39 +19,13 @@
                 echo form_input('slug', set_value('slug', $introduce['slug']), 'class="form-control" id="slug" readonly');
                 ?>
             </div>
-            <div class="form-group">
+            <div class="form-group picture sub-cat">
                 <?php
-                echo form_label('Danh mục', 'cat');
-                echo form_error('cat');
+                echo form_label('Category', 'category');
+                echo form_error('category');
+                echo form_dropdown('category', $categories, set_value('category', $introduce['category_id']), 'class="form-control" id="category"');
                 ?>
-                <select name="cat" class="form-control cat">
-                    <?php if ($introduce['category'] == 1): ?>
-                        <option value="1" >Giáo Dục</option>
-                    <?php else: ?>
-                        <option value="2" >Ngoại khóa</option>
-                    <?php endif ?>
-                    
-                </select>
             </div>
-            
-            <?php if ($introduce['category'] == 1): ?>
-                <div class="form-group sub-cat">
-                    <?php
-                    echo form_label('Danh mục con', 'sub-cat');
-                    echo form_error('sub-cat');
-                    ?>
-                    <select name="sub-cat" class="form-control">
-                        <?php foreach ($sub_cat as $key => $value): ?>
-                            <option value="<?php echo $key ?>" <?php echo ($key == $introduce['sub_category'])? 'selected' : '' ?> >
-                                <?php echo $value ?>
-                            </option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-
-            <?php endif ?>
-            
-
             <div class="form-group">
                 <?php
                 echo form_label('Ảnh đại diện cũ');
@@ -83,7 +57,7 @@
             <br>
             <div class="form-group col-sm-12 text-right">
                 <input type="hidden" name="id" value="<?php echo $introduce['id'] ?>">
-                <input type="hidden" name="url" value="<?php echo $introduce['sub_category'] ?>">
+                <input type="hidden" name="url" value="<?php echo $introduce['category_id'] ?>">
                 <?php
                 echo form_submit('submit', 'OK', 'class="btn btn-primary"');
                 ?>
