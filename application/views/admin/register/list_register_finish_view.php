@@ -8,7 +8,7 @@
                 <span><?php echo $this->session->flashdata('message'); ?></span>
             </div>
             <div class="row">
-                <form action="<?php echo base_url('admin/register/index/') ?>" class="form-horizontal col-md-12 col-sm-12 col-xs-12" method="get" style="margin-bottom: 30px;">
+                <form action="<?php echo base_url('admin/register/register_finish/') ?>" class="form-horizontal col-md-12 col-sm-12 col-xs-12" method="get" style="margin-bottom: 30px;">
 
                     <input type="text" name="search" value="<?php echo $search; ?>" placeholder="Tìm Kiếm Tên Học Sinh..." class="form-control" style=" width: 40%; float: left;margin-right: 5px;">
                     <select name="search_place" class="form-control" style="width: 15%; float: left; margin-right: 5px;" id="search_place">
@@ -43,17 +43,17 @@
                                     <td><?php echo $value['pob']; ?></td>
                                     <td id="result_call_<?php echo $value['id'] ?>">
                                         <?php
-                                            switch ($value['callback']){
-                                                case '1':
-                                                    echo '<span style="color: red">Cần tư vấn thêm</span>';
-                                                    break;
-                                                case '2':
-                                                    echo '<span style="color: #00a65a">Đã gọi tư vấn</span>';
-                                                    break;
-                                                default:
-                                                    echo '';
-                                                    break;
-                                            }
+                                        switch ($value['callback']){
+                                            case '1':
+                                                echo '<span style="color: red">Cần tư vấn thêm</span>';
+                                                break;
+                                            case '2':
+                                                echo '<span style="color: #00a65a">Đã gọi tư vấn</span>';
+                                                break;
+                                            default:
+                                                echo '';
+                                                break;
+                                        }
                                         ?>
                                     </td>
                                     <td><a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_<?php echo $value['id']; ?>" aria-expanded="false" aria-controls="collapseExample">
@@ -128,7 +128,7 @@
                             </tbody>
                         </table>
                         <div class="col-md-6 col-md-offset-5 page">
-                                <?php echo $page_links; ?>
+                            <?php echo $page_links; ?>
                         </div>
                     </div>
                 </div>
@@ -140,49 +140,3 @@
         </div>
     </section>
 </div>
-<script>
-    $('#search_place').change(function () {
-        var search_place = $(this).val();
-        jQuery.ajax({
-            method: "get",
-            url: "http://localhost/tuoithantien/admin/register/select_class",
-            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
-            data: {search_place : search_place},
-            success: function(result){
-                $('#search_grade').html(result);
-            }
-        });
-    });
-
-    $('.callback').click(function (e) {
-        e.preventDefault();
-        var id = $(this).attr('data-id');
-        if($('#result_call_'+id+' span').text() == 'Cần tư vấn thêm'){
-            if(confirm('Đã gọi và đã tư vấn đế?')){
-                jQuery.ajax({
-                    method: "get",
-                    url: "http://localhost/tuoithantien/admin/register/call_back",
-                    // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
-                    data: {id : id},
-                    success: function(result){
-                        $('#result_call_'+id).html('<span style="color: #00a65a">Đã gọi tư vấn</span>');
-                    }
-                });
-            }
-        }
-
-    });
-
-    $('.finish').click(function (e) {
-        e.preventDefault();
-        var id = $(this).attr('data-id');
-        $(this).parents('tr').fadeOut();
-        jQuery.ajax({
-            method: "get",
-            url: "http://localhost/tuoithantien/admin/register/finish",
-            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
-            data: {id : id}
-        });
-    });
-
-</script>

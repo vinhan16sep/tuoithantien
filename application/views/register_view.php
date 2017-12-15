@@ -88,19 +88,20 @@
 
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <?php
-                                echo form_label('Chọn lớp học tham gia (*)', 'grade');
-                                echo form_error('grade');
-                                echo form_dropdown('grade', array('' => '---Chọn một lớp tham gia---', '1' => 'Lớp bé (Trẻ từ 3-4 tuổi)', '2' => 'Lớp nhỡ (Trẻ từ 4-5 tuổi)', '3' => 'Lớp lớn (Trẻ hơn 5 tuổi)'), set_value('grade'), 'class="form-control"');
+                                echo form_label('Chọn cở sở trường học (*)', 'place');
+                                echo form_error('place');
+                                echo form_dropdown('place', $placement, set_value('place'), 'class="form-control" id="place"');
                                 ?>
                             </div>
 
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <?php
-                                echo form_label('Chọn cở sở trường học (*)', 'place');
-                                echo form_error('place');
-                                echo form_dropdown('place', array('' => '---Chọn một cơ sở---', '1' => 'Cơ sở I Hà Đông', '2' => 'Cơ sở II Hà Đông', '3' => 'Cơ sở III Hà Đông', '4' => 'Cơ sở IV Hà Đông', '5' => 'Cơ sở V Hà Đông'), set_value('place'), 'class="form-control"');
+                                echo form_label('Chọn lớp học tham gia (*)', 'grade');
+                                echo form_error('grade');
+                                echo form_dropdown('grade', array('' => '---Chọn một lớp tham gia---'), set_value('grade'), 'class="form-control"  id="grade"');
                                 ?>
                             </div>
+
 
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <label>Cần thêm tư vấn về các thông tin nhập học</label>
@@ -153,4 +154,17 @@
         });
 
     } );
+
+    $('#place').change(function () {
+        var search_place = $(this).val();
+        jQuery.ajax({
+            method: "get",
+            url: "http://localhost/tuoithantien/admin/register/select_class",
+            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+            data: {search_place : search_place},
+            success: function(result){
+                $('#grade').html(result);
+            }
+        });
+    });
 </script>

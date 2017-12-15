@@ -13,6 +13,14 @@ class Register extends Public_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
+        $this->load->model('placement_model');
+
+        $placement = $this->placement_model->fetch_all();
+        $this->data['placement'][''] = "---Chọn một cơ sở---";
+        foreach ($placement as $value){
+            $this->data['placement'][$value['id']] = $value['name'];
+        }
+
         $this->form_validation->set_rules('parent_name', 'Họ và Tên phụ huynh, người đăng ký', 'required');
         $this->form_validation->set_rules('phone', 'Số điện thoại liên hệ', 'required');
         $this->form_validation->set_rules('name', 'Họ và Tên học sinh', 'trim|required');
@@ -49,6 +57,19 @@ class Register extends Public_Controller {
         }
 
         $this->render('register_view');
+    }
+
+    public function select_class(){
+        $this->load->model('classification_model');
+        $placement_id = $this->input->get('search_place');
+        $where =  array('placement_id' => $placement_id);
+        $classification = $this->classification_model->fetch_all($where);
+        if($classification){
+            foreach ($classification as $value){
+                echo '<option value="'.$value['id'].'">'.$value['name'].'</option>';
+//                $this->output->set_status_header(200)->set_output(json_encode(array('classification' => $result)));
+            }
+        }
     }
 
 }
