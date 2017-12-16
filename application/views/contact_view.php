@@ -45,7 +45,17 @@
                 <p>Trường MN Tuổi Thần Tiên từ khi thành lập đến nay luôn phát triển không ngừng về cơ sở vật chất, đội ngũ cán bộ, giáo viên, nhân viên và học sinh.</p>
 
                 <div class="social_network">
-                    <ul class="list-inline">
+                    <h3>Facebook</h3>
+                    <ul class="list-unstyled">
+                        <li><a target="_blank" href="https://www.facebook.com/H%E1%BB%87-Th%E1%BB%91ng-Tr%C6%B0%E1%BB%9Dng-m%E1%BA%A7m-non-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-kh%E1%BB%91i-nh%C3%A0-tr%E1%BA%BB-682980001756212/">Hệ Thống Trường mầm non Tuổi Thần Tiên khối nhà trẻ</a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/khoi3tuoi/">Hệ thống trường MN Tuổi Thần Tiên khối 3 tuổi</a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/hethongtruongmamnontuoithantiencs3/">Hệ thống trường mầm non Tuổi Thần Tiên CS3</a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/H%E1%BB%87-th%E1%BB%91ng-tr%C6%B0%E1%BB%9Dng-MN-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-Kh%E1%BB%91i-4-Tu%E1%BB%95i-1546143268939800/">Hệ thống trường MN Tuổi Thần Tiên Khối 4 Tuổi</a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/Mntuoithantiencs5/?ref=br_rs">Hệ thống trường mầm non Tuổi Thần Tiên CS5</a></li>
+                        <li><a target="_blank" href="https://www.facebook.com/khoi5tuoi/">Hệ thống trường MN Tuổi Thần Tiên Khối 5 tuổi</a></li>
+                    </ul>
+
+                    <!--<ul class="list-inline">
                         <li><a href="javascript:void();">
                                 <i class="fa fa-2x fa-facebook-f"></i>
                             </a></li>
@@ -58,23 +68,27 @@
                         <li><a href="javascript:void();">
                                 <i class="fa fa-2x fa-twitter"></i>
                             </a></li>
-                    </ul>
+                    </ul>-->
                 </div>
 
                 <h1>Địa chỉ liên hệ</h1>
 
                 <table class="table">
                     <tr>
-                        <td><i class="fa fa-map-marker"></i></td>
-                        <td>Địa chỉ trụ sở chính</td>
+                        <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                        <td>Cơ sở 1,2: Tổ 1 phường La Khê – Quận Hà Đông – Thành phố Hà Nội – Điện thoại: 024.33.119.828 – 024.33.552.359</td>
                     </tr>
                     <tr>
-                        <td><i class="fa fa-phone"></i></td>
-                        <td>024.3311.9828 - 02433119828</td>
+                        <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                        <td>Cơ sở 3: Tầng 5 tòa V3 chung cư Victoria Văn Phú – Hà Đông – HN. Điện thoại: 024.62.542.325</td>
                     </tr>
                     <tr>
-                        <td><i class="fa fa-envelope"></i></td>
-                        <td>mntuoithantien-hd@hanoi.edu.vn</td>
+                        <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                        <td>Cơ sở 5: Liền kề 16 – Ô 52 khu đô thị An Hưng – phường La khê – HĐ – HN. Điện thoại: 024.62.942.689</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+                        <td>mntuoithan-hd@hanoi.edu.vn</td>
                     </tr>
                 </table>
             </div>

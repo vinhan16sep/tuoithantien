@@ -23,46 +23,83 @@
 
         <div class="row bottom_nav">
             <div class="col-md-3 col-sm-3 col-xs-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td colspan="2"><div id="main_logo"></div></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                            <td>Cơ sở 1,2: Tổ 1 phường La Khê – Quận Hà Đông – Thành phố Hà Nội – Điện thoại: 024.33.119.828 – 024.33.552.359</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                            <td>Cơ sở 3: Tầng 5 tòa V3 chung cư Victoria Văn Phú – Hà Đông – HN. Điện thoại: 024.62.542.325</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                            <td>Cơ sở 5: Liền kề 16 – Ô 52 khu đô thị An Hưng – phường La khê – HĐ – HN. Điện thoại: 024.62.942.689</td>
+                        </tr>
+                        <tr>
+                            <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+                            <td>mntuoithan-hd@hanoi.edu.vn</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
                 <h3>Về chúng tôi</h3>
                 <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('gioi-thieu') ?>">Tổng quan</a></li>
-                    <li><a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>">Mục tiêu</a></li>
-                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>">Ngoại ngữ</a></li>
-                    <li><a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>">Giáo dục theo lứa tuổi</a></li>
-                    <li><a href="<?php echo base_url('gioi-thieu/tap-huan') ?>">Tập huấn</a></li>
-                    <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>">Ngoại khóa</a></li>
+                    <li><a href="<?php echo base_url('trang-chu') ?>">Trang chủ</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu') ?>">Giới thiệu</a></li>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc') ?>">Thông tin nhập học</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh') ?>">Phối hợp cùng phụ huynh</a></li>
+                    <li><a href="<?php echo base_url('hoat-dong') ?>">Hoạt động</a></li>
+                    <li><a href="<?php echo base_url('lien-he') ?>">Liên hệ</a></li>
                 </ul>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <h3>Thông tin truy cập</h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>Lượt truy cập</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Đang trực tuyến</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <td>Hôm nay</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <td>Hôm qua</td>
+                        <td>00</td>
+                    </tr>
+                    <tr>
+                        <td>Tất cả</td>
+                        <td>00</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Thông tin nhập học</h3>
+                <h3>Facebook</h3>
                 <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>">Thủ tục nhập học</a></li>
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>">Học phí</a></li>
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>">Lịch học</a></li>
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>">Chương trình khuyến mãi</a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/H%E1%BB%87-Th%E1%BB%91ng-Tr%C6%B0%E1%BB%9Dng-m%E1%BA%A7m-non-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-kh%E1%BB%91i-nh%C3%A0-tr%E1%BA%BB-682980001756212/">Hệ Thống Trường mầm non Tuổi Thần Tiên khối nhà trẻ</a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/khoi3tuoi/">Hệ thống trường MN Tuổi Thần Tiên khối 3 tuổi</a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/hethongtruongmamnontuoithantiencs3/">Hệ thống trường mầm non Tuổi Thần Tiên CS3</a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/H%E1%BB%87-th%E1%BB%91ng-tr%C6%B0%E1%BB%9Dng-MN-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-Kh%E1%BB%91i-4-Tu%E1%BB%95i-1546143268939800/">Hệ thống trường MN Tuổi Thần Tiên Khối 4 Tuổi</a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/Mntuoithantiencs5/?ref=br_rs">Hệ thống trường mầm non Tuổi Thần Tiên CS5</a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/khoi5tuoi/">Hệ thống trường MN Tuổi Thần Tiên Khối 5 tuổi</a></li>
                 </ul>
             </div>
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Phối hợp cùng phụ huynh</h3>
-                <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>">Chế độ sinh hoạt 1 ngày</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>">Liên lạc</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>">Thực đơn</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>">Y tế</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>">Giờ đưa đón</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>">Kỷ luật</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-12">
-                <h3>Hoạt động</h3>
-                <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>">Thông báo của trường</a></li>
-                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>">Thư viện ảnh</a></li>
-                    <li><a href="<?php echo base_url('thu-vien/video') ?>">Video</a></li>
-                    <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>">Tuyển sinh</a></li>
-                    <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>">Trải nghiệm</a></li>
-                </ul>
-            </div>
+
         </div>
     </div>
 </footer>
