@@ -11,29 +11,18 @@ class Introduce extends Public_Controller {
     }
 
     public function index(){
-        $where =  array('category' => 0);
-        $overview = $this->introduce_model->fetch_row($where);
-        $this->data['overview'] = $overview;
-        $this->render('introduce_view');
-    }
 
-    public function show_list(){
         $slug = $this->uri->segment(2);
-        $this->data['slug'] = $slug;
-        $check_slug =  array('muc-tieu', 'ngoai-ngu', 'giao-duc-theo-lua-tuoi', 'tap-huan', 'ngoai-khoa');
-        if(in_array($slug, $check_slug) == false){
-            redirect('gioi-thieu','refresh');
-        }
-        $where = array('sub_category' => $slug);
-        if($slug == 'ngoai-khoa'){
-            $where = array('category' => 2);
-        }
+        $sidebar = $this->introduce_model->fetch_all('introduce_category');
+        $this->data['sidebar'] = $sidebar;
+
+        $where = array('slug' => $slug);
+        $category = $this->introduce_model->fetch_row($where, 'introduce_category');
+        $where = array('category_id' => $category['id']);
 
         $this->load->library('pagination');
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-        $total_rows = count($this->introduce_model->fetch_all($where));
-
+        $total_rows = count($this->introduce_model->get_all_pagination($where));
         $config = array();
         $base_url = base_url() . 'gioi-thieu/'.$slug;
         $per_page = 12;
@@ -43,47 +32,35 @@ class Introduce extends Public_Controller {
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-        $list = $this->introduce_model->fetch_all($where, $per_page, $page);
+        $list = $this->introduce_model->get_all_pagination($where, $per_page, $page);
         if($list){
-            $this->data['list'] = $list;
-        }else{
-            $this->data['list'] = '';
+            foreach ($list as $key => $value){
+                $where = array('id' => $value['category_id']);
+                $sub = $this->introduce_model->fetch_row($where, 'introduce_category');
+                $list[$key]['sub'] = $sub['slug'];
+            }
         }
-        
+
+        $this->data['list'] = $list;
+
         $this->render('list_introduce_view');
     }
 
     public function detail(){
-        $sub_category = $this->uri->segment(2);
-
         $slug = $this->uri->segment(3);
-        $where = array('slug' => $slug);
-        $total = $this->introduce_model->count_all($where);
-        if($total == 0){
-            redirect('gioi-thieu','refresh');
-        }
-
-        $this->data['sub_category'] = $sub_category;
-        $this->data['slug'] = $slug;
-
-        $where = array('sub_category' => $sub_category, 'slug !=' => $slug);
-        if($sub_category == 'ngoai-khoa'){
-            $where = array('category' => 2);
-        }
-        $list = $this->introduce_model->fetch_all($where, 5, 0);
-        if($list){
-            $this->data['list'] = $list;
-        }else{
-            $this->data['list'] = '';
-        }
-        
+        $category_id = $this->uri->segment(2);
+        $where = array('slug' => $category_id);
+        $category = $this->introduce_model->fetch_row($where, 'introduce_category');
+        $this->data['category'] = $category;
+        $sidebar = $this->introduce_model->fetch_all_by_type($category['id']);
+        $this->data['sidebar'] = $sidebar;
 
         $where = array('slug' => $slug);
         $detail = $this->introduce_model->fetch_row($where);
         $this->data['detail'] = $detail;
 
         //comment
-        $comment = $this->comment($slug);
+        $comment = $this->comment('introduce', $slug);
         if($comment){
             $this->data['comment'] = $comment;
         }
@@ -94,7 +71,43 @@ class Introduce extends Public_Controller {
         }else{
             $this->data['count_comment'] = 0;
         }
-        
+
         $this->render('detail_introduce_view');
     }
+
+//    public function show_list(){
+//        $slug = $this->uri->segment(2);
+//        $this->data['slug'] = $slug;
+//        $check_slug =  array('muc-tieu', 'ngoai-ngu', 'giao-duc-theo-lua-tuoi', 'tap-huan', 'ngoai-khoa');
+//        if(in_array($slug, $check_slug) == false){
+//            redirect('gioi-thieu','refresh');
+//        }
+//        $where = array('sub_category' => $slug);
+//        if($slug == 'ngoai-khoa'){
+//            $where = array('category' => 2);
+//        }
+//
+//        $this->load->library('pagination');
+//        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+//
+//        $total_rows = count($this->introduce_model->fetch_all($where));
+//
+//        $config = array();
+//        $base_url = base_url() . 'gioi-thieu/'.$slug;
+//        $per_page = 12;
+//        $uri_segment = 3;
+//        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
+//
+//        $this->pagination->initialize($config);
+//        $this->data['page_links'] = $this->pagination->create_links();
+//
+//        $list = $this->introduce_model->fetch_all($where, $per_page, $page);
+//        if($list){
+//            $this->data['list'] = $list;
+//        }else{
+//            $this->data['list'] = '';
+//        }
+//
+//        $this->render('list_introduce_view');
+//    }
 }

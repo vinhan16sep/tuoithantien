@@ -10,117 +10,60 @@ class Admission extends Public_Controller {
         $this->load->model('admission_model');
     }
 
-    protected function list_slug($slug){
-        switch ($slug) {
-            case 'hoc-phi':
-                $category = 1;
-                break;
-            case 'chuong-trinh-khuyen-mai':
-                $category = 2;
-                break;
-            default:
-                # code...
-                break;
-        }
-        return $category;
-    }
+    public function index(){
 
-    public function admission_procedure(){
-        $this->load->model('comment_model');
         $slug = $this->uri->segment(2);
-        $check_slug = array('thu-tuc-nhap-hoc', 'lich-hoc');
-        if(in_array($slug, $check_slug) == false){
-            redirect('trang-chu','refresh');
-        }
-        $where = array('category' => 0, 'slug' => $slug);
-        $admission = $this->admission_model->fetch_row($where);
-        $this->data['admission'] = $admission;
+        $sidebar = $this->admission_model->fetch_all('admission_category');
+        $this->data['sidebar'] = $sidebar;
 
-        //comment
-        $comment = $this->comment($slug);
-        if($comment){
-            $this->data['comment'] = $comment;
-        }
-        //count comment
-        $count_comment = $this->count_comment($slug);
-        if($count_comment){
-            $this->data['count_comment'] = count($count_comment);
-        }else{
-            $this->data['count_comment'] = 0;
-        }
-
-        $this->render('admission_procedure_view');
-    }
-
-    public function show_list(){
-        $slug = $this->uri->segment(3);
-        $check_slug = array('hoc-phi', 'chuong-trinh-khuyen-mai');
-        if(in_array($slug, $check_slug) == false){
-            redirect('trang-chu','refresh');
-        }
-        
-        $category = $this->list_slug($slug);
+        $where = array('slug' => $slug);
+        $category = $this->admission_model->fetch_row($where, 'admission_category');
+        $where = array('category_id' => $category['id']);
 
         $this->load->library('pagination');
-        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-
-        $where = array('category' => $category);
-
-        $total_rows = count($this->admission_model->fetch_all($where));
-
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $total_rows = count($this->admission_model->get_all_pagination($where));
         $config = array();
-        $base_url = base_url() . 'thong-tin-nhap-hoc/danh-sach/'.$slug;
+        $base_url = base_url() . 'thong-tin-nhap-hoc/'.$slug;
         $per_page = 12;
-        $uri_segment = 4;
+        $uri_segment = 3;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-
-        $list = $this->admission_model->fetch_all($where, $per_page, $page);
+        $list = $this->admission_model->get_all_pagination($where, $per_page, $page);
         if($list){
-            $this->data['list'] = $list;
-        }else{
-            $this->data['list'] = '';
+            foreach ($list as $key => $value){
+                $where = array('id' => $value['category_id']);
+                $sub = $this->admission_model->fetch_row($where, 'admission_category');
+                $list[$key]['sub'] = $sub['slug'];
+            }
         }
+
+        $this->data['list'] = $list;
 
         $this->render('list_admission_view');
     }
 
     public function detail(){
-        $sub_category = $this->uri->segment(2);
-        
-        $category = $this->list_slug($sub_category);
-
         $slug = $this->uri->segment(3);
-        $where = array('slug' => $slug);
-        $total = $this->admission_model->count_all($where);
-        if($total == 0){
-            redirect('gioi-thieu','refresh');
-        }
-
-        $this->data['sub_category'] = $sub_category;
-        $this->data['slug'] = $slug;
-
-        $where = array('category' => $category, 'slug !=' => $slug);
-
-        $list = $this->admission_model->fetch_all($where, 5, 0);
-        if($list){
-            $this->data['list'] = $list;
-        }else{
-            $this->data['list'] = '';
-        }
+        $category_id = $this->uri->segment(2);
+        $where = array('slug' => $category_id);
+        $category = $this->admission_model->fetch_row($where, 'admission_category');
+        $this->data['category'] = $category;
+        $sidebar = $this->admission_model->fetch_all_by_type($category['id']);
+        $this->data['sidebar'] = $sidebar;
 
         $where = array('slug' => $slug);
         $detail = $this->admission_model->fetch_row($where);
         $this->data['detail'] = $detail;
+
         //comment
-        $comment = $this->comment($slug);
+        $comment = $this->comment('admission', $slug);
         if($comment){
             $this->data['comment'] = $comment;
         }
-
         //count comment
         $count_comment = $this->count_comment($slug);
         if($count_comment){

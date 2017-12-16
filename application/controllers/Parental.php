@@ -10,123 +10,60 @@ class Parental extends Public_Controller {
         $this->load->model('parental_model');
     }
 
-    protected function list_slug($slug){
-        switch ($slug) {
-            case 'lien-lac':
-                $category = 1;
-                break;
-            case 'thuc-don':
-                $category = 2;
-                break;
-            case 'y-te':
-                $category = 3;
-                break;
-            case 'ky-luat':
-                $category = 4;
-                break;
-            default:
-                # code...
-                break;
-        }
-        return $category;
-    }
+    public function index(){
 
-    public function activity(){
-        $this->load->model('comment_model');
         $slug = $this->uri->segment(2);
-        $check_slug = array('che-do-sinh-hoat-1-ngay', 'gio-dua-don');
-//        if(in_array($slug, $check_slug) == false){
-//            redirect('trang-chu','refresh');
-//        }
-        $where = array('category' => 0, 'slug' => $slug);
-        $activity = $this->parental_model->fetch_row($where);
-        $this->data['activity'] = $activity;
+        $sidebar = $this->parental_model->fetch_all('parental_category');
+        $this->data['sidebar'] = $sidebar;
 
-        //comment
-        $comment = $this->comment($slug);
-        if($comment){
-            $this->data['comment'] = $comment;
-        }
-
-        //count comment
-        $count_comment = $this->count_comment($slug);
-        if($count_comment){
-            $this->data['count_comment'] = count($count_comment);
-        }else{
-            $this->data['count_comment'] = 0;
-        }
-
-        $this->render('parental_activity_view');
-    }
-
-    public function show_list(){
-        $slug = $this->uri->segment(3);
-        $check_slug = array('lien-lac', 'thuc-don', 'y-te', 'ky-luat');
-        if(in_array($slug, $check_slug) == false){
-            redirect('trang-chu','refresh');
-        }
-        
-        $category = $this->list_slug($slug);
-
-        $where = array('category' => $category);
+        $where = array('slug' => $slug);
+        $category = $this->parental_model->fetch_row($where, 'parental_category');
+        $where = array('category_id' => $category['id']);
 
         $this->load->library('pagination');
-        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-
-        $total_rows = count($this->parental_model->fetch_all($where));
-
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $total_rows = count($this->parental_model->get_all_pagination($where));
         $config = array();
-        $base_url = base_url() . 'phoi-hop-cung-phu-huynh/danh-sach/'.$slug;
+        $base_url = base_url() . 'phoi-hop-cung-phu-huynh/'.$slug;
         $per_page = 12;
-        $uri_segment = 4;
+        $uri_segment = 3;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
-        $list = $this->parental_model->fetch_all($where, $per_page, $page);
+        $list = $this->parental_model->get_all_pagination($where, $per_page, $page);
         if($list){
-            $this->data['list'] = $list;
-        }else{
-            $this->data['list'] = '';
+            foreach ($list as $key => $value){
+                $where = array('id' => $value['category_id']);
+                $sub = $this->parental_model->fetch_row($where, 'parental_category');
+                $list[$key]['sub'] = $sub['slug'];
+            }
         }
-        
+
+        $this->data['list'] = $list;
+
         $this->render('list_parental_view');
     }
 
     public function detail(){
-        $sub_category = $this->uri->segment(2);
-        
-        $category = $this->list_slug($sub_category);
-
         $slug = $this->uri->segment(3);
-        $where = array('slug' => $slug);
-        $total = $this->parental_model->count_all($where);
-        if($total == 0){
-            redirect('gioi-thieu','refresh');
-        }
-
-        $this->data['sub_category'] = $sub_category;
-        $this->data['slug'] = $slug;
-
-        $where = array('category' => $category, 'slug !=' => $slug);
-
-        $list = $this->parental_model->fetch_all($where, 5, 0);
-        if($list){
-            $this->data['list'] = $list;
-        }else{
-            $this->data['list'] = '';
-        }
+        $category_id = $this->uri->segment(2);
+        $where = array('slug' => $category_id);
+        $category = $this->parental_model->fetch_row($where, 'parental_category');
+        $this->data['category'] = $category;
+        $sidebar = $this->parental_model->fetch_all_by_type($category['id']);
+        $this->data['sidebar'] = $sidebar;
 
         $where = array('slug' => $slug);
         $detail = $this->parental_model->fetch_row($where);
         $this->data['detail'] = $detail;
+
         //comment
-        $comment = $this->comment($slug);
+        $comment = $this->comment('parental', $slug);
         if($comment){
             $this->data['comment'] = $comment;
         }
-
         //count comment
         $count_comment = $this->count_comment($slug);
         if($count_comment){

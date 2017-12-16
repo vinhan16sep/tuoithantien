@@ -5,18 +5,13 @@
         <div class="row">
 
             <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
+                <h1>Danh mục thư viện</h1>
                 <?php $style = 'style="display: none"' ?>
                 <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>" >Thông báo nhà trường</a></li>
 
-                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" >Thư viện ảnh</a></li>
+                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" <?php echo ($this->uri->segment(2) == 'thu-vien-anh')? 'style="color: blue"' : '' ?> >Thư viện ảnh</a></li>
 
-                    <li><a href="<?php echo base_url('thu-vien/video') ?>" >Video</a></li>
-
-                    <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a></li>
-
-                    <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" >Trải nghiệm</a></li>
+                    <li><a href="<?php echo base_url('thu-vien/video') ?>" <?php echo ($this->uri->segment(2) == 'video')? 'style="color: blue"' : '' ?>  >Video</a></li>
                 </ul>
             </div>
             <div class="blogs col-md-9 col-sm-9 col-xs-12">

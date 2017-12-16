@@ -58,12 +58,11 @@
                             Giới thiệu <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu orange">
-                            <li><a href="<?php echo base_url('gioi-thieu') ?>">Tổng quan</a></li>
-                            <li><a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>">Mục tiêu</a></li>
-                            <li><a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>">Ngoại ngữ</a></li>
-                            <li><a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>">Giáo dục theo lứa tuổi</a></li>
-                            <li><a href="<?php echo base_url('gioi-thieu/tap-huan') ?>">Tập huấn</a></li>
-                            <li><a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>">Ngoại khóa</a></li>
+                            <?php if ($introduce_nav): ?>
+                                <?php foreach ($introduce_nav as $item): ?>
+                                    <li><a href="<?php echo base_url('gioi-thieu/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </ul>
                     </li>
                     <li class="dropdown yellow">
@@ -71,10 +70,11 @@
                             Thông tin nhập học <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu yellow">
-                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>">Thủ tục nhập học</a></li>
-                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>">Học phí</a></li>
-                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>">Lịch học</a></li>
-                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>">Chương trình khuyến mãi</a></li>
+                            <?php if ($admission_nav): ?>
+                                <?php foreach ($admission_nav as $item): ?>
+                                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             <li role="separator" class="divider"></li>
                             <li><a href="<?php echo base_url('nhap-hoc/dang-ky-nhap-hoc') ?>">Đăng ký nhập học</a></li>
                         </ul>
@@ -84,12 +84,11 @@
                             Phối hợp cùng phụ huynh <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu pink">
-                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>">Chế độ sinh hoạt 1 ngày</a></li>
-                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>">Liên lạc</a></li>
-                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>">Thực đơn</a></li>
-                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>">Y tế</a></li>
-                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>">Giờ đưa đón</a></li>
-                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>">Kỷ luật</a></li>
+                            <?php if ($parental_nav): ?>
+                                <?php foreach ($parental_nav as $item): ?>
+                                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </ul>
                     </li>
                     <li class="dropdown cyan">
@@ -97,11 +96,13 @@
                             Hoạt động <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu cyan">
-                            <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>">Thông báo của trường</a></li>
-                            <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>">Thư viện ảnh</a></li>
-                            <li><a href="<?php echo base_url('thu-vien/video') ?>">Video</a></li>
-                            <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>">Tuyển sinh</a></li>
-                            <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>">Trải nghiệm</a></li>
+                            <li><a href="<?php echo base_url('thu-vien/thu-vien-anh/')?>">Thư viện ảnh</a></li>
+                            <li><a href="<?php echo base_url('thu-vien/video') ?>">Thư viện video</a></li>
+                            <?php if ($activity_nav): ?>
+                                <?php foreach ($activity_nav as $item): ?>
+                                    <li><a href="<?php echo base_url('hoat-dong/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </ul>
                     </li>
                     <li class="orange"><a href="<?php echo base_url('lien-he') ?>">Liên hệ</a></li>

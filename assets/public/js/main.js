@@ -28,7 +28,7 @@ $(document).ready(function(){
         var name = $('#name').val();
         var email = $('#email').val();
         var content = $('#content').val();
-        var category_id = $('#category_id').val();
+        var category = $('#category').val();
         var slug = $('#slug').val();
         var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if(name.length == 0){
@@ -59,7 +59,7 @@ $(document).ready(function(){
                     type: "get",
                     url: "http://localhost/tuoithantien/comment/create_comment",
                     // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
-                    data: {name : name, email : email, content : content, category_id : category_id, slug : slug},
+                    data: {name : name, email : email, content : content, category : category, slug : slug},
                     success: function(result){
                         $('#comment > .cmt:first-child').before(JSON.parse(result).comment);
                         $('#name').val('');

@@ -170,7 +170,7 @@
                                 <li class="media">
                                     <div class="media-left">
                                         <a href="<?php echo base_url('hoat-dong/thong-bao/'.$value['slug']) ?>">
-                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>" alt="ảnh tin tức">
+                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>" alt="ảnh tin tức">
                                         </a>
                                     </div>
                                     <div class="media-body">

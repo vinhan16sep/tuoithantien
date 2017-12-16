@@ -51,9 +51,9 @@ class Introduce_model extends CI_Model {
         return false;
     }
 
-    public function fetch_row($where = array()){
+    public function fetch_row($where = array(), $type = 'introduce'){
         $this->db->select('*');
-        $this->db->from('introduce');
+        $this->db->from($type);
         $this->db->where('is_deleted', 0);
         if($where != null){
             $this->db->where($where);
@@ -72,6 +72,19 @@ class Introduce_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('introduce');
         $this->db->where('is_deleted', 0);
+        $this->db->limit($limit, $start);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
+    public function get_all_pagination($where = array(), $limit = NULL, $start = NULL) {
+        $this->db->select('*');
+        $this->db->from('introduce');
+        $this->db->where('is_deleted', 0);
+        if($where != null){
+            $this->db->where($where);
+        }
         $this->db->limit($limit, $start);
         $this->db->order_by("id", "desc");
 

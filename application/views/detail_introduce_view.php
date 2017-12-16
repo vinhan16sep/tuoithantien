@@ -6,15 +6,13 @@
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
                 <ul class="list-unstyled">
-                    <?php if ($list != ''): ?>
-                        <?php foreach ($list as $key => $value): ?>
-                            <li><a href="<?php echo base_url('bai-viet/'.$value['sub_category'].'/'.$value['slug']) ?>"><?php echo $value['title'] ?></a></li>
+                    <?php if ($sidebar != ''): ?>
+                        <?php foreach ($sidebar as $key => $value): ?>
+                            <li><a href="<?php echo base_url('gioi-thieu/'.$category['slug'].'/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(3))? 'style="color: blue"' : '' ?> ><?php echo $value['title'] ?></a></li>
                         <?php endforeach ?>
                     <?php else: ?>
 
                     <?php endif ?>
-
-
                 </ul>
             </div>
 
@@ -34,7 +32,7 @@
 
                 <div class="comments">
                 	
-                    <?php echo form_open("<?php echo base_url('comment/create_comment'); ?>"); ?>
+                    <?php echo form_open(""); ?>
                         <div class="row">
                             <div class="form-group col-md-6 col-sm-6 col-xs-12">
                             	<?php
@@ -59,7 +57,7 @@
 				                <span class="content_error" style="color: red"></span>
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                            	<input type="hidden" name="category_id" value="1" id="category_id">
+                            	<input type="hidden" name="category" value="introduce" id="category">
                             	<input type="hidden" name="slug" value="<?php echo $detail['slug'] ?>" id="slug">
                             	<?php echo form_submit('submit', 'Gửi nhận xét', 'class="btn btn-primary hvr-icon-forward submit-comment"'); ?>
                             </div>

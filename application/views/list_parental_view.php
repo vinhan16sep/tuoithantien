@@ -6,17 +6,11 @@
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
                 <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/che-do-sinh-hoat-1-ngay') ?>" >Chê độ sinh hoạt 1 ngày</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/lien-lac') ?>" >Liên lạc</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/thuc-don') ?>" >Thực đơn</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/y-te') ?>" >Y tế</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/gio-dua-don') ?>" >Giờ đưa đón</a></li>
-
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/ky-luat') ?>" >Kỷ luật</a></li>
+                    <?php if ($sidebar): ?>
+                        <?php foreach ($sidebar as $value): ?>
+                            <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(2)? 'style="color: blue"' : '') ?> ><?php echo $value['title'] ?></a></li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
@@ -45,30 +39,11 @@
                     <?php if ($list != ''): ?>
 
                         <?php foreach ($list as $key => $value): ?>
-                        <?php 
-                            switch ($value['category']) {
-                                case '1':
-                                    $slug = 'lien-lac';
-                                    break;
-                                case '2':
-                                    $slug = 'thuc-don';
-                                    break;
-                                case '3':
-                                    $slug = 'y-te';
-                                    break;
-                                case '4':
-                                    $slug = 'ky-luat';
-                                    break;
-                                default:
-                                    # code...
-                                    break;
-                            }
-                        ?>
                             <div class="item col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner">
                                     <img class="img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>">
-                                    <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/danh-sach/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('phoi-hop-cung-phu-huynh/').$slug.'/'.$value['slug']; ?>">Khám phá</a>
+                                    <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>">Khám phá</a>
                                 </div>
                             </div>
                         <?php endforeach ?>

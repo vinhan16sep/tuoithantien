@@ -5,55 +5,25 @@
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
                 <h1>Danh mục bài viết</h1>
-
+                <?php $style = 'style="display: none"' ?>
                 <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>" >Thủ tục nhập hoc</a></li>
-
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/hoc-phi') ?>" >Học phí</a></li>
-
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/lich-hoc') ?>" >Lịch học</a></li>
-
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/danh-sach/chuong-trinh-khuyen-mai') ?>" >Chương trình khuyến mãi</a></li>
+                    <?php if ($sidebar): ?>
+                        <?php foreach ($sidebar as $value): ?>
+                            <li><a href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(2)? 'style="color: blue"' : '') ?> ><?php echo $value['title'] ?></a></li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
+
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
-                <h3>
-                    <?php
-                    switch ($this->uri->segment(3)) {
-                        case 'hoc-phi':
-                            echo 'Học phí';
-                            break;
-                        case 'chuong-trinh-khuyen-mai':
-                            echo 'Chương trình khuyến mãi';
-                            break;
-                        default:
-                            # code...
-                            break;
-                    }
-                    ?>
-                </h3>
                 <div class="row">
                     <?php if ($list != ''): ?>
-
                         <?php foreach ($list as $key => $value): ?>
-                        <?php 
-                            switch ($value['category']) {
-                                case '1':
-                                    $slug = 'hoc-phi';
-                                    break;
-                                case '2':
-                                    $slug = 'chuong-trinh-khuyen-mai';
-                                    break;
-                                default:
-                                    # code...
-                                    break;
-                            }
-                        ?>
                             <div class="item col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner">
-                                    <img class="img-rounded" src="<?php echo site_url('assets/upload/admission/'.$value['image']) ?>">
-                                    <a href="<?php echo base_url('thong-tin-nhap-hoc/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('thong-tin-nhap-hoc/').$slug.'/'.$value['slug']; ?>">Khám phá</a>
+                                    <img class="img-rounded" src="<?php echo site_url('assets/upload/admission/'.$value['image']) ?>" width=100%>
+                                    <a href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>">Khám phá</a>
                                 </div>
                             </div>
                         <?php endforeach ?>
@@ -69,6 +39,7 @@
                             </div>
                         </div>
                     <?php endif ?>
+
                 </div>
             </div>
 
