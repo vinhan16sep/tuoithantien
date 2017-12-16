@@ -239,13 +239,12 @@ class Introduce extends Admin_Controller {
 
         
     }
-
-
-
     public function remove(){
         $id = $_GET['id'];
         $this->introduce_model->delete($id);
     }
+
+    public 
 
 
 }
