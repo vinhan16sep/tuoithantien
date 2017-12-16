@@ -31,7 +31,6 @@
 
 
             $subcribes = $this->subcribe_model->fetch_all($per_page, $page);
-//            print_r($subcribes);die;
             $this->data['subcribes'] = $subcribes;
             $this->render('admin/subcribe_view');
         }

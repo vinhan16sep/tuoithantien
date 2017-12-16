@@ -26,8 +26,14 @@
                     <a href="<?php echo base_url('admin/dashboard'); ?>">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <span>Dashboard</span>
-                        <span class="pull-right-container">
-              </span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+                <li class="<?php echo ($active == 'menu')? 'active' : '' ?>">
+                    <a href="<?php echo base_url('admin/menu'); ?>">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                        <span>Menu</span>
+                        <span class="pull-right-container"></span>
                     </a>
                 </li>
 

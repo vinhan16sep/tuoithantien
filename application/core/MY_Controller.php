@@ -242,6 +242,12 @@ class Public_Controller extends MY_Controller {
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
 
+        $this->load->model('menu_model');
+        $menus = $this->menu_model->fetch_all_to_frontend();
+        foreach($menus as $key => $value){
+            $menus[$key]['sub'] = $this->menu_model->fetch_sub_menu_by_parent($value['id']);
+        }
+        $this->data['menus'] = $menus;
 
         //menu introduce
         $this->load->model('introduce_model');
