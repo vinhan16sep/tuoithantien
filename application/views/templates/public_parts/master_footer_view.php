@@ -53,10 +53,10 @@
                 <h3>Về chúng tôi</h3>
                 <ul class="list-unstyled">
                     <li><a href="<?php echo base_url('trang-chu') ?>">Trang chủ</a></li>
-                    <li><a href="<?php echo base_url('gioi-thieu') ?>">Giới thiệu</a></li>
-                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc') ?>">Thông tin nhập học</a></li>
-                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh') ?>">Phối hợp cùng phụ huynh</a></li>
-                    <li><a href="<?php echo base_url('hoat-dong') ?>">Hoạt động</a></li>
+                    <li><a href="<?php echo base_url('gioi-thieu/tam-nhin') ?>">Tầm nhìn</a></li>
+                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/thu-tuc-nhap-hoc') ?>">Thủ tục nhập học</a></li>
+                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/giao-duc') ?>">Phối hợp cùng phụ huynh</a></li>
+                    <li><a href="<?php echo base_url('hoat-dong/thong-bao-nha-truong') ?>">Hoạt động</a></li>
                     <li><a href="<?php echo base_url('lien-he') ?>">Liên hệ</a></li>
                 </ul>
             </div>
