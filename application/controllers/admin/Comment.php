@@ -19,40 +19,81 @@ class Comment extends Admin_Controller{
             $where =  array('slug' => $segment);
             $list_comment = $this->comment_model->fetch_all($where);
         }
-
-		$comment = array('giới thiệu, thông tin nhập học, phối hợp cùng phụ huynh, hoạt động');
-		if($list_comment){
-			foreach ($list_comment as $key => $value) {
-				switch ($value['category_id']) {
-					case '1':
-						$where =  array('slug' => $value['slug']);
-						$sub = $this->introduce_model->fetch_row($where);
-						$list_comment[$key]['sub'] = $sub;
-						break;
-					case '2':
-						$where =  array('slug' => $value['slug']);
-						$sub = $this->admission_model->fetch_row($where);
-						$list_comment[$key]['sub'] = $sub;
-						break;
-					case '3':
-						$where =  array('slug' => $value['slug']);
-						$sub = $this->parental_model->fetch_row($where);
-						$list_comment[$key]['sub'] = $sub;
-						break;
-					case '4':
-						$where =  array('slug' => $value['slug']);
-						$sub = $this->activity_model->fetch_row($where);
-						$list_comment[$key]['sub'] = $sub;
-						break;
-					default:
-						# code...
-						break;
-				}
-			}
-		}
 		$this->data['list_comment'] = $list_comment;
 		$this->render('admin/comment/list_comment_view');
 	}
+
+	public function introduce(){
+        $segment = $this->uri->segment(4);
+        $where =  array('slug' => $segment, 'category' => 'introduce');
+        $list_comment = $this->comment_model->fetch_all($where);
+
+        if($list_comment){
+            foreach ($list_comment as $key => $value) {
+                $where =  array('slug' => $value['slug']);
+                $sub = $this->introduce_model->fetch_row($where);
+                $list_comment[$key]['sub'] = $sub['title'];
+            }
+        }
+
+        $this->data['list_comment'] = $list_comment;
+
+        $this->render('admin/comment/list_comment_view');
+    }
+
+    public function activity(){
+        $segment = $this->uri->segment(4);
+        $where =  array('slug' => $segment, 'category' => 'activity');
+        $list_comment = $this->comment_model->fetch_all($where);
+
+        if($list_comment){
+            foreach ($list_comment as $key => $value) {
+                $where =  array('slug' => $value['slug']);
+                $sub = $this->activity_model->fetch_row($where);
+                $list_comment[$key]['sub'] = $sub['title'];
+            }
+        }
+
+        $this->data['list_comment'] = $list_comment;
+
+        $this->render('admin/comment/list_comment_view');
+    }
+
+    public function admission(){
+        $segment = $this->uri->segment(4);
+        $where =  array('slug' => $segment, 'category' => 'admission');
+        $list_comment = $this->comment_model->fetch_all($where);
+
+        if($list_comment){
+            foreach ($list_comment as $key => $value) {
+                $where =  array('slug' => $value['slug']);
+                $sub = $this->admission_model->fetch_row($where);
+                $list_comment[$key]['sub'] = $sub['title'];
+            }
+        }
+
+        $this->data['list_comment'] = $list_comment;
+
+        $this->render('admin/comment/list_comment_view');
+    }
+
+    public function parental(){
+        $segment = $this->uri->segment(4);
+        $where =  array('slug' => $segment, 'category' => 'admission');
+        $list_comment = $this->comment_model->fetch_all($where);
+
+        if($list_comment){
+            foreach ($list_comment as $key => $value) {
+                $where =  array('slug' => $value['slug']);
+                $sub = $this->admission_model->fetch_row($where);
+                $list_comment[$key]['sub'] = $sub['title'];
+            }
+        }
+
+        $this->data['list_comment'] = $list_comment;
+
+        $this->render('admin/comment/list_comment_view');
+    }
 
 	public function delete_all(){
         $this->db->empty_table('count_comment');

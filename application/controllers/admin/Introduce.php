@@ -6,245 +6,300 @@ class Introduce extends Admin_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->helper('url');
         $this->load->model('introduce_model');
+        $this->load->library('session');
+        $this->data['categories'] = $this->dropdown_category();
     }
 
     public function index() {
 
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-
-        $slug = $this->uri->segment(4);
-        $slug = isset($slug) ? $slug : 'muc-tieu';
-        if($slug == 'ngoai-khoa'){
-            $where = array('category' => 2);
-        }else{
-            $where = array('category' => 1, 'sub_category' => $slug);
-        }
-
-        $this->data['slug'] = $slug;
-
-        $sub_cat = array(
-                    'muc-tieu'                  => 'Mục tiêu',
-                    'ngoai-ngu'                 => 'Ngoại ngữ',
-                    'giao-duc-theo-lua-tuoi'    => 'Giáo dục theo lứa tuổi',
-                    'tap-huan'                  => 'Tập huấn',
-                    'ngoai-khoa'                => 'Ngoại khóa',
-                    );
-        if(array_key_exists($slug, $sub_cat) == false){
-            redirect('admin/dashboard','refresh');
-        }
-        if(!empty($this->uri->segment(5)) && !is_numeric($this->uri->segment(5))){
-            redirect('admin/dashboard','refresh');
-        }
-        $this->data['sub_cat'] = $sub_cat;
-
-        $keywords = '';
-        if($this->input->get()){
-            $keywords = $this->input->get('search');
-        }
-
         $this->load->library('pagination');
-        $page = ($this->uri->segment(5)) ? $this->uri->segment(5) : 0;
-
-        if(!empty($keywords)){
-            $total_rows  = $this->introduce_model->count_all($where,$keywords);
-        }else{
-            $total_rows  = $this->introduce_model->count_all($where);
-        }
-        
         $config = array();
-        $base_url = base_url() . 'admin/introduce/index/'.$slug;
+        $base_url = base_url() . 'admin/introduce/index';
+        $total_rows = $this->introduce_model->count_all();
         $per_page = 10;
-        $uri_segment = 5;
-        $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
-
-        $this->pagination->initialize($config);
-        $this->data['page_links'] = $this->pagination->create_links();
-
-        // $result  =  array();
-        if($keywords != ''){
-            $this->data['introduces'] = $this->introduce_model->fetch_all($where, $config['per_page'], $page, $keywords);
-        }else{
-            $this->data['introduces'] = $this->introduce_model->fetch_all($where, $config['per_page'], $page);
+        $uri_segment = 4;
+        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+            $config[$key] = $value;
         }
+        $this->pagination->initialize($config);
 
-        // $this->data['introduces'] = $result;
-        $this->data['search'] = $keywords;
+        $this->data['page_links'] = $this->pagination->create_links();
+        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+        $this->data['introduces'] = $this->introduce_model->fetch_all_pagination($per_page, $this->data['page']);
 
         $this->render('admin/introduce/list_introduce_view');
     }
 
-    public function edit($id = NULL) {
+    public function create() {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
-        $sub_cat = array(
-                    'muc-tieu'                  => 'Mục tiêu',
-                    'ngoai-ngu'                 => 'Ngoại ngữ',
-                    'giao-duc-theo-lua-tuoi'    => 'Giáo dục theo lứa tuổi',
-                    'tap-huan'                  => 'Tập huấn'
-                    );
-        $this->data['sub_cat'] = $sub_cat;
 
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+        $this->form_validation->set_rules('image', 'Image', 'callback_check_file_selected');
 
-        $introduce_id = isset($id) ? (int) $id : (int) $this->input->post('id');
-        $introduce = $this->introduce_model->fetch_by_id($introduce_id);
         if ($this->form_validation->run() == FALSE) {
-            $introduce = $this->introduce_model->fetch_by_id($introduce_id);
-            if(!$introduce){
-                redirect('admin/dashboard','refresh');
+            $this->data['categories'] = $this->dropdown_category();
+            $this->render('admin/introduce/create_introduce_view');
+        } else {
+            if ($this->input->post()) {
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->introduce_model->build_unique_slug($slug);
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/introduce', 'assets/upload/introduce/thumbs');
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug'          => $unique_slug,
+                    'category_id'      => $this->input->post('category'),
+                    'image' => $image,
+                    'description' => $this->input->post('description'),
+                    'content' => $this->input->post('content'),
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                $insert = $this->introduce_model->insert('introduce', $data);
+                if (!$insert) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item');
+                }
+                $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('admin/introduce/list_in_category/'.$this->input->post('url'), 'refresh');
+            }
+        }
+    }
+
+    public function edit($request_id = NULL) {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+
+        $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
+        $result = $this->introduce_model->fetch_by_id('introduce', $id);
+        if ($this->form_validation->run() == FALSE) {
+            $this->data['categories'] = $this->dropdown_category();
+            $this->data['introduce'] = $result;
+
+            if (!$this->data['introduce']) {
+                redirect('admin/introduce', 'refresh');
             }
 
-            $this->data['introduce'] = $introduce;
             $this->render('admin/introduce/edit_introduce_view');
         } else {
             if ($this->input->post()) {
                 $input_slug = $this->input->post('slug');
-                if($introduce['slug'] == $input_slug){
-                    $unique_slug = $this->introduce_model->build_unique_slug($input_slug, $introduce['id']);
+
+                if($result['slug'] == $input_slug){
+                    $unique_slug = $this->introduce_model->build_unique_slug($input_slug, $result['id']);
                 }else{
                     $unique_slug = $this->introduce_model->build_unique_slug($input_slug);
                 }
-                
 
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/introduce', 'assets/upload/article/thumbs');
-                $data = array(
-                    'title'        => $this->input->post('title'),
-                    'slug'         => $unique_slug,
-                    'category'     => $this->input->post('cat'),
-                    'description'  => $this->input->post('description'),
-                    'content'      => $this->input->post('content'),
-                    'modified_at'  => $this->author_info['modified_at'],
-                    'modified_by'  => $this->author_info['modified_by']
-                );
-                if($this->input->post('cat') == 1){
-                    $data['sub_category'] = $this->input->post('sub-cat');
-                }elseif($this->input->post('cat') == 2){
-                    $data['sub_category'] = 'ngoai-khoa';
-                }else{
-                    $data['sub_category'] = '';
-                }
+                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/introduce', 'assets/upload/introduce/thumbs');
 
-                if($image != null){
-                    $data['image'] = $image;
-                }
-                try {
-                    $this->introduce_model->update($introduce_id, $data);
-                    $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
-                } catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
-                }
-
-                $id = $this->input->post('id');
-                $introduce_row = $this->introduce_model->fetch_by_id($id);
-                if($introduce_row['category'] == 2){
-                    redirect('admin/introduce/index/ngoai-khoa', 'refresh');
-                }
-                redirect('admin/introduce/index/'.$this->input->post('url'), 'refresh');
-            }
-        }
-    }
-
-    public function create(){
-        
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-
-        $sub_cat = array(
-                    'muc-tieu'                  => 'Mục tiêu',
-                    'ngoai-ngu'                 => 'Ngoại ngữ',
-                    'giao-duc-theo-lua-tuoi'    => 'Giáo dục theo lứa tuổi',
-                    'tap-huan'                  => 'Tập huấn'
-                    );
-        $this->data['sub_cat'] = $sub_cat;
-
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
-        $this->form_validation->set_rules('content', 'Nội dung', 'required');
-        if($this->input->post()){
-            if($this->form_validation->run() == TRUE){
-                $slug = $this->input->post('slug');
-                $unique_slug = $this->introduce_model->build_unique_slug($slug);
-
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/introduce', 'assets/upload/article/thumbs');
-                $data = array(
-                    'title'         => $this->input->post('title'),
-                    'slug'          => $unique_slug,
-                    'category'      => $this->input->post('cat'),
-                    'image'         => $image,
-                    'description'   => $this->input->post('description'),
-                    'content'       => $this->input->post('content'),
-                    'created_at'    => $this->author_info['created_at'],
-                    'created_by'    => $this->author_info['created_by'],
-                    'modified_at'   => $this->author_info['modified_at'],
-                    'modified_by'   => $this->author_info['modified_by']
-                );
-                if($this->input->post('cat') == 1){
-                    $data['sub_category'] = $this->input->post('sub-cat');
-                }elseif($this->input->post('cat') == 2){
-                    $data['sub_category'] = 'ngoai-khoa';
-                }else{
-                    $data['sub_category'] = '';
-                }
-
-                try {
-                    $this->introduce_model->save($data);
-                    $this->session->set_flashdata('message', 'Thêm bài viết thành công');
-                }catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Thêm bài viết thất bại: ' . $e->getMessage());
-                }
-                redirect('admin/introduce/index/'.$this->input->post('url'), 'refresh');
-            }
-        }
-
-        $this->render('admin/introduce/create_introduce_view');
-    }
-
-    public function overview(){
-        $where = array('category' => 0,'sub_category' => '');
-        $introduce = $this->introduce_model->fetch_row($where);
-
-        $this->data['introduces'] = $introduce;
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
-        
-        if ($this->form_validation->run() == TRUE) {
-            if ($this->input->post()) {
-                $image = $this->upload_image('image', $_FILES['image']['name'], 'assets/upload/introduce', 'assets/upload/article/thumbs');
                 $data = array(
                     'title' => $this->input->post('title'),
-                    'slug' => $this->input->post('slug'),
+                    'slug'          => $unique_slug,
+                    'category_id'      => $this->input->post('category'),
+                    'image' => $image,
+                    'description' => $this->input->post('description'),
                     'content' => $this->input->post('content'),
                     'modified_at' => $this->author_info['modified_at'],
                     'modified_by' => $this->author_info['modified_by']
                 );
-                if($image != null){
-                    $data['image'] = $image;
+                if ($image == '') {
+                    unset($data['image']);
                 }
 
                 try {
-                    $this->introduce_model->update($introduce['id'], $data);
-                    $this->session->set_flashdata('message', 'Thêm mới bài viết thành công');
+                    $this->introduce_model->update('introduce', $id, $data);
+                    $this->session->set_flashdata('message', 'Item updated successfully');
                 } catch (Exception $e) {
-                    $this->session->set_flashdata('message', 'Thêm mới bài viết thất bại: ' . $e->getMessage());
+                    $this->session->set_flashdata('message', 'There was an error updating the item: ' . $e->getMessage());
                 }
 
-                redirect('admin/introduce/overview', 'refresh');
+                redirect('admin/introduce/list_in_category/'.$this->input->post('url'), 'refresh');
             }
         }
-        $this->render('admin/introduce/overview_view');
-
-        
-    }
-    public function remove(){
-        $id = $_GET['id'];
-        $this->introduce_model->delete($id);
     }
 
-    public 
+    public function remove($id = NULL){
+        $id = $this->input->get('id');
+        if(!isset($id)){
+            redirect('admin/introduce', 'refresh');
+        }
 
+        $introduce = $this->introduce_model->fetch_by_id('introduce', $id);
+        if(!$introduce){
+            redirect('admin/introduce', 'refresh');
+        }
+
+        $result = $this->introduce_model->delete('introduce', $id);
+        if($result){
+            unlink('assets/upload/introduce/'. $introduce['image']);
+        }else{
+            $this->session->set_flashdata('message', 'There was an error when delete item');
+        }
+        $this->session->set_flashdata('message', 'Item deleted successfully');
+
+        redirect('admin/introduce', 'refresh');
+    }
+
+    public function category(){
+        $this->data['target'] = 'introduce';
+        $this->data['categories'] = $this->introduce_model->fetch_all('introduce_category');
+
+        $this->render('admin/category/list_category_view');
+    }
+
+    public function list_in_category($type){
+        $category_id = $this->uri->segment(4);
+        $this->data['category_id'] = $category_id;
+
+        $this->load->library('pagination');
+        $config = array();
+        $base_url = base_url() . 'admin/introduce/list_in_category/' . $type;
+        $total_rows = $this->introduce_model->count_all($type);
+        $per_page = 10;
+        $uri_segment = 5;
+        foreach ($this->pagination_config($base_url, $total_rows, $per_page, $uri_segment) as $key => $value) {
+            $config[$key] = $value;
+        }
+        $this->pagination->initialize($config);
+
+        $this->data['page_links'] = $this->pagination->create_links();
+        $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(5) : 0;
+        $this->data['introduces'] = $this->introduce_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+
+        $this->render('admin/introduce/list_introduce_view');
+    }
+
+    public function create_category(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+
+        if($this->form_validation->run() == FALSE) {
+            $this->render('admin/category/create_category_view');
+        }else{
+            if($this->input->post()){
+                $slug = $this->input->post('slug');
+                $unique_slug = $this->introduce_model->build_unique_slug_category($slug);
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug' => $unique_slug,
+                    'created_at' => $this->author_info['created_at'],
+                    'created_by' => $this->author_info['created_by'],
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                $result = $this->introduce_model->insert('introduce_category', $data);
+                if (!$result) {
+                    $this->session->set_flashdata('message', 'There was an error inserting item');
+                }
+                $this->session->set_flashdata('message', 'Item added successfully');
+
+                redirect('admin/introduce/category', 'refresh');
+            }
+        }
+    }
+
+    public function edit_category($id){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('title', 'Title', 'trim|required');
+
+        if(!isset($id)){
+            redirect('admin/introduce/category', 'refresh');
+        }
+
+        $result = $this->introduce_model->fetch_by_id('introduce_category', $id);
+
+        if($this->form_validation->run() == FALSE) {
+            if(!$result){
+                redirect('admin/introduce/category', 'refresh');
+            }
+
+            $this->data['category'] = $result;
+            $this->render('admin/category/edit_category_view');
+        }else{
+            if($this->input->post()){
+                $input_slug = $this->input->post('slug');
+
+                if($result['slug'] == $input_slug){
+                    $unique_slug = $this->introduce_model->build_unique_slug_category($input_slug, $result['id']);
+                }else{
+                    $unique_slug = $this->introduce_model->build_unique_slug_category($input_slug);
+                }
+
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'slug' => $unique_slug,
+                    'modified_at' => $this->author_info['modified_at'],
+                    'modified_by' => $this->author_info['modified_by']
+                );
+
+                $result = $this->introduce_model->update('introduce_category', $id, $data);
+                if (!$result) {
+                    $this->session->set_flashdata('message', 'There was an error when update item');
+                }
+                $this->session->set_flashdata('message', 'Item updated successfully');
+
+                redirect('admin/introduce/category', 'refresh');
+            }
+        }
+    }
+
+    public function remove_category(){
+        $id = $this->input->get('id');
+        if(!isset($id)){
+            redirect('admin/introduce/category', 'refresh');
+        }
+
+        $category = $this->introduce_model->fetch_by_id('introduce_category', $id);
+        if(!$category){
+            redirect('admin/introduce/category', 'refresh');
+        }
+
+        $result = $this->introduce_model->delete('introduce_category', $id);
+        if (!$result) {
+            $this->session->set_flashdata('message', 'There was an error when delete item');
+        }
+        $this->session->set_flashdata('message', 'Item deleted successfully');
+
+        redirect('admin/introduce/category', 'refresh');
+    }
+
+    public function dropdown_category(){
+        $categories = $this->introduce_model->fetch_all('introduce_category');
+        $titles = array(
+            '' => '---Chọn một danh mục---'
+        );
+        if($categories){
+            foreach($categories as $key => $value){
+                $titles[$value['id']] = $value['title'];
+            }
+        }
+        return $titles;
+    }
+
+    function check_file_selected(){
+
+        $this->form_validation->set_message('check_file_selected', 'Please select file.');
+        if (empty($_FILES['image']['name'])) {
+            return false;
+        }else{
+            return true;
+        }
+    }
 
 }

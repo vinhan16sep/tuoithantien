@@ -23,33 +23,13 @@
                         echo form_input('slug', set_value('slug'), 'class="form-control" readonly id="slug" readonly');
                         ?>
                     </div>
-                    <?php if ($this->uri->segment(4) == 'ngoai-khoa'): ?>
-                        <div class="form-group picture">
-                            <label for="slug">Danh mục</label>
-                            <input type="text" name="" value="Ngoại Khóa" readonly class="form-control">
-                            <input type="hidden" name="cat" value="2">
-                        </div>
-                    <?php else: ?>
-                        <div class="form-group picture">
-                            <label for="slug">Danh mục</label>
-                            <input type="text" name="" value="Giáo Dục" readonly class="form-control">
-                            <input type="hidden" name="cat" value="1">
-                        </div>
-                        <div class="form-group picture sub-cat">
-                            <?php
-                            echo form_label('Danh mục con', 'sub-cat');
-                            echo form_error('sub-cat');
-                            ?>
-                            <select name="sub-cat" class="form-control">
-                                <?php foreach ($sub_cat as $key => $value): ?>
-                                    <option value="<?php echo $key ?>" <?php echo ($key == $this->uri->segment(4))? 'selected' : '' ?> >
-                                        <?php echo $value ?>
-                                    </option>
-                                <?php endforeach ?>
-                            </select>
-                        </div>
-                    <?php endif ?>
-                    
+                    <div class="form-group picture sub-cat">
+                        <?php
+                        echo form_label('Category', 'category');
+                        echo form_error('category');
+                        echo form_dropdown('category', $categories, set_value('category', $this->uri->segment(4)), 'class="form-control" id="category"');
+                        ?>
+                    </div>
                     <div class="form-group picture">
                         <?php
                         echo form_label('Image', 'image');

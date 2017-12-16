@@ -16,14 +16,14 @@ class Homepage extends Public_Controller {
 
     public function index(){
         //Thông báo nhà trường
-        $where = array('category' => 1);
-        $notify = $this->activity_model->fetch_all($where, 3, 0);
-        $this->data['notify'] = $notify;
+//        $where = array('category' => 1);
+//        $notify = $this->activity_model->fetch_all($where, 3, 0);
+//        $this->data['notify'] = $notify;
 
         //Chia sẻ kinh nghiệm hay
-        $where = array('category' => 3);
-        $experience = $this->activity_model->fetch_all($where, 3, 0);
-        $this->data['experience'] = $experience;
+//        $where = array('category' => 3);
+//        $experience = $this->activity_model->fetch_all($where, 3, 0);
+//        $this->data['experience'] = $experience;
 
         $banner = $this->banner_model->get_all();
         $this->data['banner'] = $banner;

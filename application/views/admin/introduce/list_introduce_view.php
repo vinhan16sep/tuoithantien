@@ -2,41 +2,23 @@
 
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content row">
+        <?php if(isset($category_id)): ?>
+            <a type="button" href="<?php echo site_url('admin/introduce/create/'.$category_id); ?>" class="btn btn-primary">THÊM MỚI</a>
+        <?php else: ?>
+            <a type="button" href="<?php echo site_url('admin/introduce/create'); ?>" class="btn btn-primary">THÊM MỚI</a>
+        <?php endif; ?>
+        <a type="button" href="<?php echo site_url('admin/introduce/category'); ?>" class="btn btn-normal">DANH MỤC</a>
         <div class="container col-md-12">
-            <h3 style="text-transform: uppercase; text-align: center;">
-                <?php
-                    $segment = $this->uri->segment(4);
-                    switch ($segment) {
-                        case 'muc-tieu':
-                            echo 'Mục Tiêu';
-                            break;
-                        case 'ngoai-ngu':
-                            echo 'Ngoại Ngữ';
-                            break;
-                        case 'giao-duc-theo-lua-tuoi':
-                            echo 'Giáo Dục Theo Lứa Tuổi';
-                            break;
-                        case 'tap-huan':
-                            echo 'Tập Huấn';
-                            break;
-                        case 'ngoai-khoa':
-                            echo 'Ngoại Khóa';
-                            break;
-                        default:
-                            break;
-                    }
-                 ?>
-            </h3>
             <div>
                 <span><?php echo $this->session->flashdata('message'); ?></span>
             </div>
-            <div class="row">
-                <form action="<?php echo base_url('admin/introduce/index/'.$slug) ?>" class="form-horizontal" method="get">
-                    <a type="button" href="<?php echo site_url('admin/introduce/create/'.$slug); ?>" class="btn btn-primary">THÊM MỚI</a>
-                    <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: right">
-                    <input type="text" name="search" placeholder="Tìm Kiếm ..." class="form-control" style="float: right; width: 50%;" value="<?php echo $search ?>">
-                </form>
-            </div>
+<!--            <div class="row">-->
+<!--                <form action="--><?php //echo base_url('admin/introduce/index/'.$slug) ?><!--" class="form-horizontal" method="get">-->
+<!--                    <a type="button" href="--><?php //echo site_url('admin/introduce/create/'.$slug); ?><!--" class="btn btn-primary">THÊM MỚI</a>-->
+<!--                    <input type="submit" name="btn-search" value="Tìm Kiếm" class="btn btn-primary" style="float: right">-->
+<!--                    <input type="text" name="search" placeholder="Tìm Kiếm ..." class="form-control" style="float: right; width: 50%;" value="--><?php //echo $search ?><!--">-->
+<!--                </form>-->
+<!--            </div>-->
             <?php if ($introduces): ?>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 10px;">
@@ -46,9 +28,6 @@
                                 <td><b><a href="#">Tiêu đề</a></b></td>
                                 <td><b><a href="#">Slug</a></b></td>
                                 <td><b><a href="#">Danh mục</a></b></td>
-                                <?php if ($slug != 'ngoai-khoa'): ?>
-                                    <td><b><a href="#">Danh mục con</a></b></td>
-                                <?php endif ?>
                                 <td><b>Operations</b></td>
                             </tr>
                             
@@ -58,32 +37,10 @@
                                     <td><img src="<?php echo base_url('assets/upload/introduce/'.$value['image']) ?>" alt=""></td>
                                     <td><?php echo $value['title'] ?></td>
                                     <td><?php echo $value['slug'] ?></td>
-                                    <td><?php echo ($value['category'] == 1)? 'Giáo dục' : 'Ngoại khóa' ?></td>
-                                    
-                                    <?php 
-                                        if($value['category'] == 1){
-                                            echo '<td>';
-                                            switch ($value['sub_category']) {
-                                                case 'ngoai-ngu':
-                                                    echo 'Ngoại Ngữ';
-                                                    break;
-                                                case 'giao-duc-theo-lua-tuoi':
-                                                    echo 'Giáo Dục Theo Lứa Tuổi';
-                                                    break;
-                                                case 'tap-huan':
-                                                    echo 'Tập Huấn';
-                                                    break;
-                                                default:
-                                                    echo 'Mục Tiêu';
-                                                    break;
-                                            }
-                                            echo '</td>';
-                                        }
-                                        
-                                    ?>
+                                    <td><?php echo $categories[$value['category_id']]; ?></td>
                                     <td>
                                         <form class="form_ajax">
-                                            <a href="<?php echo base_url('admin/comment/index/'.$value['slug']); ?>" title="Danh sách comment">
+                                            <a href="<?php echo base_url('admin/comment/introduce/'.$value['slug']); ?>" title="Danh sách comment">
                                                 <i class="fa fa-commenting-o" aria-hidden="true"></i>
                                             </a>
                                             &nbsp&nbsp
