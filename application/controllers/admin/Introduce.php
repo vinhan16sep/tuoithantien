@@ -279,8 +279,6 @@ class Introduce extends Admin_Controller {
         redirect('admin/introduce/category', 'refresh');
     }
 
-
-
     public function dropdown_category(){
         $categories = $this->introduce_model->fetch_all('introduce_category');
         $titles = array(

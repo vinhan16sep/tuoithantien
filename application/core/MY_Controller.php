@@ -242,6 +242,7 @@ class Public_Controller extends MY_Controller {
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
 
+
         //menu introduce
         $this->load->model('introduce_model');
         $introduce_nav = $this->introduce_model->fetch_all('introduce_category');
@@ -270,6 +271,16 @@ class Public_Controller extends MY_Controller {
         $where = array('category_id' => $category['id']);
         $procedure = $this->admission_model->fetch_row($where);
         $this->data['procedure'] = $procedure;
+        //theme frontend
+        $this->load->model('theme_model');
+        $theme = $this->theme_model->fetch_row();
+        $this->data['theme'] = $theme['name'];
+
+        /* thu tuc nhap hoc */
+//        $this->load->model('admission_model');
+//        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
+//        $procedure = $this->admission_model->fetch_row($where);
+//        $this->data['procedure'] = $procedure;
     }
 
     protected function render($the_view = NULL, $template = 'master') {
