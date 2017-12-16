@@ -1,5 +1,14 @@
 <!--main content start-->
 <div class="content-wrapper" style="min-height: 916px;">
+    <div class="box-body pad table-responsive">
+        <h3>THEME</h3>
+        <?php foreach ($themes as $item): ?>
+            <button type="button" class="btn btn-success btn-lg btn-theme" style="width: 20%" data-id="<?php echo $item['id'] ?>" <?php echo ($item['is_active'] == 1)? 'disabled="disabled"' : '' ?> ><?php echo $item['name'] ?></button>
+        <?php endforeach; ?>
+    </div>
+
+
+
     <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.js"></script>
     <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.min.js"></script>
 
@@ -52,5 +61,18 @@
             }
         }
     });
+
+    $('.btn-theme').click(function () {
+        var id = $(this).attr('data-id');
+        jQuery.ajax({
+            type: "get",
+            url: "http://localhost/tuoithantien/admin/dashboard/edit_theme",
+            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+            data: {id : id},
+            success: function(result){
+            }
+        })
+    });
+
 </script>
 

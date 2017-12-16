@@ -242,8 +242,12 @@ class Public_Controller extends MY_Controller {
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
 
-        /* thu tuc nhap hoc */
+        //theme frontend
+        $this->load->model('theme_model');
+        $theme = $this->theme_model->fetch_row();
+        $this->data['theme'] = $theme['name'];
 
+        /* thu tuc nhap hoc */
 //        $this->load->model('admission_model');
 //        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
 //        $procedure = $this->admission_model->fetch_row($where);
