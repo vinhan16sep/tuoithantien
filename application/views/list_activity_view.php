@@ -7,60 +7,22 @@
                 <h1>Danh mục bài viết</h1>
                 <?php $style = 'style="display: none"' ?>
                 <ul class="list-unstyled">
-                    <li><a href="<?php echo base_url('hoat-dong/thong-bao') ?>" >Thông báo nhà trường</a></li>
-
-                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" >Thư viện ảnh</a></li>
-
-                    <li><a href="<?php echo base_url('thu-vien/video') ?>" >Video</a></li>
-
-                    <li><a href="<?php echo base_url('hoat-dong/tuyen-sinh') ?>" >Tuyển sinh</a></li>
-
-                    <li><a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" >Trải nghiệm</a></li>
+                    <?php if ($sidebar): ?>
+                        <?php foreach ($sidebar as $value): ?>
+                            <li><a href="<?php echo base_url('hoat-dong/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(2)? 'style="color: blue"' : '') ?> ><?php echo $value['title'] ?></a></li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
-                <h3>
-                    <?php
-                    switch ($this->uri->segment(2)) {
-                        case 'thong-bao':
-                            echo 'Thông báo';
-                            break;
-                        case 'tuyen-sinh':
-                            echo 'Tuyển sinh';
-                            break;
-                        case 'trai-nghiem':
-                            echo 'Trải nghiệm';
-                            break;
-                        default:
-                            # code...
-                            break;
-                    }
-                    ?>
-                </h3>
                 <div class="row">
                 	<?php if ($list != ''): ?>
 	                	<?php foreach ($list as $key => $value): ?>
-	                	<?php 
-	                        switch ($value['category']) {
-	                            case '1':
-	                                $slug = 'thong-bao';
-	                                break;
-	                            case '2':
-	                                $slug = 'tuyen-sinh';
-	                                break;
-	                            case '3':
-	                                $slug = 'trai-nghiem';
-	                                break;
-	                            default:
-	                                # code...
-	                                break;
-	                        }
-	                    ?>
 		                    <div class="item col-md-4 col-sm-6 col-xs-12">
 		                        <div class="inner">
 		                            <img class="img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>">
-		                            <a href="<?php echo base_url('hoat-dong/').$slug.'/'.$value['slug']; ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-		                            <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('hoat-dong/').$slug.'/'.$value['slug']; ?>">Khám phá</a>
+                                    <a href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
+                                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>">Khám phá</a>
 		                        </div>
 		                    </div>
 	                    <?php endforeach ?>

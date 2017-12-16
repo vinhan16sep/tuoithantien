@@ -9,10 +9,10 @@ class Comment extends CI_Controller{
 		$name = $_GET['name'];
 		$email = $_GET['email'];
 		$content = nl2br($_GET['content']);
-		$category_id = $_GET['category_id'];
+		$category = $_GET['category'];
 		$slug = $_GET['slug'];
 		// echo date(DATE_RFC822, time());die;
-		// print_r(now());die;
+//		 print_r($name);die;
         $ip = $_SERVER['REMOTE_ADDR'];
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -24,7 +24,7 @@ class Comment extends CI_Controller{
 				'email' => $email,
 				'content' => $content,
 				'slug' => $slug,
-				'category_id' => $category_id,
+				'category' => $category,
 				'created_at' => date("Y/m/d"),
                 'ip_address' => $ip
 				);

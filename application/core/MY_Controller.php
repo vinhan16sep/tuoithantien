@@ -242,21 +242,43 @@ class Public_Controller extends MY_Controller {
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
 
+        //menu introduce
+        $this->load->model('introduce_model');
+        $introduce_nav = $this->introduce_model->fetch_all('introduce_category');
+        $this->data['introduce_nav'] = $introduce_nav;
+
+        //menu admission
+        $this->load->model('admission_model');
+        $admission_nav = $this->admission_model->fetch_all('admission_category');
+        $this->data['admission_nav'] = $admission_nav;
+
+        //menu parental
+        $this->load->model('parental_model');
+        $parental_nav = $this->parental_model->fetch_all('parental_category');
+        $this->data['parental_nav'] = $parental_nav;
+
+        //menu activity
+        $this->load->model('activity_model');
+        $activity_nav = $this->activity_model->fetch_all('activity_category');
+        $this->data['activity_nav'] = $activity_nav;
+
         /* thu tuc nhap hoc */
 
-//        $this->load->model('admission_model');
-//        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
-//        $procedure = $this->admission_model->fetch_row($where);
-//        $this->data['procedure'] = $procedure;
+        $this->load->model('admission_model');
+        $where = array('slug' => 'thu-tuc-nhap-hoc');
+        $category = $this->admission_model->fetch_row($where, 'admission_category');
+        $where = array('category_id' => $category['id']);
+        $procedure = $this->admission_model->fetch_row($where);
+        $this->data['procedure'] = $procedure;
     }
 
     protected function render($the_view = NULL, $template = 'master') {
         parent::render($the_view, $template);
     }
 
-    protected function comment($slug) {
+    protected function comment($category, $slug) {
         $this->load->model('comment_model');
-        $where = array('slug' => $slug);
+        $where = array('category' => $category, 'slug' => $slug);
         $comment = $this->comment_model->fetch_all($where, 5, 0);
         if($comment){
             $this->data['comment'] = $comment;
