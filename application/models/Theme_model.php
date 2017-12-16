@@ -37,4 +37,16 @@ class Theme_model extends CI_Model{
 
         return false;
     }
+
+    public function update($id, $article){
+        $this->db->set($article)
+            ->where('id', $id)
+            ->update('theme');
+
+        if($this->db->affected_rows() == 1){
+            return true;
+        }
+
+        return false;
+    }
 }

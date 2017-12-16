@@ -8,7 +8,6 @@
     </div>
 
 
-
     <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.js"></script>
     <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.min.js"></script>
 
@@ -18,6 +17,7 @@
         </div>
     </section>
 </div>
+
 <script>
     var surveyChartLabel = ['Con được học và chơi gì?', '"Khi đến tường cô giáo như mẹ hiền"', 'Con được ăn gì? Uống gì? Ngủ ngon không?', 'Tất cả các ý kiến trên'];
     var surveyChartData = [<?php echo '"'.implode('","',  $count ).'"' ?>];
@@ -63,6 +63,8 @@
     });
 
     $('.btn-theme').click(function () {
+        $('.btn-theme').attr('disabled', false);
+        $(this).attr('disabled', true);
         var id = $(this).attr('data-id');
         jQuery.ajax({
             type: "get",
@@ -70,6 +72,9 @@
             // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
             data: {id : id},
             success: function(result){
+                if(JSON.parse(result).isExists == true){
+                    alert("Thay đổi THEME thành công");
+                }
             }
         })
     });
