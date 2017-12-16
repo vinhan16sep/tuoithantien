@@ -139,19 +139,19 @@
                             <?php foreach ($notify as $value): ?>
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="<?php echo base_url('hoat-dong/thong-bao/'.$value['slug']) ?>">
+                                        <a href="<?php echo base_url('hoat-dong/thong-bao-nha-truong/'.$value['slug']) ?>">
                                             <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>" alt="ảnh tin tức">
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
                                         <p><?php echo $value['description'] ?></p>
-                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('hoat-dong/thong-bao/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('hoat-dong/thong-bao-nha-truong/'.$value['slug']) ?>" role="button">Xem tiếp</a>
                                     </div>
                                 </li>
                             <?php endforeach; ?>
                             <li>
-                                <a href="<?php echo base_url('hoat-dong/thong-bao') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="<?php echo base_url('hoat-dong/thong-bao-nha-truong') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             </li>
                         <?php else: ?>
                             <li class="media">
@@ -169,19 +169,19 @@
                             <?php foreach ($experience as $value): ?>
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="<?php echo base_url('hoat-dong/thong-bao/'.$value['slug']) ?>">
+                                        <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay/'.$value['slug']) ?>">
                                             <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>" alt="ảnh tin tức">
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
                                         <p><?php echo $value['description'] ?></p>
-                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('hoat-dong/trai-nghiem/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay/'.$value['slug']) ?>" role="button">Xem tiếp</a>
                                     </div>
                                 </li>
                             <?php endforeach; ?>
                             <li>
-                                <a href="<?php echo base_url('hoat-dong/trai-nghiem') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                             </li>
                         <?php else: ?>
                             <li class="media">
