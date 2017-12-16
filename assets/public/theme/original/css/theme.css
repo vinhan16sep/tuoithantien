@@ -198,6 +198,10 @@ Author: hung.luong@matocreative.vn
     color: #f4aa1c;
 }
 
+.container-fluid#blogs .media-left img, .container#featured_02 .media-left img{
+    border: 5px solid #f4aa1c;
+}
+
 a h1, a h2{
     color: #f4aa1c;
 }

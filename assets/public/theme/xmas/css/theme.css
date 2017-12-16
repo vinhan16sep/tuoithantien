@@ -197,6 +197,10 @@ Author: hung.luong@matocreative.vn
     border-bottom: 3px dashed #d83f3f;
 }
 
+.container-fluid#blogs .media-left img, .container#featured_02 .media-left img{
+    border: 5px solid #d83f3f;
+}
+
 
 .main_content#contact .social_network li a:hover{
     color: #d83f3f;
