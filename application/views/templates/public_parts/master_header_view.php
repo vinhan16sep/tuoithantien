@@ -52,60 +52,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="cyan"><a href="<?php echo base_url('trang-chu') ?>">Trang chủ</a></li>
-                    <li class="dropdown orange">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Giới thiệu <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu orange">
-                            <?php if ($introduce_nav): ?>
-                                <?php foreach ($introduce_nav as $item): ?>
-                                    <li><a href="<?php echo base_url('gioi-thieu/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
-                                <?php endforeach; ?>
+                    <?php if(!empty($menus)): ?>
+                    <?php foreach($menus as $key => $value): ?>
+                        <li class="<?php echo (!empty($value['sub'])) ? 'dropdown' : ''; ?>" style="color:<?php echo ($value['level'] == 1) ? $value['color'] : ''; ?>">
+                            <a style="color:<?php echo ($value['level'] == 1) ? $value['color'] : ''; ?>" href="<?php echo $value['url']; ?>" <?php echo (!empty($value['sub'])) ? ' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"' : ''; ?>>
+                                <?php echo $value['title']; ?> <?php echo (!empty($value['sub'])) ? '<span class="caret"></span>' : ''; ?>
+                            </a>
+                            <?php if(!empty($value['sub'])): ?>
+                                <ul class="dropdown-menu" style="color:<?php echo ($value['level'] == 1) ? $value['color'] : ''; ?>">
+                                    <?php foreach($value['sub'] as $k => $v): ?>
+                                        <li><a href="<?php echo $v['url'] ?>"><?php echo $v['title'] ?></a></li>
+                                    <?php endforeach; ?>
+
+                                </ul>
                             <?php endif; ?>
-                        </ul>
-                    </li>
-                    <li class="dropdown yellow">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Thông tin nhập học <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu yellow">
-                            <?php if ($admission_nav): ?>
-                                <?php foreach ($admission_nav as $item): ?>
-                                    <li><a href="<?php echo base_url('thong-tin-nhap-hoc/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="<?php echo base_url('nhap-hoc/dang-ky-nhap-hoc') ?>">Đăng ký nhập học</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown pink">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Phối hợp cùng phụ huynh <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu pink">
-                            <?php if ($parental_nav): ?>
-                                <?php foreach ($parental_nav as $item): ?>
-                                    <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </ul>
-                    </li>
-                    <li class="dropdown cyan">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Hoạt động <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu cyan">
-                            <li><a href="<?php echo base_url('thu-vien/thu-vien-anh/')?>">Thư viện ảnh</a></li>
-                            <li><a href="<?php echo base_url('thu-vien/video') ?>">Thư viện video</a></li>
-                            <?php if ($activity_nav): ?>
-                                <?php foreach ($activity_nav as $item): ?>
-                                    <li><a href="<?php echo base_url('hoat-dong/').$item['slug'] ?>"><?php echo $item['title'] ?></a></li>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </ul>
-                    </li>
-                    <li class="orange"><a href="<?php echo base_url('lien-he') ?>">Liên hệ</a></li>
+                        </li>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

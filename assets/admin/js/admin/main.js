@@ -92,6 +92,51 @@ $('.btn-remove').click(function(e){
   return false;
 });
 
+ $('.btn-remove-menu').click(function(e){
+     e.preventDefault();
+     var client_id = $(this).data('id');
+     var url = $(this).data('url');
+     if(confirm('Chắc chắn xóa?')){
+         $(this).parents('li').fadeOut();
+         $.ajax({
+             url: url,
+             method: 'GET',
+             data: {
+                 id : client_id
+             },
+             success: function(){
+
+             }
+         })
+     }
+
+     return false;
+ });
+
+ $('.btn-active-menu').click(function(e){
+     e.preventDefault();
+     var client_id = $(this).data('id');
+     var is_actived = $(this).data('active');
+
+     var message = (is_actived == 1) ? 'Chắc chắn tắt?' : 'Chắc chắn bật?';
+     var url = $(this).data('url');
+     if(confirm(message)){
+         $.ajax({
+             url: url,
+             method: 'GET',
+             data: {
+                 id : client_id,
+                 is_actived : is_actived
+             },
+             success: function(){
+                window.location.reload();
+             }
+         })
+     }
+
+     return false;
+ });
+
 
 
 
