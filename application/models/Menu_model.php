@@ -185,4 +185,16 @@ class Menu_model extends CI_Model {
 
         return false;
     }
+
+    public function active($type, $id, $change){
+        $this->db->set('is_actived', $change)
+            ->where('id', $id)
+            ->update($type);
+
+        if($this->db->affected_rows() == 1){
+            return true;
+        }
+
+        return false;
+    }
 }

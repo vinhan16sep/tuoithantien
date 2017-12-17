@@ -103,7 +103,15 @@ class Menu extends Admin_Controller {
                 }
                 $this->session->set_flashdata('message', 'Item added successfully');
 
-                redirect('admin/menu', 'refresh');
+                $this->data['subs'] = $this->list_sub_menu($request_id);
+                $this->data['menu'] = $this->menu_model->fetch_by_id('menu', $request_id);
+
+                if (!$this->data['menu']) {
+                    $this->session->set_flashdata('message', 'Bài viết không tồn tại');
+                    redirect('admin/menu', 'refresh');
+                }
+
+                $this->render('admin/menu/edit_menu_view');
             }
         }
     }
@@ -192,11 +200,20 @@ class Menu extends Admin_Controller {
     }
 
    public function remove($id = NULL){
-      $id = $_GET['id'];
-      $this->menu_model->delete('menu',$id);
+        $id = $this->input->get('id');
+        $this->menu_model->delete('menu',$id);
 
-       redirect('admin/menu', 'refresh');
+        redirect('admin/menu', 'refresh');
    }
+
+    public function active($id = NULL){
+        $id = $this->input->get('id');
+        $is_actived = $this->input->get('is_actived');
+        $change = ($is_actived == 1) ? 0 : 1;
+        $this->menu_model->active('menu',$id, $change);
+
+        redirect('admin/menu', 'refresh');
+    }
 
    protected function dropdown_parent(){
        // Select only first class item

@@ -3,22 +3,22 @@
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content row">
         <div class="container col-md-12">
+            <h2>Thêm menu chính</h2>
             <div class="modified-mode">
                 <div class="col-lg-10 col-lg-offset-0">
-                    <h1>ADD NEW ITEM</h1>
                     <?php
                     echo form_open_multipart('', array('class' => 'form-horizontal'));
                     ?>
                     <div class="form-group">
                         <?php
-                        echo form_label('Title', 'title');
+                        echo form_label('Tiêu đề menu', 'title');
                         echo form_error('title');
                         echo form_input('title', set_value('title'), 'class="form-control"');
                         ?>
                     </div>
                     <div class="form-group">
                         <?php
-                        echo form_label('Url', 'url');
+                        echo form_label('Đường dẫn', 'url');
                         echo form_error('url');
                         echo form_input('url', set_value('url'), 'class="form-control"');
                         ?>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group picture sub-cat">
                         <?php
-                        echo form_label('Is active', 'is_actived');
+                        echo form_label('Bật / Tắt menu', 'is_actived');
                         echo form_error('is_actived');
                         echo form_dropdown('is_actived', array('0' => 'Tắt', '1' => 'Bật'), set_value('is_actived', 1), 'class="form-control" id="is_actived"');
                         ?>

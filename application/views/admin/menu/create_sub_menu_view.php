@@ -3,9 +3,9 @@
 <div class="content-wrapper" style="min-height: 916px;">
     <section class="content row">
         <div class="container col-md-12">
+            <h2>Thêm menu con trong menu <span><?php echo $list_parent[$parent] ?></span></h2>
             <div class="modified-mode">
                 <div class="col-lg-10 col-lg-offset-0">
-                    <h1>ADD NEW ITEM</h1>
                     <?php
                     echo form_open_multipart('', array('class' => 'form-horizontal'));
                     ?>
