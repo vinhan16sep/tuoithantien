@@ -92,7 +92,7 @@
                     <ul class="treeview-menu">
                         <?php if(!empty($introduce_menu)): ?>
                             <li class="<?php echo ($active == 'introduce' && $sub_active == 'category')? 'active' : '' ?>">
-                                <a href="<?php echo base_url('admin/introduce/category') ?>"><i class="fa fa-minus" aria-hidden="true"></i>Giới thiệu</a>
+                                <a href="<?php echo base_url('admin/introduce/category') ?>"><i class="fa fa-wrench" aria-hidden="true"></i>Chỉnh sửa menu</a>
                             </li>
 
                             <?php foreach($introduce_menu as $value): ?>
@@ -115,7 +115,7 @@
                     <ul class="treeview-menu">
                         <?php if(!empty($admission_menu)): ?>
                             <li class="<?php echo ($active == 'admission' && $sub_active == 'category')? 'active' : '' ?>">
-                                <a href="<?php echo base_url('admin/admission/category') ?>"><i class="fa fa-minus" aria-hidden="true"></i> Thông tin nhập học
+                                <a href="<?php echo base_url('admin/admission/category') ?>"><i class="fa fa-wrench" aria-hidden="true"></i> Chỉnh sửa menu
                                 </a>
                             </li>
                             <?php foreach($admission_menu as $value): ?>
@@ -137,7 +137,7 @@
                     <ul class="treeview-menu">
                         <?php if(!empty($parental_menu)): ?>
                             <li class="<?php echo ($active == 'parental' && $sub_active == 'category')? 'active' : '' ?>">
-                                <a href="<?php echo base_url('admin/parental/category') ?>"><i class="fa fa-minus" aria-hidden="true"></i> Phối hợp cùng phụ huynh
+                                <a href="<?php echo base_url('admin/parental/category') ?>"><i class="fa fa-wrench" aria-hidden="true"></i> Chỉnh sửa menu
                                 </a>
                             </li>
                             <?php foreach($parental_menu as $value): ?>
@@ -159,7 +159,7 @@
                     <ul class="treeview-menu">
                         <?php if(!empty($activity_menu)): ?>
                             <li class="<?php echo ($active == 'activity' && $sub_active == 'category')? 'active' : '' ?>">
-                                <a href="<?php echo base_url('admin/activity/category') ?>"><i class="fa fa-minus" aria-hidden="true"></i> Hoạt động
+                                <a href="<?php echo base_url('admin/activity/category') ?>"><i class="fa fa-wrench" aria-hidden="true"></i> Chỉnh sửa menu
                                 </a>
                             </li>
                             <?php foreach($activity_menu as $value): ?>

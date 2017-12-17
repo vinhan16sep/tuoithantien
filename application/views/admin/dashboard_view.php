@@ -2,20 +2,92 @@
 <div class="content-wrapper" style="min-height: 916px;">
     <div class="box-body pad table-responsive">
         <h3>THEME</h3>
-        <?php foreach ($themes as $item): ?>
-            <button type="button" class="btn btn-success btn-lg btn-theme" style="width: 20%" data-id="<?php echo $item['id'] ?>" <?php echo ($item['is_active'] == 1)? 'disabled="disabled"' : '' ?> ><?php echo $item['name'] ?></button>
-        <?php endforeach; ?>
+<!--        --><?php //foreach ($themes as $item): ?>
+<!--            <button type="button" class="btn btn-success btn-lg btn-theme" style="width: 20%" data-id="--><?php //echo $item['id'] ?><!--" --><?php //echo ($item['is_active'] == 1)? 'disabled="disabled"' : '' ?><!-- >--><?php //echo $item['name'] ?><!--</button>-->
+<!--        --><?php //endforeach; ?>
+    </div>
+
+    <div class="">
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-blue">
+                    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Số lượng bài viết</span>
+                    <span class="info-box-number">100</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-blue">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Số lượng bài viết mới</span>
+                    <span class="info-box-number">100</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-blue">
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Số lượng nhận xét mới</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="info-box">
+                <span class="info-box-icon bg-blue">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                </span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Số lượng đăng ký nhập học mới</span>
+                    <span class="info-box-number">10</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3>Chỉnh sửa Theme</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                <?php foreach ($themes as $item): ?>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-success btn-lg btn-theme" style="width: 100%" data-id="<?php echo $item['id'] ?>" <?php echo ($item['is_active'] == 1)? 'disabled="disabled"' : '' ?> ><?php echo $item['name'] ?></button>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3>Thống kế khảo sát</h3>
+            </div>
+            <div class="box-body">
+                <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.js"></script>
+                <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.min.js"></script>
+
+                <section class="content row">
+                    <div>
+                        <canvas id="surveyChart" width="200" height="30"></canvas>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
 
 
-    <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.js"></script>
-    <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.min.js"></script>
-
-    <section class="content row">
-        <div>
-            <canvas id="surveyChart" width="200" height="30"></canvas>
-        </div>
-    </section>
 </div>
 
 <script>
