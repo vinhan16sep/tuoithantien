@@ -83,7 +83,7 @@
                 </li>
 
                 <li class="<?php echo ($active == 'article')? 'active' : '' ?>">
-                    <a href="<?php echo base_url('admin/classification/index'); ?>">
+                    <a href="<?php echo base_url('admin/article/index'); ?>">
                         <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                         <span>Bài viết</span>
                         <span class="pull-right-container">
