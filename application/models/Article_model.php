@@ -1,9 +1,41 @@
 <?php
 
-class Article_model extends CI_Model {
+class Article_model extends CI_Model{
 
     function __construct(){
         parent::__construct();
+    }
+
+    public function build_unique_slug($slug, $id = null){
+        $count = 0;
+        $temp_slug = $slug;
+        while(true) {
+            $this->db->select('id');
+            $this->db->where('slug', $temp_slug);
+            if($id != null){
+                $this->db->where('id !=', $id);
+            }
+            $query = $this->db->get('article');
+            if ($query->num_rows() == 0) break;
+            $temp_slug = $slug . '-' . (++$count);
+        }
+        return $temp_slug;
+    }
+
+    public function build_unique_slug_category($slug, $id = null){
+        $count = 0;
+        $temp_slug = $slug;
+        while(true) {
+            $this->db->select('id');
+            $this->db->where('slug', $temp_slug);
+            if($id != null){
+                $this->db->where('id !=', $id);
+            }
+            $query = $this->db->get('article_category');
+            if ($query->num_rows() == 0) break;
+            $temp_slug = $slug . '-' . (++$count);
+        }
+        return $temp_slug;
     }
 
     public function fetch_all($type){
@@ -19,6 +51,54 @@ class Article_model extends CI_Model {
         return false;
     }
 
+    public function get_type($type, $slug){
+        $query = $this->db->select('*')
+            ->from($type)
+            ->where('is_deleted', 0)
+            ->like('slug', $slug)
+            ->order_by('id', 'desc')
+            ->get();
+
+        if($query->num_rows() > 0){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
+    public function fetch_limit($limit, $start, $category_id){
+        $query = $this->db->select('*')
+            ->from('article')
+            ->where('is_deleted', 0)
+            ->limit($limit, $start)
+            ->where('category_id', $category_id)
+            ->order_by('id', 'desc')
+            ->get();
+
+        if($query->num_rows() > 0){
+            return $query->result_array();
+        }
+
+        return false;
+    }
+
+    public function fetch_row($where = array(), $type = 'article'){
+        $this->db->select('*');
+        $this->db->from($type);
+        $this->db->where('is_deleted', 0);
+        if($where != null){
+            $this->db->where($where);
+        }
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
     public function fetch_all_pagination($limit = NULL, $start = NULL) {
         $this->db->select('*');
         $this->db->from('article');
@@ -29,11 +109,26 @@ class Article_model extends CI_Model {
         return $result = $this->db->get()->result_array();
     }
 
-    public function fetch_all_by_type($type){
+    public function get_all_pagination($where = array(), $limit = NULL, $start = NULL) {
+        $this->db->select('*');
+        $this->db->from('article');
+        $this->db->where('is_deleted', 0);
+        if($where != null){
+            $this->db->where($where);
+        }
+        $this->db->limit($limit, $start);
+        $this->db->order_by("id", "desc");
+
+        return $result = $this->db->get()->result_array();
+    }
+
+    public function fetch_all_by_type($type, $limit = NULL, $start = NULL){
         $query = $this->db->select('*')
             ->from('article')
-            ->where('type', $type)
+            ->where('category_id', $type)
             ->where('is_deleted', 0)
+            ->limit($limit, $start)
+            ->order_by("id", "desc")
             ->get();
 
         if($query->num_rows() > 0){
@@ -58,11 +153,19 @@ class Article_model extends CI_Model {
         return false;
     }
 
-    public function count_all() {
-        $query = $this->db->select('*')
-            ->from('article')
-            ->where('is_deleted', 0)
-            ->get();
+    public function count_all($type = NULL) {
+        if($type != NULL){
+            $query = $this->db->select('*')
+                ->from('article')
+                ->where('category_id', $type)
+                ->where('is_deleted', 0)
+                ->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('article')
+                ->where('is_deleted', 0)
+                ->get();
+        }
 
         return $query->num_rows();
     }
@@ -117,3 +220,5 @@ class Article_model extends CI_Model {
         return false;
     }
 }
+
+ ?>

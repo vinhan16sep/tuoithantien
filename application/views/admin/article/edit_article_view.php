@@ -1,55 +1,62 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
 <div class="container content-wrapper">
-    <div class="row modified-mode">
-        <div class="col-lg-10 col-lg-offset-0">
-            <h1>ADD NEW ITEM</h1>
+    <div class="row" style="margin-left: 0px; margin-right: 55px;">
+        <div class="col-md-12">
             <?php
-            echo form_open_multipart('', array('class' => 'form-horizontal'));
+            echo form_open_multipart('admin/article/edit', array('class' => 'form-horizontal'));
             ?>
             <div class="form-group">
                 <?php
-                echo form_label('Type', 'type');
-                echo form_error('type');
-                echo form_dropdown('type', array('0' => 'Tin tức', '1' => 'Tuyển dụng'), set_value('type', $article['type']), 'class="form-control" id="type"');
-                ?>
-            </div>
-            <div class="form-group">
-                <?php
-                echo form_label('Title', 'title');
+                echo form_label('Tiêu đề', 'title');
                 echo form_error('title');
-                echo form_input('title', set_value('title', $article['title']), 'class="form-control"');
+                echo form_input('title', set_value('title', $article['title']), 'class="form-control" id="title"');
                 ?>
             </div>
-            <div class="form-group picture">
+            <div class="form-group">
                 <?php
-                echo form_label('Image', 'image');
+                echo form_label('slug', 'slug');
+                echo form_error('slug');
+                echo form_input('slug', set_value('slug', $article['slug']), 'class="form-control" id="slug" readonly');
+                ?>
+            </div>
+            <div class="form-group">
+                <?php
+                echo form_label('Ảnh đại diện cũ');
+                ?>
+                <img src="<?php echo base_url('assets/upload/article/'.$article["image"]) ?>" alt="" width=80px>
+            </div>
+            <div class="form-group">
+                <?php
+                echo form_label('Ảnh đại diện', 'image');
                 echo form_error('image');
-                echo form_upload('image', set_value('image'), 'class="form-control"');
+                echo form_upload('image','','multiple');
                 ?>
             </div>
             <div class="form-group">
                 <?php
-                echo form_label('Description', 'description');
+                echo form_label('Giới thiệu', 'description');
                 echo form_error('description');
-                echo form_textarea('description', set_value('description', $article['description']), 'class="form-control"')
+                echo form_textarea('description', set_value('description', $article['description'], false), 'class="form-control" rows="5" ')
                 ?>
             </div>
+
             <div class="form-group">
                 <?php
-                echo form_label('Content', 'content');
+                echo form_label('Nội dung', 'content');
                 echo form_error('content');
                 echo form_textarea('content', set_value('content', $article['content'], false), 'class="form-control content"')
                 ?>
             </div>
             <br>
             <div class="form-group col-sm-12 text-right">
+                <input type="hidden" name="id" value="<?php echo $article['id'] ?>">
+                <input type="hidden" name="url" value="<?php echo $article['category_id'] ?>">
                 <?php
                 echo form_submit('submit', 'OK', 'class="btn btn-primary"');
-                echo form_close();
                 ?>
                 <a class="btn btn-default cancel" href="javascript:window.history.go(-1);">Go back</a>
             </div>
+            <?php echo form_close(); ?>
         </div>
     </div>
 </div>
