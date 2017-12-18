@@ -122,10 +122,10 @@ class Article_model extends CI_Model{
         return $result = $this->db->get()->result_array();
     }
 
-    public function fetch_all_by_type($type, $limit = NULL, $start = NULL){
+    public function fetch_all_by_type($slug, $limit = NULL, $start = NULL){
         $query = $this->db->select('*')
             ->from('article')
-            ->where('category_id', $type)
+            ->where('slug', $slug)
             ->where('is_deleted', 0)
             ->limit($limit, $start)
             ->order_by("id", "desc")
