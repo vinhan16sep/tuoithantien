@@ -31,7 +31,7 @@
                 </li>
                 <li class="<?php echo ($active == 'menu')? 'active' : '' ?>">
                     <a href="<?php echo base_url('admin/menu'); ?>">
-                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                        <i class="fa fa-bars" aria-hidden="true"></i>
                         <span>Menu</span>
                         <span class="pull-right-container"></span>
                     </a>

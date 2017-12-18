@@ -72,7 +72,7 @@
     <div class="col-md-12">
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3>Thống kế khảo sát</h3>
+                <h3>Thống kê khảo sát</h3>
             </div>
             <div class="box-body">
                 <script src="<?php echo site_url('assets/admin/'); ?>Chart.js-2.7.1/Chart.js"></script>
