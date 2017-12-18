@@ -82,6 +82,15 @@
                     </a>
                 </li>
 
+                <li class="<?php echo ($active == 'article')? 'active' : '' ?>">
+                    <a href="<?php echo base_url('admin/classification/index'); ?>">
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                        <span>Bài viết</span>
+                        <span class="pull-right-container">
+                </span>
+                    </a>
+                </li>
+
                 <li class="<?php echo ($active == 'introduce')? 'active treeview' : 'treeview' ?>">
                     <a href=""><i class="fa fa-list" aria-hidden="true"></i> Giới thiệu
                         <span class="pull-right-container">
