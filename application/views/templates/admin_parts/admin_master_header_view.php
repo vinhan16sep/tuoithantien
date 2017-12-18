@@ -90,7 +90,21 @@
   <script type="text/javascript" src="<?php echo site_url('assets/admin/'); ?>bower_components/chart.js/Chart.js"></script>
 
   <script type="text/javascript" src="<?php echo site_url('tinymce/tinymce.min.js'); ?>"></script>
-  
+
+    <style>
+        @font-face{
+            font-family: webFont_N;
+            src: url("<?php echo site_url('assets/public/fonts/OpenSans-Regular.ttf'); ?>");
+        }
+
+        body, a{
+            font-family: webFont_N;
+        }
+
+        .skin-blue .sidebar-menu>li>.treeview-menu{
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -173,7 +187,7 @@
           </li>
           <!-- control sidebar toggle button -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            <!--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>-->
           </li>
         </ul>
       </div>
