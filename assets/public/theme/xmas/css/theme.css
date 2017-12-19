@@ -45,14 +45,18 @@ Author: hung.luong@matocreative.vn
     height: 364px;
     left: 55%;
     top: 25%;
-    margin-top: -170px;
-    margin-left: -158px;
+    margin-top: -138px;
+    margin-left: -153px;
 
     z-index: 13;
 
     background-image: url(../img/frame_03.png);
     background-repeat: no-repeat;
     background-position: center center;
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    transform: rotate(5deg);
 }
 
 #frame_02{
@@ -60,14 +64,18 @@ Author: hung.luong@matocreative.vn
     height: 347px;
     left: 30%;
     top: 40%;
-    margin-top: -173px;
-    margin-left: -161px;
+    margin-top: -143px;
+    margin-left: -130px;
 
     z-index: 12;
 
     background-image: url(../img/frame_02.png);
     background-repeat: no-repeat;
     background-position: center center;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 #frame_03{
@@ -75,14 +83,18 @@ Author: hung.luong@matocreative.vn
     height: 341px;
     left: 40%;
     top: 60%;
-    margin-top: -182px;
-    margin-left: -171px;
+    margin-top: -154px;
+    margin-left: -140px;
 
     z-index: 11;
 
     background-image: url(../img/frame_01.png);
     background-repeat: no-repeat;
     background-position: center center;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
 }
 
 .footer_img{
@@ -93,6 +105,8 @@ Author: hung.luong@matocreative.vn
     left: 50%;
     margin-left: -960px;
     background-repeat: no-repeat;
+
+    z-index: -1;
 }
 
 #footer_index_about{
@@ -123,7 +137,7 @@ Author: hung.luong@matocreative.vn
     border: 5px solid #d83f3f;
 }
 
-#featured_01 .featured .item:hover {
+#featured_01 .featured .inner:hover {
     background: #d83f3f;
     color: #fff;
 }
@@ -212,6 +226,13 @@ a h1, a h2{
 
 ul.list-unstyled li{
     background-image: url(../img/bg_list.png);
+}
+
+.carousel-showmanymoveone#slideFeatured_01 .carousel-control.left {
+    color: #d83f3f;
+}
+.carousel-showmanymoveone#slideFeatured_01 .carousel-control.right {
+    color: #d83f3f;
 }
 
 /* CSS Footer */
