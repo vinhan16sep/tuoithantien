@@ -282,6 +282,87 @@ class Public_Controller extends MY_Controller {
         $theme = $this->theme_model->fetch_row();
         $this->data['theme'] = $theme['name'];
 
+
+        // count view
+        $this->load->model('total_view_model');
+        $this->load->model('count_view_model');
+        $this->load->model('config_model');
+
+        $guest_id = session_id();
+        $created_at = time();
+        $time = 600;
+        $time_check = time() - $time;
+        $this->count_view_model->delete($time_check);
+
+        //dang olnine
+        
+
+        $count_view = $this->count_view_model->fetch_all();
+
+        $check_view = array();
+        if($count_view){
+            foreach ($count_view as $key => $value) {
+                $check_view[] = $value['guest_id'];
+            }
+        }
+        
+
+        $config = $this->config_model->fetch_row();
+
+        if(in_array($guest_id, $check_view) == null){
+            $data = array('total' => $config['total'] + 1);
+            $this->config_model->update(1, $data);
+        }
+
+        
+        $where = array('guest_id' => $guest_id);
+        $count = $this->count_view_model->count_all($where);
+        $count_total = $this->total_view_model->count_all($where);
+        
+        
+        if($count == 0){
+            $data = array('guest_id' => $guest_id, 'created_at' => time());
+            $result = $this->count_view_model->insert($data);
+        }else{
+            $data = array('created_at' => time());
+            $result = $this->count_view_model->update($guest_id, $data);
+        }
+
+        // print_r($count);
+        $this->data['total'] = $config['total'];
+        $this->data['olnine'] = $this->count_view_model->count_all();
+
+        if(isset($result)){
+            $total_view = $this->total_view_model->fetch_row($where);
+        }
+
+        //online theo ngay
+        if($count_total == 0){
+            $data = array('guest_id' => $guest_id, 'created_at' => date('Y/m/d H:i:s'));
+            $this->total_view_model->insert($data);
+        }else{
+            $total_view = $this->total_view_model->fetch_row($where);
+            $x = time() - strtotime($total_view['created_at']);
+            if($x > $time){
+                $data = array('guest_id' => $guest_id, 'created_at' => date('Y/m/d H:i:s'));
+                $this->total_view_model->insert($data);
+            }else{
+                $data = array('created_at' => date('Y/m/d H:i:s'));
+                $this->total_view_model->update($guest_id, $data);
+            }
+        }
+        $date = date('Y-m-d 00:00:00');
+        $date1 = str_replace('-', '/', $date);
+        $tomorrow = date('Y-m-d 00:00:00',strtotime($date1 . "+1 days"));
+
+        $where = array('created_at >=' => date('Y-m-d 00:00:00'), 'created_at <' => $tomorrow);
+        $total_day = $this->total_view_model->count_all($where);
+
+        $where = array('created_at <' => date('Y-m-d 00:00:00'));
+        $total_yesterday = $this->total_view_model->count_all($where);
+        $this->data['total_day'] = $total_day;
+        $this->data['total_yesterday'] = $total_yesterday;
+
         /* thu tuc nhap hoc */
 //        $this->load->model('admission_model');
 //        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');

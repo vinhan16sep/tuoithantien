@@ -71,19 +71,19 @@
                     <tbody>
                     <tr>
                         <td>Đang trực tuyến</td>
-                        <td>00</td>
+                        <td><?php echo $olnine; ?></td>
                     </tr>
                     <tr>
                         <td>Hôm nay</td>
-                        <td>00</td>
+                        <td><?php echo $total_day; ?></td>
                     </tr>
                     <tr>
                         <td>Hôm qua</td>
-                        <td>00</td>
+                        <td><?php echo $total_yesterday; ?></td>
                     </tr>
                     <tr>
                         <td>Tất cả</td>
-                        <td>00</td>
+                        <td><?php echo $total; ?></td>
                     </tr>
                     </tbody>
                 </table>
