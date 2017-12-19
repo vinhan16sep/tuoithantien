@@ -124,6 +124,17 @@ class Menu_model extends CI_Model {
         return $query->get()->num_rows();
     }
 
+    public function count_all_sub_in_main($id) {
+        $query = $this->db->select('*')
+            ->from('menu')
+            ->where('is_actived', 1)
+            ->where('parent', $id)
+            ->where('level', 2)
+            ->where('is_deleted', 0);
+
+        return $query->get()->num_rows();
+    }
+
     public function fetch_by_id($type, $id){
         $query = $this->db->select('*')
             ->from($type)
@@ -134,6 +145,43 @@ class Menu_model extends CI_Model {
 
         if($query->num_rows() == 1){
             return $query->row_array();
+        }
+
+        return false;
+    }
+
+    public function fetch_categories_by_main($main){
+        if($main != ''){
+            $query = $this->db->select('*')
+                ->from($main)
+                ->where('is_deleted', 0)
+                ->get();
+
+            if($query->num_rows() > 0){
+                return $query->result_array();
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+
+    public function fetch_articles_by_sub_category($main, $sub){
+        if($main != '' && $sub != ''){
+            $main_table = explode('_', $main);
+            $query = $this->db->select($main_table[0] . '.*')
+                ->from($main_table[0])
+                ->join($main, $main . '.id = ' . $main_table[0] . '.category_id')
+                ->where($main . '.slug', $sub)
+                ->where($main_table[0] . '.is_deleted', 0)
+                ->get();
+
+            if($query->num_rows() > 0){
+                return $query->result_array();
+            }
+
+            return false;
         }
 
         return false;

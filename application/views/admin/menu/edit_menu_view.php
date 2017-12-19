@@ -56,6 +56,10 @@
         color:#FFF;
     }
 
+     .error{
+         color: red;
+     }
+
 </style>
 
 <div class="content-wrapper" style="min-height: 916px;">
@@ -65,7 +69,7 @@
             <div class="modified-mode">
                 <div class="col-lg-10 col-lg-offset-0">
                     <?php
-                    echo form_open_multipart('', array('class' => 'form-horizontal'));
+                    echo form_open_multipart('', array('class' => 'form-horizontal', 'id' => 'menu-form'));
                     ?>
                     <div class="form-group">
                         <?php
@@ -74,18 +78,54 @@
                         echo form_input('title', set_value('title', $menu['title']), 'class="form-control"');
                         ?>
                     </div>
-                    <div class="form-group">
+                    <?php if($count_sub == 0): ?>
+                    <hr class="form-group" style="border: solid 0.5px lightgrey">
+                    <h3 class="form-group">Dựng đường dẫn cho menu</h3>
+                    <?php if($menu['title'] != 'Trang chủ' && $menu['title'] != 'Liên hệ'): ?>
+                    <div class="form-group sub-cat">
                         <?php
-                        echo form_label('Đường dẫn', 'url');
-                        echo form_error('url');
-                        echo form_input('url', set_value('url', $menu['url']), 'class="form-control"');
+                        $main_category = array(
+                            '' => 'Chọn menu chính',
+                            'article' => 'Bài viết riêng',
+                            'introduce_category' => 'Giới thiệu',
+                            'admission_category' => 'Thông tin nhập học',
+                            'parental_category' => 'Phối hợp cùng phụ huynh',
+                            'activity_category' => 'Hoạt động'
+                        );
+                        echo form_label('Chọn menu chính (hoặc Bài viết riêng nếu là bài viết lẻ)', 'select_main');
+                        echo form_error('select_main');
+                        echo form_dropdown('select_main', $main_category, set_value('select_main', $menu['select_main']), 'class="form-control" id="select_main"');
                         ?>
                     </div>
-                    <div class="form-group picture sub-cat">
+                    <div class="form-group sub-cat">
                         <?php
-                        echo form_label('Màu sắc', 'color');
+                        echo form_label('Chọn danh mục (hoặc bài viết trong Bài viết riêng)', 'select_category');
+                        echo form_error('select_category');
+                        echo form_dropdown('select_category', $dropdown_sub, set_value('select_category', $menu['select_category']), 'class="form-control" id="select_category"');
+                        ?>
+                    </div>
+                    <div class="form-group sub-cat">
+                        <?php
+                        echo form_label('Chọn bài viết (nếu không chọn, menu sẽ trỏ đến danh sách bài viết trong danh mục phía trên)', 'select_article');
+                        echo form_error('select_article');
+                        echo form_dropdown('select_article', $dropdown_article, set_value('select_article', $menu['select_article']), 'class="form-control" id="select_article"');
+                        ?>
+                    </div>
+                    <?php endif; ?>
+                    <div class="form-group">
+                        <?php
+                        echo form_label('Đường dẫn hoàn chỉnh của menu', 'url');
+                        echo form_error('url');
+                        echo form_input('url', set_value('url', $menu['url']), 'class="form-control" id="url" readonly="readonly"');
+                        ?>
+                    </div>
+                    <hr class="form-group" style="border: solid 0.5px lightgrey">
+                    <?php endif; ?>
+                    <div class="form-group" style="width:30%">
+                        <?php
+                        echo form_label('Màu sắc (nhấn ô dưới để chọn)', 'color');
                         echo form_error('color');
-                        echo form_input('color', set_value('color', $menu['color']), 'class="form-control" id="colorpicker"');
+                        echo form_input('color', set_value('color', $menu['color']), 'class="form-control" id="colorpicker" readonly="readonly');
                         ?>
                     </div>
                     <div class="form-group picture sub-cat">
@@ -107,9 +147,11 @@
             </div>
         </div>
     </section>
+    <?php if($menu['title'] != 'Trang chủ' && $menu['title'] != 'Liên hệ'): ?>
     <section class="content row">
         <div class="container col-md-12 numberlist">
                 <h2>Danh sách menu con trong menu <span style="color:<?php echo $menu['color'] ?>"><?php echo $menu['title']; ?></span>&nbsp&nbsp&nbsp&nbsp<button type="button" class="btn btn-primary" onclick="location.href='<?php echo base_url('admin/menu/create_sub/' . $menu['id']); ?>'"><span class="glyphicon glyphicon-plus"></span> menu con</button></h2>
+                <h5 style="color:darkorange">Nếu có menu con đang được bật, menu chính bên trên không thể gán đường dẫn trực tiếp</h5>
             <div class="col-lg-10 col-lg-offset-0">
                 <ol id="sub-sortable">
                     <?php
@@ -144,6 +186,7 @@
             </div>
         </div>
     </section>
+    <?php endif; ?>
     <script>
         $( function() {
             $('#sub-sortable').sortable({

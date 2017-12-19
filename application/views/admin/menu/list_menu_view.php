@@ -79,10 +79,12 @@
                                 <li class="treeview" id="<?php echo ($key + 1) . '-' . $item['id'] ?>">
                                     <strong><a style="color:<?php echo $item['color'] ?>" href="<?php echo base_url('admin/menu/edit/' . $item['id']) ?>"><?php echo $item['title'] ?></a></strong>
                                     <button type="button" class="btn btn-primary" onclick="location.href='<?php echo base_url('admin/menu/edit/' . $item['id']); ?>'"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <?php if($item['title'] != 'Trang chủ' && $item['title'] != 'Liên hệ'): ?>
                                     <button type="button" class="btn btn-primary" onclick="location.href='<?php echo base_url('admin/menu/create_sub/' . $item['id']); ?>'"><span class="glyphicon glyphicon-plus"></span></button>
                                     <button data-url="<?php echo base_url('admin/menu/remove'); ?>" data-id="<?php echo $item['id']; ?>" type="button" class="btn btn-danger btn-remove-menu">
                                         <i class="fa fa-trash-o" aria-hidden="true"></i>
                                     </button>
+                                    <?php endif; ?>
                                     <button data-url="<?php echo base_url('admin/menu/active'); ?>" data-id="<?php echo $item['id']; ?>" data-active="<?php echo $item['is_actived']; ?>" type="button" class="btn <?php echo ($item['is_actived'] == 1) ? 'btn-success' : 'btn-danger'; ?> btn-active-menu">
                                         <i class="fa <?php echo ($item['is_actived'] == 1) ? 'fa-check' : 'fa-remove'; ?>" aria-hidden="true"></i>
                                     </button>
@@ -93,43 +95,6 @@
                             ?>
                         </ol>
                     </div>
-
-
-
-<!--                    <div class="col-lg-12" style="margin-top: 10px;">-->
-<!--                        --><?php
-//                        echo '<table class="table table-hover table-bordered table-condensed">';
-//                        echo '<tr>';
-//                        echo '<td class="col-md-5"><b><a href="#">Title</a></b></td>';
-//                        echo '<td class="col-md-6"><b><a href="#">Url</a></b></td>';
-//                        echo '<td class="col-md-1"><b>Operations</b></td>';
-//                        echo '</tr>';
-//
-//                                echo '<tr>';
-//                                echo '<td>' . $item['title'] . '</td>';
-//                                echo '<td>' . $item['url'] . '</td>';
-//                                echo '<td>';
-//                                echo '<a href="' . base_url('admin/video/edit/' . $item['id']) . '">';
-//                                echo '<span class="glyphicon glyphicon-pencil"></span>';
-//                                echo '</a>';
-//                                echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-//                                echo '<a href="' . base_url('admin/video/remove') . '" class="btn-remove" data-id="'.$item['id'].'" >';
-//                                echo '<i class="fa fa-trash-o" aria-hidden="true"></i>';
-//                                echo '</a>';
-//                                echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-//                                echo '<a href="' . base_url('admin/menu/create_sub/' . $item['id']) . '">';
-//                                echo '<span class="glyphicon glyphicon-plus"></span>';
-//                                echo '</a>';
-//                                echo '</td>';
-//                                echo '</tr>';
-//                            endforeach;
-//                        }
-//                        echo '</table>';
-//                        ?>
-<!--                        <div class="col-md-6 col-md-offset-5 page">-->
-<!--                            --><?php //echo $page_links; ?>
-<!--                        </div>-->
-<!--                    </div>-->
                 </div>
             <?php else: ?>
                 <div class="row">

@@ -39,30 +39,54 @@
             $('#check-all').prop('checked', false);
         }
     });
+    if($('#select_main').length == 1 && $('#select_category').length == 1 && $('#url').length == 1){
+        $('#menu-form').validate({
+            rules: {
+                title: {
+                    required: true
+                },
+                select_main: {
+                    required: true
+                },
+                select_category: {
+                    required: true
+                },
+                url: {
+                    required: true
+                }
+            },
+            messages :{
+                title: {
+                    required : 'Cần nhập tên menu'
+                },
+                select_main: {
+                    required: 'Cần chọn menu chính'
+                },
+                select_category: {
+                    required: 'Cần chọn danh mục hoặc bài viết'
+                },
+                url: {
+                    required: 'Đường dẫn không được trống'
+                }
+            }
+        });
+    }else{
+        $('#menu-form').validate({
+            rules: {
+                title: {
+                    required: true
+                }
+            },
+            messages :{
+                title: {
+                    required : 'Cần nhập tên menu'
+                }
+            }
+        });
+    }
+
 
 });
-
-
-$('#trademark').change(function(){
-    $('#category').html('<option value="">Select</option>');
-    $.ajax({
-        url: "<?php echo site_url('admin/product/get_category_by_trademark') ?>",
-        type: "GET",
-        data: {
-            id : $('#trademark').val()
-        },
-        dataType: "json",
-        success: function(res){
-            $.each(res, function(index, value){
-               $('#category').append('<option value="' + value.id + '">' + value.title + '</option>');
-            });
-        },
-        error: function(){
-
-        }
-    })
-});
-
 
 $('.cat').change(function(){
     var cat = $(this).val();
@@ -136,6 +160,111 @@ $('.btn-remove').click(function(e){
 
      return false;
  });
+
+ $('#select_main').change(function(){
+    if($('#select_main').val() == 'article'){
+        $('#select_article').prop('disabled', true);
+    }else{
+        $('#select_article').prop('disabled', false);
+    }
+    $('#select_category').html('');
+    $('#select_article').html('');
+    $.ajax({
+        method: 'GET',
+        url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/admin/menu/fetch_category",
+        data: {
+            main_category: $('#select_main').val()
+        },
+        success: function(res){
+            var categories = JSON.parse(res).data;
+
+            if($('#select_main').val() == 'article'){
+                $('#select_article').prop('disabled', true);
+                $('#select_category').append($('<option>', {
+                    value: '',
+                    text: 'Chọn bài viết'
+                }));
+            }else{
+                $('#select_article').prop('disabled', false);
+                $('#select_category').append($('<option>', {
+                    value: '',
+                    text: 'Chọn danh mục'
+                }));
+            }
+
+            $.each(categories, function(key, item){
+                $('#select_category').append($('<option>', {
+                    value: item.slug,
+                    text: item.title
+                }));
+            });
+        },
+        error: function(){}
+    });
+});
+
+$('#select_category').change(function(){
+    var main = build_main_string();
+    $('#url').val(location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + '/tuoithantien/' + main + '/' + $('#select_category').val());
+
+    if($('#select_main').val() != 'article'){
+        $('#select_article').html('');
+        $.ajax({
+            method: 'GET',
+            url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/admin/menu/fetch_article",
+            data: {
+                main_category: $('#select_main').val(),
+                sub_category: $('#select_category').val()
+            },
+            success: function(res){
+                var articles = JSON.parse(res).data;
+                $('#select_article').append($('<option>', {
+                    value: '',
+                    text: 'Chọn bài viết'
+                }));
+                $.each(articles, function(key, item){
+                    $('#select_article').append($('<option>', {
+                        value: item.slug,
+                        text: item.title
+                    }));
+                });
+            },
+            error: function(){}
+        });
+    }
+});
+
+$('#select_article').change(function(){
+    var main = build_main_string();
+    if($('#select_article').val() === '' || $('#select_article').val() === null){
+        $('#url').val(location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + '/tuoithantien/' + main + '/' + $('#select_category').val());
+    }else{
+        $('#url').val(location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + '/tuoithantien/' + main + '/' + $('#select_category').val() + '/' + $('#select_article').val());
+    }
+});
+
+function build_main_string(){
+    var main = '';
+    switch($('#select_main').val()){
+        case 'introduce_category':
+            main = 'gioi-thieu';
+            break;
+        case 'admission_category':
+            main = 'thong-tin-nhap-hoc';
+            break;
+        case 'parental_category':
+            main = 'phoi-hop-cung-phu-huynh';
+            break;
+        case 'activity_category':
+            main = 'hoat-dong';
+            break;
+        default:
+            main = 'bai-viet'
+            break;
+    }
+
+    return main;
+}
 
 
 
