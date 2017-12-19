@@ -53,6 +53,10 @@ Author: hung.luong@matocreative.vn
     background-image: url(../img/frame_01.png);
     background-repeat: no-repeat;
     background-position: center center;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
 }
 
 #frame_02{
@@ -68,6 +72,10 @@ Author: hung.luong@matocreative.vn
     background-image: url(../img/frame_02.png);
     background-repeat: no-repeat;
     background-position: center center;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
 }
 
 #frame_03{
@@ -83,6 +91,10 @@ Author: hung.luong@matocreative.vn
     background-image: url(../img/frame_03.png);
     background-repeat: no-repeat;
     background-position: center center;
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    transform: rotate(5deg);
 }
 
 .footer_img{
@@ -93,6 +105,8 @@ Author: hung.luong@matocreative.vn
     left: 50%;
     margin-left: -960px;
     background-repeat: no-repeat;
+
+    z-index: -1;
 }
 
 #footer_index_about{
@@ -116,11 +130,11 @@ Author: hung.luong@matocreative.vn
     color: #fff;
 }
 
-.featured .inner img{
+#featured_01 .featured .inner img{
     border: 5px solid #f4aa1c;
 }
 
-.featured .item:hover {
+#featured_01 .featured .inner:hover {
     background: #f4aa1c;
     color: #fff;
 }
@@ -208,6 +222,13 @@ a h1, a h2{
 
 ul.list-unstyled li{
     background-image: url(../img/bg_list.png);
+}
+
+.carousel-showmanymoveone#slideFeatured_01 .carousel-control.left {
+    color: #f4aa1c;
+}
+.carousel-showmanymoveone#slideFeatured_01 .carousel-control.right {
+    color: #f4aa1c;
 }
 
 /* CSS Footer */

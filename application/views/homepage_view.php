@@ -80,6 +80,55 @@
         </div>
 
         <div class="row featured">
+            <div class="col-md-12">
+                <div class="carousel carousel-showmanymoveone slide" id="slideFeatured_01">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="inner">
+                                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/muc-tieu.jpg') ?>" alt="featured_1_1"></a>
+                                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><h2>Mục tiêu</h2></a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="inner">
+                                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-ngu.jpg') ?>" alt="featured_1_2"></a>
+                                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><h2>Ngoại ngữ</h2></a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="inner">
+                                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/gdmlt.jpg') ?>" alt="featured_1_3"></a>
+                                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><h2>Giáo dục theo lứa tuổi</h2></a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="inner">
+                                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/tap-huan.jpg') ?>" alt="featured_1_4"></a>
+                                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><h2>Tập huấn</h2></a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <a class="left carousel-control" href="#slideFeatured_01" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                    <a class="right carousel-control" href="#slideFeatured_01" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div class="row featured">
             <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.0s">
                 <div class="inner">
                     <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/muc-tieu.jpg') ?>" alt="featured_1_1"></a>
@@ -112,7 +161,7 @@
                 </div>
             </div>
 
-            <div class="item col-md-12 col-sm-12 col-xs-12 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="inner">
                     <div class="row">
                         <div class="col-md-6 col-xs-12 col-xs-12">
@@ -125,7 +174,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 
     <div class="container-fluid" id="blogs">
