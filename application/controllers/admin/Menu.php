@@ -295,9 +295,12 @@ class Menu extends Admin_Controller {
     protected function build_dropdown_article($main, $sub){
         $articles = $this->menu_model->fetch_articles_by_sub_category($main, $sub);
         $result = array('' => 'Chọn bài viết');
-        foreach($articles as $key => $value){
+        if($articles){
+          foreach($articles as $key => $value){
             $result[$value['slug']] = $value['title'];
+          }
         }
+        
 
         return $result;
     }

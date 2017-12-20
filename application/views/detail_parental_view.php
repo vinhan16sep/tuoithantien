@@ -113,7 +113,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <h1><?php echo $procedure['title'] ?></h1>
                     <?php echo $procedure['content'] ?>
-                    <a class="btn btn-primary hvr-icon-forward" role="button" href="javascript:void();">Đăng ký ngay</a>
+                    <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('nhap-hoc/dang-ky-nhap-hoc') ?>">Đăng ký ngay</a>
                 </div>
             </div>
         </div>

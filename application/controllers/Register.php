@@ -17,9 +17,12 @@ class Register extends Public_Controller {
 
         $placement = $this->placement_model->fetch_all();
         $this->data['placement'][''] = "---Chọn một cơ sở---";
-        foreach ($placement as $value){
-            $this->data['placement'][$value['id']] = $value['name'];
+        if($placement){
+            foreach ($placement as $value){
+                $this->data['placement'][$value['id']] = $value['name'];
+            }
         }
+        
 
         $this->form_validation->set_rules('parent_name', 'Họ và Tên phụ huynh, người đăng ký', 'required');
         $this->form_validation->set_rules('phone', 'Số điện thoại liên hệ', 'required');

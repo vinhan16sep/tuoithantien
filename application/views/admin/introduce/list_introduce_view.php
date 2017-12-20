@@ -37,7 +37,12 @@
                                     <td><img src="<?php echo base_url('assets/upload/introduce/'.$value['image']) ?>" alt=""></td>
                                     <td><?php echo $value['title'] ?></td>
                                     <td><?php echo $value['slug'] ?></td>
-                                    <td><?php echo $categories[$value['category_id']]; ?></td>
+                                    <?php if (!empty($categories[$value['category_id']])): ?>
+                                        <td><?php echo $categories[$value['category_id']]; ?></td>
+                                    <?php else: ?>
+                                        <td></td>
+                                    <?php endif ?>
+                                    
                                     <td>
                                         <form class="form_ajax">
                                             <a href="<?php echo base_url('admin/comment/introduce/'.$value['slug']); ?>" title="Danh sách comment">
