@@ -282,7 +282,48 @@ class Public_Controller extends MY_Controller {
         $theme = $this->theme_model->fetch_row();
         $this->data['theme'] = $theme['name'];
 
+        // count total view online
+        $this->count_view();
 
+
+        
+
+        /* thu tuc nhap hoc */
+//        $this->load->model('admission_model');
+//        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
+//        $procedure = $this->admission_model->fetch_row($where);
+//        $this->data['procedure'] = $procedure;
+    }
+
+    protected function render($the_view = NULL, $template = 'master') {
+        parent::render($the_view, $template);
+    }
+
+    protected function comment($category, $slug) {
+        $this->load->model('comment_model');
+        $where = array('category' => $category, 'slug' => $slug);
+        $comment = $this->comment_model->fetch_all($where, 5, 0);
+        if($comment){
+            $this->data['comment'] = $comment;
+        }
+    }
+
+    protected function count_comment($slug){
+        $this->load->model('comment_model');
+        $where = array('slug' => $slug);
+        $count_comment = $this->comment_model->fetch_all($where);
+        return $count_comment;
+    }
+
+    public function procedure(){
+        $this->load->model('admission_model');
+        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
+        $procedure = $this->admission_model->fetch_row($where);
+        $this->data['procedure'] = $procedure;
+
+    }
+
+    protected function count_view(){
         // count view
         $this->load->model('total_view_model');
         $this->load->model('count_view_model');
@@ -362,40 +403,6 @@ class Public_Controller extends MY_Controller {
         $total_yesterday = $this->total_view_model->count_all($where);
         $this->data['total_day'] = $total_day;
         $this->data['total_yesterday'] = $total_yesterday;
-
-        /* thu tuc nhap hoc */
-//        $this->load->model('admission_model');
-//        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
-//        $procedure = $this->admission_model->fetch_row($where);
-//        $this->data['procedure'] = $procedure;
-    }
-
-    protected function render($the_view = NULL, $template = 'master') {
-        parent::render($the_view, $template);
-    }
-
-    protected function comment($category, $slug) {
-        $this->load->model('comment_model');
-        $where = array('category' => $category, 'slug' => $slug);
-        $comment = $this->comment_model->fetch_all($where, 5, 0);
-        if($comment){
-            $this->data['comment'] = $comment;
-        }
-    }
-
-    protected function count_comment($slug){
-        $this->load->model('comment_model');
-        $where = array('slug' => $slug);
-        $count_comment = $this->comment_model->fetch_all($where);
-        return $count_comment;
-    }
-
-    public function procedure(){
-        $this->load->model('admission_model');
-        $where = array('category' => 0, 'slug' => 'thu-tuc-nhap-hoc');
-        $procedure = $this->admission_model->fetch_row($where);
-        $this->data['procedure'] = $procedure;
-
     }
 
 }
