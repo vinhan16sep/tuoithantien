@@ -41,9 +41,11 @@
                                     <td><?php echo ($categories[$value['category_id']])? $categories[$value['category_id']] : ''; ?></td>
                                     <td>
                                         <form class="form_ajax">
-                                            <a href="<?php echo base_url('admin/comment/admission/'.$value['slug']); ?>" title="Danh sách comment">
+                                            <a href="<?php echo base_url('admin/comment/admission/'.$value['slug']); ?>" title="Danh sách comment" class="show_comment">
                                                 <i class="fa fa-commenting-o" aria-hidden="true"></i>
                                             </a>
+                                            <input type="hidden" name="category" value="admission">
+                                            <input type="hidden" name="slug" value="<?php echo $value['slug'] ?>">
                                             &nbsp&nbsp
                                             <a href="<?php echo base_url('admin/admission/edit/'.$value['id']); ?>" title="Chỉnh sửa">
                                                 <span class="glyphicon glyphicon-pencil"></span>

@@ -219,6 +219,21 @@ class Activity_model extends CI_Model{
 
         return false;
     }
+
+    public function count_day($where = array()) {
+        if($where != NULL){
+            $query = $this->db->select('*')
+                ->from('activity')
+                ->where($where)
+                ->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('activity')
+                ->get();
+        }
+
+        return $query->num_rows();
+    }
 }
 
  ?>

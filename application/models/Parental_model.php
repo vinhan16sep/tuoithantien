@@ -219,6 +219,21 @@ class Parental_model extends CI_Model{
 
         return false;
     }
+
+    public function count_day($where = array()) {
+        if($where != NULL){
+            $query = $this->db->select('*')
+                ->from('parental')
+                ->where($where)
+                ->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('parental')
+                ->get();
+        }
+
+        return $query->num_rows();
+    }
 }
 
 ?>

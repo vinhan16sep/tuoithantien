@@ -1,59 +1,300 @@
 <!--main content start-->
 <div class="content-wrapper" style="min-height: 916px;">
     <div class="box-body pad table-responsive">
-        <h3>THEME</h3>
+        <h3>Thống kê</h3>
 <!--        --><?php //foreach ($themes as $item): ?>
 <!--            <button type="button" class="btn btn-success btn-lg btn-theme" style="width: 20%" data-id="--><?php //echo $item['id'] ?><!--" --><?php //echo ($item['is_active'] == 1)? 'disabled="disabled"' : '' ?><!-- >--><?php //echo $item['name'] ?><!--</button>-->
 <!--        --><?php //endforeach; ?>
     </div>
 
     <div class="">
-        <div class="col-md-3">
+        <div class="col-md-6">
             <div class="info-box">
                 <span class="info-box-icon bg-blue">
                     <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                 </span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Số lượng bài viết</span>
-                    <span class="info-box-number">100</span>
+                    <span class="info-box-text">Tổng số bài viết</span>
+                    <span class="info-box-number"><?php echo $total_acticle; ?></span>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                </span>
+                <a href="#" data-toggle="modal" data-target="#posts">
+                    <span class="info-box-icon bg-blue">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                    </span>
+                </a>
                 <div class="info-box-content">
-                    <span class="info-box-text">Số lượng bài viết mới</span>
-                    <span class="info-box-number">100</span>
+                    <span class="info-box-text">Số bài viết trong ngày</span>
+                    <span class="info-box-number"><?php echo $total_day_acticle; ?></span>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="modal fade" id="posts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">So bài viết trong ngày</h4>
+              </div>
+              <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Giới thiệu <span class="badge"><?php echo $day_introduce ?></span></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#admission" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nhập học <span class="badge"><?php echo $day_admission ?></span></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#parental" aria-controls="messages" role="tab" data-toggle="tab">Phối hợp cùng phụ huynh <span class="badge"><?php echo $day_parental ?></span></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#activity" aria-controls="settings" role="tab" data-toggle="tab">Hoạt động <span class="badge"><?php echo $day_activity ?></span></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#article" aria-controls="profile" role="tab" data-toggle="tab">Bài viết <span class="badge"><?php echo $day_article ?></span></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#library" aria-controls="messages" role="tab" data-toggle="tab">Thư viện ảnh <span class="badge"><?php echo $day_library ?></span></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#video" aria-controls="settings" role="tab" data-toggle="tab">Thư viện video <span class="badge"><?php echo $day_video ?></span></a>
+                    </li>
+                </ul>
+
+                  <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="intro">
+                        <?php if ($list_introduce): ?>
+                            <table class="table table-hover">
+                                <theader>
+                                    <tr>
+                                        <td style="width: 150px;"><strong>Ảnh đại diện</strong></td>
+                                        <td><strong>Tiêu đề</strong></td>
+                                        <td><strong>Slug</strong></td>
+                                        <td style="width: 150px;"><strong>Hành động</strong></td>
+                                    </tr>
+                                <tbody>
+                                    
+                                        <?php foreach ($list_introduce as $key => $value): ?>
+                                            <tr>
+                                                <td><img src="<?php echo base_url('assets/upload/introduce/'.$value['image']) ?>" width="100px"></td>
+                                                <td><?php echo $value['title'] ?></td>
+                                                <td><?php echo $value['slug'] ?></td>
+                                                <td><a href="<?php echo base_url('admin/introduce/edit/'.$value['id']) ?>">Link tới bài viết</a></td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    
+                                </tbody>                        
+                            </table>
+                        <?php else: ?>
+                            Không có bài viết mới trong ngày!
+                        <?php endif ?>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="admission">
+                        <?php if ($list_admission): ?>
+                            <table class="table table-hover">
+                                <theader>
+                                    <tr>
+                                        <td style="width: 150px;"><strong>Ảnh đại diện</strong></td>
+                                        <td><strong>Tiêu đề</strong></td>
+                                        <td><strong>Slug</strong></td>
+                                        <td style="width: 150px;"><strong>Hành động</strong></td>
+                                    </tr>
+                                <tbody>
+                                    
+                                        <?php foreach ($list_admission as $key => $value): ?>
+                                            <tr>
+                                                <td><img src="<?php echo base_url('assets/upload/admission/'.$value['image']) ?>" width="100px"></td>
+                                                <td><?php echo $value['title'] ?></td>
+                                                <td><?php echo $value['slug'] ?></td>
+                                                <td><a href="<?php echo base_url('admin/admission/edit/'.$value['id']) ?>">Link tới bài viết</a></td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    
+                                </tbody>                        
+                            </table>
+                        <?php else: ?>
+                            Không có bài viết mới trong ngày!
+                        <?php endif ?>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="parental">
+                        <?php if ($list_parental): ?>
+                            <table class="table table-hover">
+                                <theader>
+                                    <tr>
+                                        <td style="width: 150px;"><strong>Ảnh đại diện</strong></td>
+                                        <td><strong>Tiêu đề</strong></td>
+                                        <td><strong>Slug</strong></td>
+                                        <td style="width: 150px;"><strong>Hành động</strong></td>
+                                    </tr>
+                                <tbody>
+                                    
+                                        <?php foreach ($list_parental as $key => $value): ?>
+                                            <tr>
+                                                <td><img src="<?php echo base_url('assets/upload/parental/'.$value['image']) ?>" width="100px"></td>
+                                                <td><?php echo $value['title'] ?></td>
+                                                <td><?php echo $value['slug'] ?></td>
+                                                <td><a href="<?php echo base_url('admin/parental/edit/'.$value['id']) ?>">Link tới bài viết</a></td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    
+                                </tbody>                        
+                            </table>
+                        <?php else: ?>
+                            Không có bài viết mới trong ngày!
+                        <?php endif ?>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="activity">
+                        <?php if ($list_activity): ?>
+                            <table class="table table-hover">
+                                <theader>
+                                    <tr>
+                                        <td style="width: 150px;"><strong>Ảnh đại diện</strong></td>
+                                        <td><strong>Tiêu đề</strong></td>
+                                        <td><strong>Slug</strong></td>
+                                        <td style="width: 150px;"><strong>Hành động</strong></td>
+                                    </tr>
+                                <tbody>
+                                    
+                                        <?php foreach ($list_activity as $key => $value): ?>
+                                            <tr>
+                                                <td><img src="<?php echo base_url('assets/upload/activity/'.$value['image']) ?>" width="100px"></td>
+                                                <td><?php echo $value['title'] ?></td>
+                                                <td><?php echo $value['slug'] ?></td>
+                                                <td><a href="<?php echo base_url('admin/activity/edit/'.$value['id']) ?>">Link tới bài viết</a></td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    
+                                </tbody>                        
+                            </table>
+                        <?php else: ?>
+                            Không có bài viết mới trong ngày!
+                        <?php endif ?>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="article">
+                        <?php if ($list_article): ?>
+                            <table class="table table-hover">
+                                <theader>
+                                    <tr>
+                                        <td style="width: 150px;"><strong>Ảnh đại diện</strong></td>
+                                        <td><strong>Tiêu đề</strong></td>
+                                        <td><strong>Slug</strong></td>
+                                        <td style="width: 150px;"><strong>Hành động</strong></td>
+                                    </tr>
+                                <tbody>
+                                    
+                                        <?php foreach ($list_article as $key => $value): ?>
+                                            <tr>
+                                                <td><img src="<?php echo base_url('assets/upload/article/'.$value['image']) ?>" width="100px"></td>
+                                                <td><?php echo $value['title'] ?></td>
+                                                <td><?php echo $value['slug'] ?></td>
+                                                <td><a href="<?php echo base_url('admin/article/edit/'.$value['id']) ?>">Link tới bài viết</a></td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    
+                                </tbody>                        
+                            </table>
+                        <?php else: ?>
+                            Không có bài viết mới trong ngày!
+                        <?php endif ?>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="library">
+                        <?php if ($list_library): ?>
+                            <table class="table table-hover">
+                                <theader>
+                                    <tr>
+                                        <td style="width: 150px;"><strong>Ảnh đại diện</strong></td>
+                                        <td><strong>Tiêu đề</strong></td>
+                                        <td><strong>Slug</strong></td>
+                                        <td style="width: 150px;"><strong>Hành động</strong></td>
+                                    </tr>
+                                <tbody>
+                                    
+                                        <?php foreach ($list_library as $key => $value): ?>
+                                            <tr>
+                                                <td><img src="<?php echo base_url('assets/upload/image/'.$value['slug'].'/'.$value['sub']) ?>" width="100px"></td>
+                                                <td><?php echo $value['title'] ?></td>
+                                                <td><?php echo $value['slug'] ?></td>
+                                                <td><a href="<?php echo base_url('admin/library/edit/'.$value['id']) ?>">Link tới bài viết</a></td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    
+                                </tbody>                        
+                            </table>
+                        <?php else: ?>
+                            Không có bài viết mới trong ngày!
+                        <?php endif ?>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="video">
+                        <?php if ($list_video): ?>
+                            <table class="table table-hover">
+                                <theader>
+                                    <tr>
+                                        <td><strong>Tiêu đề</strong></td>
+                                        <td style="width: 150px;"><strong>Hành động</strong></td>
+                                    </tr>
+                                <tbody>
+                                    <?php foreach ($list_video as $key => $value): ?>
+                                        <tr>
+                                            <td><?php echo $value['title'] ?></td>
+                                            <td><a href="<?php echo base_url('admin/video/edit/'.$value['id']) ?>">Link tới bài viết</a></td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>                        
+                            </table>
+                        <?php else: ?>
+                            Không có bài viết mới trong ngày!
+                        <?php endif ?>
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
             <div class="info-box">
                 <span class="info-box-icon bg-blue">
                     <i class="fa fa-comments-o" aria-hidden="true"></i>
                 </span>
                 <div class="info-box-content">
                     <span class="info-box-text">Số lượng nhận xét mới</span>
-                    <span class="info-box-number">10</span>
+                    <span class="info-box-number"><?php echo $total_comment; ?></span>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                </span>
+                <a href="<?php echo base_url('admin/register/index') ?>">
+                    <span class="info-box-icon bg-blue">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    </span>
+                </a>
                 <div class="info-box-content">
                     <span class="info-box-text">Số lượng đăng ký nhập học mới</span>
-                    <span class="info-box-number">10</span>
+                    <span class="info-box-number"><?php echo $total_register; ?></span>
                 </div>
             </div>
         </div>
     </div>
+
+
     <div class="col-md-12">
+        <h3>THEME</h3>
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3>Chỉnh sửa Theme</h3>

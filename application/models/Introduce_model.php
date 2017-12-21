@@ -188,4 +188,19 @@ class Introduce_model extends CI_Model {
 
         return false;
     }
+
+    public function count_day($where = array()) {
+        if($where != NULL){
+            $query = $this->db->select('*')
+                ->from('introduce')
+                ->where($where)
+                ->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('introduce')
+                ->get();
+        }
+
+        return $query->num_rows();
+    }
 }

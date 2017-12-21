@@ -47,6 +47,33 @@ class Comment_model extends CI_Model{
 
         return false;
     }
+
+    public function update($where = array(), $data){
+        if($where != null){
+            $this->db->where($where);
+        }
+        $this->db->update('comment', $data);
+
+        if($this->db->affected_rows() == 1){
+            return true;
+        }
+
+        return false;
+    }
+
+    public function count_all($where =  array()) {
+        if($where != NULL){
+            $this->db->select('*')->from('comment');
+            $this->db->where($where);
+            $query = $this->db->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('comment')
+                ->get();
+        }
+
+        return $query->num_rows();
+    }
 }
 
  ?>

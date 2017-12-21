@@ -34,7 +34,6 @@
                                 <td><b><a href="#">Nơi sinh</a></b></td>
                                 <td><b><a href="#">Tư vấn</a></b></td>
                                 <td><b><a href="#">Chi tiết</a></b></td>
-                                <td><b>Thực hiện</b></td>
                             </tr>
                             <?php foreach ($register as $value): ?>
                                 <tr class="row_">
@@ -58,17 +57,7 @@
                                     </td>
                                     <td><a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_<?php echo $value['id']; ?>" aria-expanded="false" aria-controls="collapseExample">
                                             Chi tiết
-                                        </a></td>
-                                    <td>
-                                        <form class="form_ajax">
-                                            <a href="#" title="Đã tư vấn" class="callback" data-id="<?php echo $value['id'] ?>">
-                                                <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                            </a>
-                                            &nbsp;&nbsp;
-                                            <a href="#" title="Hoàn thành" data-id="<?php echo $value['id'] ?>" class="finish">
-                                                <i class="fa fa-list-alt" aria-hidden="true"></i>
-                                            </a>
-                                        </form>
+                                        </a>
                                     </td>
                                     <td>
 
@@ -140,3 +129,17 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">
+    $('#search_place').change(function () {
+        var search_place = $(this).val();
+        jQuery.ajax({
+            method: "get",
+            url: "http://localhost/tuoithantien/admin/register/select_class",
+            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+            data: {search_place : search_place},
+            success: function(result){
+                $('#search_grade').html(result);
+            }
+        });
+    });
+</script>

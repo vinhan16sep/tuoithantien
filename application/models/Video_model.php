@@ -6,11 +6,14 @@ class Video_model extends CI_Model {
         parent::__construct();
     }
 
-    public function fetch_all(){
-        $query = $this->db->select('*')
-            ->from('video')
-            ->where('is_deleted', 0)
-            ->get();
+    public function fetch_all($where = array()){
+        $this->db->select('*');
+        $this->db->from('video');
+        $this->db->where('is_deleted', 0);
+        if($where != null){
+            $this->db->where($where);
+        }
+        $query = $this->db->get();
 
         if($query->num_rows() > 0){
             return $query->result_array();
@@ -120,5 +123,20 @@ class Video_model extends CI_Model {
         }
 
         return false;
+    }
+
+    public function count_day($where = array()) {
+        if($where != NULL){
+            $query = $this->db->select('*')
+                ->from('video')
+                ->where($where)
+                ->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('video')
+                ->get();
+        }
+
+        return $query->num_rows();
     }
 }
