@@ -69,12 +69,14 @@ class Dashboard extends Admin_Controller {
         $list_parental = $this->parental_model->get_all_pagination($where);
         $list_video = $this->video_model->fetch_all($where);
         $list_library = $this->library_model->fetch_all($where);
-        foreach ($list_library as $key => $value) {
-            $where = array('image_id' => $value['id']);
-            $sub = $this->image_model->fetch_row($where);
-            $list_library[$key]['sub'] = $sub['image'];
-
+        if($list_library){
+            foreach ($list_library as $key => $value) {
+                $where = array('image_id' => $value['id']);
+                $sub = $this->image_model->fetch_row($where);
+                $list_library[$key]['sub'] = $sub['image'];
+            }
         }
+        
 
         $this->data['list_activity'] = $list_activity;
         $this->data['list_admission'] = $list_admission;
