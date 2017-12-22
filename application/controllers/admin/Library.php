@@ -130,9 +130,9 @@ class Library extends Admin_Controller{
                     'modified_by'  => $this->author_info['modified_by']
                 );
 
-                if($image != null){
-                    $data['image_link'] = $image;
-                }
+                // if($image != null){
+                //     $data['image_link'] = $image;
+                // }
                 try {
                     $this->library_model->update($image_id, $data);
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');

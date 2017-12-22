@@ -219,6 +219,21 @@ class Article_model extends CI_Model{
 
         return false;
     }
+
+    public function count_day($where = array()) {
+        if($where != NULL){
+            $query = $this->db->select('*')
+                ->from('article')
+                ->where($where)
+                ->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('article')
+                ->get();
+        }
+
+        return $query->num_rows();
+    }
 }
 
  ?>
