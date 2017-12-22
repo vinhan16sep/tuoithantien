@@ -45,7 +45,7 @@
                                     
                                     <td>
                                         <form class="form_ajax">
-                                            <a href="<?php echo base_url('admin/comment/introduce/'.$value['slug']); ?>" title="Danh sách comment">
+                                            <a href="<?php echo base_url('admin/comment/introduce/'.$value['slug']); ?>" title="Danh sách comment" class="show_comment" data-category="introduce" data-slug="<?php echo $value['slug'] ?>" >
                                                 <i class="fa fa-commenting-o" aria-hidden="true"></i>
                                             </a>
                                             &nbsp&nbsp

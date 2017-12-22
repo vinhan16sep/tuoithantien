@@ -189,4 +189,19 @@ class Admission_model extends CI_Model {
 
         return false;
     }
+
+    public function count_day($where = array()) {
+        if($where != NULL){
+            $query = $this->db->select('*')
+                ->from('admission')
+                ->where($where)
+                ->get();
+        }else{
+            $query = $this->db->select('*')
+                ->from('admission')
+                ->get();
+        }
+
+        return $query->num_rows();
+    }
 }

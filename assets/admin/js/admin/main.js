@@ -267,6 +267,18 @@ function build_main_string(){
 }
 
 
+//check comment
+$('.show_comment').click(function(){
+    var category = $(this).data('category');
+    var slug = $(this).data('slug');
+    $.ajax({
+        url: 'http://localhost/tuoithantien/admin/comment/check_status',
+        type: 'GET',
+        data: {category : category, slug : slug}
+    })
+})
+
+
 
 
 

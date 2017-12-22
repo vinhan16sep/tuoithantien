@@ -21,7 +21,7 @@
             </div>
             
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <?php
                 echo form_label('Ảnh đại diện cũ');
                 ?>
@@ -33,7 +33,7 @@
                 echo form_error('image');
                 echo form_upload('image','','multiple');
                 ?>
-            </div>
+            </div> -->
 
             <div class="form-group">
                 <?php

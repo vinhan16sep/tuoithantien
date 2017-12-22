@@ -4,10 +4,7 @@ class Comment extends Admin_Controller{
 	function __construct(){
 		parent::__construct();
         $this->load->model('comment_model');
-        $this->load->model('introduce_model');
-        $this->load->model('admission_model');
-        $this->load->model('parental_model');
-        $this->load->model('activity_model');
+        
 	}
 
 	public function index(){
@@ -24,6 +21,7 @@ class Comment extends Admin_Controller{
 	}
 
 	public function introduce(){
+        $this->load->model('introduce_model');
         $segment = $this->uri->segment(4);
         $where =  array('slug' => $segment, 'category' => 'introduce');
         $list_comment = $this->comment_model->fetch_all($where);
@@ -42,6 +40,7 @@ class Comment extends Admin_Controller{
     }
 
     public function activity(){
+        $this->load->model('activity_model');
         $segment = $this->uri->segment(4);
         $where =  array('slug' => $segment, 'category' => 'activity');
         $list_comment = $this->comment_model->fetch_all($where);
@@ -60,6 +59,7 @@ class Comment extends Admin_Controller{
     }
 
     public function admission(){
+        $this->load->model('admission_model');
         $segment = $this->uri->segment(4);
         $where =  array('slug' => $segment, 'category' => 'admission');
         $list_comment = $this->comment_model->fetch_all($where);
@@ -78,6 +78,7 @@ class Comment extends Admin_Controller{
     }
 
     public function parental(){
+        $this->load->model('parental_model');
         $segment = $this->uri->segment(4);
         $where =  array('slug' => $segment, 'category' => 'admission');
         $list_comment = $this->comment_model->fetch_all($where);
@@ -86,6 +87,25 @@ class Comment extends Admin_Controller{
             foreach ($list_comment as $key => $value) {
                 $where =  array('slug' => $value['slug']);
                 $sub = $this->admission_model->fetch_row($where);
+                $list_comment[$key]['sub'] = $sub['title'];
+            }
+        }
+
+        $this->data['list_comment'] = $list_comment;
+
+        $this->render('admin/comment/list_comment_view');
+    }
+
+    public function article(){
+        $this->load->model('article_model');
+        $segment = $this->uri->segment(4);
+        $where =  array('slug' => $segment, 'category' => 'article');
+        $list_comment = $this->comment_model->fetch_all($where);
+
+        if($list_comment){
+            foreach ($list_comment as $key => $value) {
+                $where =  array('slug' => $value['slug']);
+                $sub = $this->article_model->fetch_row($where);
                 $list_comment[$key]['sub'] = $sub['title'];
             }
         }
@@ -105,6 +125,14 @@ class Comment extends Admin_Controller{
 		$id = $_GET['id'];
 		$this->comment_model->delete($id);
 	}
+
+    public function check_status(){
+        $slug = $this->input->get('slug');
+        $category = $this->input->get('category');
+        $where = array('category' => $category, 'slug' => $slug);
+        $data =  array('status' => 1);
+        $this->comment_model->update($where, $data);
+    }
 
 }
 
