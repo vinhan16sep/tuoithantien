@@ -4,15 +4,22 @@
     <div class="container">
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <?php $style = 'style="display: none"' ?>
-                <ul class="list-unstyled">
-                    <?php if ($sidebar): ?>
-                        <?php foreach ($sidebar as $value): ?>
-                            <li><a href="<?php echo base_url('hoat-dong/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(2)? 'style="color: blue"' : '') ?> ><?php echo $value['title'] ?></a></li>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </ul>
+                <div id="category_header"></div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Danh mục bài viết</h2>
+                    </div>
+                    <?php $style = 'style="display: none"' ?>
+                    <ul class="list-unstyled list-group">
+                        <?php if ($sidebar): ?>
+                            <?php foreach ($sidebar as $value): ?>
+                                <li class="list-group-item"><a href="<?php echo base_url('hoat-dong/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(2)? 'style="color: #008b44"' : '') ?> ><?php echo $value['title'] ?></a></li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <div id="category_footer"></div>
+
             </div>
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <div class="row">

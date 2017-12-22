@@ -4,15 +4,22 @@
     <div class="container">
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục thư viện</h1>
-                <?php $style = 'style="display: none"' ?>
-                <ul class="list-unstyled">
+                <div id="category_header"></div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Danh mục thư viện</h2>
+                    </div>
+                    <?php $style = 'style="display: none"' ?>
+                    <ul class="list-unstyled list-group">
 
-                    <li><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" <?php echo ($this->uri->segment(2) == 'thu-vien-anh')? 'style="color: blue"' : '' ?> >Thư viện ảnh</a></li>
+                        <li class="list-group-item"><a href="<?php echo base_url('thu-vien/thu-vien-anh') ?>" <?php echo ($this->uri->segment(2) == 'thu-vien-anh')? 'style="color: #008b44"' : '' ?> >Thư viện ảnh</a></li>
 
-                    <li><a href="<?php echo base_url('thu-vien/video') ?>" <?php echo ($this->uri->segment(2) == 'video')? 'style="color: blue"' : '' ?> >Video</a></li>
-                </ul>
+                        <li class="list-group-item"><a href="<?php echo base_url('thu-vien/video') ?>" <?php echo ($this->uri->segment(2) == 'video')? 'style="color: blue"' : '' ?> >Video</a></li>
+                    </ul>
+                </div>
+                <div id="category_footer"></div>
             </div>
+
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <h3>Thư viện Video</h3>
                 <div class="row">

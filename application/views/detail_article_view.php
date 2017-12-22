@@ -4,18 +4,22 @@
     <div class="container">
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <ul class="list-unstyled">
-                    <?php if ($sidebar != ''): ?>
-                        <?php foreach ($sidebar as $key => $value): ?>
-                            <li><a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(3))? 'style="color: blue"' : '' ?> ><?php echo $value['title'] ?></a></li>
-                        <?php endforeach ?>
-                    <?php else: ?>
+                <div id="category_header"></div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Danh mục bài viết</h2>
+                    </div>
+                    <ul class="list-unstyled list-group">
+                        <?php if ($sidebar != ''): ?>
+                            <?php foreach ($sidebar as $key => $value): ?>
+                                <li class="list-group-item"><a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(3))? 'style="color: blue"' : '' ?> ><?php echo $value['title'] ?></a></li>
+                            <?php endforeach ?>
+                        <?php else: ?>
 
-                    <?php endif ?>
-
-
-                </ul>
+                        <?php endif ?>
+                    </ul>
+                </div>
+                <div id="category_footer"></div>
             </div>
 
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
