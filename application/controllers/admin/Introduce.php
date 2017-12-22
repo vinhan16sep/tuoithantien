@@ -158,6 +158,7 @@ class Introduce extends Admin_Controller {
     }
 
     public function list_in_category($type){
+        $this->load->model('comment_model');
         $category_id = $this->uri->segment(4);
         $this->data['category_id'] = $category_id;
 
@@ -174,7 +175,17 @@ class Introduce extends Admin_Controller {
 
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(5) : 0;
-        $this->data['introduces'] = $this->introduce_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+        $introduces = $this->introduce_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+
+        if($introduces){
+            foreach ($introduces as $key => $value) {
+                $where =  array('category' => 'introduce', 'slug' => $value['slug'], 'status' => 0);
+                $count = $this->comment_model->count_all($where);
+                $introduces[$key]['count_comment'] = $count;
+            }
+        }
+
+        $this->data['introduces'] = $introduces;
 
         $this->render('admin/introduce/list_introduce_view');
     }

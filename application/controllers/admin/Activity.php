@@ -28,6 +28,7 @@ class Activity extends Admin_Controller {
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
         $this->data['activities'] = $this->activity_model->fetch_all_pagination($per_page, $this->data['page']);
 
+
         $this->render('admin/activity/list_activity_view');
     }
 
@@ -158,6 +159,7 @@ class Activity extends Admin_Controller {
     }
 
     public function list_in_category($type){
+        $this->load->model('comment_model');
         $category_id = $this->uri->segment(4);
         $this->data['category_id'] = $category_id;
 
@@ -174,7 +176,17 @@ class Activity extends Admin_Controller {
 
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(5) : 0;
-        $this->data['activities'] = $this->activity_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+        $activity = $this->activity_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+
+        if($activity){
+            foreach ($activity as $key => $value) {
+                $where =  array('category' => 'activity', 'slug' => $value['slug'], 'status' => 0);
+                $count = $this->comment_model->count_all($where);
+                $activity[$key]['count_comment'] = $count;
+            }
+        }
+        // print_r($activity);die;
+        $this->data['activities'] = $activity;
 
         $this->render('admin/activity/list_activity_view');
     }

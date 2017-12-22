@@ -80,13 +80,13 @@ class Comment extends Admin_Controller{
     public function parental(){
         $this->load->model('parental_model');
         $segment = $this->uri->segment(4);
-        $where =  array('slug' => $segment, 'category' => 'admission');
+        $where =  array('slug' => $segment, 'category' => 'parental');
         $list_comment = $this->comment_model->fetch_all($where);
 
         if($list_comment){
             foreach ($list_comment as $key => $value) {
                 $where =  array('slug' => $value['slug']);
-                $sub = $this->admission_model->fetch_row($where);
+                $sub = $this->parental_model->fetch_row($where);
                 $list_comment[$key]['sub'] = $sub['title'];
             }
         }
