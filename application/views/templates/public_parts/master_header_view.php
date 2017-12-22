@@ -61,7 +61,19 @@
                             <?php if(!empty($value['sub'])): ?>
                                 <ul class="dropdown-menu" style="color:<?php echo ($value['level'] == 1) ? $value['color'] : ''; ?>">
                                     <?php foreach($value['sub'] as $k => $v): ?>
-                                        <li><a href="<?php echo $v['url'] ?>"><?php echo $v['title'] ?></a></li>
+                                        <li>
+                                            <a href="<?php echo $v['url'] ?>" class="black-tooltip" data-toggle="tooltip" data-placement="left" title="<?php echo (strlen($v['title']) > 40)? $v['title'] : '' ?>" >
+                                                <?php
+                                                    $string_title = substr($v['title'], 0, 40);
+                                                    $result = substr($string_title, 0, strrpos($string_title, ' '));
+                                                        if (strlen($v['title']) > 40){
+                                                            echo $result . ' ...';
+                                                        }else{
+                                                            echo $v['title'];
+                                                        }
+                                                ?>
+                                            </a>
+                                        </li>
                                     <?php endforeach; ?>
 
                                 </ul>
