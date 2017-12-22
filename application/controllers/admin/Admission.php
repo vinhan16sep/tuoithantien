@@ -156,6 +156,7 @@ class Admission extends Admin_Controller {
     }
 
     public function list_in_category($type){
+        $this->load->model('comment_model');
         $category_id = $this->uri->segment(4);
         $this->data['category_id'] = $category_id;
 
@@ -172,8 +173,17 @@ class Admission extends Admin_Controller {
 
         $this->data['page_links'] = $this->pagination->create_links();
         $this->data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(5) : 0;
-        $this->data['admission'] = $this->admission_model->fetch_all_by_type($type, $per_page, $this->data['page']);
+        $admission = $this->admission_model->fetch_all_by_type($type, $per_page, $this->data['page']);
 
+        if($admission){
+            foreach ($admission as $key => $value) {
+                $where =  array('category' => 'admission', 'slug' => $value['slug'], 'status' => 0);
+                $count = $this->comment_model->count_all($where);
+                $admission[$key]['count_comment'] = $count;
+            }
+        }
+
+        $this->data['admission'] = $admission;
         $this->render('admin/admission/list_admission_view');
     }
 
