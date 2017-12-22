@@ -7,11 +7,15 @@
                 <div class="col-lg-10 col-lg-offset-0" style="margin-left: 15px;">
                     <h1>THÊM MỚI BÀI VIẾT</h1>
                     <?php
-                    echo form_open_multipart('', array('class' => 'form-horizontal'));
+                        $title = 'Tiêu đề';
+                        if (in_array($slug, $check_slug) == 1) {
+                            $title = 'Họ tên phụ huynh';
+                        }
+                        echo form_open_multipart('', array('class' => 'form-horizontal'));
                     ?>
                     <div class="form-group picture">
                         <?php
-                        echo form_label('Tiêu đề', 'title');
+                        echo form_label($title, 'title');
                         echo form_error('title');
                         echo form_input('title', set_value('title'), 'class="form-control" id="title"');
                         ?>

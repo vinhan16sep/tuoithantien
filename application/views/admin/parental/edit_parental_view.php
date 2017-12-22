@@ -3,11 +3,15 @@
     <div class="row" style="margin-left: 0px; margin-right: 55px;">
         <div class="col-md-12">
             <?php
-            echo form_open_multipart('admin/parental/edit', array('class' => 'form-horizontal'));
+                $title = 'Tiêu đề';
+                if (in_array($slug, $check_slug) == 1) {
+                    $title = 'Họ tên phụ huynh';
+                }
+                echo form_open_multipart('admin/parental/edit', array('class' => 'form-horizontal'));
             ?>
             <div class="form-group">
                 <?php
-                echo form_label('Tiêu đề', 'title');
+                echo form_label($title, 'title');
                 echo form_error('title');
                 echo form_input('title', set_value('title', $parental['title']), 'class="form-control" id="title"');
                 ?>
