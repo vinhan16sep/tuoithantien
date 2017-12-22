@@ -395,6 +395,9 @@ class Public_Controller extends MY_Controller {
         $date = date('Y-m-d 00:00:00');
         $date1 = str_replace('-', '/', $date);
         $tomorrow = date('Y-m-d 00:00:00',strtotime($date1 . "+1 days"));
+        $yesterday = date('Y-m-d 00:00:00',strtotime($date1 . "-1 days"));
+
+        $this->total_view_model->delete($yesterday);
 
         $where = array('created_at >=' => date('Y-m-d 00:00:00'), 'created_at <' => $tomorrow);
         $total_day = $this->total_view_model->count_all($where);
