@@ -20,13 +20,20 @@
             <!--                    <input type="text" name="search" placeholder="Tìm Kiếm ..." class="form-control" style="float: right; width: 50%;" value="--><?php //echo $search ?><!--">-->
             <!--                </form>-->
             <!--            </div>-->
+            
             <?php if ($parental): ?>
+            <?php
+                $title = 'Tiêu đề';
+                if (in_array($slug, $check_slug) == 1) {
+                    $title = 'Họ tên phụ huynh';
+                }
+            ?>
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 10px;">
                         <table class="table table-hover table-bordered table-condensed admin">
                             <tr>
                                 <td style="width: 150px"><b><a href="#">Ảnh đại diện</a></b></td>
-                                <td><b><a href="#">Tiêu đề</a></b></td>
+                                <td><b><a href="#"><?php echo $title; ?></a></b></td>
                                 <td><b><a href="#">Slug</a></b></td>
                                 <td><b><a href="#">Danh mục</a></b></td>
                                 <td><b>Operations</b></td>
@@ -41,10 +48,12 @@
                                     <td><?php echo ($categories[$value['category_id']])? $categories[$value['category_id']] : ''; ?></td>
                                     <td>
                                         <form class="form_ajax">
-                                            <a href="<?php echo base_url('admin/comment/parental/'.$value['slug']); ?>" title="Danh sách comment" class="show_comment" data-category="parental" data-slug="<?php echo $value['slug'] ?>" style="position: relative;" >
-                                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                                                <apan class="badge" style="position: absolute; top: -5px; left: 10px; padding: 3px 6px; font-size: 9px; background: red;"><?php echo $value['count_comment'] ?></apan>
-                                            </a>
+                                            <?php if (in_array($slug, $check_slug) == 0): ?>
+                                                <a href="<?php echo base_url('admin/comment/parental/'.$value['slug']); ?>" title="Danh sách comment" class="show_comment" data-category="parental" data-slug="<?php echo $value['slug'] ?>" style="position: relative;" >
+                                                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                                    <apan class="badge" style="position: absolute; top: -5px; left: 10px; padding: 3px 6px; font-size: 9px; background: red;"><?php echo $value['count_comment'] ?></apan>
+                                                </a>
+                                            <?php endif ?>
                                             &nbsp&nbsp
                                             <a href="<?php echo base_url('admin/parental/edit/'.$value['id']); ?>" title="Chỉnh sửa">
                                                 <span class="glyphicon glyphicon-pencil"></span>

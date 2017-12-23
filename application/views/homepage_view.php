@@ -73,135 +73,67 @@
         <div class="footer_img" id="footer_index_about"></div>
     </div>
 
-    <div class="container" id="featured_01">
-        <div class="screen_title">
-            <h1>Học mà chơi - Chơi mà học</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-        </div>
-
-        <div class="row featured">
-            <div class="col-md-12">
-                <div class="carousel carousel-showmanymoveone slide" id="slideFeatured_01">
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner">
-                                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/muc-tieu.jpg') ?>" alt="featured_1_1"></a>
-                                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><h2>Mục tiêu</h2></a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                                </div>
+    <?php if ($activity): ?>
+        <div class="container" id="featured_01">
+            <div class="screen_title">
+                <h1>Học mà chơi - Chơi mà học</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+            </div>
+            <div class="row featured">
+                <div class="col-md-12">
+                    <div class="carousel carousel-showmanymoveone slide" id="slideFeatured_01">
+                        <div class="carousel-inner">
+                            <?php foreach ($activity as $key => $value): ?>
+                            <div class="item <?php echo ($key == 0) ? 'active' : '' ?>">
+                                
+                                    <div class="col-md-3 col-sm-6 col-xs-12">
+                                        <div class="inner">
+                                            <a href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>">
+                                                <img class="img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>" alt="featured_1_1">
+                                            </a>
+                                            <a href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>">
+                                                <h2><?php echo $value['title'] ?></h2>
+                                            </a>
+                                            <p><?php echo $value['description'] ?></p>
+                                        </div>
+                                    </div>
+                                
                             </div>
+                            <?php endforeach ?>
                         </div>
-                        <div class="item">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner">
-                                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-ngu.jpg') ?>" alt="featured_1_2"></a>
-                                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><h2>Ngoại ngữ</h2></a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner">
-                                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/gdmlt.jpg') ?>" alt="featured_1_3"></a>
-                                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><h2>Giáo dục theo lứa tuổi</h2></a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="inner">
-                                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/tap-huan.jpg') ?>" alt="featured_1_4"></a>
-                                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><h2>Tập huấn</h2></a>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <a class="left carousel-control" href="#slideFeatured_01" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                    <a class="right carousel-control" href="#slideFeatured_01" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-
-
-        <!--<div class="row featured">
-            <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.0s">
-                <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/muc-tieu.jpg') ?>" alt="featured_1_1"></a>
-                    <a href="<?php echo base_url('gioi-thieu/muc-tieu') ?>"><h2>Mục tiêu</h2></a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                </div>
-            </div>
-
-            <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-ngu.jpg') ?>" alt="featured_1_2"></a>
-                    <a href="<?php echo base_url('gioi-thieu/ngoai-ngu') ?>"><h2>Ngoại ngữ</h2></a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                </div>
-            </div>
-
-            <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="1.0s">
-                <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/gdmlt.jpg') ?>" alt="featured_1_3"></a>
-                    <a href="<?php echo base_url('gioi-thieu/giao-duc-theo-lua-tuoi') ?>"><h2>Giáo dục theo lứa tuổi</h2></a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                </div>
-            </div>
-
-            <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="1.5s">
-                <div class="inner">
-                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/tap-huan.jpg') ?>" alt="featured_1_4"></a>
-                    <a href="<?php echo base_url('gioi-thieu/tap-huan') ?>"><h2>Tập huấn</h2></a>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                </div>
-            </div>
-
-            <div class="item col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="inner">
-                    <div class="row">
-                        <div class="col-md-6 col-xs-12 col-xs-12">
-                            <a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>"><img class="img-rounded" src="<?php echo site_url('assets/public/img/photo/ngoai-khoa.jpg') ?>" alt="featured_1_5"></a>
-                        </div>
-                        <div class="col-md-6 col-xs-12 col-xs-12">
-                            <a href="<?php echo base_url('gioi-thieu/ngoai-khoa') ?>"><h2>Ngoại khóa</h2></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
-                        </div>
+                        <a class="left carousel-control" href="#slideFeatured_01" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#slideFeatured_01" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
-        </div>-->
-    </div>
+        </div>
+    <?php endif ?>
 
     <div class="container-fluid" id="blogs">
         <div class="container">
             <div class="row">
                 <div class="left col-md-6 col-sm-6 col-xs-12">
-                    <h1>Thông báo nhà trường</h1>
+                    <h1>Thông tin nhập học</h1>
 
                     <ul class="media-list">
-                        <?php if ($notify): ?>
-                            <?php foreach ($notify as $value): ?>
+                        <?php if ($admission): ?>
+                            <?php foreach ($admission as $value): ?>
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="<?php echo base_url('hoat-dong/thong-bao-nha-truong/'.$value['slug']) ?>">
-                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>" alt="ảnh tin tức">
+                                        <a href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>">
+                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/admission/'.$value['image']) ?>" alt="ảnh tin tức">
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
                                         <p><?php echo $value['description'] ?></p>
-                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('hoat-dong/thong-bao-nha-truong/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>" role="button">Xem tiếp</a>
                                     </div>
                                 </li>
                             <?php endforeach; ?>
-                            <li>
-                                <a href="<?php echo base_url('hoat-dong/thong-bao-nha-truong') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                            </li>
+                            <!-- <li>
+                                <a href="<?php echo base_url('thong-tin-nhap-hoc') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            </li> -->
                         <?php else: ?>
                             <li class="media">
                                 Chưa có bài viết nào
@@ -211,27 +143,27 @@
                 </div>
 
                 <div class="right col-md-6 col-sm-6 col-xs-12">
-                    <h1>Chia sẻ kinh nghiệm hay</h1>
+                    <h1>Phối hợp cùng phụ huynh</h1>
 
                     <ul class="media-list">
                         <?php if ($experience): ?>
                             <?php foreach ($experience as $value): ?>
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay/'.$value['slug']) ?>">
+                                        <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>">
                                             <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>" alt="ảnh tin tức">
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
                                         <p><?php echo $value['description'] ?></p>
-                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>" role="button">Xem tiếp</a>
                                     </div>
                                 </li>
                             <?php endforeach; ?>
-                            <li>
+                            <!-- <li>
                                 <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                            </li>
+                            </li> -->
                         <?php else: ?>
                             <li class="media">
                                 Chưa có bài viết nào
@@ -304,64 +236,52 @@
                 <h1>Ý kiến phụ huynh</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
             </div>
+            <?php if ($parent_comments): ?>
+                <div class="row">
+                    <div class="col-md-12 wow fadeIn" data-wow-delay="0.2s">
+                        <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                            <!-- Bottom Carousel Indicators -->
+                            <ol class="carousel-indicators hidden-xs">
+                                <?php foreach ($parent_comments as $key => $value): ?>
+                                    <li data-target="#quote-carousel" data-slide-to="<?php echo $key ?>"  class="<?php echo ($key == 0) ? 'active' : '' ?>">
+                                        <img class="img-responsive " src="<?php echo base_url('assets/upload/parental/'.$value['image']); ?>" alt="">
+                                    </li>
+                                <?php endforeach ?>
+                            </ol>
 
-            <div class="row">
-                <div class="col-md-12 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-                        <!-- Bottom Carousel Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src="https://s3.amazonaws.com/uifaces/faces/twitter/brad_frost/128.jpg" alt="">
-                            </li>
-                            <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/rssems/128.jpg" alt="">
-                            </li>
-                            <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg" alt="">
-                            </li>
-                        </ol>
+                            <!-- Carousel Slides / Quotes -->
+                            <div class="carousel-inner text-center">
 
-                        <!-- Carousel Slides / Quotes -->
-                        <div class="carousel-inner text-center">
+                                <!-- Quote 1 -->
+                                <?php foreach ($parent_comments as $key => $value): ?>
+                                    <div class="item <?php echo ($key == 0) ? 'active' : '' ?>">
+                                        <blockquote>
+                                            <div class="row">
+                                                <div class="col-sm-8 col-sm-offset-2">
+                                                    <p><?php echo $value['content'] ?></p>
+                                                    <small><?php echo $value['title'] ?></small>
+                                                </div>
+                                            </div>
+                                        </blockquote>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
 
-                            <!-- Quote 1 -->
-                            <div class="item active">
-                                <blockquote>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. !</p>
-                                            <small>Họ tên phụ huynh</small>
-                                        </div>
-                                    </div>
-                                </blockquote>
-                            </div>
-                            <!-- Quote 2 -->
-                            <div class="item">
-                                <blockquote>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                                            <small>Họ tên phụ huynh</small>
-                                        </div>
-                                    </div>
-                                </blockquote>
-                            </div>
-                            <!-- Quote 3 -->
-                            <div class="item">
-                                <blockquote>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. .</p>
-                                            <small>Họ tên phụ huynh</small>
-                                        </div>
-                                    </div>
-                                </blockquote>
-                            </div>
+                            <!-- Carousel Buttons Next/Prev -->
+                            <a data-slide="prev" href="#quote-carousel" class="left carousel-control hidden-xs"><i class="fa fa-chevron-left"></i></a>
+                            <a data-slide="next" href="#quote-carousel" class="right carousel-control hidden-xs"><i class="fa fa-chevron-right"></i></a>
                         </div>
-
-                        <!-- Carousel Buttons Next/Prev -->
-                        <a data-slide="prev" href="#quote-carousel" class="left carousel-control hidden-xs"><i class="fa fa-chevron-left"></i></a>
-                        <a data-slide="next" href="#quote-carousel" class="right carousel-control hidden-xs"><i class="fa fa-chevron-right"></i></a>
                     </div>
                 </div>
-            </div>
+            <?php else: ?>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <span style="color:#e60ae0">Chưa có ý kiến được ghi nhận từ phía phụ huynh học sinh</span>
+                    </div>
+                </div>
+            <?php endif ?>
+
+
         </div>
         <img id="cloud_01" src="<?php echo site_url('assets/public/img/img_cloud-02.png') ?>" alt="cloud-1" class="wow slideInUp hidden-xs">
         <img id="cloud_02" src="<?php echo site_url('assets/public/img/img_cloud-03.png') ?>" alt="cloud-2" class="wow slideInUp hidden-xs">

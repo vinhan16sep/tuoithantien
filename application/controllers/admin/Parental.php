@@ -32,6 +32,14 @@ class Parental extends Admin_Controller {
     }
 
     public function create() {
+        $category_id = $this->uri->segment(4);
+        $this->data['category_id'] = $category_id;
+        $where = array('id' => $category_id);
+        $category = $this->parental_model->fetch_row($where, 'parental_category');
+        $this->data['slug'] = $category['slug'];
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
+
+
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -72,6 +80,14 @@ class Parental extends Admin_Controller {
     }
 
     public function edit($request_id = NULL) {
+        $category_id = $this->uri->segment(4);
+        $this->data['category_id'] = $category_id;
+        $where = array('id' => $category_id);
+        $category = $this->parental_model->fetch_row($where, 'parental_category');
+        $this->data['slug'] = $category['slug'];
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
+
+        
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -151,6 +167,8 @@ class Parental extends Admin_Controller {
     public function category(){
         $this->data['target'] = 'parental';
         $this->data['categories'] = $this->parental_model->fetch_all('parental_category');
+        $check_slug = array('y-kien-phu-huynh');
+        $this->data['check_slug'] = $check_slug;
 
         $this->render('admin/category/list_category_view');
     }
@@ -159,6 +177,10 @@ class Parental extends Admin_Controller {
         $this->load->model('comment_model');
         $category_id = $this->uri->segment(4);
         $this->data['category_id'] = $category_id;
+        $where = array('id' => $category_id);
+        $category = $this->parental_model->fetch_row($where, 'parental_category');
+        $this->data['slug'] = $category['slug'];
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
 
         $this->load->library('pagination');
         $config = array();

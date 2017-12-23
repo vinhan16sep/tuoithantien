@@ -17,18 +17,53 @@ class Homepage extends Public_Controller {
     public function index(){
         $this->load->model('activity_model');
         $this->load->model('parental_model');
-        //Thông báo nhà trường
-        $slug = 'thong-bao-nha-truong';
-        $activity_category = $this->activity_model->get_type('activity_category', $slug);
-        $notify = $this->activity_model->fetch_limit(3, 0, $activity_category['id']);
-        $this->data['notify'] = $notify;
+        $this->load->model('admission_model');
 
-        //Chia sẻ kinh nghiệm hay
-        $slug = 'chia-se-kinh-nghiem-hay';
-        $parental_category = $this->parental_model->get_type('parental_category', $slug);
-        $experience = $this->parental_model->fetch_limit(3, 0, $parental_category['id']);
+        //side activity
+        $activity = $this->activity_model->fetch_all_pagination(6, 0);
+        if($activity){
+            foreach ($activity as $key => $value) {
+                $where = array('id' => $value['category_id']);
+                $sub = $this->activity_model->fetch_row($where, 'activity_category');
+                $activity[$key]['sub'] = $sub['slug'];
+            }
+        }
+        $this->data['activity'] = $activity;
+        // print_r($activity);die;
+
+        //Thông tin nhập học
+        $admission = $this->admission_model->fetch_all_pagination(3, 0);
+        if($admission){
+            foreach ($admission as $key => $value) {
+                $where = array('id' => $value['category_id']);
+                $sub = $this->admission_model->fetch_row($where, 'admission_category');
+                $admission[$key]['sub'] = $sub['slug'];
+            }
+        }
+        $this->data['admission'] = $admission;
+
+        //phối hợp cùng phụ huynh
+        $where = array('slug' => 'y-kien-phu-huynh');
+        $category = $this->parental_model->fetch_row($where, 'parental_category');
+        
+        $where = array('category_id != ' => $category['id']);
+        $experience = $this->parental_model->get_all_pagination($where, 3, 0);
+        if($experience){
+            foreach ($experience as $key => $value) {
+                $where = array('id' => $value['category_id']);
+                $sub = $this->parental_model->fetch_row($where, 'parental_category');
+                $experience[$key]['sub'] = $sub['slug'];
+            }
+        }
         $this->data['experience'] = $experience;
-//        print_r($experience);die;
+
+        //ý kiến phụ huynh
+        $slug = 'y-kien-phu-huynh';
+        $where = array('slug' => $slug);
+        $parental_category = $this->parental_model->fetch_row($where, 'parental_category');
+        $where = array('category_id' => $parental_category['id']);
+        $parent_comments = $this->parental_model->get_all_pagination($where, 3, 0);
+        $this->data['parent_comments'] = $parent_comments;
 
         $banner = $this->banner_model->get_all();
         $this->data['banner'] = $banner;
