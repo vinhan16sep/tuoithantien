@@ -153,6 +153,7 @@ class Introduce extends Admin_Controller {
     public function category(){
         $this->data['target'] = 'introduce';
         $this->data['categories'] = $this->introduce_model->fetch_all('introduce_category');
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
 
         $this->render('admin/category/list_category_view');
     }
@@ -161,6 +162,7 @@ class Introduce extends Admin_Controller {
         $this->load->model('comment_model');
         $category_id = $this->uri->segment(4);
         $this->data['category_id'] = $category_id;
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
 
         $this->load->library('pagination');
         $config = array();
