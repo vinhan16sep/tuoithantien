@@ -33,6 +33,7 @@ class Activity extends Admin_Controller {
     }
 
     public function create() {
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -154,6 +155,7 @@ class Activity extends Admin_Controller {
     public function category(){
         $this->data['target'] = 'activity';
         $this->data['categories'] = $this->activity_model->fetch_all('activity_category');
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
 
         $this->render('admin/category/list_category_view');
     }
@@ -162,6 +164,7 @@ class Activity extends Admin_Controller {
         $this->load->model('comment_model');
         $category_id = $this->uri->segment(4);
         $this->data['category_id'] = $category_id;
+        $this->data['check_slug'] = array('y-kien-phu-huynh');
 
         $this->load->library('pagination');
         $config = array();
