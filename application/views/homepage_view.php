@@ -77,7 +77,7 @@
         <div class="container" id="featured_01">
             <div class="screen_title">
                 <h1>Học mà chơi - Chơi mà học</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+                <p>Học mà chơi - Chơi mà học</p>
             </div>
             <div class="row featured">
                 <div class="col-md-12">
@@ -101,8 +101,10 @@
                             </div>
                             <?php endforeach ?>
                         </div>
+                        <?php if(count($activity) > 4): ?>
                         <a class="left carousel-control" href="#slideFeatured_01" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
                         <a class="right carousel-control" href="#slideFeatured_01" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

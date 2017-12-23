@@ -29,7 +29,6 @@ class Homepage extends Public_Controller {
             }
         }
         $this->data['activity'] = $activity;
-        // print_r($activity);die;
 
         //Thông tin nhập học
         $admission = $this->admission_model->fetch_all_pagination(3, 0);

@@ -5,16 +5,30 @@ $(document).ready(function(){
     $('.carousel-showmanymoveone .item').each(function(){
         var itemToClone = $(this);
 
-        for (var i=1;i<4;i++) {
-            itemToClone = itemToClone.next();
+        if($('.carousel-showmanymoveone .item').length < 4){
+            for (var i=1;i< ($('.carousel-showmanymoveone .item').length);i++) {
+                itemToClone = itemToClone.next();
 
-            if (!itemToClone.length) {
-                itemToClone = $(this).siblings(':first');
+                if (!itemToClone.length) {
+                    itemToClone = $(this).siblings(':first');
+                }
+
+                itemToClone.children(':first-child').clone()
+                    .addClass("cloneditem-"+(i))
+                    .appendTo($(this));
             }
+        }else{
+            for (var i=1;i< 4;i++) {
+                itemToClone = itemToClone.next();
 
-            itemToClone.children(':first-child').clone()
-                .addClass("cloneditem-"+(i))
-                .appendTo($(this));
+                if (!itemToClone.length) {
+                    itemToClone = $(this).siblings(':first');
+                }
+
+                itemToClone.children(':first-child').clone()
+                    .addClass("cloneditem-"+(i))
+                    .appendTo($(this));
+            }
         }
     });
 
