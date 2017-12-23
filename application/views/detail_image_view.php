@@ -1,19 +1,25 @@
 <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/blog.css') ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/js/lightbox-plus-jquery.css') ?>">
 
 <section class="main_content">
     <div class="container">
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
-                <h1>Danh mục bài viết</h1>
-                <?php $style = 'style="display: none"' ?>
-                <ul class="list-unstyled">
-                    <?php foreach ($list as $key => $value): ?>
-                        <li>
-                            <a href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>" ><?php echo $value['title'] ?></a>
-                        </li>
-                    <?php endforeach ?>
-
-                </ul>
+                <div id="category_header"></div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2>Danh mục bài viết</h2>
+                    </div>
+                    <?php $style = 'style="display: none"' ?>
+                    <ul class="list-unstyled list-group">
+                        <?php foreach ($list as $key => $value): ?>
+                            <li class="list-group-item">
+                                <a href="<?php echo base_url('thu-vien/thu-vien-anh/'.$value['slug']) ?>" ><?php echo $value['title'] ?></a>
+                            </li>
+                        <?php endforeach ?>
+                    </ul>
+                </div>
+                <div id="category_footer"></div>
             </div>
 
 			<h4><?php echo $library['content'] ?></h4>
@@ -24,8 +30,10 @@
                 	<?php if ($images != ''): ?>
 	                	<?php foreach ($images as $key => $value): ?>
 		                    <div class="item col-md-4 col-sm-6 col-xs-12">
-		                        <div class="inner">
-		                            <img class="img-rounded" src="<?php echo site_url('assets/upload/image/'.$library['slug'].'/'.$value['image']) ?>" width=100%>
+		                        <a class="inner">
+                                    <a class="example-image-link" data-lightbox="example-1" href="<?php echo site_url('assets/upload/image/'.$library['slug'].'/'.$value['image']) ?>">
+                                        <img class="img-rounded example-image" src="<?php echo site_url('assets/upload/image/'.$library['slug'].'/'.$value['image']) ?>" width=100%>
+                                    </a>
 		                            <h3 class="blog_title"><?php echo $value['title'] ?></h3>
 		                        </div>
 		                    </div>

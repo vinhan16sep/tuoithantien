@@ -107,6 +107,10 @@ ul.pink li a:hover{
 	color: #fff;
 }
 
+.nav > li > a{
+	padding: 10px;
+}
+
 /* CSS Main Content */
 
 .screen_title{
@@ -147,14 +151,30 @@ textarea {
 
 ul.list-unstyled li{
 	background-repeat: no-repeat;
-	background-position-y: 8px;
-	padding-left: 15px;
+	background-position: 5px 20px;
 }
 
-.footer ul.list-unstyled li{
-	background-image: none;
+.list-group-item {
+	padding: 10px 25px;
 }
 
+.category .panel{
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+.category .panel .panel-heading {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.category .panel .panel-heading h2{
+	margin-top: 0;
+}
+
+.category > img{
+	width: 100%;
+}
 
 /* CSS Footer */
 
@@ -185,6 +205,10 @@ ul.list-unstyled li{
 
 .footer .table thead, .footer .table tbody{
 	color: #fff;
+}
+
+.footer ul.list-unstyled li{
+	background-image: none;
 }
 
 .scrollup {
