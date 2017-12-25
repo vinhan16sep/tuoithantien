@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/blog.css') ?>">
 
-<section class="main_content">
+<section class="main_content" id="detail">
     <div class="container">
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
@@ -12,7 +12,7 @@
                     <ul class="list-unstyled list-group">
                         <?php if ($sidebar != ''): ?>
                             <?php foreach ($sidebar as $key => $value): ?>
-                                <li class="list-group-item"><a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(3))? 'style="color: blue"' : '' ?> ><?php echo $value['title'] ?></a></li>
+                                <li class="list-group-item"><a href="<?php echo base_url('bai-viet/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(3))? 'style="color: #008b44"' : '' ?> ><?php echo $value['title'] ?></a></li>
                             <?php endforeach ?>
                         <?php else: ?>
 
@@ -107,7 +107,7 @@
                     <h1>Đăng ký nhập học</h1>
                     <p>Text giới thiệu chung về các chương trình</p>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12 wow slideInUp">
                     <div id="register_image"></div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
