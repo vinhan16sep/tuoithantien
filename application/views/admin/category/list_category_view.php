@@ -19,7 +19,7 @@
                     <div class="col-lg-12" style="margin-top: 10px;">
                         <table class="table table-hover table-bordered table-condensed admin">
                             <tr>
-                                <td style="width: 900px"><b><a href="#">Tiêu đề</a></b></td>
+                                <td style="width: 850px"><b><a href="#">Tiêu đề</a></b></td>
                                 <td style="text-align: center;"><b>Operations</b></td>
                             </tr>
 
@@ -28,7 +28,7 @@
                                 <tr class="row_<?php echo $value['id'] ?>">
                                     <td><?php echo $value['title'] ?></td>
                                     <td style="text-align: center;">
-                                        <?php if (in_array($value['slug'], $check_slug) == null): ?>
+                                        <?php if (in_array($value['slug'], $menu_check) == null && in_array($value['slug'], $check_slug) == null ): ?>
                                             <form class="form_ajax">
                                                 <a href="<?php echo base_url('admin/' . $target . '/edit_category/' . $value['id']); ?>" title="Chỉnh sửa">
                                                     <span class="glyphicon glyphicon-pencil"></span>
@@ -39,7 +39,7 @@
                                                 </a>
                                             </form>
                                         <?php else: ?>
-                                            <b>Không thể xóa</b>
+                                            <b>Bài viết đang sử dụng</b>
                                         <?php endif ?>
                                     </td>
                                 </tr>

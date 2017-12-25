@@ -109,6 +109,8 @@ class Admin_Controller extends MY_Controller {
         $this->data['parental_menu'] = $this->parental_model->fetch_all('parental_category');
         $this->data['activity_menu'] = $this->activity_model->fetch_all('activity_category');
 
+        $this->select_menu();
+
 //        echo '<pre>';
 //        print_r($this->data);die;
 
@@ -210,6 +212,17 @@ class Admin_Controller extends MY_Controller {
         return $config;
     }
 
+    public function select_menu()
+    {
+        $this->load->model('menu_model');
+        $menu = $this->menu_model->fetch_all();
+        $menu_check = array();
+        foreach ($menu as $key => $value) {
+            $menu_check[] = $value['select_category'];
+        }
+        $this->data['menu_check'] = $menu_check;
+    }
+
 
 
 }
@@ -245,7 +258,7 @@ class Public_Controller extends MY_Controller {
         $this->load->model('menu_model');
         $menus = $this->menu_model->fetch_all_to_frontend();
         foreach($menus as $key => $value){
-            $menus[$key]['sub'] = $this->menu_model->fetch_sub_menu_by_parent($value['id']);
+            $menus[$key]['sub'] = $this->menu_model->fetch_sub_menu_by_parent_frontend($value['id']);
         }
         $this->data['menus'] = $menus;
 
