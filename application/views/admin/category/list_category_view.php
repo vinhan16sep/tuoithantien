@@ -34,7 +34,7 @@
                                                     <span class="glyphicon glyphicon-pencil"></span>
                                                 </a>
                                                 &nbsp&nbsp
-                                                <a href="<?php echo base_url('admin/' . $target . '/remove_category'); ?>" title="Xóa" class="btn-remove" data-id="<?php echo $value['id'] ?>">
+                                                <a href="<?php echo base_url('admin/' . $target . '/remove_category'); ?>" title="Xóa" class="btn-remove-category" data-id="<?php echo $value['id'] ?>">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
                                             </form>

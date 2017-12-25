@@ -116,6 +116,31 @@ $('.btn-remove').click(function(e){
   return false;
 });
 
+//xoa category
+
+$('.btn-remove-category').click(function (e) {
+    e.preventDefault();
+    var id = $(this).attr('data-id');
+    var check = $(this);
+    var url = $(this).attr('href');
+    if(confirm('Chắc chắn xóa?')){
+        jQuery.ajax({
+            method: "get",
+            url: url,
+            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+            data: {id : id},
+            success: function(result){
+                if(JSON.parse(result).isExists == false){
+                    alert('Vui lòng xóa bài viết trong danh mục này trước');
+                }else{
+                    $(check).parents('tr').fadeOut();
+                }
+            }
+        });
+    };
+    return false;
+});
+
  $('.btn-remove-menu').click(function(e){
      e.preventDefault();
      var client_id = $(this).data('id');
