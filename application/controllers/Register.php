@@ -25,13 +25,13 @@ class Register extends Public_Controller {
         }
         
 
-        $this->form_validation->set_rules('parent_name', 'Họ và Tên phụ huynh, người đăng ký', 'required');
-        $this->form_validation->set_rules('phone', 'Số điện thoại liên hệ', 'required');
-        $this->form_validation->set_rules('name', 'Họ và Tên học sinh', 'trim|required');
-        $this->form_validation->set_rules('dob', 'Ngày sinh', 'required');
-        $this->form_validation->set_rules('grade', 'Chọn lớp học tham gia', 'required');
-        $this->form_validation->set_rules('place', 'Chọn cở sở trường học', 'required');
-        $this->form_validation->set_rules('email', 'Email liên hệ', 'valid_email');
+        $this->form_validation->set_rules('parent_name', 'Họ và Tên phụ huynh, người đăng ký', 'required', array('required' => 'Họ và Tên phụ huynh không được trống.'));
+        $this->form_validation->set_rules('phone', 'Số điện thoại liên hệ', 'required', array('required' => 'Số điện thoại liên hệ không được trống.'));
+        $this->form_validation->set_rules('name', 'Họ và Tên học sinh', 'trim|required', array('required' => 'Họ và Tên học sinh không được trống.'));
+        $this->form_validation->set_rules('dob', 'Ngày sinh', 'required', array('required' => 'Ngày sinh không được trống.'));
+        $this->form_validation->set_rules('grade', 'Chọn lớp học tham gia', 'required', array('required' => 'Lớp học tham gia không được trống.'));
+        $this->form_validation->set_rules('place', 'Chọn cở sở trường học', 'required', array('required' => 'Cở sở trường học không được trống.'));
+        $this->form_validation->set_rules('email', 'Email liên hệ', 'required|valid_email', array('valid_email' => 'Định dạng email không đúng.', 'required' => 'Email liên hệ không được trống.'));
 
         if($this->input->post()){
             if($this->form_validation->run()){
