@@ -19,15 +19,15 @@
                     <div class="col-lg-12" style="margin-top: 10px;">
                         <table class="table table-hover table-bordered table-condensed admin">
                             <tr>
-                                <td><b><a href="#">Tiêu đề</a></b></td>
-                                <td><b>Operations</b></td>
+                                <td style="width: 900px"><b><a href="#">Tiêu đề</a></b></td>
+                                <td style="text-align: center;"><b>Operations</b></td>
                             </tr>
 
                             <?php foreach ($categories as $value): ?>
 
                                 <tr class="row_<?php echo $value['id'] ?>">
                                     <td><?php echo $value['title'] ?></td>
-                                    <td>
+                                    <td style="text-align: center;">
                                         <?php if (in_array($value['slug'], $check_slug) == null): ?>
                                             <form class="form_ajax">
                                                 <a href="<?php echo base_url('admin/' . $target . '/edit_category/' . $value['id']); ?>" title="Chỉnh sửa">

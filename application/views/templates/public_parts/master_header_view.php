@@ -1,12 +1,19 @@
 <!doctype html>
 <html><!-- InstanceBegin template="/Templates/temp.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Mầm non TTT - Parallax">
-    <meta name="author" content="hung.luong@matocreative.vn">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="resource-type" content="document" />
+
+    <meta name="description" content="<?php echo (isset($meta['description']))? $meta['description'] : 'mam non,tuoi than tien ,mam non ha noi,mam non ha dong,mam non tuoi than tien,mam non chuan quoc gia,mam non chat luong cao,mamnon,mamnontuoithantien,mamnontuoithantienhanoi,mamnonhadong' ?>" />
+
+    <meta name="keywords" content="mam non,tuoi than tien ,mam non ha noi,mam non ha dong,mam non tuoi than tien,mam non chuan quoc gia,mam non chat luong cao,mamnon,mamnontuoithantien,mamnontuoithantienhanoi,mamnonhadong" />
+
+    <meta name='revisit-after' content='1 days' />
+    <meta name="robots" content="index,follow" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- InstanceBeginEditable name="doctitle" -->
-    <title>Tuổi thần tiên</title>
+    <title><?php echo (isset($meta['description']))? $meta['description'] : 'Tuổi thần tiên' ?></title>
     <!-- InstanceEndEditable -->
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/bootstrap.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/libraries/css/font-awesome.css') ?>">

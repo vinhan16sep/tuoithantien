@@ -13,6 +13,10 @@ class article extends Public_Controller {
 
     public function detail(){
         $slug = $this->uri->segment(2);
+        $where = array('slug' => $slug);
+        $description = $this->article_model->fetch_row($where);
+        $this->data['meta']['description'] = $description['title'];
+        
         $sidebar = $this->article_model->fetch_all_by_type($slug);
         $this->data['sidebar'] = $sidebar;
 

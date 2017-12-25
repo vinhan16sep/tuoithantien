@@ -17,8 +17,10 @@ class Activity extends Public_Controller {
         $this->data['sidebar'] = $sidebar;
 
         $where = array('slug' => $slug);
+
         $category = $this->activity_model->fetch_row($where, 'activity_category');
         $where = array('category_id' => $category['id']);
+        $this->data['meta']['description'] = $category['title'];
 
 
         $this->load->library('pagination');
@@ -51,6 +53,10 @@ class Activity extends Public_Controller {
     public function detail(){
 //        $this->output->enable_profiler(TRUE);
         $slug = $this->uri->segment(3);
+        $where = array('slug' => $slug);
+        $description = $this->activity_model->fetch_row($where);
+        $this->data['meta']['description'] = $description['title'];
+
         $category_id = $this->uri->segment(2);
         $where = array('slug' => $category_id);
         $category = $this->activity_model->fetch_row($where, 'activity_category');

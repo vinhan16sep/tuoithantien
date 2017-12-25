@@ -105,7 +105,18 @@
                         <?php if(!empty($introduce_menu)): ?>
                             <?php foreach($introduce_menu as $value): ?>
                                 <li class="<?php echo ($active == 'introduce' && $sub_active == 'list_in_category' && $icon_active == $value['id'])? 'active' : '' ?>">
-                                    <a href="<?php echo base_url('admin/introduce/list_in_category/' . $value['id']); ?>"><i class="fa fa-minus" aria-hidden="true"></i><?php echo $value['title']; ?></a>
+                                    <a href="<?php echo base_url('admin/introduce/list_in_category/' . $value['id']); ?>"  title="<?php echo (strlen($value['title']) > 30)? $value['title'] : '' ?>">
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                        <?php
+                                            $string_title = substr($value['title'], 0, 30);
+                                            $result = substr($string_title, 0, strrpos($string_title, ' '));
+                                            if (strlen($value['title']) > 30){
+                                                echo $result . ' ...';
+                                            }else{
+                                                echo $value['title'];
+                                            }
+                                        ?>
+                                    </a>
                                 </li>
                             <?php endforeach; ?>
 
@@ -128,7 +139,18 @@
                         <?php if(!empty($admission_menu)): ?>
                             <?php foreach($admission_menu as $value): ?>
                                 <li class="<?php echo ($active == 'admission' && $sub_active == 'list_in_category' && $icon_active == $value['id'])? 'active' : '' ?>">
-                                    <a href="<?php echo base_url('admin/admission/list_in_category/' . $value['id']); ?>"><i class="fa fa-minus" aria-hidden="true"></i><?php echo $value['title']; ?></a>
+                                    <a href="<?php echo base_url('admin/admission/list_in_category/' . $value['id']); ?>"  title="<?php echo (strlen($value['title']) > 30)? $value['title'] : '' ?>">
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                        <?php
+                                            $string_title = substr($value['title'], 0, 30);
+                                            $result = substr($string_title, 0, strrpos($string_title, ' '));
+                                            if (strlen($value['title']) > 30){
+                                                echo $result . ' ...';
+                                            }else{
+                                                echo $value['title'];
+                                            }
+                                        ?>
+                                    </a>
                                 </li>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -150,7 +172,18 @@
                         <?php if(!empty($parental_menu)): ?>
                             <?php foreach($parental_menu as $value): ?>
                                 <li class="<?php echo ($active == 'parental' && $sub_active == 'list_in_category' && $icon_active == $value['id'])? 'active' : '' ?>">
-                                    <a href="<?php echo base_url('admin/parental/list_in_category/' . $value['id']); ?>"><i class="fa fa-minus" aria-hidden="true"></i><?php echo $value['title']; ?></a>
+                                    <a href="<?php echo base_url('admin/parental/list_in_category/' . $value['id']); ?>"  title="<?php echo (strlen($value['title']) > 30)? $value['title'] : '' ?>">
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                        <?php
+                                            $string_title = substr($value['title'], 0, 30);
+                                            $result = substr($string_title, 0, strrpos($string_title, ' '));
+                                            if (strlen($value['title']) > 30){
+                                                echo $result . ' ...';
+                                            }else{
+                                                echo $value['title'];
+                                            }
+                                        ?>
+                                    </a>
                                 </li>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -172,7 +205,18 @@
                         <?php if(!empty($activity_menu)): ?>
                             <?php foreach($activity_menu as $value): ?>
                                 <li class="<?php echo ($active == 'activity' && $sub_active == 'list_in_category' && $icon_active == $value['id'])? 'active' : '' ?>">
-                                    <a href="<?php echo base_url('admin/activity/list_in_category/' . $value['id']); ?>"><i class="fa fa-minus" aria-hidden="true"></i><?php echo $value['title']; ?></a>
+                                    <a href="<?php echo base_url('admin/activity/list_in_category/' . $value['id']); ?>"  title="<?php echo (strlen($value['title']) > 30)? $value['title'] : '' ?>">
+                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                        <?php
+                                            $string_title = substr($value['title'], 0, 30);
+                                            $result = substr($string_title, 0, strrpos($string_title, ' '));
+                                            if (strlen($value['title']) > 30){
+                                                echo $result . ' ...';
+                                            }else{
+                                                echo $value['title'];
+                                            }
+                                        ?>
+                                    </a>
                                 </li>
                             <?php endforeach; ?>
                         <?php endif; ?>

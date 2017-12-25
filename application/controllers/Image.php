@@ -12,6 +12,7 @@ class Image extends Public_Controller {
 
     public function index(){
         $this->load->model('image_model');
+        $this->data['meta']['description'] = 'Thư viện ảnh';
 
         $this->load->library('pagination');
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;

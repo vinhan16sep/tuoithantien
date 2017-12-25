@@ -11,7 +11,7 @@ class Video extends Public_Controller {
     }
 
     public function index(){
-
+        $this->data['meta']['description'] = 'Thư viện video';
         $this->load->library('pagination');
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
