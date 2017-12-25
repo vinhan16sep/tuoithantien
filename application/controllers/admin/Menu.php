@@ -285,8 +285,10 @@ class Menu extends Admin_Controller {
         }else{
             $result = array('' => 'Chọn danh mục');
         }
-        foreach($categories as $key => $value){
-            $result[$value['slug']] = $value['title'];
+        if(!empty($categories)){
+            foreach($categories as $key => $value){
+                $result[$value['slug']] = $value['title'];
+            }
         }
 
         return $result;

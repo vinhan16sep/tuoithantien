@@ -59,6 +59,23 @@ class Menu_model extends CI_Model {
 
         return false;
     }
+    
+    public function fetch_sub_menu_by_parent_frontend($parent_id){
+        $query = $this->db->select('*')
+            ->from('menu')
+            ->where('level', 2)
+            ->where('parent', $parent_id)
+            ->where('is_actived', 1)
+            ->where('is_deleted', 0)
+            ->order_by('sort', 'asc')
+            ->get();
+
+        if($query->num_rows() > 0){
+            return $query->result_array();
+        }
+
+        return false;
+    }
 
     public function fetch_all_pagination($limit = NULL, $start = NULL, $search = null) {
         $this->db->select('*');

@@ -7,7 +7,6 @@
         <?php else: ?>
             <a type="button" href="<?php echo site_url('admin/article/create'); ?>" class="btn btn-primary">THÊM MỚI</a>
         <?php endif; ?>
-        <a type="button" href="<?php echo site_url('admin/article/category'); ?>" class="btn btn-normal">DANH MỤC</a>
         <div class="container col-md-12">
             <div>
                 <span><?php echo $this->session->flashdata('message'); ?></span>
@@ -37,20 +36,24 @@
                                     <td><?php echo $value['title'] ?></td>
                                     <td><?php echo $value['slug'] ?></td>
                                     <td>
-                                        <form class="form_ajax">
-                                            <a href="<?php echo base_url('admin/comment/article/'.$value['slug']); ?>" title="Danh sách comment" class="show_comment" data-category="article" data-slug="<?php echo $value['slug'] ?>" style="position: relative;">
-                                                <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                                                <apan class="badge" style="position: absolute; top: -5px; left: 10px; padding: 3px 6px; font-size: 9px; background: red;"><?php echo $value['count_comment'] ?></apan>
-                                            </a>
-                                            &nbsp&nbsp
-                                            <a href="<?php echo base_url('admin/article/edit/'.$value['id']); ?>" title="Chỉnh sửa">
-                                                <span class="glyphicon glyphicon-pencil"></span>
-                                            </a>
-                                            &nbsp&nbsp
-                                            <a href="<?php echo base_url('admin/article/remove'); ?>" title="Xóa" class="btn-remove" data-id="<?php echo $value['id'] ?>">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
-                                        </form>
+                                        <?php if (in_array($value['slug'], $menu_check) == null ): ?>
+                                            <form class="form_ajax">
+                                                <a href="<?php echo base_url('admin/comment/article/'.$value['slug']); ?>" title="Danh sách comment" class="show_comment" data-category="article" data-slug="<?php echo $value['slug'] ?>" style="position: relative;">
+                                                    <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                                                    <apan class="badge" style="position: absolute; top: -5px; left: 10px; padding: 3px 6px; font-size: 9px; background: red;"><?php echo $value['count_comment'] ?></apan>
+                                                </a>
+                                                &nbsp&nbsp
+                                                <a href="<?php echo base_url('admin/article/edit/'.$value['id']); ?>" title="Chỉnh sửa">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </a>
+                                                &nbsp&nbsp
+                                                <a href="<?php echo base_url('admin/article/remove'); ?>" title="Xóa" class="btn-remove" data-id="<?php echo $value['id'] ?>">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </a>
+                                            </form>
+                                        <?php else: ?>
+                                            <b>Bài viết đang sử dụng</b>
+                                        <?php endif ?>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
