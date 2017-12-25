@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/blog.css') ?>">
 
-<section class="main_content">
+<section class="main_content" id="detail">
     <div class="container">
         <div class="row">
             <div class="category col-md-3 col-sm-3 col-xs-12">
@@ -80,7 +80,7 @@
                     <h1>Đăng ký nhập học</h1>
                     <p>Text giới thiệu chung về các chương trình</p>
                 </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-6 col-sm-6 col-xs-12 wow slideInUp">
                     <div id="register_image"></div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">

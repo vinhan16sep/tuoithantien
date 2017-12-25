@@ -138,8 +138,8 @@
                 </div>
             </div>
 
-            <div class="col-md-12 col-sm-12 col-xs- text-center">
-                <img src="<?php echo site_url('assets/public/img/register.png') ?>" class="wow fadeInUp">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <div id="register_image"></div>
             </div>
         </div>
 

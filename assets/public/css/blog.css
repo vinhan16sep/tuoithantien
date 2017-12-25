@@ -68,3 +68,8 @@ Author: hung.luong@matocreative.vn
 .item iframe{
 	min-height: 500px;
 }
+
+.screen_title{
+	margin-top: 50px;
+	margin-bottom: 30px;
+}

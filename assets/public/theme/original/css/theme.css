@@ -17,6 +17,11 @@ Author: hung.luong@matocreative.vn
 
 /* CSS Body */
 
+#detail{
+    background-image: url(../img/bg_detail.png);
+    background-size: 100%;
+}
+
 #header_index_about{
     width: 1920px;
     height: 65px;
@@ -259,6 +264,14 @@ ul.list-unstyled li{
     background-repeat: no-repeat;
     background-position: center top;
     background-size: 100%;
+}
+
+.container-fluid#registerScreen{
+    background: #fff;
+    background-image: url(../img/bg_register.png);
+    background-position: top;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 /* CSS Footer */
