@@ -110,8 +110,18 @@
 
         public function finish(){
             $id = $this->input->get('id');
-            $where = array('status' => 1);
-            $this->register_model->update($id, $where);
+            $where = array('id' => $id);
+            $register = $this->register_model->fetch_row($where);
+            $isExists = null;
+            if($register['callback'] == 1){
+                $isExists =  false;
+            }else{
+                $where = array('status' => 1);
+                $this->register_model->update($id, $where);
+                $isExists =  true;
+            }
+            $this->output->set_status_header(200)->set_output(json_encode(array('isExists' => $isExists)));
+            
         }
 
         public function register_finish(){

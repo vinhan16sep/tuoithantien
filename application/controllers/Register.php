@@ -10,6 +10,7 @@ class Register extends Public_Controller {
     }
 
     public function index(){
+        $this->data['meta']['description'] = 'Đăng ký nhập học';
         $this->load->helper('form');
         $this->load->library('form_validation');
 

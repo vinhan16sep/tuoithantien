@@ -19,6 +19,7 @@ class Introduce extends Public_Controller {
         $where = array('slug' => $slug);
         $category = $this->introduce_model->fetch_row($where, 'introduce_category');
         $where = array('category_id' => $category['id']);
+        $this->data['meta']['description'] = $category['title'];
 
         $this->load->library('pagination');
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -48,6 +49,10 @@ class Introduce extends Public_Controller {
 
     public function detail(){
         $slug = $this->uri->segment(3);
+        $where = array('slug' => $slug);
+        $description = $this->introduce_model->fetch_row($where);
+        $this->data['meta']['description'] = $description['title'];
+
         $category_id = $this->uri->segment(2);
         $where = array('slug' => $category_id);
         $category = $this->introduce_model->fetch_row($where, 'introduce_category');

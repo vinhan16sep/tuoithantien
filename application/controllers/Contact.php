@@ -14,6 +14,7 @@ class Contact extends Public_Controller {
     }
 
     public function index(){
+        $this->data['meta']['description'] = 'Liên hệ';
 
         $this->render('contact_view');
     }

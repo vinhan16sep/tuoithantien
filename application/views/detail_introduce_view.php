@@ -17,9 +17,7 @@
             </div>
 
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
-                <div class="blogs_cover">
-                    <img src="<?php echo base_url('assets/upload/introduce/'.$detail['image']) ?>" alt="ảnh cover bài viết" width=100%>
-                </div>
+                
 
                 <h2 class="blog_title"><?php echo $detail['title'] ?></h2>
 

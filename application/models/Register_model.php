@@ -38,6 +38,23 @@
          return false;
      }
 
+    public function fetch_row($where = array(), $type = 'register'){
+        $this->db->select('*');
+        $this->db->from($type);
+        $this->db->where('is_deleted', 0);
+        if($where != null){
+            $this->db->where($where);
+        }
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
      public function count_all($where = array(), $search = null) {
          $this->db->select('*')
              ->from('register');

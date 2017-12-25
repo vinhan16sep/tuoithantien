@@ -176,12 +176,19 @@
     $('.finish').click(function (e) {
         e.preventDefault();
         var id = $(this).attr('data-id');
-        $(this).parents('tr').fadeOut();
+        var check = $(this);
         jQuery.ajax({
             method: "get",
             url: "http://localhost/tuoithantien/admin/register/finish",
             // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
-            data: {id : id}
+            data: {id : id},
+            success: function(result){
+                if(JSON.parse(result).isExists == false){
+                    alert('Cân gọi điện tư vấn khác hàng trước');
+                }else{
+                    $(check).parents('tr').fadeOut();
+                }
+            }
         });
     });
 
