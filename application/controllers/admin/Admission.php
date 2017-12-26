@@ -270,23 +270,31 @@ class Admission extends Admin_Controller {
     }
 
     public function remove_category(){
+
+        $isExists = null;
         $id = $this->input->get('id');
-        if(!isset($id)){
-            redirect('admin/admission/category', 'refresh');
-        }
+        $count_admission = $this->admission_model->count_all($id);
+        if($count_admission > 0){
+            $isExists = false;
+        }else{
+            
+            if(!isset($id)){
+                $isExists = false;
+            }
 
-        $category = $this->admission_model->fetch_by_id('admission_category', $id);
-        if(!$category){
-            redirect('admin/admission/category', 'refresh');
-        }
+            $category = $this->admission_model->fetch_by_id('admission_category', $id);
+            if(!$category){
+                $isExists = false;
+            }
 
-        $result = $this->admission_model->delete('admission_category', $id);
-        if (!$result) {
-            $this->session->set_flashdata('message', 'There was an error when delete item');
+            $result = $this->admission_model->delete('admission_category', $id);
+            if (!$result) {
+                $isExists = false;
+            }else{
+                $isExists = true;
+            }
         }
-        $this->session->set_flashdata('message', 'Item deleted successfully');
-
-        redirect('admin/admission/category', 'refresh');
+        $this->output->set_status_header(200)->set_output(json_encode(array('isExists' => $isExists)));
     }
 
 

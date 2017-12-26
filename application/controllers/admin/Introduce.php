@@ -273,23 +273,31 @@ class Introduce extends Admin_Controller {
     }
 
     public function remove_category(){
+        $isExists = null;
         $id = $this->input->get('id');
-        if(!isset($id)){
-            redirect('admin/introduce/category', 'refresh');
-        }
+        $count_introduce = $this->introduce_model->count_all($id);
+        if($count_introduce > 0){
+            $isExists = false;
+        }else{
+            
+            if(!isset($id)){
+                $isExists = false;
+            }
 
-        $category = $this->introduce_model->fetch_by_id('introduce_category', $id);
-        if(!$category){
-            redirect('admin/introduce/category', 'refresh');
-        }
+            $category = $this->introduce_model->fetch_by_id('introduce_category', $id);
+            if(!$category){
+                $isExists = false;
+            }
 
-        $result = $this->introduce_model->delete('introduce_category', $id);
-        if (!$result) {
-            $this->session->set_flashdata('message', 'There was an error when delete item');
+            $result = $this->introduce_model->delete('introduce_category', $id);
+            if (!$result) {
+                $isExists = false;
+            }else{
+                $isExists = true;
+            }
         }
-        $this->session->set_flashdata('message', 'Item deleted successfully');
-
-        redirect('admin/introduce/category', 'refresh');
+        $this->output->set_status_header(200)->set_output(json_encode(array('isExists' => $isExists)));
+        
     }
 
     public function dropdown_category(){

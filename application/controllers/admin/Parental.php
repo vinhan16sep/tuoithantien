@@ -291,23 +291,31 @@ class Parental extends Admin_Controller {
     }
 
     public function remove_category(){
+
+        $isExists = null;
         $id = $this->input->get('id');
-        if(!isset($id)){
-            redirect('admin/parental/category', 'refresh');
-        }
+        $count_parental = $this->parental_model->count_all($id);
+        if($count_parental > 0){
+            $isExists = false;
+        }else{
+            
+            if(!isset($id)){
+                $isExists = false;
+            }
 
-        $category = $this->parental_model->fetch_by_id('parental_category', $id);
-        if(!$category){
-            redirect('admin/parental/category', 'refresh');
-        }
+            $category = $this->parental_model->fetch_by_id('parental_category', $id);
+            if(!$category){
+                $isExists = false;
+            }
 
-        $result = $this->parental_model->delete('parental_category', $id);
-        if (!$result) {
-            $this->session->set_flashdata('message', 'There was an error when delete item');
+            $result = $this->parental_model->delete('parental_category', $id);
+            if (!$result) {
+                $isExists = false;
+            }else{
+                $isExists = true;
+            }
         }
-        $this->session->set_flashdata('message', 'Item deleted successfully');
-
-        redirect('admin/parental/category', 'refresh');
+        $this->output->set_status_header(200)->set_output(json_encode(array('isExists' => $isExists)));
     }
 
 
