@@ -41,7 +41,6 @@
                     <h1>Giới thiệu</h1>
                     <p><?php echo $introduce['description'] ?></p>
                     <a href="<?php echo base_url('gioi-thieu/gioi-thieu/gioi-thieu-chung'); ?>" style="float: right; color: #fff"><span>Xem thêm</span></a>
-                    
                     <div class="row">
                         <div class="media col-md-6 col-sm-6 col-xs-12">
                             <div class="media-left">
@@ -58,7 +57,7 @@
                             </div>
                             <div class="media-body">
                                 <p>Hotline liên hệ</p>
-                                <h4 class="media-heading"><strong>09 1234 5678</strong></h4>
+                                <h4 class="media-heading"><strong>024.3311.9828</strong></h4>
                             </div>
                         </div>
                     </div>
@@ -79,7 +78,7 @@
         <div class="container" id="featured_01">
             <div class="screen_title">
                 <h1>Học mà chơi - Chơi mà học</h1>
-                <p>Học mà chơi - Chơi mà học</p>
+                <p>Chúng tôi mang đến trương trình giáo dục tiên tiến nhất, được cập nhật thường xuyên nhằm phát triển kỹ năng toàn diện cho trẻ.</p>
             </div>
             <div class="row featured">
                 <div class="col-md-12">
@@ -187,19 +186,19 @@
     <div class="container" id="featured_02">
         <div class="screen_title">
             <h1>Cơ sở vật chất</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+            <p>Mang đến những không gian học tập, vui chơi thoải mái, thoáng mát, vô cùng hiện đại giúp trẻ phát triển toàn diện.</p>
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12 wow fadeInLeft">
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/phongan.jpg') ?>" alt="ảnh tin tức">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                        <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                        <h3 class="media-heading"><strong>Góc thiên nhiên</strong></h3>
+                        <p>Với môi trường cây xanh quanh bé có cơ hội trải nghiệm chăm sóc cây xanh mỗi ngày.</p>
                     </div>
                 </div>
             </div>
@@ -208,12 +207,12 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/khuvuichoi.jpg') ?>" alt="ảnh tin tức">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading"><strong>Nam a egestas sem</strong></h2>
-                        <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                        <h2 class="media-heading"><strong>Khu vui chơi</strong></h2>
+                        <p>Khu vui chơi thỏa sức cho các bé vui đùa, sáng tạo.</p>
                     </div>
                 </div>
             </div>
@@ -222,12 +221,12 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/kids.jpg') ?>" alt="ảnh tin tức">
+                            <img class="media-object img-rounded" src="<?php echo site_url('assets/public/img/phonghoc.jpg') ?>" alt="ảnh tin tức">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h3 class="media-heading"><strong>Nam a egestas sem</strong></h3>
-                        <p>Sed a risus elit. Morbi vehicula augue in lectus dignissim, ut pretium risus mattis. Phasellus gravida ac orci eget vehicula. In porttitor purus sit amet ex finibus, eu ultrices erat imperdiet. Curabitur gravida imperdiet risus vel pretium. Integer at felis a nisi sagittis viverra.</p>
+                        <h3 class="media-heading"><strong>Phòng học</strong></h3>
+                        <p>Phòng học khang trang với những vật dụng an toàn, tiện ích mà vẫn vô cùng đẹp mắt cho các bé thỏa sức học tập.</p>
                     </div>
                 </div>
             </div>
@@ -238,7 +237,7 @@
         <div class="container">
             <div class="screen_title">
                 <h1>Ý kiến phụ huynh</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et feugiat est. Donec eu lobortis tellus. Praesent erat lectus, eleifend facilisis nulla</p>
+                <p></p>
             </div>
             <?php if ($parent_comments): ?>
                 <div class="row">
@@ -292,5 +291,7 @@
     </div>
 
 </section>
+
+
 
 <scrpit src="<?php echo site_url('assets/public/js/homepage.js') ?>"></scrpit>
