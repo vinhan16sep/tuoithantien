@@ -40,7 +40,7 @@
                 <div class="left col-md-6 col-sm-6 col-xs-12">
                     <h1>Giới thiệu</h1>
                     <p><?php echo $introduce['description'] ?></p>
-                    <a href="<?php echo base_url('gioi-thieu/gioi-thieu/gioi-thieu-chung'); ?>" style="float: right; color: #fff"><span>Xem thêm ...</span></a>
+                    <a href="<?php echo base_url('gioi-thieu/gioi-thieu/gioi-thieu-chung'); ?>" style="float: right; color: #fff"><span>Xem thêm</span></a>
                     
                     <div class="row">
                         <div class="media col-md-6 col-sm-6 col-xs-12">
