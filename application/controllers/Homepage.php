@@ -19,6 +19,11 @@ class Homepage extends Public_Controller {
         $this->load->model('parental_model');
         $this->load->model('admission_model');
 
+        $where = array('slug' => 'gioi-thieu-chung');
+        $introduce = $this->introduce_model->fetch_row($where);
+        
+        $this->data['introduce'] = $introduce;
+
         //side activity
         $activity = $this->activity_model->fetch_all_pagination(6, 0);
         if($activity){

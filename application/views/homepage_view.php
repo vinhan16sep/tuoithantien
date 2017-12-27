@@ -39,7 +39,8 @@
             <div class="row">
                 <div class="left col-md-6 col-sm-6 col-xs-12">
                     <h1>Giới thiệu</h1>
-                    <p>Sứ mệnh của trường MẦM NON TUỔI THẦN TIÊN là cung cấp một chương trình giáo dục chất lượng cao từ cấp mầm non, tiểu học đến trung học phổ thông dựa trên những triết lý và thực tiễn giáo dục của Canada nhằm đáp ứng sự mong đợi của quý vị phụ huynh đến từ nhiều quốc gia nhưng vẫn phù hợp với quy định giáo dục ở từng địa phương.</p>
+                    <p><?php echo $introduce['description'] ?></p>
+                    <a href="<?php echo base_url('gioi-thieu/gioi-thieu/gioi-thieu-chung'); ?>" style="float: right; color: #fff"><span>Xem thêm</span></a>
                     <div class="row">
                         <div class="media col-md-6 col-sm-6 col-xs-12">
                             <div class="media-left">

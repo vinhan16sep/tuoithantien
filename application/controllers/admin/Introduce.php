@@ -162,7 +162,8 @@ class Introduce extends Admin_Controller {
         $this->load->model('comment_model');
         $category_id = $this->uri->segment(4);
         $this->data['category_id'] = $category_id;
-        $this->data['check_slug'] = array('y-kien-phu-huynh');
+        // $this->data['check_slug'] = array('y-kien-phu-huynh');
+        $this->data['introduce_slug'] = 'gioi-thieu-chung';
 
         $this->load->library('pagination');
         $config = array();
