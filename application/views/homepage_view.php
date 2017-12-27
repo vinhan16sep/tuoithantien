@@ -39,7 +39,9 @@
             <div class="row">
                 <div class="left col-md-6 col-sm-6 col-xs-12">
                     <h1>Giới thiệu</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tincidunt mi vel nisl vehicula, non iaculis erat tincidunt. Nam dignissim mattis orci vitae porttitor. Nulla vel tincidunt nunc, at convallis magna. Integer malesuada elit et bibendum auctor. Sed et auctor metus. Pellentesque dapibus augue nec varius varius. Fusce eget magna viverra, tempor libero non, porta nunc. Proin sed laoreet eros. Aliquam pulvinar fermentum justo in ultrices. Duis suscipit pharetra arcu, eget tincidunt ante sodales hendrerit. Nulla nec sapien a orci tristique convallis eu eu velit. Vivamus diam arcu, tempus ut consectetur sit amet, aliquet vitae arcu. Quisque ullamcorper urna eu dolor sollicitudin eleifend. Nulla accumsan turpis condimentum neque rhoncus, sed mollis arcu porta. Quisque a felis sit amet leo posuere convallis. Sed mi mi, finibus sed nisi ut, porttitor vestibulum nisl.</p>
+                    <p><?php echo $introduce['description'] ?></p>
+                    <a href="<?php echo base_url('gioi-thieu/gioi-thieu/gioi-thieu-chung'); ?>" style="float: right; color: #fff"><span>Xem thêm ...</span></a>
+                    
                     <div class="row">
                         <div class="media col-md-6 col-sm-6 col-xs-12">
                             <div class="media-left">
