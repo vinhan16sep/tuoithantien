@@ -9,7 +9,7 @@
     <div class="container" id="registerScreen">
         <div class="screen_title">
             <h1>Đăng ký nhập học</h1>
-            <p>Text giới thiệu chung về các chương trình</p>
+            <p></p>
         </div>
 
         <div class="row">
