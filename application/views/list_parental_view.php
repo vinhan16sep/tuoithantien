@@ -12,7 +12,9 @@
                     <ul class="list-unstyled list-group">
                         <?php if ($sidebar): ?>
                             <?php foreach ($sidebar as $value): ?>
-                                <li class="list-group-item"><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(2)? 'style="color: #008b44"' : '') ?> ><?php echo $value['title'] ?></a></li>
+                                <?php if($value['slug'] != 'y-kien-phu-huynh'): ?>
+                                    <li class="list-group-item"><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['slug']) ?>" <?php echo ($value['slug'] == $this->uri->segment(2)? 'style="color: #008b44"' : '') ?> ><?php echo $value['title'] ?></a></li>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </ul>
