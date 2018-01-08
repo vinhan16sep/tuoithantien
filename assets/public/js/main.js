@@ -172,3 +172,18 @@ $('.subcribe_bnt').click(function () {
     }
 
 });
+
+
+//register
+$('#place').change(function () {
+        var search_place = $(this).val();
+        jQuery.ajax({
+            method: "get",
+            url: "http://localhost/tuoithantien/admin/register/select_class",
+            // url: location.protocol + "//" + location.host + (location.port ? ':' + location.port : '') + "/tuoithantien/comment/create_comment",
+            data: {search_place : search_place},
+            success: function(result){
+                $('#grade').html(result);
+            }
+        });
+    });
