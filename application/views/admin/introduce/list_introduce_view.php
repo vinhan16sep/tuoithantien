@@ -50,19 +50,15 @@
                                                 <apan class="badge" style="position: absolute; top: -5px; left: 10px; padding: 3px 6px; font-size: 9px; background: red;"><?php echo $value['count_comment'] ?></apan>
                                             </a>
                                             &nbsp&nbsp
-                                            <?php if ($introduce_slug == $value['slug']): ?>
-                                                <a href="<?php echo base_url('admin/introduce/edit/'.$value['id']); ?>" title="Chỉnh sửa" style="display: none">
+                                            <a href="<?php echo base_url('admin/introduce/edit/'.$value['id']); ?>" title="Chỉnh sửa">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                                 </a>
                                                 &nbsp&nbsp
+                                            <?php if ($introduce_slug == $value['slug']): ?>
                                                 <a href="<?php echo base_url('admin/introduce/remove'); ?>" title="Xóa" class="btn-remove" data-id="<?php echo $value['id'] ?>"  style="display: none">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
                                             <?php else: ?>
-                                                <a href="<?php echo base_url('admin/introduce/edit/'.$value['id']); ?>" title="Chỉnh sửa">
-                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                </a>
-                                                &nbsp&nbsp
                                                 <a href="<?php echo base_url('admin/introduce/remove'); ?>" title="Xóa" class="btn-remove" data-id="<?php echo $value['id'] ?>">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </a>
