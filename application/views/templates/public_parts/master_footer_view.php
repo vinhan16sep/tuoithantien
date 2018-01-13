@@ -58,6 +58,8 @@
                     <li><a href="<?php echo base_url('phoi-hop-cung-phu-huynh/giao-duc') ?>">Phối hợp cùng phụ huynh</a></li>
                     <li><a href="<?php echo base_url('hoat-dong/thong-bao-nha-truong') ?>">Hoạt động</a></li>
                     <li><a href="<?php echo base_url('lien-he') ?>">Liên hệ</a></li>
+                    <br>
+                    <li><a href="#" data-toggle="modal" data-target="#survey_modal">Thăm dò dư luận</a> </li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">

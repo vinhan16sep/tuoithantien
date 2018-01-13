@@ -24,13 +24,15 @@
 
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
 
-                <h2 class="blog_title"><?php echo $detail['title'] ?></h2>
+                <article>
+                    <h2 class="blog_title"><?php echo $detail['title'] ?></h2>
 
-                <blockquote>
-                    <?php echo $detail['description'] ?>
-                </blockquote>
+                    <blockquote>
+                        <?php echo $detail['description'] ?>
+                    </blockquote>
 
-                <?php echo $detail['content'] ?>
+                    <?php echo $detail['content'] ?>
+                </article>
 
                 <div class="comments">
                 	
@@ -103,10 +105,10 @@
            <div id="register_footer" style="position: absolute; bottom: -56px; left: 50%;  margin-left: -960px;"><img src="img/register_footer.png" alt="register_footer"></div>-->
         <div class="container">
             <div class="row">
-                <div class="screen_title">
+                <!--<div class="screen_title">
                     <h1>Đăng ký nhập học</h1>
                     <p>Hãy đăng ký cho con bạn ngay hôm nay để có thể được tư vấn tốt nhất.</p>
-                </div>
+                </div>-->
                 <div class="col-md-6 col-sm-6 col-xs-12 wow slideInUp">
                     <div id="register_image"></div>
                 </div>

@@ -30,8 +30,18 @@ Author: hung.luong@matocreative.vn
 	border-radius: 37px;
 }
 
-.featured .inner:hover a h2{
+.featured .inner:hover a h2 {
 	color: #fff;
+}
+
+.featured .inner a h2{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 1.5em;
+	max-height: 5.625em;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
 }
 
 .featured .inner{
@@ -65,16 +75,8 @@ Author: hung.luong@matocreative.vn
 	position: relative;
 }
 
-.container-fluid#blogs .container #frame_04{
-	position: absolute;
-	top: 40%;
-	left: -30%;
-}
-
-.container-fluid#blogs .container #frame_05{
-	position: absolute;
-	top: 60%;
-	right: -30%;
+.container-fluid#blogs .container div[class*="col-"]{
+	display: block-inline;
 }
 
 .container-fluid#blogs ul.media-list li{
