@@ -332,3 +332,9 @@ ul.list-unstyled li{
 .modal#survey_modal .modal-header{
     background-image: url(../img/bg_modal_header.png);
 }
+
+@media ( max-width: 768px) {
+    #header_index_about, .footer_img, #footer_head{
+        width: 100%;
+    }
+}

@@ -117,68 +117,78 @@
     <div class="container-fluid" id="blogs">
         <div class="container">
             <div class="row">
-                <div class="left col-md-6 col-sm-6 col-xs-12">
-                    <h1>Thông tin nhập học</h1>
+                <div class="row">
+                    <div class="left col-md-6 col-sm-6 col-xs-12">
+                        <h1>Thông tin nhập học</h1>
 
-                    <ul class="media-list">
-                        <?php if ($admission): ?>
-                            <?php foreach ($admission as $value): ?>
+                        <ul class="media-list">
+                            <?php if ($admission): ?>
+                                <?php foreach ($admission as $value): ?>
+                                    <li class="media">
+                                        <div class="media-left">
+                                            <a href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>">
+                                                <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/admission/'.$value['image']) ?>" alt="ảnh tin tức">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
+                                            <p><?php echo $value['description'] ?></p>
+                                            <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+                                <!-- <li>
+                                    <a href="<?php echo base_url('thong-tin-nhap-hoc') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                </li> -->
+                            <?php else: ?>
                                 <li class="media">
-                                    <div class="media-left">
-                                        <a href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>">
-                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/admission/'.$value['image']) ?>" alt="ảnh tin tức">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
-                                        <p><?php echo $value['description'] ?></p>
-                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>" role="button">Xem tiếp</a>
-                                    </div>
+                                    Chưa có bài viết nào
                                 </li>
-                            <?php endforeach; ?>
-                            <!-- <li>
-                                <a href="<?php echo base_url('thong-tin-nhap-hoc') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                            </li> -->
-                        <?php else: ?>
-                            <li class="media">
-                                Chưa có bài viết nào
-                            </li>
-                        <?php endif; ?>
-                    </ul>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 hidden-xs text-center">
+                        <img id="frame_04" src="<?php echo site_url('assets/public/img/img_frame-07.png') ?>" alt="frame-1" class="wow slideInUp">
+                    </div>
                 </div>
 
-                <div class="right col-md-6 col-sm-6 col-xs-12">
-                    <h1>Phối hợp cùng phụ huynh</h1>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 hidden-xs text-center">
+                        <img id="frame_05" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp">
+                    </div>
 
-                    <ul class="media-list">
-                        <?php if ($experience): ?>
-                            <?php foreach ($experience as $value): ?>
+                    <div class="right col-md-6 col-sm-6 col-xs-12">
+                        <h1>Phối hợp cùng phụ huynh</h1>
+
+                        <ul class="media-list">
+                            <?php if ($experience): ?>
+                                <?php foreach ($experience as $value): ?>
+                                    <li class="media">
+                                        <div class="media-left">
+                                            <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>">
+                                                <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>" alt="ảnh tin tức">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
+                                            <p><?php echo $value['description'] ?></p>
+                                            <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>" role="button">Xem tiếp</a>
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+                                <!-- <li>
+                                    <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                                </li> -->
+                            <?php else: ?>
                                 <li class="media">
-                                    <div class="media-left">
-                                        <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>">
-                                            <img class="media-object img-rounded" src="<?php echo site_url('assets/upload/parental/'.$value['image']) ?>" alt="ảnh tin tức">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h3 class="media-heading"><strong><?php echo $value['title'] ?></strong></h3>
-                                        <p><?php echo $value['description'] ?></p>
-                                        <a class="btn btn-primary hvr-icon-forward" href="<?php echo base_url('phoi-hop-cung-phu-huynh/'.$value['sub'].'/'.$value['slug']) ?>" role="button">Xem tiếp</a>
-                                    </div>
+                                    Chưa có bài viết nào
                                 </li>
-                            <?php endforeach; ?>
-                            <!-- <li>
-                                <a href="<?php echo base_url('phoi-hop-cung-phu-huynh/chia-se-kinh-nghiem-hay') ?>" class="pull-right readMore">Xem tất cả <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                            </li> -->
-                        <?php else: ?>
-                            <li class="media">
-                                Chưa có bài viết nào
-                            </li>
-                        <?php endif; ?>
-                    </ul>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <img id="frame_04" src="<?php echo site_url('assets/public/img/img_frame-07.png') ?>" alt="frame-1" class="wow slideInUp hidden-xs">
-            <img id="frame_05" src="<?php echo site_url('assets/public/img/img_frame-08.png') ?>" alt="frame-2" class="wow slideInUp hidden-xs">
         </div>
 
         <div class="footer_img" id="footer_index_blogs"></div>

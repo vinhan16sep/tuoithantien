@@ -6,10 +6,13 @@ Author: hung.luong@matocreative.vn
 
 */
 
+.main_content > .container{
+	background-color: #fff;
+}
+
 .cover{
 	padding-left: 0;
 	padding-right: 0;
-	
 }
 
 .cover img{
@@ -31,8 +34,13 @@ Author: hung.luong@matocreative.vn
 }
 
 .blogs .blog_title{
-	height: 3em;
-	overflow-y: hidden;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-height: 1.8em;
+	max-height: 6em;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
 }
 
 .blogs .blog_description{
@@ -72,4 +80,14 @@ Author: hung.luong@matocreative.vn
 .screen_title{
 	margin-top: 50px;
 	margin-bottom: 30px;
+}
+
+article > table, article table, article ol table{
+	width: 100% !important;
+	border: 1px solid #eaeaea !important;
+}
+
+article > table tr, article > table td{
+	border: 1px solid #eaeaea !important;
+	padding: 5px !important;
 }
