@@ -88,7 +88,7 @@
                     </tr>
                     <tr>
                         <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
-                        <td>mntuoithan-hd@hanoi.edu.vn</td>
+                        <td>mntuoithantien-hd@hanoiedu.vn</td>
                     </tr>
                 </table>
             </div>
