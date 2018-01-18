@@ -35,7 +35,9 @@
                                 <td style="width: 150px"><b><a href="#">Ảnh đại diện</a></b></td>
                                 <td><b><a href="#"><?php echo $title; ?></a></b></td>
                                 <td><b><a href="#">Slug</a></b></td>
-                                <td><b><a href="#">Danh mục</a></b></td>
+                                <td style="width: 150px"><b><a href="#">Danh mục</a></b></td>
+                                <td><b><a href="#">Tác giả</a></b></td>
+                                <td style="width: 150px"><b><a href="#">Ngày đăng</a></b></td>
                                 <td><b>Operations</b></td>
                             </tr>
 
@@ -46,6 +48,8 @@
                                     <td><?php echo $value['title'] ?></td>
                                     <td><?php echo $value['slug'] ?></td>
                                     <td><?php echo ($categories[$value['category_id']])? $categories[$value['category_id']] : ''; ?></td>
+                                    <td><?php echo $value['created_by'] ?></td>
+                                    <td><?php echo $value['created_at'] ?></td>
                                     <td>
                                         <form class="form_ajax">
                                             <?php if (in_array($slug, $check_slug) == 0): ?>
