@@ -76,15 +76,34 @@
                 <table class="table">
                     <tr>
                         <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
-                        <td>Cơ sở 1,2: Tổ 1 phường La Khê – Quận Hà Đông – Thành phố Hà Nội – Điện thoại: 024.33.119.828 – 024.33.552.359</td>
+                        <td>
+                            Cơ sở 1: Số 7, Tổ 1 phường La Khê – Quận Hà Đông – Thành phố Hà Nội
+                            <br>
+                            Điện thoại: 024.33.119.828 – 0963.221.493
+                        </td>
                     </tr>
                     <tr>
                         <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
-                        <td>Cơ sở 3: Tầng 5 tòa V3 chung cư Victoria Văn Phú – Hà Đông – HN. Điện thoại: 024.62.542.325</td>
+                        <td>
+                            Cơ sở 2: Số 108 Phan Đình Giót, Tổ 2 phường La Khê – Quận Hà Đông – Thành phố Hà Nội
+                            <br>
+                            Điện thoại: 024.33.552.359 – 0973.521.728
+                        </td>
                     </tr>
                     <tr>
                         <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
-                        <td>Cơ sở 5: Liền kề 16 – Ô 52 khu đô thị An Hưng – phường La khê – HĐ – HN. Điện thoại: 024.62.942.689</td>
+                        <td>
+                            Cơ sở 3: Tầng 5 tòa V3 chung cư Victoria Văn Phú – Hà Đông – HN.
+                            <br>Điện thoại: 024.62.542.325 - 0167.9360.287
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                        <td>
+                            Cơ sở 5: Liền kề 16 – Ô 52 khu đô thị An Hưng – phường La khê – HĐ – HN.
+                            <br>
+                            Điện thoại: 024.62.942.689 - 0945.688.978
+                        </td>
                     </tr>
                     <tr>
                         <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
