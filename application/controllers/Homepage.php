@@ -66,7 +66,7 @@ class Homepage extends Public_Controller {
         $where = array('slug' => $slug);
         $parental_category = $this->parental_model->fetch_row($where, 'parental_category');
         $where = array('category_id' => $parental_category['id']);
-        $parent_comments = $this->parental_model->get_all_pagination($where, 3, 0);
+        $parent_comments = $this->parental_model->get_all_pagination($where, 5, 0);
         $this->data['parent_comments'] = $parent_comments;
 
         $banner = $this->banner_model->get_all();

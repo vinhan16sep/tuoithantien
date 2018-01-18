@@ -26,6 +26,8 @@
                                 <td style="width: 150px"><b><a href="#">Ảnh đại diện</a></b></td>
                                 <td><b><a href="#">Tiêu đề</a></b></td>
                                 <td><b><a href="#">Slug</a></b></td>
+                                <td><b><a href="#">Tác giả</a></b></td>
+                                <td><b><a href="#">Ngày đăng</a></b></td>
                                 <td><b>Operations</b></td>
                             </tr>
 
@@ -35,6 +37,8 @@
                                     <td><img src="<?php echo base_url('assets/upload/article/'.$value['image']) ?>" alt=""></td>
                                     <td><?php echo $value['title'] ?></td>
                                     <td><?php echo $value['slug'] ?></td>
+                                    <td><?php echo $value['created_by'] ?></td>
+                                    <td><?php echo $value['created_at'] ?></td>
                                     <td>
                                         <?php if (in_array($value['slug'], $menu_check) == null ): ?>
                                             <form class="form_ajax">

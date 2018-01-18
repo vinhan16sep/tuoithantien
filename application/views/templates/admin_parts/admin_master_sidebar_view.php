@@ -46,6 +46,14 @@
                     </a>
                 </li>
 
+                <li class="<?php echo ($active == 'subcribe')? 'active' : '' ?>">
+                    <a href="<?php echo base_url('admin/subcribe'); ?>">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                        <span>Đăng ký theo dõi</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+
                 <li class="<?php echo ($active == 'register')? 'active treeview' : 'treeview' ?>">
                     <a href=""><i class="fa fa-graduation-cap" aria-hidden="true"></i> Đăng ký nhập học
                         <span class="pull-right-container">

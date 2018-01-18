@@ -28,6 +28,8 @@
                                 <td><b><a href="#">Tiêu đề</a></b></td>
                                 <td><b><a href="#">Slug</a></b></td>
                                 <td><b><a href="#">Danh mục</a></b></td>
+                                <td><b><a href="#">Tác giả</a></b></td>
+                                <td><b><a href="#">Ngày đăng</a></b></td>
                                 <td><b>Operations</b></td>
                             </tr>
                             
@@ -42,7 +44,8 @@
                                     <?php else: ?>
                                         <td></td>
                                     <?php endif ?>
-                                    
+                                    <td><?php echo $value['created_by'] ?></td>
+                                    <td><?php echo $value['created_at'] ?></td>
                                     <td>
                                         <form class="form_ajax">
                                             <a href="<?php echo base_url('admin/comment/introduce/'.$value['slug']); ?>" title="Danh sách comment" class="show_comment" data-category="introduce" data-slug="<?php echo $value['slug'] ?>" style="position: relative;" >
