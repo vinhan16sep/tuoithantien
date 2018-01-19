@@ -126,6 +126,9 @@
                             </div>
                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                 <input type="submit" class="btn btn-primary hvr-icon-forward" value="Gửi đăng ký" name="submit">
+                                <a href="<?php echo site_url('assets/public/doc/register_form.doc') ?>" class="btn btn-default" role="button">
+                                    Download đơn xin nhập học <i class="fa fa-download" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                         <?php
