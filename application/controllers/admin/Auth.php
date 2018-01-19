@@ -424,6 +424,7 @@ class Auth extends CI_Controller {
         $this->data['identity_column'] = $identity_column;
 
         // validate form input
+        $this->form_validation->set_rules('username', $this->lang->line('create_user_validation_username_label'), 'required|is_unique[' . $tables['users'] . '.username]');
         $this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'required');
         $this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'required');
         if($identity_column!=='email')
@@ -447,6 +448,7 @@ class Auth extends CI_Controller {
             $password = $this->input->post('password');
 
             $additional_data = array(
+                'username' => $this->input->post('username'),
                 'first_name' => $this->input->post('first_name'),
                 'last_name'  => $this->input->post('last_name'),
                 'company'    => $this->input->post('company'),
@@ -458,7 +460,7 @@ class Auth extends CI_Controller {
             // check to see if we are creating the user
             // redirect them back to the admin page
             $this->session->set_flashdata('message', $this->ion_auth->messages());
-            redirect("auth", 'refresh');
+            redirect("admin/dashboard", 'refresh');
         }
         else
         {
@@ -466,6 +468,12 @@ class Auth extends CI_Controller {
             // set the flash data error message if there is one
             $this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
+            $this->data['username'] = array(
+                'name'  => 'username',
+                'id'    => 'username',
+                'type'  => 'text',
+                'value' => $this->form_validation->set_value('username'),
+            );
             $this->data['first_name'] = array(
                 'name'  => 'first_name',
                 'id'    => 'first_name',

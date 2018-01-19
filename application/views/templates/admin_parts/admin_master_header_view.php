@@ -183,6 +183,9 @@
 
               <!-- menu footer-->
               <li class="user-footer">
+              <div class="pull-left">
+                  <a href="<?php echo site_url('admin/auth/create_user'); ?>" class="btn btn-default btn-flat">Register</a>
+              </div>
                 <div class="pull-right">
                   <a href="<?php echo site_url('admin/user/logout'); ?>" class="btn btn-default btn-flat">sign out</a>
                 </div>
