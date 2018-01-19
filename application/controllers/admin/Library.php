@@ -56,6 +56,7 @@ class Library extends Admin_Controller{
         $this->data['slug'] = $slug;
         $this->form_validation->set_rules('title', 'Tiêu đề', 'trim|required');
         $this->form_validation->set_rules('content', 'Nội dung', 'required');
+        $this->form_validation->set_rules('image_list', 'Hình ảnh', 'callback_check_size_image');
         if($this->input->post()){
             if($this->form_validation->run() == TRUE){
 
@@ -98,6 +99,18 @@ class Library extends Admin_Controller{
 
         $this->render('admin/image/create_library_view');
 	}
+
+    function check_size_image(){
+        $this->form_validation->set_message('check_size_image', 'Ảnh đã vượt quá dung lượng 1 MB, vui lòng kiểm tra lại');
+        if(!empty($_FILES)){
+            foreach ($_FILES['image_list']['size'] as $value){
+                if($value > 1048576 || $value <= 0){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
 	public function edit($id = null){
         $id = $this->uri->segment(4);
