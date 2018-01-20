@@ -1,6 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/css/blog.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/js/lightbox-plus-jquery.css') ?>">
-
 <section class="main_content" id="detail">
     <div class="container">
         <div class="row">
@@ -22,21 +21,23 @@
                 <div id="category_footer"></div>
             </div>
 
-			<h4><?php echo $library['content'] ?></h4>
+
             
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <h3>Thư viện ảnh: <?php echo $library['title'] ?></h3>
-                <div class="row">
+                <h4><?php echo $library['content'] ?></h4>
+                <div class="">
                 	<?php if ($images != ''): ?>
 	                	<?php foreach ($images as $key => $value): ?>
-		                    <div class="item col-md-4 col-sm-6 col-xs-12">
-		                        <a class="inner">
-                                    <a class="example-image-link" data-lightbox="example-1" href="<?php echo site_url('assets/upload/image/'.$library['slug'].'/'.$value['image']) ?>">
-                                        <img class="img-rounded example-image" src="<?php echo site_url('assets/upload/image/'.$library['slug'].'/'.$value['image']) ?>" width=100%>
-                                    </a>
-		                            <h3 class="blog_title"><?php echo $value['title'] ?></h3>
-		                        </div>
-		                    </div>
+
+                                <h3 class="blog_title"><?php echo $value['title'] ?></h3>
+                                <img class="img-rounded example-image" src="<?php echo site_url('assets/upload/image/'.$library['slug'].'/'.$value['image']) ?>" width=100%>
+
+<!--		                        <a class="inner">-->
+<!--                                    <a class="example-image-link" data-lightbox="example-1">-->
+<!--                                        <img class="img-rounded example-image" src="--><?php //echo site_url('assets/upload/image/'.$library['slug'].'/'.$value['image']) ?><!--" width=100%>-->
+<!--                                    </a>-->
+
 	                    <?php endforeach ?>
 	                <?php else: ?>
                         <div class="item col-md-4 col-sm-6 col-xs-12">
