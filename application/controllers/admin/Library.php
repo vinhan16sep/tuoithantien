@@ -149,6 +149,9 @@ class Library extends Admin_Controller{
                 try {
                     $this->library_model->update($image_id, $data);
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
+                    if($image_link['slug'] != $unique_slug){
+                        rename('assets/upload/image/'.$image_link['slug'], 'assets/upload/image/'.$unique_slug);
+                    }
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
                 }

@@ -11,24 +11,26 @@ class Image extends Public_Controller {
     }
 
     public function index(){
+        $this->output->enable_profiler(TRUE);
         $this->load->model('image_model');
         $this->data['meta']['description'] = 'Thư viện ảnh';
 
         $this->load->library('pagination');
-        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
         $total_rows = count($this->library_model->fetch_all());
 
         $config = array();
         $base_url = base_url() . 'thu-vien/thu-vien-anh';
         $per_page = 12;
-        $uri_segment = 3;
+        $uri_segment = $page;
         $config = $this->pagination_con($base_url, $total_rows, $per_page, $uri_segment);
 
         $this->pagination->initialize($config);
         $this->data['page_links'] = $this->pagination->create_links();
 
         $list = $this->library_model->fetch_all(null, $per_page, $page);
+
         if(!empty($list)){
             foreach ($list as $key => $value) {
                 $where = array('image_id' => $value['id']);
@@ -36,7 +38,9 @@ class Image extends Public_Controller {
                 $list[$key]['sub_image'] = $image['image'];
             }
         }
+//        print_r($list);die;
         $this->data['list'] = $list;
+
 
         $this->render('list_image_view');
     }
