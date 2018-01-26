@@ -164,7 +164,7 @@
                                 <button data-url="<?php echo base_url('admin/menu/remove'); ?>" data-id="<?php echo $item['id']; ?>" type="button" class="btn btn-danger btn-remove-menu">
                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </button>
-                                <button data-url="<?php echo base_url('admin/menu/active'); ?>" data-id="<?php echo $item['id']; ?>" data-active="<?php echo $item['is_actived']; ?>" type="button" class="btn <?php echo ($item['is_actived'] == 1) ? 'btn-success' : 'btn-danger'; ?> btn-active-menu">
+                                <button data-url="<?php echo base_url('admin/menu/active'); ?>" data-parent-id="<?php echo $menu['id']; ?>" data-id="<?php echo $item['id']; ?>" data-active="<?php echo $item['is_actived']; ?>" type="button" class="btn <?php echo ($item['is_actived'] == 1) ? 'btn-success' : 'btn-danger'; ?> btn-active-menu">
                                     <i class="fa <?php echo ($item['is_actived'] == 1) ? 'fa-check' : 'fa-remove'; ?>" aria-hidden="true"></i>
                                 </button>
                             </li>

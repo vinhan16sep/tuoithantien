@@ -164,6 +164,7 @@ $('.btn-remove-category').click(function (e) {
 
  $('.btn-active-menu').click(function(e){
      e.preventDefault();
+     var parent_id = $(this).data('parent-id');
      var client_id = $(this).data('id');
      var is_actived = $(this).data('active');
 
@@ -174,6 +175,7 @@ $('.btn-remove-category').click(function (e) {
              url: url,
              method: 'GET',
              data: {
+                 parent_id : parent_id,
                  id : client_id,
                  is_actived : is_actived
              },

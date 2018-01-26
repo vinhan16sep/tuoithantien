@@ -107,6 +107,18 @@ class Menu extends Admin_Controller {
                 if (!$insert) {
                     $this->session->set_flashdata('message', 'Bài viết này không tồn tại');
                 }
+
+                $count_sub = $this->menu_model->count_all_sub_in_main($request_id);
+                if($count_sub > 0){
+                    $new_data_parent_menu = array(
+                        'url' => null,
+                        'select_main' => null,
+                        'select_category' => null,
+                        'select_article' => null
+                    );
+
+                    $this->menu_model->update('menu', $request_id, $new_data_parent_menu);
+                }
                 $this->session->set_flashdata('message', 'Item added successfully');
 
                 redirect('admin/menu', 'refresh');
@@ -171,13 +183,13 @@ class Menu extends Admin_Controller {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Title', 'trim|required');
-//        $this->form_validation->set_rules('url', 'Url', 'trim|required');
 
         $id = isset($request_id) ? (int) $request_id : (int) $this->input->post('id');
+        $menu = $this->menu_model->fetch_by_id('menu', $id);
+
         if ($this->form_validation->run() == FALSE) {
             $this->data['list_parent'] = $this->dropdown_parent();
             $this->data['count_sub'] = $this->menu_model->count_all_sub_in_main($id);
-            $menu = $this->menu_model->fetch_by_id('menu', $id);
             $this->data['parent'] =  $menu['parent'];
 
             if($this->data['count_sub'] == 0){
@@ -209,6 +221,18 @@ class Menu extends Admin_Controller {
 
                 try {
                     $this->menu_model->update('menu', $id, $data);
+
+                    $count_sub = $this->menu_model->count_all_sub_in_main($menu['parent']);
+                    if($count_sub > 0){
+                        $new_data_parent_menu = array(
+                            'url' => null,
+                            'select_main' => null,
+                            'select_category' => null,
+                            'select_article' => null
+                        );
+
+                        $this->menu_model->update('menu', $menu['parent'], $new_data_parent_menu);
+                    }
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thành công');
                 } catch (Exception $e) {
                     $this->session->set_flashdata('message', 'Cập nhật bài viết thất bại: ' . $e->getMessage());
@@ -227,10 +251,23 @@ class Menu extends Admin_Controller {
    }
 
     public function active($id = NULL){
+        $parent_id = $this->input->get('parent_id');
         $id = $this->input->get('id');
         $is_actived = $this->input->get('is_actived');
+
         $change = ($is_actived == 1) ? 0 : 1;
         $this->menu_model->active('menu',$id, $change);
+        $count_sub = $this->menu_model->count_all_sub_in_main($parent_id);
+        if($count_sub > 0){
+            $new_data_parent_menu = array(
+                'url' => null,
+                'select_main' => null,
+                'select_category' => null,
+                'select_article' => null
+            );
+
+            $this->menu_model->update('menu', $parent_id, $new_data_parent_menu);
+        }
 
         redirect('admin/menu', 'refresh');
     }
