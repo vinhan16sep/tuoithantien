@@ -69,7 +69,49 @@
                 </table>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <h3>Về chúng tôi</h3>
+                <h3>Thăm dò dư luận</h3>
+                <p>
+                    Bạn quan tâm nhất điều gì khi con tới trường?
+                </p>
+
+                <?php
+                echo form_open_multipart('', array('id' => 'survey_form', 'class' => 'form-horizontal'));
+                ?>
+                <div class="radio">
+                    <label>
+                        <?php echo form_radio("option", "1", NULL, 'id="optionsRadios1"'); ?>
+                        Con được học và chơi gì?
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <?php echo form_radio("option", "2", NULL, 'id="optionsRadios2"'); ?>
+                        "Khi đến tường cô giáo như mẹ hiền"
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <?php echo form_radio("option", "3", NULL, 'id="optionsRadios3"'); ?>
+                        Con được ăn gì? Uống gì? Ngủ ngon không?
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <?php echo form_radio("option", "4", NULL, 'id="optionsRadios4"'); ?>
+                        Tất cả các ý kiến trên
+                    </label>
+                </div>
+
+                <br>
+                <br>
+
+                <button id="send-survey" type="button" class="btn btn-primary" onclick="sendSurvey()">Bình chọn</button>
+
+                <?php
+                echo form_close();
+                ?>
+
+                <!--<h3>Về chúng tôi</h3>
                 <ul class="list-unstyled">
                     <li><a href="<?php echo base_url('trang-chu') ?>">Trang chủ</a></li>
                     <li><a href="<?php echo base_url('gioi-thieu/tam-nhin') ?>">Tầm nhìn</a></li>
@@ -79,7 +121,8 @@
                     <li><a href="<?php echo base_url('lien-he') ?>">Liên hệ</a></li>
                     <br>
                     <li><a href="#" data-toggle="modal" data-target="#survey_modal">Thăm dò dư luận</a> </li>
-                </ul>
+                </ul>--> <!--Close footer nav -->
+
             </div>
             <div class="col-md-3 col-sm-3 col-xs-6">
                 <h3>Thông tin truy cập</h3>
@@ -111,14 +154,69 @@
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <h3>Facebook</h3>
-                <ul class="list-unstyled">
-                    <li><a target="_blank" href="https://www.facebook.com/H%E1%BB%87-Th%E1%BB%91ng-Tr%C6%B0%E1%BB%9Dng-m%E1%BA%A7m-non-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-kh%E1%BB%91i-nh%C3%A0-tr%E1%BA%BB-682980001756212/">Hệ Thống Trường mầm non Tuổi Thần Tiên khối nhà trẻ</a></li>
-                    <li><a target="_blank" href="https://www.facebook.com/khoi3tuoi/">Hệ thống trường MN Tuổi Thần Tiên khối 3 tuổi</a></li>
-                    <li><a target="_blank" href="https://www.facebook.com/hethongtruongmamnontuoithantiencs3/">Hệ thống trường mầm non Tuổi Thần Tiên CS3</a></li>
-                    <li><a target="_blank" href="https://www.facebook.com/H%E1%BB%87-th%E1%BB%91ng-tr%C6%B0%E1%BB%9Dng-MN-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-Kh%E1%BB%91i-4-Tu%E1%BB%95i-1546143268939800/">Hệ thống trường MN Tuổi Thần Tiên Khối 4 Tuổi</a></li>
-                    <li><a target="_blank" href="https://www.facebook.com/Mntuoithantiencs5/?ref=br_rs">Hệ thống trường mầm non Tuổi Thần Tiên CS5</a></li>
-                    <li><a target="_blank" href="https://www.facebook.com/khoi5tuoi/">Hệ thống trường MN Tuổi Thần Tiên Khối 5 tuổi</a></li>
-                </ul>
+
+                <table class="table">
+                    <tr>
+                        <td>
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </td>
+                        <td>
+                            <a target="_blank" href="https://www.facebook.com/H%E1%BB%87-Th%E1%BB%91ng-Tr%C6%B0%E1%BB%9Dng-m%E1%BA%A7m-non-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-kh%E1%BB%91i-nh%C3%A0-tr%E1%BA%BB-682980001756212/">
+                                Hệ Thống Trường mầm non Tuổi Thần Tiên khối nhà trẻ
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </td>
+                        <td>
+                            <a target="_blank" href="https://www.facebook.com/khoi3tuoi/">
+                                Hệ thống trường MN Tuổi Thần Tiên khối 3 tuổi
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </td>
+                        <td>
+                            <a target="_blank" href="https://www.facebook.com/hethongtruongmamnontuoithantiencs3/">
+                                Hệ thống trường mầm non Tuổi Thần Tiên CS3
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </td>
+                        <td>
+                            <a target="_blank" href="https://www.facebook.com/H%E1%BB%87-th%E1%BB%91ng-tr%C6%B0%E1%BB%9Dng-MN-Tu%E1%BB%95i-Th%E1%BA%A7n-Ti%C3%AAn-Kh%E1%BB%91i-4-Tu%E1%BB%95i-1546143268939800/">
+                                Hệ thống trường MN Tuổi Thần Tiên Khối 4 Tuổi
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </td>
+                        <td>
+                            <a target="_blank" href="https://www.facebook.com/Mntuoithantiencs5/?ref=br_rs">
+                                Hệ thống trường mầm non Tuổi Thần Tiên CS5
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </td>
+                        <td>
+                            <a target="_blank" href="https://www.facebook.com/khoi5tuoi/">
+                                Hệ thống trường MN Tuổi Thần Tiên Khối 5 tuổi
+                            </a>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
         </div>
@@ -127,10 +225,14 @@
 <div class="scrollup">
     <i class="fa fa-chevron-up fa-3x"></i>
 </div>
+
+<!--
 <button id="surveyOn" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#survey_modal" data-hover="tooltip" data-placement="left" title="Thăm dò dư luận">
     <i class="fa fa-3x fa-question-circle-o" aria-hidden="true"></i>
 </button>
+-->
 
+<!--
 <div class="modal fade" id="survey_modal" tabindex="-1" role="dialog" aria-labelledby="surveyLabel">
     <div class="modal-dialog modal-sm" role="document">
         <?php
@@ -172,9 +274,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-<!--                <button class="btn btn-primary" type="submit">Bình chọn</button>-->
+                <button class="btn btn-primary" type="submit">Bình chọn</button>
                 <button id="send-survey" type="button" class="btn btn-primary" onclick="sendSurvey()">Bình chọn</button>
-<!--                <button type="button" class="btn btn-default">Xem kết quả</button>-->
+                <button type="button" class="btn btn-default">Xem kết quả</button>
             </div>
         </div>
         <?php
@@ -182,6 +284,7 @@
         ?>
     </div>
 </div>
+-->
 
 </body>
 

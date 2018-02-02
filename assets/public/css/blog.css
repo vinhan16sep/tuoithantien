@@ -91,3 +91,8 @@ article > table tr, article > table td{
 	border: 1px solid #eaeaea !important;
 	padding: 5px !important;
 }
+
+article img{
+	width: 100%;
+	height: auto;
+}

@@ -203,12 +203,16 @@ ul.list-unstyled li{
 	color: #fff;
 }
 
-.footer .table thead, .footer .table tbody{
+.footer .table thead, .footer .table tbody, .footer .table a{
 	color: #fff;
 }
 
 .footer ul.list-unstyled li{
 	background-image: none;
+}
+
+.footer .form-horizontal, .footer p{
+	color: #fff;
 }
 
 .scrollup {
