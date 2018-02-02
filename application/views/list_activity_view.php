@@ -27,7 +27,10 @@
 	                	<?php foreach ($list as $key => $value): ?>
 		                    <div class="item col-md-4 col-sm-6 col-xs-12">
 		                        <div class="inner">
-		                            <img class="img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>">
+                                    <div class="mask">
+                                        <img src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>">
+                                    </div>
+		                            <!--<img class="img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>">-->
                                     <a href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
                                     <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>">Khám phá</a>
 		                        </div>
