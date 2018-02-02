@@ -190,7 +190,7 @@ Author: hung.luong@matocreative.vn
     color: #d83f3f;
 }
 
-.blogs .item img{
+.blogs .item .mask{
     border: 3px solid #d83f3f;
 }
 

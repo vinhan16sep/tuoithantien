@@ -27,7 +27,9 @@
                         <?php foreach ($list as $key => $value): ?>
                             <div class="item col-md-4 col-sm-6 col-xs-12">
                                 <div class="inner">
-                                    <img class="img-rounded" src="<?php echo site_url('assets/upload/admission/'.$value['image']) ?>" width=100%>
+                                    <div class="mask">
+                                        <img src="<?php echo site_url('assets/upload/admission/'.$value['image']) ?>" width=100%>
+                                    </div>
                                     <a href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>"><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
                                     <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('thong-tin-nhap-hoc/'.$value['sub'].'/'.$value['slug']) ?>">Khám phá</a>
                                 </div>
