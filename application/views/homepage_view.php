@@ -41,7 +41,10 @@
                     <h1>Giới thiệu</h1>
                     <p><?php echo $introduce['description'] ?></p>
                     <?php if(!empty($introduce['description'])): ?>
+                    <div class="row">
                         <a href="<?php echo base_url('gioi-thieu/gioi-thieu/gioi-thieu-chung'); ?>" style="float: right; color: #fff"><span>Xem thêm</span></a>
+                    </div>
+
                     <?php endif; ?>
                     <div class="row">
                         <div class="media col-md-6 col-sm-6 col-xs-12">
@@ -59,7 +62,29 @@
                             </div>
                             <div class="media-body">
                                 <p>Hotline liên hệ</p>
-                                <h4 class="media-heading"><strong>024.3311.9828</strong></h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <h4 class="media-heading">
+                                            <strong>CS1: 024.3311.9828</strong>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        <h4 class="media-heading">
+                                            <strong>CS2: 024.3355.2359</strong>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        <h4 class="media-heading">
+                                            <strong>CS3: 024.6254.2326</strong>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        <h4 class="media-heading">
+                                            <strong>CS5: 024.6294.2689</strong>
+                                        </h4>
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                     </div>
