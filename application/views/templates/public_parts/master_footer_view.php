@@ -30,14 +30,44 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!--<tr>
                             <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
                             <td>
                                 Cơ sở 1: Số 7, Tổ 1 phường La Khê – Quận Hà Đông – Thành phố Hà Nội
                                 <br>
                                 Điện thoại: 024.33.119.828 – 0963.221.493
                             </td>
+                        </tr>-->
+
+                        <tr>
+                            <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+                            <td>
+                                <a href="" data-toggle="modal" data-target="#map_cs1">
+                                    Cơ sở 1: Số 7, Tổ 1 phường La Khê – Quận Hà Đông – Thành phố Hà Nội
+                                </a>
+                                <br>
+                                Điện thoại: 024.33.119.828 – 0963.221.493
+                            </td>
+                            <div class="modal fade" id="map_cs1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Bản đồ địa chỉ cơ sở 1 - Trường mầm non Tuổi Thần Tiên</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="map container-fluid">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d119215.95477315335!2d105.759425!3d20.972642!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x165d1c48862284c6!2zVHLGsOG7nW5nIG3huqdtIG5vbiBUdeG7lWkgVGjhuqduIFRpw6pu!5e0!3m2!1svi!2sus!4v1512474071713" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng cửa sổ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
+
                         <tr>
                             <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
                             <td>
