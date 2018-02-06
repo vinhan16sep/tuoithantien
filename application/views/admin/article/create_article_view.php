@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group picture">
                         <?php
-                        echo form_label('Image', 'image');
+                        echo form_label('Image (Dung lượng ảnh không quá 1 Mb)', 'image');
                         echo form_error('image');
                         echo form_upload('image','','multiple');
                         ?>
