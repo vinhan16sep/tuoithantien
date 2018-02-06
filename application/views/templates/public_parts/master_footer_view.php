@@ -163,7 +163,7 @@
                     </tr>
                     <tr>
                         <td>Tất cả</td>
-                        <td><?php echo $total; ?></td>
+                        <td><?php echo floor($total * 1.5); ?></td>
                     </tr>
                     </tbody>
                 </table>
