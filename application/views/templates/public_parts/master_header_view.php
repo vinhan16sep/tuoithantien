@@ -27,6 +27,8 @@
 
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/public/theme/'.$theme.'/css/theme.css') ?>">
 
+    <link rel="shortcut icon" type="image/png" href="<?php echo site_url('assets/public/img/favicon.png') ?>">
+
     <script type="text/javascript" src="<?php echo site_url('assets/public/libraries/js/jquery-3.2.1.js') ?>"></script>
     <script type="text/javascript" src="<?php echo site_url('assets/public/libraries/js/bootstrap.js') ?>"></script>
 
