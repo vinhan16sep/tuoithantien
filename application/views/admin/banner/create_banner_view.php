@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group picture">
                             <?php
-                            echo form_label('Banner', 'image');
+                            echo form_label('Banner (Dung lượng ảnh không quá 1 Mb)', 'image');
                             echo form_error('image');
                             echo form_upload('image', set_value('image'), 'classs="form-control"');
                             ?>

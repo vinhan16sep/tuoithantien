@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <?php
-                echo form_label('Ảnh đại diện', 'image');
+                echo form_label('Ảnh đại diện (Dung lượng ảnh không quá 1 Mb)', 'image');
                 echo form_error('image');
                 echo form_upload('image','','multiple');
                 ?>
