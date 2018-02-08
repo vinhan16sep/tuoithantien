@@ -203,4 +203,22 @@ class Introduce_model extends CI_Model {
 
         return $query->num_rows();
     }
+
+    public function get_row($where= array()){
+        $this->db->select('title');
+        $this->db->from('introduce');
+        $this->db->where('is_deleted', 0);
+        if($where != null){
+            $this->db->where($where);
+        }
+        $this->db->order_by('id', 'desc');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+            return $query->row_array();
+        }
+
+        return false;
+    }
 }

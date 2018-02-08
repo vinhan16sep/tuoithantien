@@ -268,9 +268,11 @@
 
         <div class="col-md-6">
             <div class="info-box">
-                <span class="info-box-icon bg-blue">
-                    <i class="fa fa-comments-o" aria-hidden="true"></i>
-                </span>
+                <a href="<?php echo base_url('admin/comment/index') ?>">
+                    <span class="info-box-icon bg-blue">
+                        <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    </span>
+                </a>
                 <div class="info-box-content">
                     <span class="info-box-text">Số lượng nhận xét mới</span>
                     <span class="info-box-number"><?php echo $total_comment; ?></span>

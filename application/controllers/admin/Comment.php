@@ -8,16 +8,42 @@ class Comment extends Admin_Controller{
 	}
 
 	public function index(){
+        $this->output->enable_profiler(TRUE);
         $segment = $this->uri->segment(4);
-        if($segment == 'new-comment'){
-            $this->load->model('count_comment_model');
-            $list_comment = $this->count_comment_model->fetch_all();
-        }else{
-            $where =  array('slug' => $segment);
-            $list_comment = $this->comment_model->fetch_all($where);
+        $new_array = array();
+
+        $where = array('status' => 0);
+        $list_comment = $this->comment_model->fetch_all($where);
+        if($list_comment){
+            foreach ($list_comment as $key => $value) {
+                $array_slug[$value['category']][] = $value['slug'];
+            }
+            $new_array_slug = array();
+            foreach ($array_slug as $key => $value) {
+                $new_array_slug[$key] = array_unique($value);
+            }
+            foreach ($new_array_slug as $key => $value) {
+                foreach ($value as $k => $item) {
+                    $where = array('slug' => $item, 'status' => 0);
+                    $news_comment[] = $this->comment_model->fetch_all($where);
+                    $this->load->model($key.'_model');
+                    $model = $key.'_model';
+                    $where = array('slug' => $item);
+                    $title = $this->$model->fetch_row($where);
+                    $array_title[] = $title['title'];
+                    $new_array[$key] = $news_comment;
+                    foreach ($array_title as $sub => $val) {
+                        $new_array[$key][$sub][0]['title'] = $val;
+                    }
+                    foreach ($news_comment as $s => $v) {
+                        $new_array[$key][$s]['total'] = count($v);
+                    }
+                }
+            }
         }
-		$this->data['list_comment'] = $list_comment;
-		$this->render('admin/comment/list_comment_view');
+
+		$this->data['list_comment'] = $new_array;
+		$this->render('admin/comment/new_comment_view');
 	}
 
 	public function introduce(){
