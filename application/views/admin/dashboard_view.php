@@ -38,30 +38,44 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">So bài viết trong ngày</h4>
+                <h4 class="modal-title" id="myModalLabel">Số bài viết trong ngày</h4>
               </div>
               <div class="modal-body">
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-pills nav-justified" role="tablist">
                     <li role="presentation" class="active">
-                        <a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">Giới thiệu <span class="badge"><?php echo $day_introduce ?></span></a>
+                        <a href="#intro" aria-controls="intro" role="tab" data-toggle="tab">
+                            Giới thiệu <span class="badge"><?php echo $day_introduce ?></span>
+                        </a>
                     </li>
                     <li role="presentation">
-                        <a href="#admission" aria-controls="profile" role="tab" data-toggle="tab">Thông tin nhập học <span class="badge"><?php echo $day_admission ?></span></a>
+                        <a href="#admission" aria-controls="profile" role="tab" data-toggle="tab">
+                            Thông tin nhập học <span class="badge"><?php echo $day_admission ?></span>
+                        </a>
                     </li>
                     <li role="presentation">
-                        <a href="#parental" aria-controls="messages" role="tab" data-toggle="tab">Phối hợp cùng phụ huynh <span class="badge"><?php echo $day_parental ?></span></a>
+                        <a href="#parental" aria-controls="messages" role="tab" data-toggle="tab">
+                            Phối hợp cùng phụ huynh <span class="badge"><?php echo $day_parental ?></span>
+                        </a>
                     </li>
                     <li role="presentation">
-                        <a href="#activity" aria-controls="settings" role="tab" data-toggle="tab">Hoạt động <span class="badge"><?php echo $day_activity ?></span></a>
+                        <a href="#activity" aria-controls="settings" role="tab" data-toggle="tab">
+                            Hoạt động <span class="badge"><?php echo $day_activity ?></span>
+                        </a>
                     </li>
                     <li role="presentation">
-                        <a href="#article" aria-controls="profile" role="tab" data-toggle="tab">Bài viết <span class="badge"><?php echo $day_article ?></span></a>
+                        <a href="#article" aria-controls="profile" role="tab" data-toggle="tab">
+                            Bài viết <span class="badge"><?php echo $day_article ?></span>
+                        </a>
                     </li>
                     <li role="presentation">
-                        <a href="#library" aria-controls="messages" role="tab" data-toggle="tab">Thư viện ảnh <span class="badge"><?php echo $day_library ?></span></a>
+                        <a href="#library" aria-controls="messages" role="tab" data-toggle="tab">
+                            Thư viện ảnh <span class="badge"><?php echo $day_library ?></span>
+                        </a>
                     </li>
                     <li role="presentation">
-                        <a href="#video" aria-controls="settings" role="tab" data-toggle="tab">Thư viện video <span class="badge"><?php echo $day_video ?></span></a>
+                        <a href="#video" aria-controls="settings" role="tab" data-toggle="tab">
+                            Thư viện video <span class="badge"><?php echo $day_video ?></span>
+                        </a>
                     </li>
                 </ul>
 

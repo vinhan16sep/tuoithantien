@@ -25,7 +25,10 @@
             
             <div class="blogs col-md-9 col-sm-9 col-xs-12">
                 <h3>Thư viện ảnh: <?php echo $library['title'] ?></h3>
-                <h4><?php echo $library['content'] ?></h4>
+                <small class="dayPost">Ngày đăng: <?php echo $library['created_at'] ?></small>
+
+                <p><?php echo $library['content'] ?></p>
+
                 <div class="">
                 	<?php if ($images != ''): ?>
 	                	<?php foreach ($images as $key => $value): ?>

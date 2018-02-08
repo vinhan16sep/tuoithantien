@@ -26,6 +26,7 @@
 
                 <article>
                     <h2 class="blog_title"><?php echo $detail['title'] ?></h2>
+                    <small class="dayPost">Ngày đăng: <?php echo $detail['created_at'] ?></small>
 
                     <blockquote>
                         <?php echo $detail['description'] ?>
