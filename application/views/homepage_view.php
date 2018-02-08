@@ -117,7 +117,9 @@
                                     <div class="col-md-3 col-sm-6 col-xs-12">
                                         <div class="inner">
                                             <a href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>">
-                                                <img class="img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>" alt="featured_1_1">
+                                                <div class="mask">
+                                                    <img class="img-rounded" src="<?php echo site_url('assets/upload/activity/'.$value['image']) ?>" alt="featured_1_1">
+                                                </div>
                                             </a>
                                             <a href="<?php echo base_url('hoat-dong/'.$value['sub'].'/'.$value['slug']) ?>">
                                                 <h2><?php echo $value['title'] ?></h2>
