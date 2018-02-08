@@ -69,6 +69,24 @@ class Admission_model extends CI_Model {
         return false;
     }
 
+    public function get_row($where= array()){
+        $this->db->select('title');
+        $this->db->from('admission');
+        $this->db->where('is_deleted', 0);
+        if($where != null){
+            $this->db->where($where);
+        }
+        $this->db->order_by('id', 'desc');
+
+        $query = $this->db->get();
+
+        if($query->num_rows() > 0){
+            return $query->row_array();
+        }
+
+        return false;
+    }
+
     public function fetch_all_pagination($limit = NULL, $start = NULL) {
         $this->db->select('*');
         $this->db->from('admission');
