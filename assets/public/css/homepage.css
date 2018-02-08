@@ -21,11 +21,6 @@ Author: hung.luong@matocreative.vn
 	padding-bottom: 2em;
 }
 
-.featured .inner img{
-	width: 100%;
-	border-radius: 37px;
-}
-
 .featured .inner:hover{
 	border-radius: 37px;
 }
@@ -46,6 +41,19 @@ Author: hung.luong@matocreative.vn
 
 .featured .inner{
 	padding: 15px 15px 30px;
+}
+
+.featured .inner .mask{
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.featured .inner .mask >img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 37px;
 }
 
 .container-fluid#blogs{
