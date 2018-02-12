@@ -71,25 +71,85 @@
                         <tr>
                             <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
                             <td>
-                                Cơ sở 2: Số 108 Phan Đình Giót, Tổ 2 phường La Khê – Quận Hà Đông – Thành phố Hà Nội
+                                <a href="" data-toggle="modal" data-target="#map_cs2">
+                                    Cơ sở 2: Số 108 Phan Đình Giót, Tổ 2 phường La Khê – Quận Hà Đông – Thành phố Hà Nội
+                                </a>
                                 <br>
                                 Điện thoại: 024.33.552.359 – 0973.521.728
                             </td>
+                            <div class="modal fade" id="map_cs2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Bản đồ địa chỉ cơ sở 2 - Trường mầm non Tuổi Thần Tiên</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="map container-fluid">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.797409857852!2d105.78203841522955!3d20.960649386035453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ad2c8d9c8fdb%3A0x288788680102a8b8!2zTmfDtSA2IFThu5UgRMOibiBQaOG7kSBz4buRIDUsIMSQYSBT4bu5LCBLaeG6v24gSMawbmcsIEjDoCDEkMO0bmcsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1518413473083" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng cửa sổ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                         <tr>
                             <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
                             <td>
-                                Cơ sở 3: Tầng 5 tòa V3 chung cư Victoria Văn Phú – Hà Đông – HN.
+                                <a href="" data-toggle="modal" data-target="#map_cs3">
+                                    Cơ sở 3: Tầng 5 tòa V3 chung cư Victoria Văn Phú – Hà Đông – HN.
+                                </a>
                                 <br>Điện thoại: 024.62.542.325 - 0167.9360.287
                             </td>
+                            <div class="modal fade" id="map_cs3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Bản đồ địa chỉ cơ sở 3 - Trường mầm non Tuổi Thần Tiên</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="map container-fluid">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.8130035862077!2d105.76514221522946!3d20.960023386035584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313452db922e2fd1%3A0x1c21db1be4bac38a!2zQ2h1bmcgY8awIFZpY3RvcmlhIFbEg24gUGjDug!5e0!3m2!1sen!2s!4v1518414024127" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng cửa sổ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                         <tr>
                             <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
                             <td>
-                                Cơ sở 5: Liền kề 16 – Ô 52 khu đô thị An Hưng – phường La khê – HĐ – HN.
+                                <a href="" data-toggle="modal" data-target="#map_cs5">
+                                    Cơ sở 5: Liền kề 16 – Ô 52 khu đô thị An Hưng – phường La khê – HĐ – HN.
+                                </a>
                                 <br>
                                 Điện thoại: 024.62.942.689 - 0945.688.978
                             </td>
+                            <div class="modal fade" id="map_cs5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Bản đồ địa chỉ cơ sở 5 - Trường mầm non Tuổi Thần Tiên</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="map container-fluid">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.489165627915!2d105.7545983152297!3d20.973019986028536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3134531f0a2c3b67%3A0x7f8f59aab2c8e012!2zQ8O0bmcgdHkgY-G7lSBwaOG6p24gxJHhuqd1IHTGsCDEkcO0IHRo4buLIEFuIEjGsG5n!5e0!3m2!1sen!2s!4v1518414085581" width="100%" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng cửa sổ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                         <tr>
                             <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
