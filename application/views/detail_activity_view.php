@@ -117,7 +117,7 @@
                     <br><br><br><br><br>
                     <h1>Đăng ký nhập học</h1>
                     <br><br>
-                    <p>Trường MẦM NON TUỔI THẦN TIÊN cung cấp một chương trình giáo dục chất lượng cao từ cấp mầm non, tiểu học đến trung học phổ thông dựa trên những triết lý và thực tiễn giáo dục của Canada nhằm đáp ứng sự mong đợi của quý vị phụ huynh. Hãy đăng ký ngay để đội ngũ tuyển sinh của chúng tôi sẽ liên hệ với Quý vị trong thời gian sớm nhất.</p>
+                    <p>Hệ thống trường mầm non Tuổi Thần Tiên hướng tới mô hình quốc tế và trang bị các điều kiện giáo dục ưu việt nhất nhằm đáp ứng sự mong đợi của quý vị phụ huynh. Hãy đăng ký ngay để đội ngũ tuyển sinh của chúng tôi sẽ liên hệ với Quý vị trong thời gian sớm nhất.</p>
                     <a class="btn btn-primary hvr-icon-forward" role="button" href="<?php echo base_url('nhap-hoc/dang-ky-nhap-hoc') ?>">Đăng ký ngay</a>
                 </div>
             </div>
