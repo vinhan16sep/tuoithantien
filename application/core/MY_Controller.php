@@ -342,6 +342,7 @@ class Public_Controller extends MY_Controller {
         $this->load->model('total_view_model');
         $this->load->model('count_view_model');
         $this->load->model('config_model');
+        $this->load->model('view_month_model');
 
         $guest_id = session_id();
         $created_at = time();
@@ -420,6 +421,38 @@ class Public_Controller extends MY_Controller {
         $total_yesterday = $this->total_view_model->count_all($where);
         $this->data['total_day'] = $total_day;
         $this->data['total_yesterday'] = $total_yesterday;
+
+
+        /* count view month */
+        $data = array('total' => $total_yesterday, 'week' => date('w'), 'created_at' => $yesterday);
+        $check_yesterday = date('Y-m-d', strtotime($yesterday));
+        $check_time = $this->view_month_model->check_day($check_yesterday);
+
+        if($check_time == true){
+            $this->view_month_model->insert($data);
+        }
+        
+        $month = date('m');
+        $last_month = date('m') - 1;
+        /* Trong tuần */
+        $where = array('created_at >=' => date('Y-'.$month.'-01'), 'created_at <=' => date('Y-'.$month.'-31'), 'week' => date('w'));
+        $this->data['total_week'] = $this->view_month_model->count_all($where);
+
+        /* Tuần trước */
+        $where = array('created_at >=' => date('Y-'.$month.'-01'), 'created_at <=' => date('Y-'.$month.'-31'), 'week' => date('w') - 1);
+        $this->data['total_last_week'] = $this->view_month_model->count_all($where);
+
+        /* Trong tháng */
+        $where = array('created_at >=' => date('Y-'.$month.'-01'), 'created_at <=' => date('Y-'.$month.'-31'));
+        $this->data['total_month'] = $this->view_month_model->count_all($where);
+        // print_r($this->data['total_month']);die;
+
+        /* Tháng trước */
+        $where = array('created_at >=' => date('Y-'.$last_month.'-01'), 'created_at <=' => date('Y-'.$last_month.'-31'));
+        $this->data['total_last_month'] = $this->view_month_model->count_all($where);
+
+        /* xóa dữ liệu cũ */
+        $this->view_month_model->delete(date('Y-'.$last_month.'-01'));
     }
 
 }

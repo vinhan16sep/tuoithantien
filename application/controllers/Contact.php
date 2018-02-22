@@ -21,8 +21,8 @@ class Contact extends Public_Controller {
 
     public function create(){
         $params = array();
-        parse_str($this->input->post('input'), $params);
-
+        parse_str($this->input->get('input'), $params);
+        // print_r($params);die;
         $send = $this->send_mail($params);
 
         if($send == false){
@@ -42,9 +42,9 @@ class Contact extends Public_Controller {
         $mail->Port = 465; // set the port to use
         $mail->SMTPAuth = true; // turn on SMTP authentication
         $mail->SMTPSecure = 'ssl';
-        $mail->Username = "minhtruong93gtvt@gmail.com"; // your SMTP username or your gmail username
-        $mail->Password = "minhtruong"; // your SMTP password or your gmail password
-        $from = "minhtruong93gtvt@gmail.com"; // Reply to this email
+        $mail->Username = "matomailfrom@gmail.com"; // your SMTP username or your gmail username
+        $mail->Password = "matocreative.vn"; // your SMTP password or your gmail password
+        $from = "matomailfrom@gmail.com"; // Reply to this email
         $to = "truong.do@matocreative.vn"; // Recipients email ID
         $name = 'WEBMAIL'; // Recipient's name
         $mail->From = $from;
@@ -53,9 +53,9 @@ class Contact extends Public_Controller {
         $mail->CharSet = 'UTF-8';
         $mail->WordWrap = 50; // set word wrap
         $mail->IsHTML(true); // send as HTML
-        $mail->Subject = "Mail từ " . strip_tags($data['name']);
+        $mail->Subject = "Mail từ ";
 
-        $mail->Body = $this->email_template($data); //HTML Body
+        $mail->Body = 'test'; //HTML Body
 
         //$mail->SMTPDebug = 2;
 

@@ -122,11 +122,12 @@
 
 </section>
 <script>
-
+    console.log('<?php echo base_url('contact/create'); ?>');
     $('form#contact-form').submit(function(e) {
+        console.log($("#contact-form").serialize());
         e.preventDefault();
         $.ajax({
-            type: "POST",
+            type: "get",
             url: "<?php echo base_url('contact/create'); ?>",
             data: {
                 input: $("#contact-form").serialize()
