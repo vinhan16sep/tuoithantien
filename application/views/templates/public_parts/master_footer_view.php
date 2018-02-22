@@ -237,23 +237,23 @@
                     </tr>
                     <tr>
                         <td>Tuần trước</td>
-                        <td><?php echo floor($total_yesterday * 7.7); ?></td>
+                        <td><?php echo ($total_last_week['SUM(total)'] != null)? $total_last_week['SUM(total)'] : 0; ?></td>
                     </tr>
                     <tr>
                         <td>Tuần này</td>
-                        <td><?php echo floor($total_day * 6.5); ?></td>
+                        <td><?php echo ($total_week['SUM(total)'] != null)? $total_week['SUM(total)'] : 0; ?></td>
                     </tr>
                     <tr>
                         <td>Tháng trước</td>
-                        <td><?php echo floor($total_yesterday * 30.4); ?></td>
+                        <td><?php echo ($total_last_month['SUM(total)'] != null)? $total_last_month['SUM(total)'] : 0; ?></td>
                     </tr>
                     <tr>
                         <td>Tháng này</td>
-                        <td><?php echo floor($total_day * 28.7); ?></td>
+                        <td><?php echo ($total_month['SUM(total)'] != null)? $total_month['SUM(total)'] : 0; ?></td>
                     </tr>
                     <tr>
                         <td>Tất cả</td>
-                        <td><?php echo floor($total * 1.5); ?></td>
+                        <td><?php echo $total; ?></td>
                     </tr>
                     </tbody>
                 </table>
