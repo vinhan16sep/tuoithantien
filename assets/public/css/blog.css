@@ -85,6 +85,7 @@ Author: hung.luong@matocreative.vn
 }
 
 .item iframe{
+	width: 100%;
 	min-height: 500px;
 }
 
