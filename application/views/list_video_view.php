@@ -28,15 +28,15 @@
 		                    <div class="item col-md-12 col-sm-12 col-xs-12">
 		                        <div class="inner">
 		                        	<?php
-		                        		$url = str_replace('watch?v=', 'embed/', $value['url']);
-		                        		if(strstr($url,'&') != ''){
-		                        			$url_r = str_replace(strstr($url,'&'), '', $url);
-		                        		}else{
-		                        			$url_r = $url;
-		                        		}
+//		                        		$url = str_replace('watch?v=', 'embed/', $value['url']);
+//		                        		if(strstr($url,'&') != ''){
+//		                        			$url_r = str_replace(strstr($url,'&'), '', $url);
+//		                        		}else{
+//		                        			$url_r = $url;
+//		                        		}
 		                        	 ?>
 		                        	<a href=""><h3 class="blog_title"><?php echo $value['title'] ?></h3></a>
-		                        	<iframe width="100%" height="560%" src="<?php echo $url_r ?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                                    <?php echo $value['url'] ?>
 		                            <br><br>
 		                        </div>
 		                    </div>
