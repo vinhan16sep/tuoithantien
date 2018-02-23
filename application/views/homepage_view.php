@@ -75,7 +75,7 @@
                                     </li>
                                     <li>
                                         <h4 class="media-heading">
-                                            <strong>CS3: 024.6254.2326</strong>
+                                            <strong>CS3: 024.6254.2325</strong>
                                         </h4>
                                     </li>
                                     <li>
